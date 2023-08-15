@@ -1,12 +1,19 @@
 import './App.css';
-import "./AppTeste.scss";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
+// pages impor
+import Home from './Pages/Home';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Ifjobs</h1>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App; 
