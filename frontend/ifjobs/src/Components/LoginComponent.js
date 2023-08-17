@@ -15,32 +15,34 @@ const LoginComponent = () => {
 
   return (
     <div className='container-login'>
-         <h5>Bem vindo, o que você deseja fazer?</h5>
-        <form className="cabecalho btn-group">
+
+        <h5>Bem vindo!</h5>
+        <h6>O que você deseja fazer?</h6>
+        <form className="cabecalho-login btn-group">
             <input type="radio" className="btn-check" name="btnradio" id="btnlogin" autocomplete="off" onClick={mudarLogin}/>
-            <label className="btn btn-outline-secondary" for="btnlogin">Login</label>
+            <label className="btn btn-outline-dark" for="btnlogin">Login</label>
 
             <input type="radio" className="btn-check" name="btnradio" id="btncadastro" autocomplete="off" onClick={mudarCadastro}/>
-            <label className="btn btn-outline-secondary" for="btncadastro">Cadastrar</label>
+            <label className="btn btn-outline-dark" for="btncadastro">Cadastrar</label>
         </form>
 
         {
             cadastro
             ? 
             <form className='login'>
-                <input type='text' placeholder='Nome' className='form-control'/> 
-                <input type='text' placeholder='Email' className='form-control'/> 
-                <input type='text' placeholder='Senha' className='form-control'/> 
-                <input type='text' placeholder='Confirme sua senha' className='form-control'/>
+                <input type='text' placeholder='Nome' value='' className='txt form-control'/> 
+                <input type='text' placeholder='Email' value='' className='txt form-control'/> 
+                <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
+                <input type='text' placeholder='Confirme sua senha' value='' className='txt form-control'/>
 
-                <input type="button" value='Cadastrar' className='btn btn-secondary'/>
+                <input type="button" value='Cadastrar' className='btn btn-dark'/>
             </form>
             :
             <form className='login'>
-                <input type='text' placeholder='Email' className='form-control'/> 
-                <input type='text' placeholder='Senha' className='form-control'/> 
+                <input type='text' placeholder='Email' value='' className='txt form-control'/> 
+                <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
 
-                <input type="button" value='Login' className='btn btn-secondary'/>
+                <input type="button" value='Login' className='btn btn-dark'/>
             </form>
         }
 

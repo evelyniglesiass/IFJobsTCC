@@ -1,11 +1,26 @@
 
-.container-login input{
-    margin: 10px auto;
-    width: 300px;
-}
-
 .container-login {
     text-align: center;
-    margin: 10px auto;
-    width: 300px;
 }
+
+.cabecalho-login{
+    margin: 0px auto 10px auto;
+    width: 150px;
+}
+
+.login .txt{
+    width: 275px;
+}
+
+.login .btn{
+    width: 100px;
+    background-color: #96e8a1;
+    border-color: black;
+    color: black;
+}
+
+.login input{ 
+    margin: 10px auto 0px auto;
+}
+
+ 
