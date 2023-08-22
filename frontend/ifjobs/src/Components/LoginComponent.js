@@ -30,6 +30,19 @@ const LoginComponent = () => {
             cadastro
             ? 
             <form className='login'>
+                <div class="radio form-check">
+                    <input class="form-check-input" type="radio" name="usuario" id="estudante" checked/>
+                    <label class="form-check-label" for="estudante">
+                        Estudante
+                    </label>
+                </div>
+                <div class="radio form-check">
+                    <input class="form-check-input" type="radio" name="usuario" id="empresa"/>
+                    <label class="form-check-label" for="empresa">
+                        Empresa
+                    </label>
+                </div>
+
                 <input type='text' placeholder='Nome' value='' className='txt form-control'/> 
                 <input type='text' placeholder='Email' value='' className='txt form-control'/> 
                 <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
@@ -39,6 +52,19 @@ const LoginComponent = () => {
             </form>
             :
             <form className='login'>
+                <div class="radio form-check">
+                    <input class="form-check-input" type="radio" name="usuario" id="estudante" checked/>
+                    <label class="form-check-label" for="estudante">
+                        Estudante
+                    </label>
+                </div>
+                <div class="radio form-check">
+                    <input class="form-check-input" type="radio" name="usuario" id="empresa"/>
+                    <label class="form-check-label" for="empresa">
+                        Empresa
+                    </label>
+                </div>
+
                 <input type='text' placeholder='Email' value='' className='txt form-control'/> 
                 <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
 
