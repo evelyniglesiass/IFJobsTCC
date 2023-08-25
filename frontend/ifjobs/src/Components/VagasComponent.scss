@@ -1,0 +1,48 @@
+.div-titulo{
+    width: 650px;
+    min-height: 30px;
+    max-height: auto;
+    text-align: left;
+    float: left;
+}
+
+.div-corpo{
+    width: 650px;
+    float: left;
+    text-align: left;
+    min-height: 60px;
+    max-height: auto;
+}
+
+.div-botao{
+    width: 230px;
+    float: right;
+    margin-top: auto;
+    text-align: center;
+}
+
+.div-botao input{
+    width: 200px;
+    background-color: #B2A0DF;
+    color: #45454B;
+    border: #45454B;
+}
+
+.container{
+    display: inline-block;
+    width: 900px;
+    min-height: 100px;
+    max-height: auto;
+    padding: 10px 10px;
+    border-radius: 25px;
+    background-color: #cce6e6;
+    margin-top: 30px;
+}
+
+.a{
+    display: inline-block;
+    width: 1000px;
+    min-height: 100px;
+    max-height: auto;
+    text-align: center;
+}
