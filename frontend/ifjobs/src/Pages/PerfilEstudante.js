@@ -1,7 +1,6 @@
 import React from 'react'
 import HeaderComponent from '../Components/HeaderComponent'
 import './PerfilEstudante.scss';
-import HeaderPerfilComponent from '../Components/HeaderPerfilComponent';
 import CurriculoComponent from '../Components/CurriculoComponent';
 import ExperienciasComponent from '../Components/ExperienciasComponent';
 import CursosComponent from '../Components/CursosComponent';
@@ -11,10 +10,9 @@ const PerfilEstudante = () => {
     <div className='container-perfil'>
         <div className='header-component'><HeaderComponent/></div>
         <div className='container-p'>
-          <div><HeaderPerfilComponent/></div>
-          <div><CurriculoComponent/></div>
-          <div><ExperienciasComponent/></div>
-          <div><CursosComponent/></div>
+          <div className='curriculo-component'><CurriculoComponent/></div>
+          <div className='experiencia-component'><ExperienciasComponent/></div>
+          <div className='cursos-component'><CursosComponent/></div>
         </div>
     </div>
   )
