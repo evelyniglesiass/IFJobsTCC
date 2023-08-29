@@ -20,9 +20,9 @@ const CurriculoComponent = () => {
           <div className='titulo-objetivo'><h3>Objetivo</h3></div>
           <div className='conteudo-objetivo'><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p></div>
         </div>
-        <h3 className='titulos-curriculo'>Experiencias</h3>
+        <h3 className='titulos-curriculo'>Experiência Profissional</h3>
         <div className='experiencia-component'><ExperienciasComponent/></div>
-        <h3 className='titulos-curriculo'>Cursos</h3>
+        <h3 className='titulos-curriculo'>Cursos e Certificados</h3>
         <div className='cursos-component'><CursosComponent/></div>
     </div>
   )
