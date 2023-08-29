@@ -1,0 +1,35 @@
+.cabecalho-experiencias{
+    width: 100%;
+    text-align: left;
+}
+
+.titulo-experiencias {
+    float: left;
+    width: 1100px;
+    height: 40px;
+}
+
+.empresa-experiencias {
+    float: left;
+    width: 1100px;
+}
+
+.data-inicio-experiencias, .data-fim-experiencias{
+    float: left;
+    width: 200px;
+}
+
+.data-inicio-experiencias{
+    width: 88px;
+}
+
+
+.data-fim-experiencias{
+    width: 975px;
+}
+
+.experiencias-container{
+    padding: 15px;
+    border-radius: 25px;
+    background-color: pink;
+}
