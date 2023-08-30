@@ -7,11 +7,11 @@ import PesquisaComponent from '../Components/PesquisaComponent';
 const Empresas = () => {
   return (
     <div className='container-empresas'>
-        <div className='header-component'><HeaderComponent/></div>
-        <div className='container-emp'>
-          <div className='div-pesquisa-empresas'><PesquisaComponent/></div>
-          <div className='div-empresa'><EmpresasComponent/></div>
-        </div>
+        <nav className='header-component'><HeaderComponent/></nav>
+        <section className='container-emp'>
+          <article className='div-pesquisa-empresas'><PesquisaComponent/></article>
+          <article className='div-empresa'><EmpresasComponent/></article>
+        </section>
     </div>
   )
 }

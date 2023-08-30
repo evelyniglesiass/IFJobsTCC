@@ -6,10 +6,10 @@ import PerfilEmpresaComponent from '../Components/PerfilEmpresaComponent';
 const PerfilEmpresa = () => {
   return (
     <div className='container-perfil-empresa'>
-        <div className='header-component'><HeaderComponent/></div>
-        <div className='container-pe'>
-          <div className='perfil-empresa-component'><PerfilEmpresaComponent/></div>
-        </div>
+        <nav className='header-component'><HeaderComponent/></nav>
+        <section className='container-pe'>
+          <article className='perfil-empresa-component'><PerfilEmpresaComponent/></article>
+        </section>
     </div> 
   )
 }

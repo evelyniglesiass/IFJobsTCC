@@ -5,10 +5,10 @@ import VagasComponent from '../Components/VagasComponent'
 const Salvos = () => {
   return (
     <div className='container-feed'>
-        <div className='header-component'><HeaderComponent/></div>
-        <div className='container-vagas'>
-            <div className='div-vaga'><VagasComponent/></div>
-        </div>
+        <nav className='header-component'><HeaderComponent/></nav>
+        <section className='container-vagas'>
+            <article className='div-vaga'><VagasComponent/></article>
+        </section>
     </div>
   )
 }

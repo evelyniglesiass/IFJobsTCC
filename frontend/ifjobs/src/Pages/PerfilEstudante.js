@@ -6,10 +6,10 @@ import CurriculoComponent from '../Components/CurriculoComponent';
 const PerfilEstudante = () => {
   return (
     <div className='container-perfil'>
-        <div className='header-component'><HeaderComponent/></div>
-        <div className='container-p'>
-          <div className='curriculo-component'><CurriculoComponent/></div>
-        </div>
+        <nav className='header-component'><HeaderComponent/></nav>
+        <section className='container-p'>
+          <article className='curriculo-component'><CurriculoComponent/></article>
+        </section>
     </div>
   )
 }

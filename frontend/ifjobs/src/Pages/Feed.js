@@ -7,11 +7,11 @@ import PesquisaComponent from '../Components/PesquisaComponent';
 const Feed = () => {
   return (
     <div className='container-feed'>
-        <div className='header-component'><HeaderComponent/></div>
-        <div className='container-vagas'>
-          <div className='div-pesquisa-vagas'><PesquisaComponent/></div>
-          <div className='div-vaga'><VagasComponent/></div>
-        </div>
+        <nav className='header-component'><HeaderComponent/></nav>
+        <section className='container-vagas'>
+          <article className='div-pesquisa-vagas'><PesquisaComponent/></article>
+          <article className='div-vaga'><VagasComponent/></article>
+        </section>
     </div>
   )
 }

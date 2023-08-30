@@ -8,10 +8,10 @@ import Background from "../Imagens/home.png";
 const Home = () => {
 
   return (
-    <div className='container-home' style={{ backgroundImage: `url(${Background})`}}> 
-      <div className='info-component'><InfoComponent/></div>
-      <div className='login-component'><LoginComponent/></div>
-    </div>
+    <section className='container-home' style={{ backgroundImage: `url(${Background})`}}> 
+      <article className='info-component'><InfoComponent/></article>
+      <article className='login-component'><LoginComponent/></article>
+    </section>
   )
 }
 
