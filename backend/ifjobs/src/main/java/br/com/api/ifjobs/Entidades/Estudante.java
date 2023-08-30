@@ -1,9 +1,11 @@
 package br.com.api.ifjobs.Entidades;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Estudante{
@@ -32,6 +34,9 @@ public class Estudante{
 
     @Column(nullable = false, length = 250)
     private String senha;
+
+	@OneToOne(mappedBy = "estudante")
+    private Curriculo curriculo;
 
     public Estudante(){
     }
