@@ -6,14 +6,14 @@ const PerfilEmpresaComponent = () => {
   return (
     <div className='perfil-empresa-component'>
         <div className='cabecalho-perfil-empresa'>
-          <div className='img-perfil-empresa'><img src="" alt="imagem" /></div>
-          <div className='titulo-perfil-empresa'><h2>Nome da empresa</h2></div>
-          <div className='curso-perfil-empresa'><h5>Mini descrição</h5></div>
-          <div className='sociais-perfil-empresa'><p>icones</p></div>
+          <img src="" alt="imagem" className='img-perfil-empresa'/>
+          <h2 className='titulo-perfil-empresa'>Nome da empresa</h2>
+          <h5 className='curso-perfil-empresa'>Mini descrição</h5>
+          <p className='sociais-perfil-empresa'>icones</p>
         </div>
         <div className='sobre-perfil-empresa'>
-          <div className='titulo-sobre'><h3>Sobre a empresa</h3></div>
-          <div className='conteudo-sobre'><p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p></div>
+          <h3 className='titulo-sobre'>Sobre a empresa</h3>
+          <p className='conteudo-sobre'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
         </div>
         <h3 className='titulos-perfil-empresa'>Vagas</h3>
         <div className='perfil-empresa-vaga-component'><VagasComponent/></div>

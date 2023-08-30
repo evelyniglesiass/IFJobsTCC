@@ -26,7 +26,7 @@ const InfoComponent = () => {
                 <div class="accordion-body">
                     <p>O Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense é uma instituição pública federal brasileira, vinculada ao Ministério da Educação, que compõe a Rede Federal de Educação Profissional, Científica e Tecnológica.</p>                </div>
                 </div>
-        </div>
+            </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionTres" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
