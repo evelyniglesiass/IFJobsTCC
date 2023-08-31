@@ -43,14 +43,6 @@ public class Empresa {
 
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> itens = new ArrayList<>();
-	
-	public List<Vaga> getItens() {
-		return itens;
-	}
-
-	public void setItens(List<Vaga> itens) {
-		this.itens = itens;
-	}
 
 	public Empresa() {
 	}
@@ -135,7 +127,12 @@ public class Empresa {
 		this.senha = senha;
 	}
 	
-	
-	
+	public List<Vaga> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Vaga> itens) {
+		this.itens = itens;
+	}
 	
 }

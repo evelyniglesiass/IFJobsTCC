@@ -1,6 +1,8 @@
 package br.com.api.ifjobs.Entidades;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -39,7 +41,7 @@ public class Vaga {
     private Integer idadeMinima;
 
 	@Column(nullable = false, length = 250)
-    private String palavrasChave;//ver como transformar em list
+    private List<String> palavrasChave = new ArrayList<>();
 	
 	@Column(nullable = false, length = 250)
     private String cidade;
@@ -51,20 +53,13 @@ public class Vaga {
 	@ManyToOne 
 	@JoinColumn(name = "empresa_id") 
 	private Empresa empresa;
-	
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
 
 	public Vaga() {
 	}
 
 	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, double salario,
-			Integer idadeMinima, String palavrasChave, String cidade, LocalDateTime dataPublicacao, Empresa empresa) {
+			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDateTime dataPublicacao,
+			Empresa empresa) {
 		this.id = id;
 		this.status = status;
 		this.titulo = titulo;
@@ -88,6 +83,7 @@ public class Vaga {
 	public Integer getId() {
 		return id;
 	}
+
 
 	public boolean isStatus() {
 		return status;
@@ -137,11 +133,11 @@ public class Vaga {
 		this.idadeMinima = idadeMinima;
 	}
 
-	public String getPalavrasChave() {
+	public List<String> getPalavrasChave() {
 		return palavrasChave;
 	}
 
-	public void setPalavrasChave(String palavrasChave) {
+	public void setPalavrasChave(List<String> palavrasChave) {
 		this.palavrasChave = palavrasChave;
 	}
 
@@ -160,5 +156,13 @@ public class Vaga {
 	public void setDataPublicacao(LocalDateTime dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
 	}
-	
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 }

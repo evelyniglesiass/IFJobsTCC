@@ -1,6 +1,5 @@
 package br.com.api.ifjobs.Entidades;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -40,9 +39,9 @@ public class Estudante{
 
     public Estudante(){
     }
-    
+
     public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, Integer telefone, String email,
-            String cidade, String senha) {
+            String cidade, String senha, Curriculo curriculo) {
         this.id = id;
         this.idade = idade;
         this.nomeUsuario = nomeUsuario;
@@ -51,16 +50,18 @@ public class Estudante{
         this.email = email;
         this.cidade = cidade;
         this.senha = senha;
+        this.curriculo = curriculo;
     }
 
     @Override
     public String toString() {
         return "Estudante [id=" + id + ", idade=" + idade + ", nomeUsuario=" + nomeUsuario + ", nome=" + nome
-                + ", telefone=" + telefone + ", email=" + email + ", cidade=" + cidade + ", senha=" + senha + "]";
+                + ", telefone=" + telefone + ", email=" + email + ", cidade=" + cidade + ", senha=" + senha
+                + ", curriculo=" + curriculo + "]";
     }
 
-    public Integer getId(){
-        return this.id;
+    public Integer getId() {
+        return id;
     }
 
     public Integer getIdade() {
@@ -119,4 +120,14 @@ public class Estudante{
         this.senha = senha;
     }
 
+    public Curriculo getCurriculo() {
+        return curriculo;
+    }
+
+    public void setCurriculo(Curriculo curriculo) {
+        this.curriculo = curriculo;
+    }
+
+    
+    
 }

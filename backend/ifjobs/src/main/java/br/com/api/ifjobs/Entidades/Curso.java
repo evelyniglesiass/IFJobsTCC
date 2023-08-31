@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -36,11 +38,15 @@ public class Curso {
 	@Column(nullable = false)
 	private LocalDateTime dataFinal;
 
+    @ManyToOne
+    @JoinColumn(name="curriculo_id", nullable=false)    
+    private Curriculo curriculo;
+
     public Curso(){
     }
 
     public Curso(Integer id, String descricao, String instituicao, String cidade, String cargaHoraria,
-            LocalDateTime dataInicial, LocalDateTime dataFinal) {
+            LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
         this.instituicao = instituicao;
@@ -48,12 +54,7 @@ public class Curso {
         this.cargaHoraria = cargaHoraria;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
-    }
-
-    @Override
-    public String toString() {
-        return "Curso [id=" + id + ", descricao=" + descricao + ", instituicao=" + instituicao + ", cidade=" + cidade
-                + ", cargaHoraria=" + cargaHoraria + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal + "]";
+        this.curriculo = curriculo;
     }
 
     public Integer getId() {
@@ -107,4 +108,14 @@ public class Curso {
     public void setDataFinal(LocalDateTime dataFinal) {
         this.dataFinal = dataFinal;
     }
+
+    public Curriculo getCurriculo() {
+        return curriculo;
+    }
+
+    public void setCurriculo(Curriculo curriculo) {
+        this.curriculo = curriculo;
+    }
+
+    
 }

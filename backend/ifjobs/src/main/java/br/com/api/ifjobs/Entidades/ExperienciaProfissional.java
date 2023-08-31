@@ -6,6 +6,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
@@ -33,23 +35,29 @@ public class ExperienciaProfissional {
 	@Column(nullable = false)
 	private LocalDateTime dataFinal;
 
+    @ManyToOne
+    @JoinColumn(name="curriculo_id", nullable=false)    
+    private Curriculo curriculo;
+
     public ExperienciaProfissional(){
     }
 
     public ExperienciaProfissional(Integer id, String descricao, String empresa, String cargo,
-            LocalDateTime dataInicial, LocalDateTime dataFinal) {
+            LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
         this.empresa = empresa;
         this.cargo = cargo;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
+        this.curriculo = curriculo;
     }
 
     @Override
     public String toString() {
         return "ExperienciaProfissional [id=" + id + ", descricao=" + descricao + ", empresa=" + empresa + ", cargo="
-                + cargo + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal + "]";
+                + cargo + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal + ", curriculo=" + curriculo
+                + "]";
     }
 
     public Integer getId() {
@@ -96,5 +104,12 @@ public class ExperienciaProfissional {
         this.dataFinal = dataFinal;
     }
 
+    public Curriculo getCurriculo() {
+        return curriculo;
+    }
+
+    public void setCurriculo(Curriculo curriculo) {
+        this.curriculo = curriculo;
+    }
     
 }
