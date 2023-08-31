@@ -3,37 +3,37 @@ import './EmpresasComponent.scss';
 
 const EmpresasComponent = () => {
   return (
-    <div className='a-e'>
-        <div className='container-e'>
+    <section className='a-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
+        </article>
 
-        <div className='container-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
+        </article>
 
-        <div className='container-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
+        </article>
 
-        <div className='container-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
+        </article>
 
-        <div className='container-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
+        </article>
 
-        <div className='container-e'>
+        <article className='container-e'>
             <h4 className='div-titulo-e'>Empresa</h4>
             <p className='div-corpo-e'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </div>
-    </div>
+        </article>
+    </section>
     
   )
 }
