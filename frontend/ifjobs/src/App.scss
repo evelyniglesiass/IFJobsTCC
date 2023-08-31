@@ -6,8 +6,13 @@ $roxo: #8C2B6E;
 $preto: #45454B;
 $branco: #FAFAFA;
 
+$fonte-um: 'Abril Fatface';
+$fonte-dois: 'Libre Baskerville';
+$fonte-tres: Aileron;
+
+
 .app{
-    font-family: 'Abril Fatface', 'Libre Baskerville', Aileron;
+    font-family: $fonte-um, $fonte-dois, $fonte-tres;
     font-size: 16px;
-    color: #45454B;
+    color: $preto;
 }
