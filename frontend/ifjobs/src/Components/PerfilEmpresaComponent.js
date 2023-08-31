@@ -1,5 +1,5 @@
 import React from 'react'
-import './PerfilEmpresaComponent.scss';
+import '../App.scss';
 import VagasComponent from './VagasComponent'
 
 const PerfilEmpresaComponent = () => {

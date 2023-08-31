@@ -1,5 +1,5 @@
 import React from 'react'
-import './ExperienciasComponent.scss';
+import '../App.scss';
 
 const ExperienciasComponent = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import './PerfilEmpresa.scss';
+import '../App.scss';
 import HeaderComponent from '../Components/HeaderComponent';
 import PerfilEmpresaComponent from '../Components/PerfilEmpresaComponent';
 

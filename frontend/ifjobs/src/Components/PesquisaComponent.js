@@ -1,5 +1,5 @@
 import React from 'react'
-import './PesquisaComponent.scss';
+import '../App.scss';
 
 const PesquisaComponent = () => {
   return (

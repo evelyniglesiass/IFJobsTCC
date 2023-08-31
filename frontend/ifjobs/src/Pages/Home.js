@@ -1,4 +1,4 @@
-import './Home.scss';
+import '../App.scss';
 
 import LoginComponent from '../Components/LoginComponent';
 import InfoComponent from '../Components/InfoComponent';

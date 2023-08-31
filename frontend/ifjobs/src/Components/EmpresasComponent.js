@@ -1,5 +1,5 @@
 import React from 'react'
-import './EmpresasComponent.scss';
+import '../App.scss';
 
 const EmpresasComponent = () => {
   return (

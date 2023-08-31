@@ -1,5 +1,5 @@
 import React from 'react'
-import './VagasComponent.scss';
+import '../App.scss';
 
 const VagasComponent = () => {
   return (

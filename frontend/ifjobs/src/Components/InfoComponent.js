@@ -1,4 +1,4 @@
-import '../Components/InfoComponent.scss'; 
+import '../App.scss';
 
 const InfoComponent = () => {
  

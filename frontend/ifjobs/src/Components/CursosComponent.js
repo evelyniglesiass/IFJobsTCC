@@ -1,5 +1,5 @@
 import React from 'react'
-import './CursosComponent.scss';
+import '../App.scss';
 
 const CursosComponent = () => {
   return (
