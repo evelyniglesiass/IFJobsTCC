@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.scss';
 import HeaderComponent from '../Components/HeaderComponent'
 import VagasComponent from '../Components/VagasComponent'
 

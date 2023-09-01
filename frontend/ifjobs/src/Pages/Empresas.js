@@ -1,5 +1,5 @@
 import React from 'react'
-import './Empresas.scss';
+import '../App.scss';
 import HeaderComponent from '../Components/HeaderComponent'
 import EmpresasComponent from '../Components/EmpresasComponent'
 import PesquisaComponent from '../Components/PesquisaComponent';
