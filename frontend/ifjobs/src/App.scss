@@ -20,61 +20,55 @@ $fonte-tres: Aileron;
 
 // Pages --------------------------------------------
 
+// Header - USO GERAL
+.header-component{
+    width: 20%;
+    height: 100vh;
+    padding-top: 30vh;
+    position: fixed;
+    text-align: center;
+    background-color: $verde-forte;
+    //float: left; analisar necessidade
+}
+
 // Home
 .container-home{
     display: inline-block;
     width: 100%;
     min-height: 100vh;
     max-height: auto;
-    margin-bottom: 0px;
-    background-size: 100% 100%;
+    background-size: 100%;
 }
 
 .info-component{
-    padding-top: 280px;
-    width: 55%;
-    float: left;
-    height: 100%;
+    padding-top: 290px;
     padding-left: 8%;
+    width: 55%;
+    height: 100%;
+    float: left;
 }
  
 .login-component{
     padding-top: 190px;
-    width: 30%;
-    float: left;
-    height: 100%;
     margin-left: 150px;
-}
-
-// Feed
-.container-feed {
-    display: inline-block;
-    width: 100%;
-    min-height: 100vh;
-    max-height: auto;
-    margin-bottom: 0px;
-    background-size: 100% 100%;
-}
-
-.header-component{
-    padding-top: 30vh;
-    width: 20%;
+    width: 30%;
+    height: 100%;
     float: left;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #89BDB1;
-    position: fixed;
+}
+
+// Feed e Salvos
+.container-feed {
+    width: 100%;
+    height: 100vh;
 }
 
 .container-vagas{
     padding-top: 5vh;
     width: 80%;
-    float: right;
     min-height: 100vh;
-    max-height: auto;
     text-align: center;
-    background-color: #FAFAFA;
+    float: right;
+    background-color: $branco;
 }
 
 .div-vaga{
@@ -82,96 +76,44 @@ $fonte-tres: Aileron;
 }
 
 .div-pesquisa-vagas{
-   padding-top: 5vh;
-   margin-left: 275px;
+    padding-top: 3%;
+    margin-left: 275px;
 }
 
 // Empresas
 .container-empresas {
-    display: inline-block;
     width: 100%;
-    min-height: 100vh;
-    max-height: auto;
-    margin-bottom: 0px;
-    background-size: 100% 100%;
-}
-
-.header-component{
-    padding-top: 30vh;
-    width: 20%;
-    float: left;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #89BDB1;
-    position: fixed;
+    height: 100vh;
 }
 
 .container-emp{
     padding-top: 5vh;
-    width: 80%;
-    float: right;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
     padding-left: 50px;
-    background-color: #fafafa;
+    width: 80%;
+    min-height: 100vh;
+    text-align: center;
+    float: right;
+    background-color: $branco;
 }
 
 .div-empresa{
     padding-top: 5vh;
+    padding-bottom: 10px;
 }
 
 .div-pesquisa-empresas{
-   padding-top: 5vh;
-   margin-left: 240px;
+    padding-top: 3%;
+    margin-left: 240px;
 }
 
-// Salvos
-
-
-// Perfil Estudante
-.header-component{
-    padding-top: 30vh;
-    width: 20%;
-    float: left;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #89BDB1;
-    position: fixed;
-}
-
-.container-p{
+// Perfil Estudante e Perfil Empresa
+.container-p, .container-pe{
     padding-top: 5vh;
     width: 80%;
+    min-height: 100vh;
+    text-align: center;
     float: right;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #FAFAFA;
-}
-
-// Perfil Empresa
-.header-component{
-    padding-top: 30vh;
-    width: 20%;
-    float: left;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #89BDB1;
-    position: fixed;
-}
-
-.container-pe{
-    padding-top: 5vh;
-    width: 80%;
-    float: right;
-    min-height: 100vh;
-    max-height: auto;
-    text-align: center;
-    background-color: #FAFAFA;
+    background-color: $branco;
 }
 
 // Components ---------------------------------------
@@ -192,9 +134,9 @@ $fonte-tres: Aileron;
 
 .login .btn{
     width: 100px;
-    background-color: #B2A0DF;
-    border-color: #45454B;
-    color: #45454B;
+    background-color: $roxo-forte;
+    border-color: $branco;
+    color: $branco;
 }
 
 .login input{ 
@@ -205,7 +147,6 @@ $fonte-tres: Aileron;
     width: 100px;
     text-align: left;
     margin-left: 180px;
-    font-size: 15px;
 }
 
 .radio input{ 
@@ -224,7 +165,7 @@ $fonte-tres: Aileron;
 
 // Header
 .container-links a { 
-    color: #FAFAFA;
+    color: $branco;
     font-size: 25px;
     text-decoration: none;
 }
@@ -243,89 +184,69 @@ $fonte-tres: Aileron;
 }
 
 // Vagas
-.div-titulo{
+.div-titulo, .div-corpo{
     width: 650px;
-    min-height: 30px;
-    max-height: auto;
     text-align: left;
-    float: left;
+    //float: left; analisar necessidade
 }
 
 .div-corpo{
-    width: 650px;
     float: left;
-    text-align: left;
-    min-height: 60px;
-    max-height: auto;
 }
 
 .div-botao{
     width: 230px;
-    float: right;
     margin-top: auto;
     text-align: center;
+    float: right;
 }
 
 .div-botao input{
     width: 200px;
-    background-color: #B2A0DF;
-    color: #45454B;
-    border: #45454B;
+    background-color: $roxo-forte;
+    color: $branco;
 }
 
 .container{
     display: inline-block;
-    width: 900px;
-    min-height: 100px;
-    max-height: auto;
-    padding: 10px 10px;
-    border-radius: 25px;
-    background-color: #cce6e6;
+    width: 1000px;
+    padding: 15px;
     margin-top: 30px;
+    border-radius: 25px;
+    background-color: $verde-fraco;
 }
 
 .a{
     display: inline-block;
-    width: 1000px;
-    min-height: 100px;
-    max-height: auto;
+    width: 1200px;
+    padding-bottom: 10px;
     text-align: center;
 }
 
-// Empress
+// Empresa
 .div-titulo-e{
     margin-top: 100px;
     width: 200px;
-    min-height: 20px;
-    max-height: auto;
     text-align: center;
-
 }
 
 .div-corpo-e{
     width: 200px;
-    text-align: left;
-    min-height: 60px;
-    max-height: auto;
 }
 
 .container-e{
     display: inline-block;
     width: 220px;
-    min-height: 100px;
-    max-height: auto;
-    padding: 10px 10px;
-    border-radius: 25px;
-    background-color: #cce6e6;
+    padding: 15px;
     margin-left: 80px;
     margin-top: 30px;
+    border-radius: 25px;
+    background-color: $verde-fraco;
 }
 
 .a-e{
     display: inline-block;
     width: 1000px;
-    min-height: 100px;
-    max-height: auto;
     text-align: left;
 }
 
@@ -334,7 +255,6 @@ $fonte-tres: Aileron;
     width: 100%;
     padding-left: 20px;
     padding-bottom: 10px;
-
 }
 
 .cabecalho-perfil-empresa{
@@ -354,7 +274,7 @@ $fonte-tres: Aileron;
     float: left;
     width: 150px;
     height: 150px;
-    background-color: #B2A0DF;
+    background-color: $roxo;
 }
 
 .curso-perfil-empresa, .sociais-perfil-empresa {
@@ -373,12 +293,12 @@ $fonte-tres: Aileron;
 }
 
 .sobre-perfil-empresa{
-    margin-top: 20px;
-    text-align: left;
     width: 1100px;
-    border-radius: 25px;
+    margin-top: 20px;
     padding: 20px;
-    background-color: #E2CEFF;
+    border-radius: 25px;
+    text-align: left;
+    background-color: $roxo;
 }
 
 .titulos-perfil-empresa{
@@ -399,7 +319,6 @@ $fonte-tres: Aileron;
     width: 100%;
     padding-left: 20px;
     padding-bottom: 10px;
-
 }
 
 .cabecalho-curriculo{
@@ -419,7 +338,7 @@ $fonte-tres: Aileron;
     float: left;
     width: 150px;
     height: 150px;
-    background-color: #B2A0DF;
+    background-color: $roxo;
 }
 
 .curso-curriculo, .sociais-curriculo {
@@ -439,28 +358,21 @@ $fonte-tres: Aileron;
 
 .sobre-curriculo{
     margin-top: 20px;
-    text-align: left;
-    width: 1100px;
-    border-radius: 25px;
-    padding: 20px;
-    background-color: #E2CEFF;
 }
 
 .objetivo-curriculo{
+    margin-top: 15px;
+}
+
+.objetivo-curriculo, .sobre-curriculo{
     text-align: left;
     width: 1100px;
     border-radius: 25px;
     padding: 20px;
-    margin-top: 15px;
-    background-color: #E2CEFF;
+    background-color: $roxo
 }
 
-.experiencia-component{
-    margin-top: 15px;
-    width: 1100px;
-}
-
-.cursos-component{
+.cursos-component, .experiencia-component{
     margin-top: 15px;
     width: 1100px;
 }
@@ -472,76 +384,34 @@ $fonte-tres: Aileron;
     text-align: left;
 }
 
-// Experiencias
-.cabecalho-experiencias{
+// Experiencias e Cursos
+.cabecalho-experiencias, .cabecalho-cursos{
     width: 100%;
     text-align: left;
 }
 
-.titulo-experiencias {
-    float: left;
-    width: 1100px;
-    height: 40px;
-}
-
-.empresa-experiencias {
+.titulo-experiencias, .empresa-experiencias, .titulo-cursos, .empresa-cursos {
     float: left;
     width: 1100px;
 }
 
-.data-inicio-experiencias, .data-fim-experiencias{
+.data-inicio-experiencias, .data-fim-experiencias, .data-inicio-cursos, .data-fim-cursos{
     float: left;
     width: 200px;
 }
 
-.data-inicio-experiencias{
+.data-inicio-experiencias, .data-inicio-cursos{
     width: 88px;
 }
 
-
-.data-fim-experiencias{
+.data-fim-experiencias, .data-fim-cursos{
     width: 975px;
 }
 
-.experiencias-container{
+.experiencias-container, .cursos-container{
     padding: 15px;
     border-radius: 25px;
-    background-color: #E2CEFF;
-}
-
-// Cursos
-.cabecalho-cursos{
-    width: 100%;
-    text-align: left;
-}
-
-.titulo-cursos {
-    float: left;
-    width: 1100px;
-    height: 40px;
-}
-
-.empresa-cursos {
-    float: left;
-    width: 1100px;
-}
-
-.data-inicio-cursos, .data-fim-cursos{
-    float: left;
-    width: 200px;
-}
-
-.data-inicio-cursos{
-    width: 88px;
+    background-color: $roxo;
 }
 
 
-.data-fim-cursos{
-    width: 975px;
-}
-
-.cursos-container{
-    padding: 15px;
-    border-radius: 25px;
-    background-color: #E2CEFF;
-}
