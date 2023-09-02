@@ -5,8 +5,8 @@ import VagasComponent from '../Components/VagasComponent'
 
 const Salvos = () => {
   return (
-    <div className='container-feed'>
-        <nav className='header-component'><HeaderComponent/></nav>
+    <div className='container-pages'>
+        <nav className='header'><HeaderComponent/></nav>
         <section className='container-vagas'>
             <article className='div-vaga'><VagasComponent/></article>
         </section>

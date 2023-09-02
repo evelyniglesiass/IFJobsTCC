@@ -6,10 +6,10 @@ import PesquisaComponent from '../Components/PesquisaComponent';
 
 const Empresas = () => {
   return (
-    <div className='container-empresas'>
-        <nav className='header-component'><HeaderComponent/></nav>
-        <section className='container-emp'>
-          <article className='div-pesquisa-empresas'><PesquisaComponent/></article>
+    <div className='container-pages'>
+        <nav className='header'><HeaderComponent/></nav>
+        <section className='container-empresas'>
+          <article className='pesquisa-empresas'><PesquisaComponent/></article>
           <article className='div-empresa'><EmpresasComponent/></article>
         </section>
     </div>

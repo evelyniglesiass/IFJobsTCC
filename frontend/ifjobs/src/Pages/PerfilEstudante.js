@@ -5,12 +5,12 @@ import CurriculoComponent from '../Components/CurriculoComponent';
 
 const PerfilEstudante = () => {
   return (
-    <div className='container-perfil'>
-        <nav className='header-component'><HeaderComponent/></nav>
-        <section className='container-p'>
-          <article className='curriculo-component'><CurriculoComponent/></article>
+    <>
+        <nav className='header'><HeaderComponent/></nav>
+        <section className='container-perfis'>
+          <article><CurriculoComponent/></article>
         </section>
-    </div>
+    </>
   )
 }
 

@@ -5,13 +5,13 @@ import PerfilEmpresaComponent from '../Components/PerfilEmpresaComponent';
 
 const PerfilEmpresa = () => {
   return (
-    <div className='container-perfil-empresa'>
-        <nav className='header-component'><HeaderComponent/></nav>
-        <section className='container-pe'>
-          <article className='perfil-empresa-component'><PerfilEmpresaComponent/></article>
+    <>
+        <nav className='header'><HeaderComponent/></nav>
+        <section className='container-perfis'>
+          <article><PerfilEmpresaComponent/></article>
         </section>
-    </div> 
+    </> 
   )
 }
 
-export default PerfilEmpresa
+export default PerfilEmpresa 
