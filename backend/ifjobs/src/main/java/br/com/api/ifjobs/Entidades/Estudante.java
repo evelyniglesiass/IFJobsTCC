@@ -1,14 +1,21 @@
 package br.com.api.ifjobs.Entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Estudante{
 
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
     private Integer id;
@@ -37,11 +44,14 @@ public class Estudante{
 	@OneToOne(mappedBy = "estudante")
     private Curriculo curriculo;
 
+    @ManyToMany(mappedBy = "estudantes", cascade = CascadeType.REMOVE)
+    private List<Candidatura> candidaturas = new ArrayList<>();
+
     public Estudante(){
     }
 
     public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, Integer telefone, String email,
-            String cidade, String senha, Curriculo curriculo) {
+            String cidade, String senha, Curriculo curriculo, List<Candidatura> candidaturas) {
         this.id = id;
         this.idade = idade;
         this.nomeUsuario = nomeUsuario;
@@ -51,13 +61,14 @@ public class Estudante{
         this.cidade = cidade;
         this.senha = senha;
         this.curriculo = curriculo;
+        this.candidaturas = candidaturas;
     }
 
     @Override
     public String toString() {
         return "Estudante [id=" + id + ", idade=" + idade + ", nomeUsuario=" + nomeUsuario + ", nome=" + nome
                 + ", telefone=" + telefone + ", email=" + email + ", cidade=" + cidade + ", senha=" + senha
-                + ", curriculo=" + curriculo + "]";
+                + ", curriculo=" + curriculo + ", candidaturas=" + candidaturas + "]";
     }
 
     public Integer getId() {
@@ -128,6 +139,13 @@ public class Estudante{
         this.curriculo = curriculo;
     }
 
+    public List<Candidatura> getCandidaturas() {
+        return candidaturas;
+    }
+
+    public void setCandidaturas(List<Candidatura> candidaturas) {
+        this.candidaturas = candidaturas;
+    }
     
     
 }

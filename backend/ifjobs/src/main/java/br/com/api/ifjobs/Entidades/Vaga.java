@@ -4,12 +4,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -54,12 +56,15 @@ public class Vaga {
 	@JoinColumn(name = "empresa_id") 
 	private Empresa empresa;
 
+	@ManyToMany(mappedBy = "vagas", cascade = CascadeType.REMOVE)
+    private List<Candidatura> candidaturas = new ArrayList<>();
+
 	public Vaga() {
 	}
 
 	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, double salario,
 			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDateTime dataPublicacao,
-			Empresa empresa) {
+			Empresa empresa, List<Candidatura> candidaturas) {
 		this.id = id;
 		this.status = status;
 		this.titulo = titulo;
@@ -71,19 +76,20 @@ public class Vaga {
 		this.cidade = cidade;
 		this.dataPublicacao = dataPublicacao;
 		this.empresa = empresa;
+		this.candidaturas = candidaturas;
 	}
 
 	@Override
 	public String toString() {
 		return "Vaga [id=" + id + ", status=" + status + ", titulo=" + titulo + ", descricao=" + descricao + ", curso="
 				+ curso + ", salario=" + salario + ", idadeMinima=" + idadeMinima + ", palavrasChave=" + palavrasChave
-				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa + "]";
+				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa
+				+ ", candidaturas=" + candidaturas + "]";
 	}
 
 	public Integer getId() {
 		return id;
 	}
-
 
 	public boolean isStatus() {
 		return status;
@@ -164,5 +170,17 @@ public class Vaga {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
+
+	public List<Candidatura> getCandidaturas() {
+		return candidaturas;
+	}
+
+	public void setCandidaturas(List<Candidatura> candidaturas) {
+		this.candidaturas = candidaturas;
+	}
+
+	
+
+	
 
 }
