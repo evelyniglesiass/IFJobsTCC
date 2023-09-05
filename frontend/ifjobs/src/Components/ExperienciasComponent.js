@@ -3,17 +3,17 @@ import '../App.scss';
 
 const ExperienciasComponent = () => {
   return (
-    <div className='experiencias-container'>
-      <section className='cabecalho-experiencias'>
-        <h2 className='titulo-experiencias'>Experiencia</h2>
-        <h6 className='empresa-experiencias'>Empresa</h6>
+    <div className='container-cursos-exper'>
+      <section className='cabecalho-cursos-exper'>
+        <h2 className='titulos-cursos-exper fonte-titulo'>Experiencia</h2>
+        <h6 className='titulos-cursos-exper fonte-corpo'>Empresa</h6>
         <article>
-          <h6 className='data-inicio-experiencias'>12/12/2020 - </h6>
-          <h6 className='data-fim-experiencias'>12/12/2023</h6>
+          <h6 className='data-inicio fonte-corpo'>12/12/2020 - </h6>
+          <h6 className='data-fim fonte-corpo'>12/12/2023</h6>
         </article>
-        <p className='conteudo-experiencias'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+        <p className='conteudo-experiencias fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
       </section>
-    </div>
+    </div> 
   )
 }
 
