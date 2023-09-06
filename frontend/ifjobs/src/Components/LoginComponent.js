@@ -16,7 +16,7 @@ const LoginComponent = () => {
   return (
     <div className='container-login'>
 
-        <h5>Bem vindo!</h5>
+        <h3>Bem vindo!</h3>
         <h6>O que você deseja fazer?</h6>
         <form className="cabecalho-login btn-group">
             <input type="radio" className="btn-check" name="btnradio" id="btnlogin" autocomplete="off" onClick={mudarLogin}/>

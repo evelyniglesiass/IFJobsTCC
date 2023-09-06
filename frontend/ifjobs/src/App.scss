@@ -1,8 +1,5 @@
 $verde-forte: #189395;
-$verde: #cce6e6;
-$verde-fraco: #cce6e6;
 $roxo-forte: #9546FC;
-$roxo: #B2A0DF;
 $preto: #323434;
 $branco: #FAFAFA;
 
@@ -20,7 +17,7 @@ $fonte-tres: Arial;
 
 .fonte-titulo{
     font-weight: bolder;
-    font-family: $fonte-um;
+    font-family: $fonte-tres;
 }
 
 .fonte-corpo{
@@ -89,6 +86,7 @@ $fonte-tres: Arial;
     padding-top: 190px;
     margin-left: 150px;
     float: left;
+    color: $preto;
 }
 
 // Feed e Salvos
