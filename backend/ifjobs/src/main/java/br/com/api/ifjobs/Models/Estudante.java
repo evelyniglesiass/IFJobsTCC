@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 
@@ -44,14 +46,17 @@ public class Estudante{
 	@OneToOne(mappedBy = "estudante")
     private Curriculo curriculo;
 
-    @ManyToMany(mappedBy = "estudantes", cascade = CascadeType.REMOVE)
-    private List<Candidatura> candidaturas = new ArrayList<>();
+    @ManyToMany(cascade = CascadeType.REMOVE)
+    @JoinTable(name = "candidatura", 
+        joinColumns = {@JoinColumn(name = "estudante_id")}, 
+        inverseJoinColumns = {@JoinColumn(name = "vaga_id")})
+    private List<Vaga> vagas = new ArrayList<>();
 
     public Estudante(){
     }
 
     public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, Integer telefone, String email,
-            String cidade, String senha, Curriculo curriculo, List<Candidatura> candidaturas) {
+            String cidade, String senha, Curriculo curriculo, List<Vaga> vagas) {
         this.id = id;
         this.idade = idade;
         this.nomeUsuario = nomeUsuario;
@@ -61,14 +66,14 @@ public class Estudante{
         this.cidade = cidade;
         this.senha = senha;
         this.curriculo = curriculo;
-        this.candidaturas = candidaturas;
+        this.vagas = vagas;
     }
 
     @Override
     public String toString() {
         return "Estudante [id=" + id + ", idade=" + idade + ", nomeUsuario=" + nomeUsuario + ", nome=" + nome
                 + ", telefone=" + telefone + ", email=" + email + ", cidade=" + cidade + ", senha=" + senha
-                + ", curriculo=" + curriculo + ", candidaturas=" + candidaturas + "]";
+                + ", curriculo=" + curriculo + ", vagas=" + vagas + "]";
     }
 
     public Integer getId() {
@@ -139,13 +144,13 @@ public class Estudante{
         this.curriculo = curriculo;
     }
 
-    public List<Candidatura> getCandidaturas() {
-        return candidaturas;
+    public List<Vaga> getVagas() {
+        return vagas;
     }
 
-    public void setCandidaturas(List<Candidatura> candidaturas) {
-        this.candidaturas = candidaturas;
+    public void setVagas(List<Vaga> vagas) {
+        this.vagas = vagas;
     }
-    
+
     
 }

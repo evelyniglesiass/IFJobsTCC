@@ -57,14 +57,14 @@ public class Vaga {
 	private Empresa empresa;
 
 	@ManyToMany(mappedBy = "vagas", cascade = CascadeType.REMOVE)
-    private List<Candidatura> candidaturas = new ArrayList<>();
+    private List<Estudante> estudantes = new ArrayList<>();
 
 	public Vaga() {
 	}
 
 	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, double salario,
 			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDateTime dataPublicacao,
-			Empresa empresa, List<Candidatura> candidaturas) {
+			Empresa empresa, List<Estudante> estudantes) {
 		this.id = id;
 		this.status = status;
 		this.titulo = titulo;
@@ -76,15 +76,15 @@ public class Vaga {
 		this.cidade = cidade;
 		this.dataPublicacao = dataPublicacao;
 		this.empresa = empresa;
-		this.candidaturas = candidaturas;
+		this.estudantes = estudantes;
 	}
 
 	@Override
 	public String toString() {
 		return "Vaga [id=" + id + ", status=" + status + ", titulo=" + titulo + ", descricao=" + descricao + ", curso="
 				+ curso + ", salario=" + salario + ", idadeMinima=" + idadeMinima + ", palavrasChave=" + palavrasChave
-				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa
-				+ ", candidaturas=" + candidaturas + "]";
+				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa + ", estudantes="
+				+ estudantes + "]";
 	}
 
 	public Integer getId() {
@@ -171,16 +171,13 @@ public class Vaga {
 		this.empresa = empresa;
 	}
 
-	public List<Candidatura> getCandidaturas() {
-		return candidaturas;
+	public List<Estudante> getEstudantes() {
+		return estudantes;
 	}
 
-	public void setCandidaturas(List<Candidatura> candidaturas) {
-		this.candidaturas = candidaturas;
+	public void setEstudantes(List<Estudante> estudantes) {
+		this.estudantes = estudantes;
 	}
 
 	
-
-	
-
 }

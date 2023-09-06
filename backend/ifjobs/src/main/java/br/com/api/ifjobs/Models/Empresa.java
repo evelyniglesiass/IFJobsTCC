@@ -42,13 +42,13 @@ public class Empresa {
 	private String senha;
 
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
-	private List<Vaga> itens = new ArrayList<>();
+	private List<Vaga> vagasPublicadas = new ArrayList<>();
 
 	public Empresa() {
 	}
 
 	public Empresa(Integer id, String nome, String nomeUsuario, String descricao, String cidade, String email,
-			Integer telefone, String senha, List<Vaga> itens) {
+			Integer telefone, String senha, List<Vaga> vagasPublicadas) {
 		this.id = id;
 		this.nome = nome;
 		this.nomeUsuario = nomeUsuario;
@@ -57,14 +57,14 @@ public class Empresa {
 		this.email = email;
 		this.telefone = telefone;
 		this.senha = senha;
-		this.itens = itens;
+		this.vagasPublicadas = vagasPublicadas;
 	}
 
 	@Override
 	public String toString() {
 		return "Empresa [id=" + id + ", nome=" + nome + ", nomeUsuario=" + nomeUsuario + ", descricao=" + descricao
 				+ ", cidade=" + cidade + ", email=" + email + ", telefone=" + telefone + ", senha=" + senha + ", itens="
-				+ itens + "]";
+				+ vagasPublicadas + "]";
 	}
 
 	public Integer getId() {
@@ -128,11 +128,11 @@ public class Empresa {
 	}
 	
 	public List<Vaga> getItens() {
-		return itens;
+		return vagasPublicadas;
 	}
 
-	public void setItens(List<Vaga> itens) {
-		this.itens = itens;
+	public void setItens(List<Vaga> vagasPublicadas) {
+		this.vagasPublicadas = vagasPublicadas;
 	}
 	
 }
