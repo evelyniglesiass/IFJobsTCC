@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.Entidades;
+package br.com.api.ifjobs.Models;
 
 import java.time.LocalDateTime;
 
@@ -13,7 +13,7 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-public class Curso {
+public class FormacaoAcademica {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,13 +24,13 @@ public class Curso {
 	private String descricao;
 
     @Column(nullable = false, length = 250)
-	private String instituicao;
+	private String instituiçao;
 
     @Column(nullable = false, length = 250)
 	private String cidade;
 
     @Column(nullable = false, length = 250)
-	private String cargaHoraria;
+	private String nivel; //talvez enum?
 
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
@@ -44,19 +44,26 @@ public class Curso {
     @JoinColumn(name="curriculo_id", nullable=false)    
     private Curriculo curriculo;
 
-    public Curso(){
+    public FormacaoAcademica(){
     }
 
-    public Curso(Integer id, String descricao, String instituicao, String cidade, String cargaHoraria,
+    public FormacaoAcademica(Integer id, String descricao, String instituiçao, String cidade, String nivel,
             LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
-        this.instituicao = instituicao;
+        this.instituiçao = instituiçao;
         this.cidade = cidade;
-        this.cargaHoraria = cargaHoraria;
+        this.nivel = nivel;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
         this.curriculo = curriculo;
+    }
+
+    @Override
+    public String toString() {
+        return "FormacaoAcademica [id=" + id + ", descricao=" + descricao + ", instituiçao=" + instituiçao + ", cidade="
+                + cidade + ", nivel=" + nivel + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
+                + ", curriculo=" + curriculo + "]";
     }
 
     public Integer getId() {
@@ -71,12 +78,12 @@ public class Curso {
         this.descricao = descricao;
     }
 
-    public String getInstituicao() {
-        return instituicao;
+    public String getInstituiçao() {
+        return instituiçao;
     }
 
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
+    public void setInstituiçao(String instituiçao) {
+        this.instituiçao = instituiçao;
     }
 
     public String getCidade() {
@@ -87,12 +94,12 @@ public class Curso {
         this.cidade = cidade;
     }
 
-    public String getCargaHoraria() {
-        return cargaHoraria;
+    public String getNivel() {
+        return nivel;
     }
 
-    public void setCargaHoraria(String cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
+    public void setNivel(String nivel) {
+        this.nivel = nivel;
     }
 
     public LocalDateTime getDataInicial() {
@@ -117,7 +124,6 @@ public class Curso {
 
     public void setCurriculo(Curriculo curriculo) {
         this.curriculo = curriculo;
-    }
-
+    }  
     
 }

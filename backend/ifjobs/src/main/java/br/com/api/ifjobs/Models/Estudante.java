@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.Entidades;
+package br.com.api.ifjobs.Models;
 
 import java.util.ArrayList;
 import java.util.List;

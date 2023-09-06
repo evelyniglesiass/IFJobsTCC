@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.Entidades;
+package br.com.api.ifjobs.Models;
 
 public enum Cursos {
 
