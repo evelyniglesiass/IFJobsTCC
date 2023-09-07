@@ -62,5 +62,12 @@ public class Curso {
         this.dataFinal = dataFinal;
         this.curriculo = curriculo;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Curso [id=" + id + ", descricao=" + descricao + ", instituicao=" + instituicao + ", cidade=" + cidade
+                + ", cargaHoraria=" + cargaHoraria + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
+                + ", curriculo=" + curriculo + "]";
+    }
+
 }
