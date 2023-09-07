@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.services;
+package br.com.api.ifjobs.Services;
 
 import org.springframework.stereotype.Service;
 

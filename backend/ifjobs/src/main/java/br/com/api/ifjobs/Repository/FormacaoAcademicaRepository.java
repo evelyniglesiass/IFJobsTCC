@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.repository;
+package br.com.api.ifjobs.Repository;
 
 import org.springframework.stereotype.Repository;
 
