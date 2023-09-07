@@ -1,8 +1,11 @@
 package br.com.api.ifjobs.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
+// import org.springframework.stereotype.Repository;
 
-@Repository
-public interface VagaRepository {
+import br.com.api.ifjobs.models.Vaga;
+
+// @Repository
+public interface VagaRepository extends CrudRepository<Vaga, Integer>{
     
 }
