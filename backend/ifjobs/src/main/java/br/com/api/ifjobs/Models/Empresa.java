@@ -11,8 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Empresa {
 
 	@Id
@@ -65,74 +69,6 @@ public class Empresa {
 		return "Empresa [id=" + id + ", nome=" + nome + ", nomeUsuario=" + nomeUsuario + ", descricao=" + descricao
 				+ ", cidade=" + cidade + ", email=" + email + ", telefone=" + telefone + ", senha=" + senha + ", itens="
 				+ vagasPublicadas + "]";
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Integer getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Integer telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	public List<Vaga> getItens() {
-		return vagasPublicadas;
-	}
-
-	public void setItens(List<Vaga> vagasPublicadas) {
-		this.vagasPublicadas = vagasPublicadas;
 	}
 	
 }

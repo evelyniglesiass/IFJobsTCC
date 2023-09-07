@@ -11,8 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Curso {
     
     @Id
@@ -58,66 +62,5 @@ public class Curso {
         this.dataFinal = dataFinal;
         this.curriculo = curriculo;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getInstituicao() {
-        return instituicao;
-    }
-
-    public void setInstituicao(String instituicao) {
-        this.instituicao = instituicao;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public void setCargaHoraria(String cargaHoraria) {
-        this.cargaHoraria = cargaHoraria;
-    }
-
-    public LocalDateTime getDataInicial() {
-        return dataInicial;
-    }
-
-    public void setDataInicial(LocalDateTime dataInicial) {
-        this.dataInicial = dataInicial;
-    }
-
-    public LocalDateTime getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDateTime dataFinal) {
-        this.dataFinal = dataFinal;
-    }
-
-    public Curriculo getCurriculo() {
-        return curriculo;
-    }
-
-    public void setCurriculo(Curriculo curriculo) {
-        this.curriculo = curriculo;
-    }
-
     
 }

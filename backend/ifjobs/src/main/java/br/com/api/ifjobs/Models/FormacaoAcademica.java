@@ -11,8 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class FormacaoAcademica {
     
     @Id
@@ -65,65 +69,5 @@ public class FormacaoAcademica {
                 + cidade + ", nivel=" + nivel + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
                 + ", curriculo=" + curriculo + "]";
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getInstituiçao() {
-        return instituiçao;
-    }
-
-    public void setInstituiçao(String instituiçao) {
-        this.instituiçao = instituiçao;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-
-    public LocalDateTime getDataInicial() {
-        return dataInicial;
-    }
-
-    public void setDataInicial(LocalDateTime dataInicial) {
-        this.dataInicial = dataInicial;
-    }
-
-    public LocalDateTime getDataFinal() {
-        return dataFinal;
-    }
-
-    public void setDataFinal(LocalDateTime dataFinal) {
-        this.dataFinal = dataFinal;
-    }
-
-    public Curriculo getCurriculo() {
-        return curriculo;
-    }
-
-    public void setCurriculo(Curriculo curriculo) {
-        this.curriculo = curriculo;
-    }  
     
 }
