@@ -25,7 +25,7 @@ public class Curriculo {
     private String resumo;
 
     @Column(nullable = false, length = 250)
-    private List<Vaga> habilidades = new ArrayList<>();
+    private List<String> habilidades = new ArrayList<>();
 
     @Column(nullable = false, length = 250)
     private List<String> idiomas = new ArrayList<>();
@@ -46,7 +46,7 @@ public class Curriculo {
     public Curriculo(){
     }
 
-    public Curriculo(Integer id, String resumo, List<Vaga> habilidades, List<String> idiomas, Estudante estudante,
+    public Curriculo(Integer id, String resumo, List<String> habilidades, List<String> idiomas, Estudante estudante,
             List<Curso> cursos, List<ExperienciaProfissional> expProf, List<FormacaoAcademica> formAcad) {
         this.id = id;
         this.resumo = resumo;
@@ -77,11 +77,11 @@ public class Curriculo {
         this.resumo = resumo;
     }
 
-    public List<Vaga> getHabilidades() {
+    public List<String> getHabilidades() {
         return habilidades;
     }
 
-    public void setHabilidades(List<Vaga> habilidades) {
+    public void setHabilidades(List<String> habilidades) {
         this.habilidades = habilidades;
     }
 
