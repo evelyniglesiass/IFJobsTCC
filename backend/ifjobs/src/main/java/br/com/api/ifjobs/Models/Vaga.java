@@ -15,8 +15,12 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Vaga {
 
 	@Id
@@ -86,98 +90,5 @@ public class Vaga {
 				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa + ", estudantes="
 				+ estudantes + "]";
 	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public String getTitulo() {
-		return titulo;
-	}
-
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public Cursos getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Cursos curso) {
-		this.curso = curso;
-	}
-
-	public double getSalario() {
-		return salario;
-	}
-
-	public void setSalario(double salario) {
-		this.salario = salario;
-	}
-
-	public Integer getIdadeMinima() {
-		return idadeMinima;
-	}
-
-	public void setIdadeMinima(Integer idadeMinima) {
-		this.idadeMinima = idadeMinima;
-	}
-
-	public List<String> getPalavrasChave() {
-		return palavrasChave;
-	}
-
-	public void setPalavrasChave(List<String> palavrasChave) {
-		this.palavrasChave = palavrasChave;
-	}
-
-	public String getCidade() {
-		return cidade;
-	}
-
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
-	}
-
-	public LocalDateTime getDataPublicacao() {
-		return dataPublicacao;
-	}
-
-	public void setDataPublicacao(LocalDateTime dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
-	}
-
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
-	public List<Estudante> getEstudantes() {
-		return estudantes;
-	}
-
-	public void setEstudantes(List<Estudante> estudantes) {
-		this.estudantes = estudantes;
-	}
-
 	
 }

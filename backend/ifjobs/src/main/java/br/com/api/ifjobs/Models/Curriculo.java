@@ -12,8 +12,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class Curriculo {
     
     @Id
@@ -64,68 +68,5 @@ public class Curriculo {
                 + ", estudante=" + estudante + ", cursos=" + cursos + ", expProf=" + expProf + ", formAcad=" + formAcad
                 + "]";
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getResumo() {
-        return resumo;
-    }
-
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
-    }
-
-    public List<String> getHabilidades() {
-        return habilidades;
-    }
-
-    public void setHabilidades(List<String> habilidades) {
-        this.habilidades = habilidades;
-    }
-
-    public List<String> getIdiomas() {
-        return idiomas;
-    }
-
-    public void setIdiomas(List<String> idiomas) {
-        this.idiomas = idiomas;
-    }
-
-    public Estudante getEstudante() {
-        return estudante;
-    }
-
-    public void setEstudante(Estudante estudante) {
-        this.estudante = estudante;
-    }
-
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
-
-    public List<ExperienciaProfissional> getExpProf() {
-        return expProf;
-    }
-
-    public void setExpProf(List<ExperienciaProfissional> expProf) {
-        this.expProf = expProf;
-    }
-
-    public List<FormacaoAcademica> getFormAcad() {
-        return formAcad;
-    }
-
-    public void setFormAcad(List<FormacaoAcademica> formAcad) {
-        this.formAcad = formAcad;
-    }
-
-    
-
-    
+        
 }
