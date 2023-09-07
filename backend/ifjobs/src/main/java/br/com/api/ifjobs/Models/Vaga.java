@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.models;
+package br.com.api.ifjobs.Models;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
