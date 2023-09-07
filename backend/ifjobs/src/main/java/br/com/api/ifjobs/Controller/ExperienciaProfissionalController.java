@@ -1,4 +1,4 @@
-package br.com.api.ifjobs.Controller;
+package br.com.api.ifjobs.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
