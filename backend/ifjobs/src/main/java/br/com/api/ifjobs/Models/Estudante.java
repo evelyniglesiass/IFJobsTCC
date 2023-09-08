@@ -27,7 +27,7 @@ public class Estudante{
 	@Column(nullable = false)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false) 
     private Integer idade;
 
     @Column(nullable = false, length = 250)
@@ -37,7 +37,7 @@ public class Estudante{
     private String nome;
 
     @Column(nullable = false)
-    private Integer telefone;
+    private String telefone;
 
     @Column(nullable = false, length = 250)
     private String email;
@@ -60,7 +60,7 @@ public class Estudante{
     public Estudante(){
     }
 
-    public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, Integer telefone, String email,
+    public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, String telefone, String email,
             String cidade, String senha, Curriculo curriculo, List<Vaga> vagas) {
         this.id = id;
         this.idade = idade;
