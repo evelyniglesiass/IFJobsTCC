@@ -5,7 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.api.ifjobs.models.Empresa;
 
+
 // @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
+
+    Empresa findById(int id);
     
 }

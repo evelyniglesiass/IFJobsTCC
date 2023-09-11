@@ -1,5 +1,6 @@
 package br.com.api.ifjobs.models;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +54,9 @@ public class Vaga {
 	@Column(nullable = false, length = 250)
     private String cidade;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private LocalDateTime dataPublicacao;
+	private LocalDate dataPublicacao;
 
 	@ManyToOne 
 	@JoinColumn(name = "empresa_id") 
@@ -68,7 +69,7 @@ public class Vaga {
 	}
 
 	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, double salario,
-			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDateTime dataPublicacao,
+			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDate dataPublicacao,
 			Empresa empresa, List<Estudante> estudantes) {
 		this.id = id;
 		this.status = status;
