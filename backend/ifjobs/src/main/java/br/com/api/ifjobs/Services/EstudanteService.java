@@ -13,7 +13,7 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 public class EstudanteService {
 
     @Autowired
-    private EstudanteRepository er;
+    private EstudanteRepository er; 
 
     @Autowired
     private Resposta r;
@@ -31,7 +31,7 @@ public class EstudanteService {
             r.setMensagem("O nome de usuário já existe!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
         }else if(e.getIdade() < 0){
-            r.setMensagem("Informe uma idade válida");
+            r.setMensagem("Informe uma idade válida!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
         }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11 ){
             r.setMensagem("Informe um telefone válido!");

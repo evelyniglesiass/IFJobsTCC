@@ -19,5 +19,5 @@ public class EstudanteController {
     public ResponseEntity<?> cadastrar(@RequestBody Estudante e){ 
         return es.cadastrar(e);
     }
-
+ 
 }

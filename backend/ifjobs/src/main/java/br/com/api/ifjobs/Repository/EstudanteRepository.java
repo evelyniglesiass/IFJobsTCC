@@ -11,4 +11,4 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     int countByNomeUsuario(String nome); // validar nome de usuário
     int countByEmail(String email); // validar email
 
-}
+} 

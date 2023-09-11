@@ -27,7 +27,7 @@ public class EmpresaService {
     public ResponseEntity<?> cadastrar(Empresa e){
         
         //Verificando campos nulos
-        if(e.getNome().equals("")){
+        if(e.getNome().equals("")){ 
             r.setMensagem("O nome é obrigatório!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
