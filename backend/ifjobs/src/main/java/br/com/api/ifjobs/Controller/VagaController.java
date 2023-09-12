@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +17,7 @@ import br.com.api.ifjobs.services.VagaService;
 public class VagaController {
 
     @Autowired
-    private VagaService vs;
+    private VagaService vs; 
 
     //@Autowired
     //private VagaRepository vr;
@@ -26,6 +27,12 @@ public class VagaController {
 
     @PostMapping("/cadastrar/vaga/{empresa}")
     public ResponseEntity<?> cadastrar(@RequestBody Vaga v, @PathVariable int empresa){ 
+        Empresa emp = er.findById(empresa);
+        return vs.cadastrar(v, emp);
+    }
+
+    @PutMapping("/editar/vaga/{empresa}")
+    public ResponseEntity<?> editar(@RequestBody Vaga v, @PathVariable int empresa){ 
         Empresa emp = er.findById(empresa);
         return vs.cadastrar(v, emp);
     }

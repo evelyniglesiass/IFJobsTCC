@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +27,12 @@ public class CurriculoController {
 
     @PostMapping("/cadastrar/curriculo/{estudante}")
     public ResponseEntity<?> cadastrar(@RequestBody Curriculo c, @PathVariable int estudante){ 
+        Estudante est = er.findById(estudante);
+        return cs.cadastrar(c, est);
+    }
+
+    @PutMapping("/editar/curriculo/{estudante}")
+    public ResponseEntity<?> editar(@RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = er.findById(estudante);
         return cs.cadastrar(c, est);
     }

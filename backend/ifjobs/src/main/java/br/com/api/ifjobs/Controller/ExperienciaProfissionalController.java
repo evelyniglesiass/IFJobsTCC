@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,13 @@ public class ExperienciaProfissionalController {
         Estudante est = estr.findById(estudante);
         Curriculo cur = cr.findByEstudante(est);
         return es.cadastrar(e, cur);
+    }
+
+    @PutMapping("/editar/experiencia/{estudante}")
+    public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional e, @PathVariable int estudante){ 
+        Estudante est = estr.findById(estudante);
+        Curriculo cur = cr.findByEstudante(est);
+        return es.editar(e, cur);
     }
     
 }

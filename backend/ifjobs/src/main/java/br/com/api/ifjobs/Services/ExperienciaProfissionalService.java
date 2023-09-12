@@ -47,5 +47,34 @@ public class ExperienciaProfissionalService {
         }
         
     }
+
+    // método para editar experiencia profissional
+    public ResponseEntity<?> editar(ExperienciaProfissional e, Curriculo c){
+        
+        if(e.getDescricao().equals("")){
+            r.setMensagem("A descrição é obrigatória!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getEmpresa().equals("")){
+            r.setMensagem("A empresa é obrigatória!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getCargo().equals("")){
+            r.setMensagem("O cargo é obrigatório!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getDataInicial() == null){
+            r.setMensagem("A data inicial é obrigatória!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getDataFinal() == null){
+            r.setMensagem("A data final é obrigatória!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+            r.setMensagem("A data inicial precisa ser anterior a data final!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }
+        else{
+            e.setCurriculo(c);
+            return new ResponseEntity<>(er.save(e), HttpStatus.OK);
+        }
+        
+    }
     
 }

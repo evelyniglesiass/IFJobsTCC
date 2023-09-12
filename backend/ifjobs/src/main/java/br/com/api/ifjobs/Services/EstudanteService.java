@@ -10,7 +10,7 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 
 @Service
-public class EstudanteService {
+public class EstudanteService { 
 
     @Autowired
     private EstudanteRepository er; 
@@ -50,6 +50,36 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
         }else{
             return new ResponseEntity<>(er.save(e), HttpStatus.CREATED);
+        }
+
+    }
+
+    // método para editar estudantes
+    public ResponseEntity<?> editar(Estudante e){
+
+        if(e.getNome().equals("")){
+            r.setMensagem("O nome é obrigatório!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getNomeUsuario().equals("")){
+            r.setMensagem("O nome de usuário é obrigatório!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getIdade() < 0){
+            r.setMensagem("Informe uma idade válida!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11 ){
+            r.setMensagem("Informe um telefone válido!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getEmail().equals("")){
+            r.setMensagem("O email é obrigatório!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getSenha().equals("") || e.getSenha().length() > 8){
+            r.setMensagem("A senha precisa ter entre 1 e 8 caracteres!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(e.getCidade().equals("")){
+            r.setMensagem("A cidade é obrigatória!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>(er.save(e), HttpStatus.OK);
         }
 
     }

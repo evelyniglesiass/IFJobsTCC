@@ -13,7 +13,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,16 +32,16 @@ public class Estudante{
     @Column(nullable = false, length = 250)
     private String nomeUsuario;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 250) 
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String telefone;
 
     @Column(nullable = false, length = 250)
     private String email;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = true, length = 250)
     private String cidade;
 
     @Column(nullable = false, length = 250)

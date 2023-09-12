@@ -24,7 +24,7 @@ public class Curriculo {
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(nullable = false)
-    private Integer id;
+    private Integer id; 
 
     @Column(nullable = false, length = 500)
     private String resumo;

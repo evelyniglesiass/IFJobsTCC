@@ -31,7 +31,7 @@ public class Empresa {
 	@Column(nullable = false, length = 250)
     private String nomeUsuario;
 	
-	@Column(nullable = false, length = 500)
+	@Column(nullable = true, length = 500)
 	private String descricao;
 	
 	@Column(nullable = false, length = 250)

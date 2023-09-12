@@ -37,5 +37,24 @@ public class CurriculoService {
         }
         
     }
+
+    // método para editar curriculos
+    public ResponseEntity<?> editar(Curriculo c, Estudante e){
+        
+        if(c.getResumo().equals("")){
+            r.setMensagem("O resumo é obrigatório!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(c.getHabilidades().isEmpty()){
+            r.setMensagem("Você precisa inserir pelo menos uma habilidade!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(c.getIdiomas().isEmpty()){
+            r.setMensagem("Você precisa inserir pelo menos um idioma!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else{
+            c.setEstudante(e);
+            return new ResponseEntity<>(cr.save(c), HttpStatus.OK);
+        }
+        
+    }
     
 }
