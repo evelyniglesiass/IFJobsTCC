@@ -1,7 +1,6 @@
 package br.com.api.ifjobs.models;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +29,7 @@ public class Vaga {
 	@Column(nullable = false)
 	private Integer id;
 
-	@Column(nullable = false)//ver se falta algum parâmetro
+	@Column(nullable = false) // ver se falta algum parâmetro
 	private boolean status;
 	
 	@Column(nullable = false, length = 250)
@@ -39,7 +38,7 @@ public class Vaga {
 	@Column(nullable = false, length = 500)
 	private String descricao;
 	
-	@Column(nullable = false)//ver
+	@Column(nullable = false) // ver
 	private Cursos curso;
 
 	@Column(nullable = false)

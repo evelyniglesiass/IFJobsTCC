@@ -1,6 +1,6 @@
 package br.com.api.ifjobs.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,13 +34,13 @@ public class ExperienciaProfissional {
     @Column(nullable = false, length = 250)
 	private String cargo;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private LocalDateTime dataInicial;
+	private LocalDate dataInicial;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
 	@Column(nullable = false)
-	private LocalDateTime dataFinal;
+	private LocalDate dataFinal;
 
     @ManyToOne
     @JoinColumn(name="curriculo_id", nullable=false)    
@@ -50,7 +50,7 @@ public class ExperienciaProfissional {
     }
 
     public ExperienciaProfissional(Integer id, String descricao, String empresa, String cargo,
-            LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
+            LocalDate dataInicial, LocalDate dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
         this.empresa = empresa;

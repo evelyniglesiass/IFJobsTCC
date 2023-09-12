@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EmpresaRepository;
-import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.VagaService;
-
+ 
 @RestController
 public class VagaController {
 

@@ -37,7 +37,7 @@ public class Curriculo {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "estudante_id")    
-    private Estudante estudante;
+    private Estudante estudante; 
 
     @OneToMany(mappedBy = "curriculo", cascade = CascadeType.PERSIST)
     private List<Curso> cursos = new ArrayList<>();
