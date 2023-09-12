@@ -31,9 +31,17 @@ public class EmpresaService {
             r.setMensagem("O nome é obrigatório!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
-        } else if(e.getNomeUsuario().equals("")){
+        } else if(!(e.getNome().matches("[A-Z][a-zA-Z']*\s[A-Z][a-zA-Z']*"))){
+            r.setMensagem("Os nomes devem começar com letra maiúscula!");
+            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+        }
+        else if(e.getNomeUsuario().equals("")){
             r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+        
+        } else if(er.countByNomeUsuario(e.getNomeUsuario()) == 1){
+            r.setMensagem("O nome de usuário já existe!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         } else if(e.getEmail().equals("")){
             r.setMensagem("O email é obrigatório!");
@@ -43,7 +51,15 @@ public class EmpresaService {
             r.setMensagem("A senha é obrigatória!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
+        }else if(!(e.getSenha().matches("/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/"))){
+            r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+
         } else if(e.getTelefone().equals("")){
+            r.setMensagem("O telefone é obrigatório!");
+            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+        
+        } else if(e.getTelefone().toString().length() < 11 || e.getTelefone().toString().length() > 11){
             r.setMensagem("O telefone é obrigatório!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 

@@ -46,6 +46,10 @@ public class FormacaoAcademicaService {
             r.setMensagem("A data final é obrigatória!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
+        }else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+            r.setMensagem("A data inicial precisa ser anterior a data final!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         //Salvando formação acadêmica
         } else{
             return new ResponseEntity<FormacaoAcademica>(far.save(fa), HttpStatus.CREATED);

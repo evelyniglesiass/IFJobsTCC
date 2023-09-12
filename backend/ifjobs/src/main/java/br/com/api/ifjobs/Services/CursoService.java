@@ -42,6 +42,10 @@ public class CursoService {
         } else if(c.getDataFinal().equals("")){
             r.setMensagem("A data final é obrigatória!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+        
+        }else if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
+            r.setMensagem("A data inicial precisa ser anterior a data final!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         } else if(c.getCidade().equals("")){
             r.setMensagem("O nome da cidade é obrigatório!");
@@ -50,7 +54,7 @@ public class CursoService {
         } else if(c.getCargaHoraria().equals("")){
             r.setMensagem("A carga horária é obrigatória!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
+        
         //Salvando curso
         } else{
             return new ResponseEntity<Curso>(cr.save(c), HttpStatus.CREATED);

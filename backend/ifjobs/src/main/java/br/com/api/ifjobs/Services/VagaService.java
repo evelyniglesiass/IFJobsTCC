@@ -33,9 +33,15 @@ public class VagaService {
         }else if(v.isStatus() == false){
             r.setMensagem("O status é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-        }else if(v.getSalario() < 0){
+            
+        }else if(v.getSalario() < 0){//é null e não negativoa
             r.setMensagem("O salário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
+        }else if(v.getSalario() < 0){
+            r.setMensagem("Insira um valor válido!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        
         }else if(v.getIdadeMinima() < 0){
             r.setMensagem("A idade minima é obrigatória!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
