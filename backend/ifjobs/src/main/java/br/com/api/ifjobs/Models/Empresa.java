@@ -41,7 +41,7 @@ public class Empresa {
 	private String email;
 
 	@Column(nullable = false)
-    private Integer telefone;
+    private String telefone;
 
 	@Column(nullable = false, length = 250)
 	private String senha;
@@ -53,7 +53,7 @@ public class Empresa {
 	}
 
 	public Empresa(Integer id, String nome, String nomeUsuario, String descricao, String cidade, String email,
-			Integer telefone, String senha, List<Vaga> vagasPublicadas) {
+			String telefone, String senha, List<Vaga> vagasPublicadas) {
 		this.id = id;
 		this.nome = nome;
 		this.nomeUsuario = nomeUsuario;

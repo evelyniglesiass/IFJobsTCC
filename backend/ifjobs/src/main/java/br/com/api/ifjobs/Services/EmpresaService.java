@@ -51,7 +51,7 @@ public class EmpresaService {
             r.setMensagem("A senha é obrigatória!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(!(e.getSenha().matches("/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/"))){
+        }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
