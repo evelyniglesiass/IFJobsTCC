@@ -9,7 +9,7 @@ import br.com.api.ifjobs.models.Empresa;
 // @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
 
-    Empresa findById(int id);
+    Empresa findById(int id); // retornar empresa pelo id
     int countByNomeUsuario(String nome); // validar nome de usuário
     
 }

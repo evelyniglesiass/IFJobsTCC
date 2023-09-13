@@ -10,31 +10,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
-import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository; 
 import br.com.api.ifjobs.services.CurriculoService;
 
 @RestController
 public class CurriculoController {
 
     @Autowired
-    private CurriculoService cs;
-
-    //@Autowired
-    //private CurriculoRepository cr;
+    private CurriculoService curSer;
 
     @Autowired
-    private EstudanteRepository er;
+    private EstudanteRepository estRep;
 
     @PostMapping("/cadastrar/curriculo/{estudante}")
     public ResponseEntity<?> cadastrar(@RequestBody Curriculo c, @PathVariable int estudante){ 
-        Estudante est = er.findById(estudante);
-        return cs.cadastrar(c, est);
+        Estudante est = estRep.findById(estudante);
+        return curSer.cadastrar(c, est);
     }
 
     @PutMapping("/editar/curriculo/{estudante}")
     public ResponseEntity<?> editar(@RequestBody Curriculo c, @PathVariable int estudante){ 
-        Estudante est = er.findById(estudante);
-        return cs.cadastrar(c, est);
+        Estudante est = estRep.findById(estudante);
+        return curSer.cadastrar(c, est);
     }
     
 }

@@ -8,4 +8,4 @@ import br.com.api.ifjobs.models.Vaga;
 // @Repository
 public interface VagaRepository extends CrudRepository<Vaga, Integer>{
         
-}
+} 

@@ -8,4 +8,4 @@ import br.com.api.ifjobs.models.ExperienciaProfissional;
 // @Repository
 public interface ExperienciaProfissionalRepository extends CrudRepository<ExperienciaProfissional, Integer>{
     
-}
+} 

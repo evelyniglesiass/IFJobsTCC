@@ -32,17 +32,17 @@ public class Vaga {
 	@Column(nullable = false) // ver se falta algum parâmetro
 	private boolean status;
 	
-	@Column(nullable = false, length = 250)
+	@Column(nullable = false, length = 50)
 	private String titulo;
 	
 	@Column(nullable = false, length = 500)
 	private String descricao;
 	
-	@Column(nullable = false) // ver
+	@Column(nullable = false) // ver se falta algum parâmetro
 	private Cursos curso;
 
 	@Column(nullable = false)
-	private double salario;
+	private Double salario;
 
 	@Column(nullable = false)
     private Integer idadeMinima;
@@ -50,7 +50,7 @@ public class Vaga {
 	@Column(nullable = false, length = 250)
     private List<String> palavrasChave = new ArrayList<>();
 	
-	@Column(nullable = false, length = 250)
+	@Column(nullable = false, length = 50)
     private String cidade;
 
 	@Temporal(TemporalType.DATE)
@@ -67,7 +67,7 @@ public class Vaga {
 	public Vaga() {
 	}
 
-	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, double salario,
+	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, Double salario,
 			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDate dataPublicacao,
 			Empresa empresa, List<Estudante> estudantes) {
 		this.id = id;

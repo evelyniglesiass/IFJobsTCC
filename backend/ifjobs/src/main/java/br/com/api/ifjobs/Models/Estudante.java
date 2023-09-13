@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,22 +30,23 @@ public class Estudante{
     @Column(nullable = false) 
     private Integer idade;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 50)
     private String nomeUsuario;
 
-    @Column(nullable = false, length = 250) 
+    @Column(nullable = false, length = 50) 
     private String nome;
 
     @Column(nullable = true)
-    private String telefone;
+    private String telefone; 
 
-    @Column(nullable = false, length = 250)
+    @Email(message = "Insira um email válido!")
+    @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = true, length = 250)
+    @Column(nullable = true, length = 50)
     private String cidade;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 8)
     private String senha;
 
 	@OneToOne(mappedBy = "estudante")

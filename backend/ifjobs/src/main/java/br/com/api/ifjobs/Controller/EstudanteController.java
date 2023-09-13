@@ -14,16 +14,16 @@ import br.com.api.ifjobs.services.EstudanteService;
 public class EstudanteController {
 
     @Autowired
-    private EstudanteService es;
+    private EstudanteService estSer;
 
     @PostMapping("/cadastrar/estudante")
-    public ResponseEntity<?> cadastrar(@RequestBody Estudante e){ 
-        return es.cadastrar(e);
+    public ResponseEntity<?> cadastrar(@RequestBody Estudante estudante){ 
+        return estSer.cadastrar(estudante); 
     }
 
     @PutMapping("/editar/estudante")
-    public ResponseEntity<?> editar(@RequestBody Estudante e){ 
-        return es.editar(e);
+    public ResponseEntity<?> editar(@RequestBody Estudante estudante){ 
+        return estSer.editar(estudante);
     }
   
 }

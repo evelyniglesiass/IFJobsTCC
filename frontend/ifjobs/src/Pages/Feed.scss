@@ -1,0 +1,38 @@
+.container-feed {
+    display: inline-block;
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    margin-bottom: 0px;
+    background-size: 100% 100%;
+}
+
+.header-component{
+    padding-top: 30vh;
+    width: 20%;
+    float: left;
+    min-height: 100vh;
+    max-height: auto;
+    text-align: center;
+    background-color: #89BDB1;
+    position: fixed;
+}
+
+.container-vagas{
+    padding-top: 5vh;
+    width: 80%;
+    float: right;
+    min-height: 100vh;
+    max-height: auto;
+    text-align: center;
+    background-color: #FAFAFA;
+}
+
+.div-vaga{
+    padding-top: 5vh;
+}
+
+.div-pesquisa-vagas{
+   padding-top: 5vh;
+   margin-left: 275px;
+}

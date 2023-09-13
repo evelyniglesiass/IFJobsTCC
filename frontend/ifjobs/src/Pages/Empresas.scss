@@ -1,0 +1,39 @@
+.container-empresas {
+    display: inline-block;
+    width: 100%;
+    min-height: 100vh;
+    max-height: auto;
+    margin-bottom: 0px;
+    background-size: 100% 100%;
+}
+
+.header-component{
+    padding-top: 30vh;
+    width: 20%;
+    float: left;
+    min-height: 100vh;
+    max-height: auto;
+    text-align: center;
+    background-color: #89BDB1;
+    position: fixed;
+}
+
+.container-emp{
+    padding-top: 5vh;
+    width: 80%;
+    float: right;
+    min-height: 100vh;
+    max-height: auto;
+    text-align: center;
+    padding-left: 50px;
+    background-color: #fafafa;
+}
+
+.div-empresa{
+    padding-top: 5vh;
+}
+
+.div-pesquisa-empresas{
+   padding-top: 5vh;
+   margin-left: 240px;
+}

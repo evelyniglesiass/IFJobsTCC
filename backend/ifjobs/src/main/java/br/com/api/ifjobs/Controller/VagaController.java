@@ -17,24 +17,21 @@ import br.com.api.ifjobs.services.VagaService;
 public class VagaController {
 
     @Autowired
-    private VagaService vs; 
-
-    //@Autowired
-    //private VagaRepository vr;
+    private VagaService vagSer; 
 
     @Autowired
-    private EmpresaRepository er;
+    private EmpresaRepository empRep;
 
     @PostMapping("/cadastrar/vaga/{empresa}")
-    public ResponseEntity<?> cadastrar(@RequestBody Vaga v, @PathVariable int empresa){ 
-        Empresa emp = er.findById(empresa);
-        return vs.cadastrar(v, emp);
+    public ResponseEntity<?> cadastrar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
+        Empresa emp = empRep.findById(empresa);
+        return vagSer.cadastrar(vaga, emp);
     }
 
     @PutMapping("/editar/vaga/{empresa}")
-    public ResponseEntity<?> editar(@RequestBody Vaga v, @PathVariable int empresa){ 
-        Empresa emp = er.findById(empresa);
-        return vs.cadastrar(v, emp);
+    public ResponseEntity<?> editar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
+        Empresa emp = empRep.findById(empresa);
+        return vagSer.cadastrar(vaga, emp);
     }
     
 }

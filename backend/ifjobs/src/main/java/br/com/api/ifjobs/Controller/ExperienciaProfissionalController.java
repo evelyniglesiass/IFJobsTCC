@@ -19,29 +19,26 @@ import br.com.api.ifjobs.services.ExperienciaProfissionalService;
 public class ExperienciaProfissionalController {
 
     @Autowired
-    private ExperienciaProfissionalService es;
-
-    // @Autowired
-    // private ExperienciaProfissionalRepository er;
+    private ExperienciaProfissionalService expSer;
 
     @Autowired
-    private CurriculoRepository cr;
+    private CurriculoRepository curRep;
 
     @Autowired
-    private EstudanteRepository estr;
+    private EstudanteRepository estRep;
 
     @PostMapping("/cadastrar/experiencia/{estudante}")
-    public ResponseEntity<?> cadastrar(@RequestBody ExperienciaProfissional e, @PathVariable int estudante){ 
-        Estudante est = estr.findById(estudante);
-        Curriculo cur = cr.findByEstudante(est);
-        return es.cadastrar(e, cur);
+    public ResponseEntity<?> cadastrar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return expSer.cadastrar(experiencia, cur);
     }
 
     @PutMapping("/editar/experiencia/{estudante}")
-    public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional e, @PathVariable int estudante){ 
-        Estudante est = estr.findById(estudante);
-        Curriculo cur = cr.findByEstudante(est);
-        return es.editar(e, cur);
+    public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return expSer.editar(experiencia, cur); 
     }
     
 }

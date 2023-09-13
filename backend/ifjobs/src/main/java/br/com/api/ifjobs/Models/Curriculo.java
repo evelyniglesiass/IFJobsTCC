@@ -30,7 +30,7 @@ public class Curriculo {
     private String resumo;
 
     @Column(nullable = false, length = 250)
-    private List<String> habilidades = new ArrayList<>();
+    private List<String> habilidades = new ArrayList<>(); 
 
     @Column(nullable = false, length = 250)
     private List<String> idiomas = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.GenerationType; 
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -28,10 +28,10 @@ public class ExperienciaProfissional {
     @Column(nullable = false, length = 500)
 	private String descricao;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 50)
 	private String empresa;
 
-    @Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 50)
 	private String cargo;
 
     @Temporal(TemporalType.DATE)

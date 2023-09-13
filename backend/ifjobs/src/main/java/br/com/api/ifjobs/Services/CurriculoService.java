@@ -14,7 +14,7 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 public class CurriculoService {
 
     @Autowired
-    private CurriculoRepository cr; 
+    private CurriculoRepository curRep; 
 
     @Autowired
     private Resposta r;
@@ -25,34 +25,42 @@ public class CurriculoService {
         if(c.getResumo().equals("")){
             r.setMensagem("O resumo é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(c.getHabilidades().isEmpty()){
             r.setMensagem("Você precisa inserir pelo menos uma habilidade!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(c.getIdiomas().isEmpty()){
             r.setMensagem("Você precisa inserir pelo menos um idioma!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else{
             c.setEstudante(e);
-            return new ResponseEntity<>(cr.save(c), HttpStatus.CREATED);
+            return new ResponseEntity<>(curRep.save(c), HttpStatus.CREATED);
+
         }
         
     }
 
-    // método para editar curriculos
+    // método para editar curriculos 
     public ResponseEntity<?> editar(Curriculo c, Estudante e){
         
         if(c.getResumo().equals("")){
             r.setMensagem("O resumo é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(c.getHabilidades().isEmpty()){
             r.setMensagem("Você precisa inserir pelo menos uma habilidade!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(c.getIdiomas().isEmpty()){
             r.setMensagem("Você precisa inserir pelo menos um idioma!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else{
             c.setEstudante(e);
-            return new ResponseEntity<>(cr.save(c), HttpStatus.OK);
+            return new ResponseEntity<>(curRep.save(c), HttpStatus.OK);
+
         }
         
     }
