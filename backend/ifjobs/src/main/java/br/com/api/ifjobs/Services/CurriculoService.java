@@ -64,5 +64,21 @@ public class CurriculoService {
         }
         
     }
+
+    // método para remover curriculo
+    public ResponseEntity<Resposta> remover(int id) {
+        
+        if(curRep.countById(id) == 0){
+            r.setMensagem("O id informado não existe!");
+            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+
+        } else{
+            Curriculo cur = curRep.findById(id);
+            curRep.delete(cur);
+            r.setMensagem("Currículo removido com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
+    }
     
 }

@@ -101,5 +101,21 @@ public class VagaService {
         }
         
     }
+
+    // método para remover vaga
+    public ResponseEntity<Resposta> remover(int id) {
+        
+        if(vagRep.countById(id) == 0){
+            r.setMensagem("O id informado não existe!");
+            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+
+        } else{
+            Vaga vag = vagRep.findById(id);
+            vagRep.delete(vag);
+            r.setMensagem("Vaga removida com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
+    }
     
 }

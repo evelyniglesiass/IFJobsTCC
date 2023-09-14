@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToOne; 
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +49,7 @@ public class Estudante{
     @Column(nullable = false, length = 8)
     private String senha;
 
-	@OneToOne(mappedBy = "estudante")
+	@OneToOne(mappedBy = "estudante", cascade = CascadeType.REMOVE)
     private Curriculo curriculo;
 
     @ManyToMany(cascade = CascadeType.REMOVE)

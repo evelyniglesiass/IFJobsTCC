@@ -13,7 +13,7 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 public class EstudanteService { 
 
     @Autowired
-    private EstudanteRepository estRep; 
+    private EstudanteRepository estRep;  
 
     @Autowired
     private Resposta r;
@@ -93,7 +93,22 @@ public class EstudanteService {
             return new ResponseEntity<>(estRep.save(e), HttpStatus.OK);
 
         }
+    }
 
+    // método para remover estudante
+    public ResponseEntity<Resposta> remover(int id) {
+        
+        if(estRep.countById(id) == 0){
+            r.setMensagem("O id informado não existe!");
+            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+
+        } else{
+            Estudante est = estRep.findById(id);
+            estRep.delete(est);
+            r.setMensagem("Estudante removido com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
     }
 
 }

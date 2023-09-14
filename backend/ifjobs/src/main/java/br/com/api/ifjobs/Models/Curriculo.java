@@ -39,13 +39,13 @@ public class Curriculo {
     @JoinColumn(name = "estudante_id")    
     private Estudante estudante; 
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
     private List<Curso> cursos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
     private List<ExperienciaProfissional> expProf = new ArrayList<>();
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
     private List<FormacaoAcademica> formAcad = new ArrayList<>();
 
     public Curriculo(){

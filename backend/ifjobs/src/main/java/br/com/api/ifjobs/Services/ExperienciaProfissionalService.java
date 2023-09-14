@@ -89,5 +89,21 @@ public class ExperienciaProfissionalService {
 
         }
     }
+
+    // método para remover experiencia
+    public ResponseEntity<Resposta> remover(int id) {
+        
+        if(expRep.countById(id) == 0){
+            r.setMensagem("O id informado não existe!");
+            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+
+        } else{
+            ExperienciaProfissional exp = expRep.findById(id);
+            expRep.delete(exp);
+            r.setMensagem("Experiência Profissional removida com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
+    }
     
 }
