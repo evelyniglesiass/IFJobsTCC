@@ -49,11 +49,11 @@ public class EstudanteService {
             r.setMensagem("Esse email já foi cadastrado!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }//else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
-            //r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            //return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
+            r.setMensagem("Sua senha precisa ter 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        //}
+        }
         else{
             return new ResponseEntity<>(estRep.save(e), HttpStatus.CREATED);
 
@@ -84,11 +84,11 @@ public class EstudanteService {
             r.setMensagem("Informe um telefone válido!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }//else if(!(e.getSenha().matches("/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/"))){
-            //r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            //return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
+            r.setMensagem("Sua senha precisa ter 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        //}
+        }
         else{
             return new ResponseEntity<>(estRep.save(e), HttpStatus.OK);
 
