@@ -9,7 +9,7 @@ import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 
-@Service
+@Service 
 public class EstudanteService { 
 
     @Autowired
@@ -45,7 +45,7 @@ public class EstudanteService {
             r.setMensagem("Esse email já foi cadastrado!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(!(e.getSenha().matches("^(?=.*\\\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9a-zA-Z]).{8,}$"))){
+        }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
             r.setMensagem("Sua senha precisa ter 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
@@ -63,10 +63,6 @@ public class EstudanteService {
         if(e.getNome().equals("")){
             r.setMensagem("O nome é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(!(e.getNome().matches("[A-Z][a-zA-Z']*\s[A-Z][a-zA-Z']*"))){
-            r.setMensagem("Os nomes devem começar com letra maiúscula!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
         }else if(e.getNomeUsuario().equals("")){
             r.setMensagem("O nome de usuário é obrigatório!");

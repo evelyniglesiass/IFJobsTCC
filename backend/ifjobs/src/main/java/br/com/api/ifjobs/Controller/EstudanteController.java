@@ -26,7 +26,7 @@ public class EstudanteController {
     }
 
     @PutMapping("/editar/estudante")
-    public ResponseEntity<?> editar(@RequestBody Estudante estudante){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
 

@@ -16,7 +16,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
-
+ 
 @Entity
 @Getter
 @Setter
@@ -39,8 +39,8 @@ public class Estudante{
     @Column(nullable = true)
     private String telefone; 
 
-    @Email(message = "Insira um email válido!")
     @Column(nullable = false, length = 50)
+    @Email(message = "Insira um email válido!")
     private String email;
 
     @Column(nullable = true, length = 50)

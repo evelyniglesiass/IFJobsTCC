@@ -16,6 +16,6 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     int existeUsuario(String usuario, int id);
 
     @Query(value = "SELECT Count(email) FROM estudante WHERE email = :email AND id <> :id", nativeQuery = true) 
-    int existeEmail(String email, int id);
+    int existeEmail(String email, int id); 
 
 } 
