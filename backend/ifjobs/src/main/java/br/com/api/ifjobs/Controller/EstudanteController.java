@@ -12,15 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.EstudanteService;
+import jakarta.validation.Valid;
 
 @RestController
-public class EstudanteController { 
+public class EstudanteController {  
 
     @Autowired
     private EstudanteService estSer;
 
     @PostMapping("/cadastrar/estudante")
-    public ResponseEntity<?> cadastrar(@RequestBody Estudante estudante){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 

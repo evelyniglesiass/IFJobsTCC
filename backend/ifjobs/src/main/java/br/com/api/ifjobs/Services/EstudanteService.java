@@ -13,7 +13,7 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 public class EstudanteService { 
 
     @Autowired
-    private EstudanteRepository estRep;  
+    private EstudanteRepository estRep;   
 
     @Autowired
     private Resposta r;
@@ -72,12 +72,20 @@ public class EstudanteService {
             r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
+        }else if(estRep.existeUsuario(e.getNomeUsuario(), e.getId()) != 0){
+            r.setMensagem("O nome de usuário já existe!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11){
             r.setMensagem("Informe um telefone válido!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
+        }else if(estRep.existeEmail(e.getEmail(), e.getId()) != 0){
+            r.setMensagem("Esse email já foi cadastrado!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
