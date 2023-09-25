@@ -2,6 +2,10 @@ package br.com.api.ifjobs.models;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,10 +43,14 @@ public class FormacaoAcademica {
 
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDateTime dataInicial;
 
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDateTime dataFinal;
 
     @ManyToOne

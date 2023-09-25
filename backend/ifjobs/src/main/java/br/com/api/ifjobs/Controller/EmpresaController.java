@@ -1,5 +1,7 @@
 package br.com.api.ifjobs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.services.EmpresaService;
 
 @RestController
@@ -19,6 +22,9 @@ public class EmpresaController {
     
     @Autowired
     private EmpresaService empSer;
+
+    @Autowired
+    private EmpresaRepository empRep;
 
     //cadastro de empresas
     @PostMapping("/cadastrar/empresa")
@@ -38,9 +44,16 @@ public class EmpresaController {
         return empSer.remover(id);
     }
 
+    //pesquisa de empresas
+    //@GetMapping("/listar/pesquisa/{nome}")
+    //public List<Empresa> listarPesquisa(@PathVariable String nome) {
+     //   return empRep.findByNomeContains(nome); 
+
+   // }
+
     //listagem de empresas
-    @GetMapping("/listar/empresa")
-    public Iterable<Empresa> listar(){
-        return empSer.listar();
+    @GetMapping("/listar/empresas")
+    public List<Empresa> listarEmpresas(){
+        return empRep.listarEmpresas();
     }
 }

@@ -2,6 +2,10 @@ package br.com.api.ifjobs.models;
 
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,20 +33,24 @@ public class Curso {
 	private String descricao;
 
     @Column(nullable = false, length = 250)
-	private String instituicao;
+	private String cidade;
 
     @Column(nullable = false, length = 250)
-	private String cidade;
+	private String instituicao;
 
     @Column(nullable = false, length = 250)
 	private String cargaHoraria;
 
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDateTime dataInicial;
 
     @Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDateTime dataFinal;
 
     @ManyToOne
@@ -52,12 +60,12 @@ public class Curso {
     public Curso(){
     }
 
-    public Curso(Integer id, String descricao, String instituicao, String cidade, String cargaHoraria,
+    public Curso(Integer id, String descricao, String cidade, String instituicao, String cargaHoraria,
             LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
-        this.instituicao = instituicao;
         this.cidade = cidade;
+        this.instituicao = instituicao;
         this.cargaHoraria = cargaHoraria;
         this.dataInicial = dataInicial;
         this.dataFinal = dataFinal;
@@ -66,7 +74,7 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso [id=" + id + ", descricao=" + descricao + ", instituicao=" + instituicao + ", cidade=" + cidade
+        return "Curso [id=" + id + ", descricao=" + descricao + ", cidade=" + cidade + ", instituicao=" + instituicao
                 + ", cargaHoraria=" + cargaHoraria + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
                 + ", curriculo=" + curriculo + "]";
     }

@@ -24,6 +24,7 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     List<Estudante> listarEstudantes(); // validar email
 
     List<Estudante> findByNomeContains(String nome); // listar estudantes em uma pesquisa
+    
     List<Estudante> findAll(); // listar estudantes
 
 } 
