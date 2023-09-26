@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,6 +38,7 @@ public class Empresa {
 	private String cidade;
 	
 	@Column(nullable = false, length = 250)
+	@Email(message = "Insira um email válido!")
 	private String email;
 
 	@Column(nullable = false)

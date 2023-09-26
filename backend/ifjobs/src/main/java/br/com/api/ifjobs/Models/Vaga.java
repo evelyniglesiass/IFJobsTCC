@@ -11,6 +11,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +35,7 @@ public class Vaga {
 	@Column(nullable = false)
 	private Integer id;
 
-	@Column(nullable = false) // ver se falta algum parâmetro
+	@Column(nullable = false) 
 	private boolean status;
 	
 	@Column(nullable = false, length = 50)
@@ -42,7 +44,8 @@ public class Vaga {
 	@Column(nullable = false, length = 500)
 	private String descricao;
 	
-	@Column(nullable = false) // ver se falta algum parâmetro
+	@Column(nullable = false) 
+	@Enumerated(EnumType.STRING)
 	private Cursos curso;
 
 	@Column(nullable = false)

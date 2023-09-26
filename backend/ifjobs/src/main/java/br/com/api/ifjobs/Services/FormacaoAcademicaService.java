@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
@@ -23,7 +24,7 @@ public class FormacaoAcademicaService {
         return forAcaRep.findAll();
     }
 
-    public ResponseEntity<?> cadastrar(FormacaoAcademica fa){
+    public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
         
         //Verificando campos nulos
         if(fa.getNivel().equals("")){
@@ -52,13 +53,14 @@ public class FormacaoAcademicaService {
 
         //Salvando formação acadêmica
         } else{
+            fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.CREATED);
         }
     }
 
 
     //Método de edicão de formacões academicas
-    public ResponseEntity<?> editar(FormacaoAcademica fa){
+    public ResponseEntity<?> editar(FormacaoAcademica fa, Curriculo c){
         
         //Verificando campos nulos
         if(fa.getNivel().equals("")){
@@ -87,6 +89,7 @@ public class FormacaoAcademicaService {
 
         //Salvando formação acadêmica
         } else{
+            fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.OK);
         }
     }

@@ -1,6 +1,6 @@
 package br.com.api.ifjobs.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -8,6 +8,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,19 +41,20 @@ public class FormacaoAcademica {
 	private String cidade;
 
     @Column(nullable = false, length = 250)
-	private String nivel; //talvez enum?
+    @Enumerated(EnumType.STRING)
+	private Niveis nivel; //talvez enum?
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
-	private LocalDateTime dataInicial;
+	private LocalDate dataInicial;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
-	private LocalDateTime dataFinal;
+	private LocalDate dataFinal;
 
     @ManyToOne
     @JoinColumn(name="curriculo_id", nullable=false)    
@@ -60,8 +63,8 @@ public class FormacaoAcademica {
     public FormacaoAcademica(){
     }
 
-    public FormacaoAcademica(Integer id, String descricao, String instituiçao, String cidade, String nivel,
-            LocalDateTime dataInicial, LocalDateTime dataFinal, Curriculo curriculo) {
+    public FormacaoAcademica(Integer id, String descricao, String instituiçao, String cidade, Niveis nivel,
+            LocalDate dataInicial, LocalDate dataFinal, Curriculo curriculo) {
         this.id = id;
         this.descricao = descricao;
         this.instituiçao = instituiçao;
