@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EstudanteRepository;
@@ -42,15 +43,22 @@ public class EstudanteController {
         return estSer.remover(id);
     }
 
-    @GetMapping("/listar/pesquisa/{nome}")
-    public List<Estudante> listarPesquisa(@PathVariable String nome) {
-        return estRep.findByNomeContains(nome); 
+    @GetMapping("/listar/estudantes")
+    public List<EstudanteDTO> listarEstudantes() {
+        return EstudanteDTO.converterLista(estRep.listarEstudantes());
 
     }
 
-    @GetMapping("/listar/estudantes")
-    public List<Estudante> listarEstudantes() {
-        return estRep.listarEstudantes();
+    @GetMapping("/listar/estudantes/nome/{nome}")
+    public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
+        return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
+
+    }
+
+    @GetMapping("/listar/estudantes/id/{id}")
+    public List<EstudanteDTO> listarId(@PathVariable int id) {
+        return EstudanteDTO.converterLista(estRep.listarEstudante(id));
+
     }
   
 }
