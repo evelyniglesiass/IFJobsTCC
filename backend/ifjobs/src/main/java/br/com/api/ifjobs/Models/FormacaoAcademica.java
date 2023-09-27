@@ -42,7 +42,7 @@ public class FormacaoAcademica {
 
     @Column(nullable = false, length = 250)
     @Enumerated(EnumType.STRING)
-	private Niveis nivel; //talvez enum?
+	private Niveis nivel;
 
     @Temporal(TemporalType.DATE)
 	@Column(nullable = false)
