@@ -1,5 +1,9 @@
 package br.com.api.ifjobs.repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
+
 //import java.util.List;
 
 //import org.springframework.data.jpa.repository.Query;
@@ -14,6 +18,10 @@ public interface CursoRepository extends CrudRepository<Curso, Integer>{
     Curso findById(int id); // retornar curso pelo id
 
     int countById(int id); // retornar 1 se o curso existir
+
+    @Query(value = "SELECT * FROM curso WHERE curriculo_id = :curriculo", nativeQuery = true) 
+    List<Curso> listarCurso(int curriculo); // listar curso de determinado estudante
+
 
     //List<Curso> findByNomeContains(String nome); // listar cursos em uma pesquisa
 

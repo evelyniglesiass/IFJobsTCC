@@ -1,5 +1,7 @@
 package br.com.api.ifjobs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +12,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.api.ifjobs.dto.CursoDTO;
+import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Curso;
+import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.repository.CurriculoRepository;
+import br.com.api.ifjobs.repository.CursoRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.services.CursoService;
 
 @RestController
@@ -19,17 +27,30 @@ public class CursoController {
     
     @Autowired
     private CursoService curSer;
+
+    @Autowired
+    private CurriculoRepository curRep;
+
+    @Autowired
+    private CursoRepository cursoRep;
+
+    @Autowired
+    private EstudanteRepository estRep;
     
     //cadastro de cursos
-    @PostMapping("/cadastrar/curso")
-    public ResponseEntity<?> cadastrar(@RequestBody Curso curso){
-        return curSer.cadastrar(curso);
+    @PostMapping("/cadastrar/curso/{estudante}")
+    public ResponseEntity<?> cadastrar(@RequestBody Curso curso, @PathVariable int estudante){
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return curSer.cadastrar(curso, cur);
     }
 
     //edicao de cursos
-    @PutMapping("/editar/curso")
-    public ResponseEntity<?> editar(@RequestBody Curso curso){ 
-        return curSer.editar(curso);
+    @PutMapping("/editar/curso/{estudante}")
+    public ResponseEntity<?> editar(@RequestBody Curso curso, @PathVariable int estudante){ 
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return curSer.editar(curso, cur);
     }
 
     //exclusão de cursos
@@ -39,8 +60,10 @@ public class CursoController {
     }
 
     //Listagem de cursos
-    @GetMapping("/listar/curso")
-    public Iterable<Curso> listar(){
-        return curSer.listar();
+    @GetMapping("/listar/cursos/estudante/{estudante}")
+    public List<CursoDTO> listarCurso(@PathVariable int estudante){
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return CursoDTO.converterLista(cursoRep.listarCurso(cur.getId()));
     }
 }

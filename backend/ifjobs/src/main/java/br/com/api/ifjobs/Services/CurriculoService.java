@@ -35,7 +35,8 @@ public class CurriculoService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
-            c.setEstudante(e);
+            //c.setEstudante(e);
+            e.setCurriculo(c);
             return new ResponseEntity<>(curRep.save(c), HttpStatus.CREATED);
 
         }

@@ -5,7 +5,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.api.ifjobs.models.Curso;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class CursoDTO {
     
     private Integer id;

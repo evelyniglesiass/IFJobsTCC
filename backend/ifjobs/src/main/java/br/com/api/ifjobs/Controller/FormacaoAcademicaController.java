@@ -1,5 +1,7 @@
 package br.com.api.ifjobs.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,12 +12,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
 
 @RestController
@@ -23,6 +27,9 @@ public class FormacaoAcademicaController {
     
     @Autowired
     private FormacaoAcademicaService formAcaSer;
+
+    @Autowired
+    private FormacaoAcademicaRepository formAcaRep;
 
     @Autowired
     private EstudanteRepository estRep;
@@ -53,8 +60,10 @@ public class FormacaoAcademicaController {
     }
 
     //Listagem de formacões academicas
-    @GetMapping("/listar/formacaoAcademica")
-    public Iterable<FormacaoAcademica> listar(){
-        return formAcaSer.listar();
+    @GetMapping("/listar/formacoesAcademicas/estudante/{estudante}")
+    public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
+        Estudante est = estRep.findById(estudante);
+        Curriculo cur = curRep.findByEstudante(est);
+        return FormacaoAcademicaDTO.converterLista(formAcaRep.listarFormacao(cur.getId()));
     }
 }

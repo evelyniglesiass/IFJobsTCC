@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.api.ifjobs.dto.EmpresaDTO;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
@@ -52,8 +53,8 @@ public class EmpresaController {
    // }
 
     //listagem de empresas
-    @GetMapping("/listar/empresas")
-    public List<Empresa> listarEmpresas(){
-        return empRep.listarEmpresas();
+    @GetMapping("/listar/empresas/id/{id}")
+    public List<EmpresaDTO> listarId(@PathVariable int id){
+        return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
     }
 }

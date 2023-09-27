@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Curso;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CursoRepository;
@@ -24,7 +25,7 @@ public class CursoService {
     }
 
     //Método para cadastrar cursos
-    public ResponseEntity<?> cadastrar(Curso c){
+    public ResponseEntity<?> cadastrar(Curso c, Curriculo cur){
         
         //Verificando campos nulos
         if(c.getDescricao().equals("")){
@@ -57,12 +58,13 @@ public class CursoService {
         
         //Salvando curso
         } else{
+            c.setCurriculo(cur);
             return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
         }
     }
 
     //Método para editar cursos
-    public ResponseEntity<?> editar(Curso c){
+    public ResponseEntity<?> editar(Curso c, Curriculo cur){
         
         //Verificando campos nulos
         if(c.getDescricao().equals("")){
@@ -95,6 +97,7 @@ public class CursoService {
         
         //Salvando curso
         } else{
+            c.setCurriculo(cur);
             return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.OK);
         }
     }
