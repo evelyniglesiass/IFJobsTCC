@@ -15,13 +15,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Curso {
     
     @Id
@@ -56,27 +61,5 @@ public class Curso {
     @ManyToOne
     @JoinColumn(name="curriculo_id", nullable=false)    
     private Curriculo curriculo;
-
-    public Curso(){
-    }
-
-    public Curso(Integer id, String descricao, String cidade, String instituicao, String cargaHoraria,
-            LocalDate dataInicial, LocalDate dataFinal, Curriculo curriculo) {
-        this.id = id;
-        this.descricao = descricao;
-        this.cidade = cidade;
-        this.instituicao = instituicao;
-        this.cargaHoraria = cargaHoraria;
-        this.dataInicial = dataInicial;
-        this.dataFinal = dataFinal;
-        this.curriculo = curriculo;
-    }
-
-    @Override
-    public String toString() {
-        return "Curso [id=" + id + ", descricao=" + descricao + ", cidade=" + cidade + ", instituicao=" + instituicao
-                + ", cargaHoraria=" + cargaHoraria + ", dataInicial=" + dataInicial + ", dataFinal=" + dataFinal
-                + ", curriculo=" + curriculo + "]";
-    }
 
 }

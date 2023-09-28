@@ -21,13 +21,18 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Vaga {
 
 	@Id
@@ -72,33 +77,5 @@ public class Vaga {
 
 	@ManyToMany(mappedBy = "vagas", cascade = CascadeType.REMOVE)
     private List<Estudante> estudantes = new ArrayList<>();
-
-	public Vaga() {
-	}
-
-	public Vaga(Integer id, boolean status, String titulo, String descricao, Cursos curso, Double salario,
-			Integer idadeMinima, List<String> palavrasChave, String cidade, LocalDate dataPublicacao,
-			Empresa empresa, List<Estudante> estudantes) {
-		this.id = id;
-		this.status = status;
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.curso = curso;
-		this.salario = salario;
-		this.idadeMinima = idadeMinima;
-		this.palavrasChave = palavrasChave;
-		this.cidade = cidade;
-		this.dataPublicacao = dataPublicacao;
-		this.empresa = empresa;
-		this.estudantes = estudantes;
-	}
-
-	@Override
-	public String toString() {
-		return "Vaga [id=" + id + ", status=" + status + ", titulo=" + titulo + ", descricao=" + descricao + ", curso="
-				+ curso + ", salario=" + salario + ", idadeMinima=" + idadeMinima + ", palavrasChave=" + palavrasChave
-				+ ", cidade=" + cidade + ", dataPublicacao=" + dataPublicacao + ", empresa=" + empresa + ", estudantes="
-				+ estudantes + "]";
-	}
 	
 }

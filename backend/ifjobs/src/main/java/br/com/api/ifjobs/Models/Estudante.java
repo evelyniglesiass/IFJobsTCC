@@ -14,12 +14,18 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne; 
 import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
  
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Estudante{
 
     @Id
@@ -57,29 +63,5 @@ public class Estudante{
         joinColumns = {@JoinColumn(name = "estudante_id")}, 
         inverseJoinColumns = {@JoinColumn(name = "vaga_id")})
     private List<Vaga> vagas = new ArrayList<>();
-
-    public Estudante(){
-    }
-
-    public Estudante(Integer id, Integer idade, String nomeUsuario, String nome, String telefone, String email,
-            String cidade, String senha, Curriculo curriculo, List<Vaga> vagas) {
-        this.id = id;
-        this.idade = idade;
-        this.nomeUsuario = nomeUsuario;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.cidade = cidade;
-        this.senha = senha;
-        this.curriculo = curriculo;
-        this.vagas = vagas;
-    }
-
-    @Override
-    public String toString() {
-        return "Estudante [id=" + id + ", idade=" + idade + ", nomeUsuario=" + nomeUsuario + ", nome=" + nome
-                + ", telefone=" + telefone + ", email=" + email + ", cidade=" + cidade + ", senha=" + senha
-                + ", curriculo=" + curriculo + ", vagas=" + vagas + "]";
-    }
 
 }

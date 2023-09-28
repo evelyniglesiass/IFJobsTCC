@@ -12,12 +12,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Empresa {
 
 	@Id
@@ -49,28 +55,5 @@ public class Empresa {
 
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> vagasPublicadas = new ArrayList<>();
-
-	public Empresa() {
-	}
-
-	public Empresa(Integer id, String nome, String nomeUsuario, String descricao, String cidade, String email,
-			String telefone, String senha, List<Vaga> vagasPublicadas) {
-		this.id = id;
-		this.nome = nome;
-		this.nomeUsuario = nomeUsuario;
-		this.descricao = descricao;
-		this.cidade = cidade;
-		this.email = email;
-		this.telefone = telefone;
-		this.senha = senha;
-		this.vagasPublicadas = vagasPublicadas;
-	}
-
-	@Override
-	public String toString() {
-		return "Empresa [id=" + id + ", nome=" + nome + ", nomeUsuario=" + nomeUsuario + ", descricao=" + descricao
-				+ ", cidade=" + cidade + ", email=" + email + ", telefone=" + telefone + ", senha=" + senha + ", itens="
-				+ vagasPublicadas + "]";
-	}
 	
 }

@@ -12,13 +12,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Curriculo {
     
     @Id
@@ -47,27 +52,5 @@ public class Curriculo {
 
     @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
     private List<FormacaoAcademica> formAcad = new ArrayList<>();
-
-    public Curriculo(){
-    }
-
-    public Curriculo(Integer id, String resumo, List<String> habilidades, List<String> idiomas, Estudante estudante,
-            List<Curso> cursos, List<ExperienciaProfissional> expProf, List<FormacaoAcademica> formAcad) {
-        this.id = id;
-        this.resumo = resumo;
-        this.habilidades = habilidades;
-        this.idiomas = idiomas;
-        this.estudante = estudante;
-        this.cursos = cursos;
-        this.expProf = expProf;
-        this.formAcad = formAcad;
-    }
-
-    @Override
-    public String toString() {
-        return "Curriculo [id=" + id + ", resumo=" + resumo + ", habilidades=" + habilidades + ", idiomas=" + idiomas
-                + ", estudante=" + estudante + ", cursos=" + cursos + ", expProf=" + expProf + ", formAcad=" + formAcad
-                + "]";
-    }
         
 }
