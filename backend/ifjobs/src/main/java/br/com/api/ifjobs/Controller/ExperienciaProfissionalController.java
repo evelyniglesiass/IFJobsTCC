@@ -37,6 +37,7 @@ public class ExperienciaProfissionalController {
     @Autowired
     private EstudanteRepository estRep;
 
+    //cadastrar experiência
     @PostMapping("/cadastrar/experiencia/{estudante}")
     public ResponseEntity<?> cadastrar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
@@ -44,6 +45,7 @@ public class ExperienciaProfissionalController {
         return expSer.cadastrar(experiencia, cur);
     }
 
+    //editar experiência
     @PutMapping("/editar/experiencia/{estudante}")
     public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
@@ -51,11 +53,13 @@ public class ExperienciaProfissionalController {
         return expSer.editar(experiencia, cur); 
     }
 
+    //excluir experiência
     @DeleteMapping("/remover/experiencia/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return expSer.remover(id);
     }
 
+    //listar experiências de um determinado currículo
     @GetMapping("/listar/experiencias/estudante/{estudante}")
     public List<ExperienciaProfissionalDTO> listarExperincia(@PathVariable int estudante) {
         Estudante est = estRep.findById(estudante);

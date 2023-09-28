@@ -52,9 +52,23 @@ public class EmpresaController {
 
    // }
 
-    //listagem de empresas
+    //listar empresa por id
     @GetMapping("/listar/empresas/id/{id}")
     public List<EmpresaDTO> listarId(@PathVariable int id){
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
+    }
+
+    //listagem de empresas por empresas
+    @GetMapping("/listar/empresas/{id}")
+    public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
+        return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
+
+    }
+
+    //listagem de empresas por estudantes
+    @GetMapping("/listar/empresas")
+    public List<EmpresaDTO> listarTodas() {
+        return EmpresaDTO.converterLista(empRep.findAll());
+
     }
 }

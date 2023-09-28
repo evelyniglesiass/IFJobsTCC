@@ -59,7 +59,7 @@ public class CursoController {
         return curSer.remover(id);
     }
 
-    //Listagem de cursos
+    //Listagem de cursos de um determinado currículo
     @GetMapping("/listar/cursos/estudante/{estudante}")
     public List<CursoDTO> listarCurso(@PathVariable int estudante){
         Estudante est = estRep.findById(estudante);

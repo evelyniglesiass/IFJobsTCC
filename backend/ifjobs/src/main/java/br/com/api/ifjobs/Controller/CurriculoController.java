@@ -32,6 +32,7 @@ public class CurriculoController {
     @Autowired 
     private EstudanteRepository estRep;
 
+    //cadastrar currículo
     @PostMapping("/cadastrar/curriculo/{estudante}")
     public ResponseEntity<?> cadastrar(@RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
@@ -39,6 +40,7 @@ public class CurriculoController {
 
     }
 
+    //editar currículo
     @PutMapping("/editar/curriculo/{estudante}")
     public ResponseEntity<?> editar(@RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
@@ -46,6 +48,7 @@ public class CurriculoController {
 
     }
 
+    //excluir currículo
     @DeleteMapping("/remover/curriculo/{id}/{estudante}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
@@ -53,6 +56,7 @@ public class CurriculoController {
 
     }
 
+    //listar currículo de um estudante
     @GetMapping("/listar/curriculo/estudante/{estudante}")
     public List<CurriculoDTO> listarId(@PathVariable int estudante) {
         return CurriculoDTO.converterLista(curRep.listarCurriculo(estudante));

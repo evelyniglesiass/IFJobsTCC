@@ -38,7 +38,7 @@ public class FormacaoAcademicaController {
     private CurriculoRepository curRep;
     
     //cadastro de formacões academicas
-    @PostMapping("/cadastrar/formacaoAcademica/{estudante}")
+    @PostMapping("/cadastrar/formacao/{estudante}")
     public ResponseEntity<?> cadastrar(@RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -46,7 +46,7 @@ public class FormacaoAcademicaController {
     }
 
     //edicao de formacões academicas
-    @PutMapping("/editar/formacaoAcademica/{estudante}")
+    @PutMapping("/editar/formacao/{estudante}")
     public ResponseEntity<?> editar(@RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -59,8 +59,8 @@ public class FormacaoAcademicaController {
         return formAcaSer.remover(id);
     }
 
-    //Listagem de formacões academicas
-    @GetMapping("/listar/formacoesAcademicas/estudante/{estudante}")
+    //Listagem de formacões academicas de um determinado currículo
+    @GetMapping("/listar/formacoes/estudante/{estudante}")
     public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);

@@ -28,39 +28,46 @@ public class EstudanteController {
     @Autowired
     private EstudanteRepository estRep;
 
+    //cadastro de estudantes
     @PostMapping("/cadastrar/estudante")
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 
+    //edição de estudantes
     @PutMapping("/editar/estudante")
     public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
 
+    //exclusão de estudantes
     @DeleteMapping("/remover/estudante/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return estSer.remover(id);
     }
 
+    //listagem de estudantes por empresas
     @GetMapping("/listar/estudantes")
-    public List<EstudanteDTO> listarTodosEstudantes() {
+    public List<EstudanteDTO> listarTodos() {
         return EstudanteDTO.converterLista(estRep.findAll());
 
     }
 
+    //listagem de estudantes por um estudante
     @GetMapping("/listar/estudantes/{id}")
     public List<EstudanteDTO> listarEstudantes(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudantes(id));
 
     }
 
+    //pesquisar estudante por nome
     @GetMapping("/listar/estudantes/pesquisa/{nome}")
     public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
         return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
 
     }
 
+    //listar estudante por id
     @GetMapping("/listar/estudantes/id/{id}")
     public List<EstudanteDTO> listarId(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudante(id));

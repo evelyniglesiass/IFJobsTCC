@@ -24,6 +24,10 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     List<Empresa> findAll();// listar empresas
 
     @Query(value = "SELECT * FROM empresa WHERE id = :id", nativeQuery = true) 
-    List<Empresa> listarEmpresas(int id); // listar empresas com certo id
+    List<Empresa> listarId(int id); // listar empresas com certo id
+
+    @Query(value = "SELECT * FROM empresa WHERE id <> :id", nativeQuery = true) 
+    List<Empresa> listarEmpresas(int id); // listar empresas menos o logado
+
     
 }

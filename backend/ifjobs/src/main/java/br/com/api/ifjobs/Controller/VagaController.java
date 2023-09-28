@@ -32,33 +32,40 @@ public class VagaController {
     @Autowired
     private EmpresaRepository empRep;
 
+    //cadastrar vaga
     @PostMapping("/cadastrar/vaga/{empresa}")
     public ResponseEntity<?> cadastrar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }
 
+    //editar vaga
     @PutMapping("/editar/vaga/{empresa}")
     public ResponseEntity<?> editar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }
 
+    //excluir vaga
     @DeleteMapping("/remover/vaga/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return vagSer.remover(id);
     }
 
+    //listar todas as vagas
     @GetMapping("/listar/vagas")
     public List<VagaDTO> listarVagaCurso() {
         return VagaDTO.converterLista(vagRep.listarVagas());
 
     }
 
+    //listar vagas por empresa
     @GetMapping("/listar/vagas/empresa/{empresa}")
     public List<VagaDTO> listarId(@PathVariable int empresa) {
         return VagaDTO.converterLista(vagRep.listarVagasEmpresa(empresa));
 
     }
+
+    //listar vagas por palavra-chave
     
 }
