@@ -9,7 +9,7 @@ import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
-
+ 
 @Service
 public class CurriculoService {
 
@@ -22,7 +22,11 @@ public class CurriculoService {
     // método para cadastrar curriculos
     public ResponseEntity<?> cadastrar(Curriculo c, Estudante e){
         
-        if(c.getResumo().equals("")){
+        if(curRep.validarCurriculo(e.getId()) != 0){
+            r.setMensagem("Esse usuário já possui um currículo!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
+        }else if(c.getResumo().equals("")){
             r.setMensagem("O resumo é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
@@ -35,7 +39,7 @@ public class CurriculoService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
-            //c.setEstudante(e);
+            c.setEstudante(e);
             e.setCurriculo(c);
             return new ResponseEntity<>(curRep.save(c), HttpStatus.CREATED);
 
@@ -60,6 +64,7 @@ public class CurriculoService {
 
         }else{
             c.setEstudante(e);
+            e.setCurriculo(c);
             return new ResponseEntity<>(curRep.save(c), HttpStatus.OK);
 
         }
@@ -67,7 +72,7 @@ public class CurriculoService {
     }
 
     // método para remover curriculo
-    public ResponseEntity<Resposta> remover(int id) {
+    public ResponseEntity<Resposta> remover(int id, Estudante e) {
         
         if(curRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
@@ -75,6 +80,7 @@ public class CurriculoService {
 
         } else{
             Curriculo cur = curRep.findById(id);
+            e.setCurriculo(null);
             curRep.delete(cur);
             r.setMensagem("Currículo removido com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);

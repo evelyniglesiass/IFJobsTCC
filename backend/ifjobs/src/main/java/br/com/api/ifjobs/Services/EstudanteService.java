@@ -13,7 +13,7 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 public class EstudanteService { 
 
     @Autowired
-    private EstudanteRepository estRep;   
+    private EstudanteRepository estRep;    
 
     @Autowired
     private Resposta r;
@@ -25,6 +25,10 @@ public class EstudanteService {
             r.setMensagem("O nome é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
+        }else if(e.getIdade() < 0){
+            r.setMensagem("Informe uma idade válida!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(e.getNomeUsuario().equals("")){
             r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
@@ -33,12 +37,8 @@ public class EstudanteService {
             r.setMensagem("O nome de usuário já existe!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(e.getIdade() < 0){
-            r.setMensagem("Informe uma idade válida!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11){
-            r.setMensagem("Informe um telefone válido!");
+        }else if(e.getEmail().equals("")){
+            r.setMensagem("O email é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.countByEmail(e.getEmail()) == 1){
@@ -46,11 +46,14 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"))){
-            r.setMensagem("Sua senha precisa ter 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            r.setMensagem("Sua senha precisa no mínimo 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }
-        else{
+        }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11){
+            r.setMensagem("Informe um telefone válido!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
+        }else{
             return new ResponseEntity<>(estRep.save(e), HttpStatus.CREATED);
 
         }
@@ -64,6 +67,10 @@ public class EstudanteService {
             r.setMensagem("O nome é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
+        }else if(e.getIdade() < 0){
+            r.setMensagem("Informe uma idade válida!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
         }else if(e.getNomeUsuario().equals("")){
             r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
@@ -72,12 +79,8 @@ public class EstudanteService {
             r.setMensagem("O nome de usuário já existe!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(e.getIdade() < 0){
-            r.setMensagem("Informe uma idade válida!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11){
-            r.setMensagem("Informe um telefone válido!");
+        }else if(e.getEmail().equals("")){
+            r.setMensagem("O email é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.existeEmail(e.getEmail(), e.getId()) != 0){
@@ -88,8 +91,11 @@ public class EstudanteService {
             r.setMensagem("Sua senha precisa ter 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }
-        else{
+        }else if(e.getTelefone().length() < 11 || e.getTelefone().length() > 11){
+            r.setMensagem("Informe um telefone válido!");
+            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+
+        }else{
             return new ResponseEntity<>(estRep.save(e), HttpStatus.OK);
 
         }
@@ -102,7 +108,7 @@ public class EstudanteService {
             r.setMensagem("O id informado não existe!");
             return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
 
-        } else{
+        }else{
             Estudante est = estRep.findById(id);
             estRep.delete(est);
             r.setMensagem("Estudante removido com sucesso!");

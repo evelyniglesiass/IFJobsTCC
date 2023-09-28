@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,12 +44,18 @@ public class EstudanteController {
     }
 
     @GetMapping("/listar/estudantes")
-    public List<EstudanteDTO> listarEstudantes() {
-        return EstudanteDTO.converterLista(estRep.listarEstudantes());
+    public List<EstudanteDTO> listarTodosEstudantes() {
+        return EstudanteDTO.converterLista(estRep.findAll());
 
     }
 
-    @GetMapping("/listar/estudantes/nome/{nome}")
+    @GetMapping("/listar/estudantes/{id}")
+    public List<EstudanteDTO> listarEstudantes(@PathVariable int id) {
+        return EstudanteDTO.converterLista(estRep.listarEstudantes(id));
+
+    }
+
+    @GetMapping("/listar/estudantes/pesquisa/{nome}")
     public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
         return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
 

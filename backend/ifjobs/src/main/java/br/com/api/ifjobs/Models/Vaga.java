@@ -48,22 +48,22 @@ public class Vaga {
 	
 	@Column(nullable = false, length = 500)
 	private String descricao;
+
+	@Column(nullable = false)
+	private Double salario;
 	
 	@Column(nullable = false) 
 	@Enumerated(EnumType.STRING)
 	private Cursos curso;
 
 	@Column(nullable = false)
-	private Double salario;
-
-	@Column(nullable = false)
     private Integer idadeMinima;
+
+	@Column(nullable = false, length = 50)
+    private String cidade;
 
 	@Column(nullable = false, length = 250)
     private List<String> palavrasChave = new ArrayList<>();
-	
-	@Column(nullable = false, length = 50)
-    private String cidade;
 
 	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
@@ -75,7 +75,7 @@ public class Vaga {
 	@JoinColumn(name = "empresa_id") 
 	private Empresa empresa;
 
-	@ManyToMany(mappedBy = "vagas", cascade = CascadeType.REMOVE)
+	@ManyToMany(mappedBy = "vagas", cascade = CascadeType.ALL)
     private List<Estudante> estudantes = new ArrayList<>();
 	
 }

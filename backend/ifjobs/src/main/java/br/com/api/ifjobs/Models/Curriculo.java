@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
+ 
 @Entity
 @Getter
 @Setter
@@ -40,17 +40,17 @@ public class Curriculo {
     @Column(nullable = false, length = 250)
     private List<String> idiomas = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "estudante_id")    
     private Estudante estudante; 
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
     private List<Curso> cursos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
     private List<ExperienciaProfissional> expProf = new ArrayList<>();
 
-    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
     private List<FormacaoAcademica> formAcad = new ArrayList<>();
         
 }

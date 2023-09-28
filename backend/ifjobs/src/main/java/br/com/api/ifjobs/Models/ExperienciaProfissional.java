@@ -34,7 +34,7 @@ public class ExperienciaProfissional {
 	@Column(nullable = false)
     private Integer id;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false, length = 500) 
 	private String descricao;
 
     @Column(nullable = false, length = 50)
@@ -56,7 +56,7 @@ public class ExperienciaProfissional {
 	private LocalDate dataFinal;
 
     @ManyToOne
-    @JoinColumn(name="curriculo_id", nullable=false)    
+    @JoinColumn(name="curriculo_id", nullable = false)    
     private Curriculo curriculo;
     
 }

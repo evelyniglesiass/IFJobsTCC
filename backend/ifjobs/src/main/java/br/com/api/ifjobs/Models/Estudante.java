@@ -33,32 +33,32 @@ public class Estudante{
 	@Column(nullable = false)
     private Integer id; 
 
+    @Column(nullable = false, length = 50) 
+    private String nome;
+
     @Column(nullable = false) 
     private Integer idade;
 
     @Column(nullable = false, length = 50)
     private String nomeUsuario;
 
-    @Column(nullable = false, length = 50) 
-    private String nome;
-
-    @Column(nullable = true)
-    private String telefone; 
-
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     @Email(message = "Insira um email válido!")
     private String email;
+
+    @Column(nullable = false, length = 50)
+    private String senha;
+
+    @Column(nullable = true, length = 11) 
+    private String telefone; 
 
     @Column(nullable = true, length = 50)
     private String cidade;
 
-    @Column(nullable = false, length = 8)
-    private String senha;
-
-	@OneToOne(mappedBy = "estudante", cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "estudante", cascade = CascadeType.ALL)
     private Curriculo curriculo;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "candidatura", 
         joinColumns = {@JoinColumn(name = "estudante_id")}, 
         inverseJoinColumns = {@JoinColumn(name = "vaga_id")})

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import br.com.api.ifjobs.models.Estudante;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.NoArgsConstructor; 
 import lombok.Setter;
 
 @Getter
@@ -36,19 +36,5 @@ public class EstudanteDTO {
     public static List<EstudanteDTO> converterLista(List<Estudante> listaEstudante) {
         return listaEstudante.stream().map(EstudanteDTO::new).collect(Collectors.toList());
     }
-
-    // public EstudanteDTO converter(Estudante estudante) {
-    //     BeanUtils.copyProperties(estudante, this, "senha", "curriculo", "vagas");
-    //     return this;
-    // }
-
-    // public List<EstudanteDTO> converterLista(List<Estudante> listaEstudante) {
-    //     EstudanteDTO estDTO = new EstudanteDTO();
-    //     List<EstudanteDTO> estDTOLista = new ArrayList<>();
-    //     listaEstudante.forEach(e -> {
-    //         estDTOLista.add(estDTO.converter(e));
-    //     });
-    //     return estDTOLista;
-    // }
    
 }

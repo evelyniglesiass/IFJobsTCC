@@ -3,7 +3,7 @@ package br.com.api.ifjobs.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity; 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,17 +36,21 @@ public class CurriculoController {
     public ResponseEntity<?> cadastrar(@RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.cadastrar(c, est);
+
     }
 
     @PutMapping("/editar/curriculo/{estudante}")
     public ResponseEntity<?> editar(@RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
-        return curSer.cadastrar(c, est);
+        return curSer.editar(c, est);
+
     }
 
-    @DeleteMapping("/remover/curriculo/{id}") 
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return curSer.remover(id);
+    @DeleteMapping("/remover/curriculo/{id}/{estudante}") 
+    public ResponseEntity<Resposta> remover(@PathVariable int id, @PathVariable int estudante){ 
+        Estudante est = estRep.findById(estudante);
+        return curSer.remover(id, est);
+
     }
 
     @GetMapping("/listar/curriculo/estudante/{estudante}")

@@ -7,13 +7,16 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante; 
-
+ 
 public interface CurriculoRepository extends CrudRepository<Curriculo, Integer>{
 
     // consultas básicas
     Curriculo findById(int id); // retornar curriculo pelo id
     int countById(int id); // retornar 1 se o curriculo existir
     Curriculo findByEstudante(Estudante estudante); // retornar curriculo de um estudante
+
+    @Query(value = "SELECT count(id) FROM curriculo WHERE estudante_id = :estudante", nativeQuery = true) 
+    int validarCurriculo(int estudante); // verificar se o estudante já possui curriculo
 
     // listar
     @Query(value = "SELECT * FROM curriculo WHERE estudante_id = :estudante", nativeQuery = true) 
