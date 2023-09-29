@@ -15,8 +15,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,26 +36,36 @@ public class FormacaoAcademica {
 	@Column(nullable = false)
     private Integer id;
 
+    @NotBlank(message = "Insira detalhes sobre sua formação acadêmica na descrição!")
+    @Valid
     @Column(nullable = false, length = 500)
 	private String descricao;
 
+    @NotBlank(message = "Insira a instituição de sua formação acadêmica!")
+    @Valid
     @Column(nullable = false, length = 250)
 	private String instituiçao;
 
+    @NotBlank(message = "Insira a cidade de sua formação acadêmica!")
+    @Valid
     @Column(nullable = false, length = 250)
 	private String cidade;
 
+    @NotBlank(message = "Insira o nível de sua formação acadêmica!")
+    @Valid
     @Column(nullable = false, length = 250)
     @Enumerated(EnumType.STRING)
 	private Niveis nivel;
 
-    @Temporal(TemporalType.DATE)
+    @NotBlank(message = "Insira a data inicial de sua formação acadêmica!")
+    @Valid
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataInicial;
 
-    @Temporal(TemporalType.DATE)
+    @NotBlank(message = "Insira a data final de sua formação acadêmica!")
+    @Valid
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")

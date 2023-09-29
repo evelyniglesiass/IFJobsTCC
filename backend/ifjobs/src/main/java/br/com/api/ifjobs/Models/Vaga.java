@@ -19,8 +19,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany; 
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,32 +40,47 @@ public class Vaga {
 	@Column(nullable = false)
 	private Integer id;
 
+	@NotBlank(message = "Insira o status de sua vaga!")
+    @Valid
 	@Column(nullable = false) 
 	private boolean status;
 	
+	@NotBlank(message = "Insira o título de sua vaga!")
+    @Valid
 	@Column(nullable = false, length = 50)
 	private String titulo;
 	
+	@NotBlank(message = "Insira a descrição de sua vaga!")
+    @Valid
 	@Column(nullable = false, length = 500)
 	private String descricao;
 
+	@NotBlank(message = "Insira o salário que sua vaga oferece!")
+    @Valid
 	@Column(nullable = false)
 	private Double salario;
 	
+	@NotBlank(message = "Insira para qual curso a vaga será ofertada!")
+    @Valid
 	@Column(nullable = false) 
 	@Enumerated(EnumType.STRING)
 	private Cursos curso;
 
+	@NotBlank(message = "Insira a idade mínima para a vaga!")
+    @Valid
 	@Column(nullable = false)
     private Integer idadeMinima;
 
+	@NotBlank(message = "Insira a cidade onde será a vaga!")
+    @Valid
 	@Column(nullable = false, length = 50)
     private String cidade;
 
+	@NotBlank(message = "Insira palavras chave sobre sua vaga!")
+    @Valid
 	@Column(nullable = false, length = 250)
     private List<String> palavrasChave = new ArrayList<>();
 
-	@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
