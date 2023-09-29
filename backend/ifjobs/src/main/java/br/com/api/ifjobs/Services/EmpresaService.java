@@ -18,6 +18,9 @@ public class EmpresaService {
     @Autowired
     private Resposta r;
 
+    private SenhaService ss;
+    
+
     //Método de listagem de empresas
     public Iterable<Empresa> listar(){
         return empRep.findAll();
@@ -25,12 +28,14 @@ public class EmpresaService {
 
     //Método para cadastrar empresas
     public ResponseEntity<?> cadastrar(Empresa e){
+        //pegando senha para validação
+        this.ss.setSenha(e.getSenha()); 
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9a-zA-Z]).{8,}$"))){
+        }else if(!ss.verificarSenha()){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
         
@@ -50,12 +55,14 @@ public class EmpresaService {
 
     //Método para editar empresas
     public ResponseEntity<?> editar(Empresa e){
+        //pegando senha para validação
+        this.ss.setSenha(e.getSenha()); 
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        } else if(!(e.getSenha().matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9a-zA-Z]).{8,}$"))){
+        } else if(!ss.verificarSenha()){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
 
