@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
@@ -110,7 +111,8 @@ public class EstudanteService {
         
         if(estRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            //return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
 
         }else{
             Estudante est = estRep.findById(id);

@@ -3,15 +3,17 @@ package br.com.api.ifjobs.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,9 +37,11 @@ public class Curriculo {
     private String resumo;
 
     @Column(nullable = false, length = 250)
+    @ElementCollection(targetClass=String.class)
     private List<String> habilidades = new ArrayList<>(); 
 
     @Column(nullable = false, length = 250)
+    @ElementCollection(targetClass=String.class)
     private List<String> idiomas = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.PERSIST)

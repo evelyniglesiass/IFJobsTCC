@@ -59,6 +59,7 @@ public class CursoService {
         //Salvando curso
         } else{
             c.setCurriculo(cur);
+            cur.getCursos().add(c);
             return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
         }
     }

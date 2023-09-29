@@ -3,6 +3,7 @@ package br.com.api.ifjobs.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.api.ifjobs.models.Empresa;
@@ -17,6 +18,9 @@ public class EmpresaService {
 
     @Autowired
     private Resposta r;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     //Método de listagem de empresas
     public Iterable<Empresa> listar(){
@@ -66,6 +70,11 @@ public class EmpresaService {
 
         //Salvando empresa
         } else{
+
+            String senhaCriptografada = passwordEncoder.encode(e.getSenha());
+
+            e.setSenha(senhaCriptografada);
+            
             return new ResponseEntity<Empresa>(empRep.save(e), HttpStatus.CREATED);
         }
     }

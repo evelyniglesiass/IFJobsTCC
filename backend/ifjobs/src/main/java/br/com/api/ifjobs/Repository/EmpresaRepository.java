@@ -29,5 +29,7 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     @Query(value = "SELECT * FROM empresa WHERE id <> :id", nativeQuery = true) 
     List<Empresa> listarEmpresas(int id); // listar empresas menos o logado
 
-    
+    boolean existsByEmail(String email);
+
+    Empresa findByEmail(String email);
 }
