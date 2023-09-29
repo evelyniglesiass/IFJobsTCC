@@ -22,76 +22,34 @@ public class ExperienciaProfissionalService {
     // método para cadastrar experiencia profissional
     public ResponseEntity<?> cadastrar(ExperienciaProfissional e, Curriculo c){
         
-        if(e.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getEmpresa().equals("")){
-            r.setMensagem("A empresa é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getCargo().equals("")){
-            r.setMensagem("O cargo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataInicial() == null){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataFinal() == null){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+        if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
         }
+
         else{
             e.setCurriculo(c);
             expRep.save(e);
             c.getExpProf().add(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-
         }
-        
+
     }
 
     // método para editar experiencia profissional
     public ResponseEntity<?> editar(ExperienciaProfissional e, Curriculo c){
         
-        if(e.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getEmpresa().equals("")){
-            r.setMensagem("A empresa é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getCargo().equals("")){
-            r.setMensagem("O cargo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataInicial() == null){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataFinal() == null){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+        if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-            
         }
+
         else{
             e.setCurriculo(c);
             expRep.save(e);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
         } 
     }
 

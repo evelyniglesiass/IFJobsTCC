@@ -26,25 +26,12 @@ public class CurriculoService {
             r.setMensagem("Esse usuário já possui um currículo!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        }else if(c.getResumo().equals("")){
-            r.setMensagem("O resumo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(c.getHabilidades().isEmpty()){
-            r.setMensagem("Você precisa inserir pelo menos uma habilidade!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(c.getIdiomas().isEmpty()){
-            r.setMensagem("Você precisa inserir pelo menos um idioma!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
         }else{
             c.setEstudante(e);
             e.setCurriculo(c);
             curRep.save(c);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-
         }
         
     }
@@ -52,27 +39,11 @@ public class CurriculoService {
     // método para editar curriculos 
     public ResponseEntity<?> editar(Curriculo c, Estudante e){
         
-        if(c.getResumo().equals("")){
-            r.setMensagem("O resumo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(c.getHabilidades().isEmpty()){
-            r.setMensagem("Você precisa inserir pelo menos uma habilidade!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(c.getIdiomas().isEmpty()){
-            r.setMensagem("Você precisa inserir pelo menos um idioma!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else{
-            c.setEstudante(e);
-            // e.setCurriculo(c); necessário? dá erro com ele
-            curRep.save(c);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
-
-        }
-        
+        c.setEstudante(e);
+        // e.setCurriculo(c); necessário? dá erro com ele
+        curRep.save(c);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
     // método para remover curriculo

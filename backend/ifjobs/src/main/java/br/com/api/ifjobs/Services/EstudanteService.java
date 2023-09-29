@@ -21,24 +21,12 @@ public class EstudanteService {
     // método para cadastrar estudantes
     public ResponseEntity<?> cadastrar(Estudante e){ 
         
-        if(e.getNome().equals("")){
-            r.setMensagem("O nome é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getIdade() < 0){
+        if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getNomeUsuario().equals("")){
-            r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getEmail().equals("")){
-            r.setMensagem("O email é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.countByEmail(e.getEmail()) == 1){
@@ -65,24 +53,12 @@ public class EstudanteService {
     // método para editar estudantes
     public ResponseEntity<?> editar(Estudante e){
 
-        if(e.getNome().equals("")){
-            r.setMensagem("O nome é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getIdade() < 0){
+        if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getNomeUsuario().equals("")){
-            r.setMensagem("O nome de usuário é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.existeUsuario(e.getNomeUsuario(), e.getId()) != 0){
             r.setMensagem("O nome de usuário já existe!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(e.getEmail().equals("")){
-            r.setMensagem("O email é obrigatório!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else if(estRep.existeEmail(e.getEmail(), e.getId()) != 0){

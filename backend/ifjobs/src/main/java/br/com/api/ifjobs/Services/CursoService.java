@@ -27,77 +27,21 @@ public class CursoService {
     //Método para cadastrar cursos
     public ResponseEntity<?> cadastrar(Curso c, Curriculo cur){
         
-        //Verificando campos nulos
-        if(c.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getInstituicao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-        
-        }else if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
-            r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getCidade().equals("")){
-            r.setMensagem("O nome da cidade é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getCargaHoraria().equals("")){
-            r.setMensagem("A carga horária é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-        
-        //Salvando curso
-        } else{
-            c.setCurriculo(cur);
-            return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
-        }
+        c.setCurriculo(cur);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
     }
 
     //Método para editar cursos
     public ResponseEntity<?> editar(Curso c, Curriculo cur){
         
-        //Verificando campos nulos
-        if(c.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getInstituicao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-        
-        }else if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
+       if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        } else if(c.getCidade().equals("")){
-            r.setMensagem("O nome da cidade é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(c.getCargaHoraria().equals("")){
-            r.setMensagem("A carga horária é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-        
-        //Salvando curso
         } else{
             c.setCurriculo(cur);
+            r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.OK);
         }
     }

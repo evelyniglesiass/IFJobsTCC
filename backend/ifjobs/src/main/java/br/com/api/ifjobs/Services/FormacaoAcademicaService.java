@@ -24,34 +24,13 @@ public class FormacaoAcademicaService {
         return forAcaRep.findAll();
     }
 
+    //Método de cadastro de formações 
     public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
-        
-        //Verificando campos nulos
-        if(fa.getNivel().equals("")){
-            r.setMensagem("O nível da formação é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getInstituiçao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+                
+        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
-        //Salvando formação acadêmica
         } else{
             fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.CREATED);
@@ -63,27 +42,7 @@ public class FormacaoAcademicaService {
     public ResponseEntity<?> editar(FormacaoAcademica fa, Curriculo c){
         
         //Verificando campos nulos
-        if(fa.getNivel().equals("")){
-            r.setMensagem("O nível da formação é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getInstituiçao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
