@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import br.com.api.ifjobs.models.ExperienciaProfissional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.NoArgsConstructor; 
 import lombok.Setter;
 
 @Getter

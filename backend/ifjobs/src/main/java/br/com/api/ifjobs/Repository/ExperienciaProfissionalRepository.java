@@ -12,7 +12,7 @@ public interface ExperienciaProfissionalRepository extends CrudRepository<Experi
     // consultas básicas
     ExperienciaProfissional findById(int id); // retornar experiencia pelo id
     int countById(int id); // retornar 1 se a experiencia existir
-
+ 
     // listar
     @Query(value = "SELECT * FROM experiencia_profissional WHERE curriculo_id = :curriculo", nativeQuery = true) 
     List<ExperienciaProfissional> listarExperiencia(int curriculo); // listar experiencia de um determinado estudante

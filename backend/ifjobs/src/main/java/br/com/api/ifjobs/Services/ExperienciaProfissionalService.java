@@ -50,6 +50,7 @@ public class ExperienciaProfissionalService {
         else{
             e.setCurriculo(c);
             expRep.save(e);
+            c.getExpProf().add(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
 
@@ -91,7 +92,7 @@ public class ExperienciaProfissionalService {
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
 
-        }
+        } 
     }
 
     // método para remover experiencia
