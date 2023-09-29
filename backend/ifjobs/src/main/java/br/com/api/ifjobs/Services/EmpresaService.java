@@ -29,7 +29,7 @@ public class EmpresaService {
     //Método para cadastrar empresas
     public ResponseEntity<?> cadastrar(Empresa e){
         //pegando senha para validação
-        this.ss.setSenha(e.getSenha()); 
+        ss.setSenha(e.getSenha()); 
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
@@ -56,7 +56,7 @@ public class EmpresaService {
     //Método para editar empresas
     public ResponseEntity<?> editar(Empresa e){
         //pegando senha para validação
-        this.ss.setSenha(e.getSenha()); 
+        ss.setSenha(e.getSenha()); 
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
