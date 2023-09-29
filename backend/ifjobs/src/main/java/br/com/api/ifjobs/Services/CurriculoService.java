@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
@@ -24,7 +25,7 @@ public class CurriculoService {
         
         if(curRep.validarCurriculo(e.getId()) != 0){
             r.setMensagem("Esse usuário já possui um currículo!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
             c.setEstudante(e);
@@ -51,7 +52,7 @@ public class CurriculoService {
         
         if(curRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             Curriculo cur = curRep.findById(id);

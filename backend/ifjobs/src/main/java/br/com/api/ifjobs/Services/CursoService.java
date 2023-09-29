@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Curso;
@@ -27,9 +28,15 @@ public class CursoService {
     //Método para cadastrar cursos
     public ResponseEntity<?> cadastrar(Curso c, Curriculo cur){
         
-        c.setCurriculo(cur);
-        r.setMensagem("Cadastro feito com sucesso!");
-        return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
+        if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
+            r.setMensagem("A data inicial precisa ser anterior a data final!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+
+        } else{
+            c.setCurriculo(cur);
+            r.setMensagem("Cadastro feito com sucesso!");
+            return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
+        }
     }
 
     //Método para editar cursos
@@ -37,7 +44,7 @@ public class CursoService {
         
        if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else{
             c.setCurriculo(cur);
@@ -51,7 +58,7 @@ public class CursoService {
         
         if(curRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             Curso cur = curRep.findById(id);

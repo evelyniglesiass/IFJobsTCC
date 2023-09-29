@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
@@ -33,19 +34,19 @@ public class EmpresaService {
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else if(!ss.verificarSenha()){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
         } else if(e.getTelefone().toString().length() < 11 || e.getTelefone().toString().length() > 11){
             r.setMensagem("Insira todos os dígitos de seu telefone!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else if(empRep.countByEmail(e.getEmail()) == 1){
             r.setMensagem("Esse email já foi cadastrado!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else{
             r.setMensagem("Cadastro feito com sucesso!");
@@ -60,15 +61,15 @@ public class EmpresaService {
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else if(!ss.verificarSenha()){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else if(e.getTelefone().toString().length() < 11 || e.getTelefone().toString().length() > 11){
             r.setMensagem("Insira todos os dígitos de seu telefone!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else{
             r.setMensagem("Edição feita com sucesso!");
@@ -81,7 +82,7 @@ public class EmpresaService {
         
         if(empRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             Empresa emp = empRep.findById(id);

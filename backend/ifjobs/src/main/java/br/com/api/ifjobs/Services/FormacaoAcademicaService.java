@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.FormacaoAcademica;
@@ -29,7 +30,7 @@ public class FormacaoAcademicaService {
                 
         if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else{
             fa.setCurriculo(c);
@@ -44,7 +45,7 @@ public class FormacaoAcademicaService {
         //Verificando campos nulos
         if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         //Salvando formação acadêmica
         } else{
@@ -58,7 +59,7 @@ public class FormacaoAcademicaService {
         
         if(forAcaRep.countById(id) == 0){
             r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             FormacaoAcademica forAca = forAcaRep.findById(id);
