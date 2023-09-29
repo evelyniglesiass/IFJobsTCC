@@ -54,7 +54,9 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
-            return new ResponseEntity<>(estRep.save(e), HttpStatus.CREATED);
+            estRep.save(e);
+            r.setMensagem("Cadastro feito com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
 
         }
 
@@ -96,7 +98,9 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
-            return new ResponseEntity<>(estRep.save(e), HttpStatus.OK);
+            estRep.save(e);
+            r.setMensagem("Edição feita com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
 
         }
     }

@@ -49,7 +49,9 @@ public class ExperienciaProfissionalService {
         }
         else{
             e.setCurriculo(c);
-            return new ResponseEntity<>(expRep.save(e), HttpStatus.CREATED);
+            expRep.save(e);
+            r.setMensagem("Cadastro feito com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
 
         }
         
@@ -85,7 +87,9 @@ public class ExperienciaProfissionalService {
         }
         else{
             e.setCurriculo(c);
-            return new ResponseEntity<>(expRep.save(e), HttpStatus.OK);
+            expRep.save(e);
+            r.setMensagem("Edição feita com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
 
         }
     }

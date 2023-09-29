@@ -56,7 +56,9 @@ public class VagaService {
             v.setStatus(true);
             v.setEmpresa(e);
             v.setDataPublicacao(LocalDate.now());
-            return new ResponseEntity<>(vagRep.save(v), HttpStatus.CREATED);
+            vagRep.save(v);
+            r.setMensagem("Cadastro feito com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
 
         }
         
@@ -96,7 +98,9 @@ public class VagaService {
         }else{
             v.setStatus(true);
             v.setEmpresa(e);
-            return new ResponseEntity<>(vagRep.save(v), HttpStatus.OK);
+            vagRep.save(v);
+            r.setMensagem("Edição feita com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
 
         }
         

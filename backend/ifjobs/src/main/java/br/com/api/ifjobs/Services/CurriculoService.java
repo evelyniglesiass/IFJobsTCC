@@ -41,7 +41,9 @@ public class CurriculoService {
         }else{
             c.setEstudante(e);
             e.setCurriculo(c);
-            return new ResponseEntity<>(curRep.save(c), HttpStatus.CREATED);
+            curRep.save(c);
+            r.setMensagem("Cadastro feito com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
 
         }
         
@@ -64,8 +66,10 @@ public class CurriculoService {
 
         }else{
             c.setEstudante(e);
-            e.setCurriculo(c);
-            return new ResponseEntity<>(curRep.save(c), HttpStatus.OK);
+            // e.setCurriculo(c); necessário? dá erro com ele
+            curRep.save(c);
+            r.setMensagem("Edição feita com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
 
         }
         
