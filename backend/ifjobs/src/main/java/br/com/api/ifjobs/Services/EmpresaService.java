@@ -32,7 +32,11 @@ public class EmpresaService {
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
-        if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
+        if(!(empRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -59,7 +63,11 @@ public class EmpresaService {
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
-        if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
+        if(!(empRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+
+        } else if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -80,8 +88,8 @@ public class EmpresaService {
     //Método para remover empresa
     public ResponseEntity<Resposta> remover(int id) {
         
-        if(empRep.countById(id) == 0){
-            r.setMensagem("O id informado não existe!");
+        if(!(empRep.existsById(id))){
+            r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{

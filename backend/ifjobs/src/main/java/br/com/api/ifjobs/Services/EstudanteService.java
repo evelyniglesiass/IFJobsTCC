@@ -22,7 +22,11 @@ public class EstudanteService {
     // método para cadastrar estudantes
     public ResponseEntity<?> cadastrar(Estudante e){ 
         
-        if(e.getIdade() < 0){
+        if(!(estRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -54,7 +58,11 @@ public class EstudanteService {
     // método para editar estudantes
     public ResponseEntity<?> editar(Estudante e){
 
-        if(e.getIdade() < 0){
+        if(!(estRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -85,8 +93,8 @@ public class EstudanteService {
     // método para remover estudante
     public ResponseEntity<Resposta> remover(int id) {
         
-        if(estRep.countById(id) == 0){
-            r.setMensagem("O id informado não existe!");
+        if(!(estRep.existsById(id))){
+            r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }else{

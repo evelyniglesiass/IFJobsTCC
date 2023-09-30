@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 
 @Service
@@ -16,6 +17,9 @@ public class FormacaoAcademicaService {
     
     @Autowired
     private FormacaoAcademicaRepository forAcaRep;
+
+    @Autowired
+    private CurriculoRepository curRep;
 
     @Autowired
     private Resposta r;
@@ -28,7 +32,15 @@ public class FormacaoAcademicaService {
     //Método de cadastro de formações 
     public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
                 
-        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+        if(!(forAcaRep.existsById(fa.getId()))){
+            r.setMensagem("Experiência profissional não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(!(curRep.existsById(c.getId()))){
+            r.setMensagem("Currículo não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -42,12 +54,18 @@ public class FormacaoAcademicaService {
     //Método de edicão de formacões academicas
     public ResponseEntity<?> editar(FormacaoAcademica fa, Curriculo c){
         
-        //Verificando campos nulos
-        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+        if(!(forAcaRep.existsById(fa.getId()))){
+            r.setMensagem("Experiência profissional não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(!(curRep.existsById(c.getId()))){
+            r.setMensagem("Currículo não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        //Salvando formação acadêmica
         } else{
             fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.OK);
@@ -57,8 +75,8 @@ public class FormacaoAcademicaService {
     //Método para remover formacão
     public ResponseEntity<Resposta> remover(int id) {
         
-        if(forAcaRep.countById(id) == 0){
-            r.setMensagem("O id informado não existe!");
+        if(!(forAcaRep.existsById(id))){
+            r.setMensagem("Formação acadêmica não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{

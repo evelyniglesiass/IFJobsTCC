@@ -9,6 +9,9 @@ import br.com.api.ifjobs.models.Vaga;
 
 public interface VagaRepository extends CrudRepository<Vaga, Integer>{
 
+    //verifica se entidade existe
+    boolean existsById (Integer id);
+
     // consultas básicas
     Vaga findById(int id); // retornar vaga pelo id
     int countById(int id); // retornar 1 se a vaga existir
