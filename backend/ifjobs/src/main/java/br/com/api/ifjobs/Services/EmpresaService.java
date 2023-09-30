@@ -19,6 +19,7 @@ public class EmpresaService {
     @Autowired
     private Resposta r;
 
+    @Autowired
     private SenhaService ss;
     
 
@@ -32,22 +33,14 @@ public class EmpresaService {
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
-        if(!(empRep.existsById(e.getId()))){
-            r.setMensagem("Usuário não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        } else if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
+        if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        }else if(!ss.verificarSenha()){
+        }else if(!ss.verificarSenha(ss.getSenha())){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
-        } else if(e.getTelefone().toString().length() < 11 || e.getTelefone().toString().length() > 11){
-            r.setMensagem("Insira todos os dígitos de seu telefone!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-
         }else if(empRep.countByEmail(e.getEmail()) == 1){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
@@ -71,7 +64,7 @@ public class EmpresaService {
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        } else if(!ss.verificarSenha()){
+        } else if(!ss.verificarSenha(ss.getSenha())){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 

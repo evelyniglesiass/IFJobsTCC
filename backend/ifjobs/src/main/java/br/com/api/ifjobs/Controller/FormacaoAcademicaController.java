@@ -21,6 +21,7 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
+import jakarta.validation.Valid;
 
 @RestController
 public class FormacaoAcademicaController {
@@ -39,7 +40,7 @@ public class FormacaoAcademicaController {
     
     //cadastro de formacões academicas
     @PostMapping("/cadastrar/formacao/{estudante}")
-    public ResponseEntity<?> cadastrar(@RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return formAcaSer.cadastrar(formacaoAcademica, cur);
@@ -47,7 +48,7 @@ public class FormacaoAcademicaController {
 
     //edicao de formacões academicas
     @PutMapping("/editar/formacao/{estudante}")
-    public ResponseEntity<?> editar(@RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return formAcaSer.editar(formacaoAcademica, cur);

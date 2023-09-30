@@ -32,11 +32,7 @@ public class FormacaoAcademicaService {
     //Método de cadastro de formações 
     public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
                 
-        if(!(forAcaRep.existsById(fa.getId()))){
-            r.setMensagem("Experiência profissional não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        } else if(!(curRep.existsById(c.getId()))){
+        if(!(curRep.existsById(c.getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             

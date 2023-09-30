@@ -27,11 +27,7 @@ public class ExperienciaProfissionalService {
     // método para cadastrar experiencia profissional
     public ResponseEntity<?> cadastrar(ExperienciaProfissional e, Curriculo c){
         
-        if(!(expRep.existsById(e.getId()))){
-            r.setMensagem("Experiência profissional não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        } else if(!(curRep.existsById(c.getId()))){
+        if(!(curRep.existsById(c.getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             

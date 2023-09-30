@@ -19,6 +19,7 @@ import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.VagaService;
+import jakarta.validation.Valid;
  
 @RestController
 public class VagaController {
@@ -34,14 +35,14 @@ public class VagaController {
 
     //cadastrar vaga
     @PostMapping("/cadastrar/vaga/{empresa}")
-    public ResponseEntity<?> cadastrar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }
 
     //editar vaga
     @PutMapping("/editar/vaga/{empresa}")
-    public ResponseEntity<?> editar(@RequestBody Vaga vaga, @PathVariable int empresa){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }

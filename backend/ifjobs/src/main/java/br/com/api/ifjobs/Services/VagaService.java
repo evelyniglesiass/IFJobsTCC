@@ -29,11 +29,7 @@ public class VagaService {
     // método para cadastrar vagas
     public ResponseEntity<?> cadastrar(Vaga v, Empresa e){
         
-        if(!(vagRep.existsById(v.getId()))){
-            r.setMensagem("Vaga não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        } else if(!(empRep.existsById(e.getId()))){
+        if(!(empRep.existsById(e.getId()))){
             r.setMensagem("Empresa não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             

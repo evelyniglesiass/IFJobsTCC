@@ -32,11 +32,7 @@ public class CursoService {
     //Método para cadastrar cursos
     public ResponseEntity<?> cadastrar(Curso c, Curriculo cur){
         
-        if(!(curRep.existsById(c.getId()))){
-            r.setMensagem("Curso não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
-        } else if(!(curriculoRep.existsById(cur.getId()))){
+        if(!(curriculoRep.existsById(cur.getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 

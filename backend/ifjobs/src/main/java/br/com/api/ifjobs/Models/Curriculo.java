@@ -12,8 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,17 +34,14 @@ public class Curriculo {
     private Integer id; 
 
     @NotBlank(message = "Insira detalhes sobre você em seu resumo!")
-    @Valid
     @Column(nullable = false, length = 500)
     private String resumo;
 
-    @NotBlank(message = "Insira pelo menos uma habilidade!")
-    @Valid
+    @Size(min = 1, message = "Insira pelo menos uma habilidade!")
     @Column(nullable = false, length = 250)
     private List<String> habilidades = new ArrayList<>(); 
 
-    @NotBlank(message = "Insira pelo menos um idioma!")
-    @Valid
+    @Size(min = 1, message = "Insira pelo menos um idioma!")
     @Column(nullable = false, length = 250)
     private List<String> idiomas = new ArrayList<>();
 

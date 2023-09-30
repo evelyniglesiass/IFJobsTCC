@@ -17,6 +17,7 @@ import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.services.EmpresaService;
+import jakarta.validation.Valid;
 
 @RestController
 public class EmpresaController {
@@ -29,13 +30,13 @@ public class EmpresaController {
 
     //cadastro de empresas
     @PostMapping("/cadastrar/empresa")
-    public ResponseEntity<?> cadastrar(@RequestBody Empresa empresa){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Empresa empresa){ 
         return empSer.cadastrar(empresa); 
     }
 
     //edicão de empresas
     @PutMapping("/editar/empresa")
-    public ResponseEntity<?> editar(@RequestBody Empresa empresa){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody Empresa empresa){ 
         return empSer.editar(empresa);
     }
 

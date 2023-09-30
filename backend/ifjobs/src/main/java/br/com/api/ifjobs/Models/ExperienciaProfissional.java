@@ -13,8 +13,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,29 +36,25 @@ public class ExperienciaProfissional {
     private Integer id;
 
     @NotBlank(message = "Insira detalhes sobre a sua experiência profissional na descrição!")
-    @Valid
     @Column(nullable = false, length = 500) 
 	private String descricao;
 
     @NotBlank(message = "Insira a empresa na qual você trabalhou!")
-    @Valid
     @Column(nullable = false, length = 50)
 	private String empresa;
 
     @NotBlank(message = "Insira seu cargo!")
-    @Valid
     @Column(nullable = false, length = 50)
 	private String cargo;
 
-    @NotBlank(message = "Insira a data inicial de sua experiência profissional!")
-    @Valid
+    @NotNull(message = "Insira a data inicial de sua experiência profissional!")
+    @Past(message = "A data inicial da sua experiência profissional deve ser igual ou anterior a data atual!")
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataInicial;
 
-    @NotBlank(message = "Insira a data final da sua experiência profissional!")
-    @Valid
+    @NotNull(message = "Insira a data final da sua experiência profissional!")
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")

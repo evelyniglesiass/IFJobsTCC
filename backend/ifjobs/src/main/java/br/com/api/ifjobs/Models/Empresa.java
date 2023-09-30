@@ -3,6 +3,8 @@ package br.com.api.ifjobs.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -33,37 +34,31 @@ public class Empresa {
 	private Integer id;
 	
 	@NotBlank(message = "Insira o nome de sua empresa!")
-    @Valid
 	@Column(nullable = false, length = 250)
 	private String nome;
 
 	@NotBlank(message = "Insira seu nome de usuário!")
-    @Valid
 	@Column(nullable = false, length = 250)
     private String nomeUsuario;
 	
-    @Valid
 	@Column(nullable = true, length = 500)
 	private String descricao;
 	
 	@NotBlank(message = "Insira sua cidade!")
-    @Valid
 	@Column(nullable = false, length = 250)
 	private String cidade;
 	
-	@NotBlank(message = "Insira seu email!")
-    @Valid
 	@Column(nullable = false, length = 250)
+	@NotBlank(message = "Insira seu email!")
 	@Email(message = "Insira um email válido!")
 	private String email;
 
 	@NotBlank(message = "Insira seu telefone!")
-    @Valid
+	@Length(max = 11, min = 11, message = "Insira um telefone válido!")
 	@Column(nullable = false)
     private String telefone;
 
 	@NotBlank(message = "Insira sua senha!")
-    @Valid
 	@Column(nullable = false, length = 250)
 	private String senha;
 

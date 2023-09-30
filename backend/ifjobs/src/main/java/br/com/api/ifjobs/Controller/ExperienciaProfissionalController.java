@@ -21,6 +21,7 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.services.ExperienciaProfissionalService;
+import jakarta.validation.Valid;
 
 @RestController
 public class ExperienciaProfissionalController {
@@ -39,7 +40,7 @@ public class ExperienciaProfissionalController {
 
     //cadastrar experiência
     @PostMapping("/cadastrar/experiencia/{estudante}")
-    public ResponseEntity<?> cadastrar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return expSer.cadastrar(experiencia, cur);
@@ -47,7 +48,7 @@ public class ExperienciaProfissionalController {
 
     //editar experiência
     @PutMapping("/editar/experiencia/{estudante}")
-    public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return expSer.editar(experiencia, cur); 

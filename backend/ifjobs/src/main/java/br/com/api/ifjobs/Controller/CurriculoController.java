@@ -19,6 +19,7 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository; 
 import br.com.api.ifjobs.services.CurriculoService;
+import jakarta.validation.Valid;
 
 @RestController
 public class CurriculoController {
@@ -34,7 +35,7 @@ public class CurriculoController {
 
     //cadastrar currículo
     @PostMapping("/cadastrar/curriculo/{estudante}")
-    public ResponseEntity<?> cadastrar(@RequestBody Curriculo c, @PathVariable int estudante){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.cadastrar(c, est);
 
@@ -42,7 +43,7 @@ public class CurriculoController {
 
     //editar currículo
     @PutMapping("/editar/curriculo/{estudante}")
-    public ResponseEntity<?> editar(@RequestBody Curriculo c, @PathVariable int estudante){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.editar(c, est);
 

@@ -27,15 +27,11 @@ public class CurriculoService {
     // método para cadastrar curriculos
     public ResponseEntity<?> cadastrar(Curriculo c, Estudante e){
         
-        if(!(curRep.existsById(c.getId()))){
-            r.setMensagem("Currículo não encontrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-
-        } else if(!(estRep.existsById(e.getId()))){
+        if(!(estRep.existsById(e.getId()))){
             r.setMensagem("Estudante não encontrado!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
             
-        } else if(curRep.validarCurriculo(e.getId()) != 0){
+        }else if(curRep.validarCurriculo(e.getId()) != 0){
             r.setMensagem("Esse usuário já possui um currículo!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -45,6 +41,7 @@ public class CurriculoService {
             curRep.save(c);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
+            
         }
         
     }

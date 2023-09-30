@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import br.com.api.ifjobs.models.Estudante;
-
+ 
 public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
  
     //verifica se entidade existe
