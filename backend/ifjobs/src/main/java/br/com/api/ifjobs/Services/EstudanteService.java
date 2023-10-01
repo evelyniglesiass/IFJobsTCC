@@ -8,8 +8,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.repository.VagaRepository;
 
 @Service 
 public class EstudanteService { 
@@ -19,6 +21,9 @@ public class EstudanteService {
     
     @Autowired
     private EmpresaRepository empRep; 
+
+    @Autowired
+    private VagaRepository vagRep; 
 
     @Autowired
     private Resposta r;
@@ -100,6 +105,46 @@ public class EstudanteService {
             Estudante est = estRep.findById(id);
             estRep.delete(est);
             r.setMensagem("Estudante removido com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
+    }
+
+    // método para candidatura
+    public ResponseEntity<Resposta> candidatura(Estudante e, Vaga v) {
+        
+        if(!(estRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        }else if(!(vagRep.existsById(v.getId()))){
+            r.setMensagem("Vaga não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        }else{
+            e.getVagas().add(v);
+            v.getEstudantes().add(e);
+            r.setMensagem("Candidatura realizada com sucesso!");
+            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        }
+    }
+
+    // método para remover candidatura
+    public ResponseEntity<Resposta> removerCandidatura(Estudante e, Vaga v) {
+        
+        if(!(estRep.existsById(e.getId()))){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        }else if(!(vagRep.existsById(v.getId()))){
+            r.setMensagem("Vaga não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        }else{
+            e.getVagas().remove(v);
+            v.getEstudantes().remove(e);
+            r.setMensagem("Candidatura removida com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
 
         }

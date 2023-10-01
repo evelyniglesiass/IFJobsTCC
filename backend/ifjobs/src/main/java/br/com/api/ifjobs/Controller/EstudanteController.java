@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.EstudanteService;
 import jakarta.validation.Valid;
 
@@ -28,19 +30,31 @@ public class EstudanteController {
     @Autowired
     private EstudanteRepository estRep;
 
-    //cadastro de estudantes
+    @Autowired
+    private VagaRepository vagRep;
+
+    // cadastro de estudantes
     @PostMapping("/cadastrar/estudante")
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 
-    //edição de estudantes
+    // edição de estudantes
     @PutMapping("/editar/estudante")
     public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
 
-    //exclusão de estudantes
+    // candidatura
+    @PutMapping("/candidatura/{estudante}/{vaga}")
+    public ResponseEntity<?> candidatura(@PathVariable int estudante, @PathVariable int vaga){ 
+        Estudante est = estRep.findById(estudante);
+        Vaga vag = vagRep.findById(vaga);
+        return estSer.candidatura(est, vag);
+
+    }
+
+    // exclusão de estudantes
     @DeleteMapping("/remover/estudante/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return estSer.remover(id);
