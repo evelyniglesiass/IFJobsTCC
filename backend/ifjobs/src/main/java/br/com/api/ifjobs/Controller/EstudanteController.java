@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EstudanteDTO;
@@ -22,6 +23,7 @@ import br.com.api.ifjobs.services.EstudanteService;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/estudante")
 public class EstudanteController {  
 
     @Autowired
@@ -33,14 +35,14 @@ public class EstudanteController {
     @Autowired
     private VagaRepository vagRep;
 
-    // cadastro de estudantes
-    @PostMapping("/cadastrar/estudante")
+    // cadastrar estudante
+    @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 
-    // edição de estudantes
-    @PutMapping("/editar/estudante")
+    // editar estudante
+    @PutMapping("/editar")
     public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
@@ -54,35 +56,35 @@ public class EstudanteController {
 
     }
 
-    // exclusão de estudantes
-    @DeleteMapping("/remover/estudante/{id}") 
+    // excluir estudante
+    @DeleteMapping("/remover/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return estSer.remover(id);
     }
 
-    //listagem de estudantes por empresas
-    @GetMapping("/listar/estudantes")
+    // listagem todos estudantes (visão da empresa)
+    @GetMapping("/listar")
     public List<EstudanteDTO> listarTodos() {
         return EstudanteDTO.converterLista(estRep.findAll());
 
     }
 
-    //listagem de estudantes por um estudante
-    @GetMapping("/listar/estudantes/{id}")
+    // listagem de estudantes (visão estudante onde ele proprio não aparece)
+    @GetMapping("/listar/{id}")
     public List<EstudanteDTO> listarEstudantes(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudantes(id));
 
     }
 
-    //pesquisar estudante por nome
-    @GetMapping("/listar/estudantes/pesquisa/{nome}")
+    // pesquisa por nome
+    @GetMapping("/listar/pesquisa/{nome}")
     public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
         return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
 
     }
 
-    //listar estudante por id
-    @GetMapping("/listar/estudantes/id/{id}")
+    // listar estudante expecífico
+    @GetMapping("/listar/id/{id}")
     public List<EstudanteDTO> listarId(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudante(id));
 

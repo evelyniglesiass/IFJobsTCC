@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EmpresaDTO;
@@ -20,6 +21,7 @@ import br.com.api.ifjobs.services.EmpresaService;
 import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/empresa")
 public class EmpresaController {
     
     @Autowired
@@ -29,19 +31,19 @@ public class EmpresaController {
     private EmpresaRepository empRep;
 
     //cadastro de empresas
-    @PostMapping("/cadastrar/empresa")
+    @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Empresa empresa){ 
         return empSer.cadastrar(empresa); 
     }
 
     //edicão de empresas
-    @PutMapping("/editar/empresa")
+    @PutMapping("/editar")
     public ResponseEntity<?> editar(@Valid @RequestBody Empresa empresa){ 
         return empSer.editar(empresa);
     }
 
     //exclusão de empresa
-    @DeleteMapping("/remover/empresa/{id}") 
+    @DeleteMapping("/remover/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return empSer.remover(id);
     }
@@ -54,20 +56,20 @@ public class EmpresaController {
    // }
 
     //listar empresa por id
-    @GetMapping("/listar/empresas/id/{id}")
+    @GetMapping("/listar/id/{id}")
     public List<EmpresaDTO> listarId(@PathVariable int id){
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
     }
 
     //listagem de empresas por empresas
-    @GetMapping("/listar/empresas/{id}")
+    @GetMapping("/listar/{id}")
     public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
 
     }
 
     //listagem de empresas por estudantes
-    @GetMapping("/listar/empresas")
+    @GetMapping("/listar")
     public List<EmpresaDTO> listarTodas() {
         return EmpresaDTO.converterLista(empRep.findAll());
 
