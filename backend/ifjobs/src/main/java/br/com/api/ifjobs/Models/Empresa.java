@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.validator.constraints.Length;
+
 import br.com.api.ifjobs.security.domain.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
