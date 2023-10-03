@@ -20,6 +20,7 @@ import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.services.EmpresaService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/empresas")
@@ -44,7 +45,7 @@ public class EmpresaController {
     }
 
     //exclusão de empresa
-    @DeleteMapping() 
+    @DeleteMapping()
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return empSer.remover(id);
     }
@@ -57,13 +58,13 @@ public class EmpresaController {
    // }
 
     //listar empresa por id
-    @GetMapping("/listar/empresas/id/{id}")
+    @GetMapping("/listar/id/{id}")
     public List<EmpresaDTO> listarId(@PathVariable int id){
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
     }
 
     //listagem de empresas por empresas
-    @GetMapping("/listar/empresas/{id}")
+    @GetMapping("/listar/{id}")
     public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
 

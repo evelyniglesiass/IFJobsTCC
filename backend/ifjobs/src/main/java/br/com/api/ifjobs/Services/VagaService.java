@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
+import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.VagaRepository;
 
 @Service
@@ -19,38 +21,25 @@ public class VagaService {
     private VagaRepository vagRep; 
 
     @Autowired
+    private EmpresaRepository empRep; 
+
+    @Autowired
     private Resposta r;
 
     // método para cadastrar vagas
     public ResponseEntity<?> cadastrar(Vaga v, Empresa e){
         
-        if(v.getTitulo().equals("")){
-            r.setMensagem("O titulo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+        if(!(empRep.existsById(e.getId()))){
+            r.setMensagem("Empresa não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(v.getIdadeMinima() < 0){
+            r.setMensagem("Insira uma idade válida!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else if(v.getSalario() < 0){
             r.setMensagem("Insira um valor válido para o salário!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-        
-        }else if(v.getIdadeMinima() < 0){
-            r.setMensagem("Insira um valor válido para a idade mínima!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getPalavrasChave().isEmpty()){
-            r.setMensagem("Você precisa ter no minimo uma palavra chave!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getCurso() == null){
-            r.setMensagem("O curso é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
             v.setStatus(true);
@@ -59,7 +48,6 @@ public class VagaService {
             vagRep.save(v);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-
         }
         
     }
@@ -67,33 +55,21 @@ public class VagaService {
     // método para editar vagas
     public ResponseEntity<?> editar(Vaga v, Empresa e){
         
-        if(v.getTitulo().equals("")){
-            r.setMensagem("O titulo é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getDescricao().equals("")){
-            r.setMensagem("A descrição é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getSalario() < 0){
+        if(!(vagRep.existsById(v.getId()))){
+            r.setMensagem("Vaga não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(!(empRep.existsById(e.getId()))){
+            r.setMensagem("Empresa não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(v.getSalario() < 0){
             r.setMensagem("Insira um valor válido para o salário!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
         }else if(v.getIdadeMinima() < 0){
-            r.setMensagem("Insira um valor válido para a idade mínima!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getPalavrasChave().isEmpty()){
-            r.setMensagem("Você precisa ter no minimo uma palavra chave!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(v.getCurso() == null){
-            r.setMensagem("O curso é obrigatório!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            r.setMensagem("Insira uma idade válida!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
             v.setStatus(true);
@@ -101,7 +77,6 @@ public class VagaService {
             vagRep.save(v);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
         }
         
     }
@@ -109,16 +84,15 @@ public class VagaService {
     // método para remover vaga
     public ResponseEntity<Resposta> remover(int id) {
         
-        if(vagRep.countById(id) == 0){
-            r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+        if(!(vagRep.existsById(id))){
+            r.setMensagem("Vaga não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             Vaga vag = vagRep.findById(id);
             vagRep.delete(vag);
             r.setMensagem("Vaga removida com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
         }
     }
     

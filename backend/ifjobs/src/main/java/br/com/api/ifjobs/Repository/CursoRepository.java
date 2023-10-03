@@ -15,6 +15,9 @@ import br.com.api.ifjobs.models.Curso;
 // @Repository
 public interface CursoRepository extends CrudRepository<Curso, Integer>{
     
+    //verifica se entidade existe
+    boolean existsById (Integer id);
+
     Curso findById(int id); // retornar curso pelo id
 
     int countById(int id); // retornar 1 se o curso existir

@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.EstudanteService;
 
 @RestController
@@ -33,49 +35,59 @@ public class EstudanteController {
     @Autowired
     private EstudanteRepository estRep;
 
-    //cadastro de estudantes
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @Autowired
+    private VagaRepository vagRep;
+
+    // cadastrar estudante
+    @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 
-    //edição de estudantes
-    @PutMapping("/editar/estudante")
+    // editar estudante
+    @PutMapping("/editar")
     public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
 
-    //exclusão de estudantes
-    @DeleteMapping("/remover/estudante/{id}") 
+    // candidatura
+    @PutMapping("/candidatura/{estudante}/{vaga}")
+    public ResponseEntity<?> candidatura(@PathVariable int estudante, @PathVariable int vaga){ 
+        Estudante est = estRep.findById(estudante);
+        Vaga vag = vagRep.findById(vaga);
+        return estSer.candidatura(est, vag);
+
+    }
+
+    // excluir estudante
+    @DeleteMapping("/remover/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return estSer.remover(id);
     }
 
-    //listagem de estudantes por empresas
-    @GetMapping("/listar/estudantes")
-    @ResponseStatus(HttpStatus.OK)
+    // listagem todos estudantes (visão da empresa)
+    @GetMapping("/listar")
     public List<EstudanteDTO> listarTodos() {
         return EstudanteDTO.converterLista(estRep.findAll());
 
     }
 
-    //listagem de estudantes por um estudante
-    @GetMapping("/listar/estudantes/{id}")
+    // listagem de estudantes (visão estudante onde ele proprio não aparece)
+    @GetMapping("/listar/{id}")
     public List<EstudanteDTO> listarEstudantes(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudantes(id));
 
     }
 
-    //pesquisar estudante por nome
-    @GetMapping("/listar/estudantes/pesquisa/{nome}")
+    // pesquisa por nome
+    @GetMapping("/listar/pesquisa/{nome}")
     public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
         return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
 
     }
 
-    //listar estudante por id
-    @GetMapping("/listar/estudantes/id/{id}")
+    // listar estudante expecífico
+    @GetMapping("/listar/id/{id}")
     public List<EstudanteDTO> listarId(@PathVariable int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudante(id));
 

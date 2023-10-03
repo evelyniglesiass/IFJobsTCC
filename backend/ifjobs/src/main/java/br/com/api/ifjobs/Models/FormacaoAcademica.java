@@ -15,7 +15,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,24 +34,31 @@ public class FormacaoAcademica {
 	@Column(nullable = false)
     private Integer id;
 
+    @NotBlank(message = "Insira detalhes sobre sua formação acadêmica na descrição!")
     @Column(nullable = false, length = 500)
 	private String descricao;
 
+    @NotBlank(message = "Insira a instituição de sua formação acadêmica!")
     @Column(nullable = false, length = 250)
 	private String instituiçao;
 
+    @NotBlank(message = "Insira a cidade de sua formação acadêmica!")
     @Column(nullable = false, length = 250)
 	private String cidade;
 
+    @NotNull(message = "Insira o nível de sua formação acadêmica!")
     @Column(nullable = false, length = 250)
     @Enumerated(EnumType.STRING)
 	private Niveis nivel;
 
+    @NotNull(message = "Insira a data inicial de sua formação acadêmica!")
+    @Past(message = "A data inicial da sua formação acadêmica deve ser igual ou anterior a data atual!")
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataInicial;
 
+    @NotNull(message = "Insira a data final de sua formação acadêmica!")
 	@Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")

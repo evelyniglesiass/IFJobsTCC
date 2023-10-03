@@ -22,4 +22,7 @@ public interface CurriculoRepository extends CrudRepository<Curriculo, Integer>{
     @Query(value = "SELECT * FROM curriculo WHERE estudante_id = :estudante", nativeQuery = true) 
     List<Curriculo> listarCurriculo(int estudante); // listar curriculo de determinado estudante
 
+    //verifica se entidade existe
+    boolean existsById (Integer id);
+
 }

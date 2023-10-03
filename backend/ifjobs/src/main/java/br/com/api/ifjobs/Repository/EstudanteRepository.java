@@ -6,9 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import br.com.api.ifjobs.models.Estudante;
-
+ 
 public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
  
+    //verifica se entidade existe
+    boolean existsById (Integer id);
+
     // consultas básicas
     Estudante findById(int id); // retornar estudante pelo id
     int countById(int id); // retornar 1 se o estudante existir

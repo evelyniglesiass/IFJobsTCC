@@ -43,25 +43,32 @@ public class Vaga {
 	@Column(nullable = false) 
 	private boolean status;
 	
+	@NotBlank(message = "Insira o título de sua vaga!")
 	@Column(nullable = false, length = 50)
 	private String titulo;
 	
+	@NotBlank(message = "Insira a descrição de sua vaga!")
 	@Column(nullable = false, length = 500)
 	private String descricao;
 
+	@NotNull(message = "Insira o salário que sua vaga oferece!")
 	@Column(nullable = false)
 	private Double salario;
 	
+	@NotNull(message = "Insira para qual curso a vaga será ofertada!")
 	@Column(nullable = false) 
 	@Enumerated(EnumType.STRING)
 	private Cursos curso;
 
+	@NotNull(message = "Insira a idade mínima para a vaga!")
 	@Column(nullable = false)
     private Integer idadeMinima;
 
+	@NotBlank(message = "Insira a cidade onde será a vaga!")
 	@Column(nullable = false, length = 50)
     private String cidade;
 
+	@Size(min = 1, message = "Insira palavras chave sobre sua vaga!")
 	@Column(nullable = false, length = 250)
 	@ElementCollection(targetClass=String.class)
     private List<String> palavrasChave = new ArrayList<>();

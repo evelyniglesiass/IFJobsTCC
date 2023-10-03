@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.ExperienciaProfissionalDTO;
@@ -21,8 +22,10 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.services.ExperienciaProfissionalService;
+import jakarta.validation.Valid;
 
 @RestController
+@RequestMapping("/experiencia")
 public class ExperienciaProfissionalController {
 
     @Autowired
@@ -37,30 +40,30 @@ public class ExperienciaProfissionalController {
     @Autowired
     private EstudanteRepository estRep;
 
-    //cadastrar experiência
-    @PostMapping("/cadastrar/experiencia/{estudante}")
-    public ResponseEntity<?> cadastrar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+    // cadastrar experiência
+    @PostMapping("/cadastrar/{estudante}")
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return expSer.cadastrar(experiencia, cur);
     }
 
-    //editar experiência
-    @PutMapping("/editar/experiencia/{estudante}")
-    public ResponseEntity<?> editar(@RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
+    // editar experiência
+    @PutMapping("/editar/{estudante}")
+    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
         return expSer.editar(experiencia, cur); 
     }
 
-    //excluir experiência
-    @DeleteMapping("/remover/experiencia/{id}") 
+    // excluir experiência
+    @DeleteMapping("/remover/{id}") 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return expSer.remover(id);
     }
 
-    //listar experiências de um determinado currículo
-    @GetMapping("/listar/experiencias/estudante/{estudante}")
+    // listar experiências de um determinado currículo
+    @GetMapping("/listar/estudante/{estudante}")
     public List<ExperienciaProfissionalDTO> listarExperincia(@PathVariable int estudante) {
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);

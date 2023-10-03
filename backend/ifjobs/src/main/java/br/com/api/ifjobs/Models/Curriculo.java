@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,13 +32,16 @@ public class Curriculo {
 	@Column(nullable = false)
     private Integer id; 
 
+    @NotBlank(message = "Insira detalhes sobre você em seu resumo!")
     @Column(nullable = false, length = 500)
     private String resumo;
 
+    @Size(min = 1, message = "Insira pelo menos uma habilidade!")
     @Column(nullable = false, length = 250)
     @ElementCollection(targetClass=String.class)
     private List<String> habilidades = new ArrayList<>(); 
 
+    @Size(min = 1, message = "Insira pelo menos um idioma!")
     @Column(nullable = false, length = 250)
     @ElementCollection(targetClass=String.class)
     private List<String> idiomas = new ArrayList<>();

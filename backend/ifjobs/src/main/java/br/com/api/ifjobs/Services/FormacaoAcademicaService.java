@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 
 @Service
@@ -17,6 +19,9 @@ public class FormacaoAcademicaService {
     private FormacaoAcademicaRepository forAcaRep;
 
     @Autowired
+    private CurriculoRepository curRep;
+
+    @Autowired
     private Resposta r;
 
     //Método de listagem de formações acadêmicas
@@ -24,34 +29,17 @@ public class FormacaoAcademicaService {
         return forAcaRep.findAll();
     }
 
+    //Método de cadastro de formações 
     public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
-        
-        //Verificando campos nulos
-        if(fa.getNivel().equals("")){
-            r.setMensagem("O nível da formação é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getInstituiçao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+                
+        if(!(curRep.existsById(c.getId()))){
+            r.setMensagem("Currículo não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        //Salvando formação acadêmica
         } else{
             fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.CREATED);
@@ -62,32 +50,18 @@ public class FormacaoAcademicaService {
     //Método de edicão de formacões academicas
     public ResponseEntity<?> editar(FormacaoAcademica fa, Curriculo c){
         
-        //Verificando campos nulos
-        if(fa.getNivel().equals("")){
-            r.setMensagem("O nível da formação é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getInstituiçao().equals("")){
-            r.setMensagem("O nome da instituição é obrigatório!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getCidade().equals("")){
-            r.setMensagem("A cidade é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataInicial().equals("")){
-            r.setMensagem("A data inicial é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        } else if(fa.getDataFinal().equals("")){
-            r.setMensagem("A data final é obrigatória!");
-            return new ResponseEntity<Resposta>(r, HttpStatus.BAD_REQUEST);
-
-        }else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+        if(!(forAcaRep.existsById(fa.getId()))){
+            r.setMensagem("Experiência profissional não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(!(curRep.existsById(c.getId()))){
+            r.setMensagem("Currículo não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+            
+        } else if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
-            return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        //Salvando formação acadêmica
         } else{
             fa.setCurriculo(c);
             return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.OK);
@@ -97,9 +71,9 @@ public class FormacaoAcademicaService {
     //Método para remover formacão
     public ResponseEntity<Resposta> remover(int id) {
         
-        if(forAcaRep.countById(id) == 0){
-            r.setMensagem("O id informado não existe!");
-            return new ResponseEntity<>(r, HttpStatus.NOT_FOUND);
+        if(!(forAcaRep.existsById(id))){
+            r.setMensagem("Formação acadêmica não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         } else{
             FormacaoAcademica forAca = forAcaRep.findById(id);
