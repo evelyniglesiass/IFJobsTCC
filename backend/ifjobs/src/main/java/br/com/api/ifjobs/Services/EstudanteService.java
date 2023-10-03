@@ -1,8 +1,11 @@
 package br.com.api.ifjobs.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -11,6 +14,9 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.security.domain.Permissao;
+import br.com.api.ifjobs.security.domain.enums.Funcao;
+import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 import br.com.api.ifjobs.repository.VagaRepository;
 
 @Service 
@@ -29,6 +35,10 @@ public class EstudanteService {
     private Resposta r;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
     private SenhaService ss;
 
     // método para cadastrar estudantes
@@ -53,6 +63,11 @@ public class EstudanteService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
+
+            e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
+
+            e.setSenha(passwordEncoder.encode(e.getSenha()));
+
             estRep.save(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -63,6 +78,8 @@ public class EstudanteService {
 
     // método para editar estudantes
     public ResponseEntity<?> editar(Estudante e){
+
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
 
         ss.setSenha(e.getSenha());
 
@@ -87,7 +104,7 @@ public class EstudanteService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
-            estRep.save(e);
+            estRep.save(estudante);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -96,7 +113,7 @@ public class EstudanteService {
 
     // método para remover estudante
     public ResponseEntity<Resposta> remover(int id) {
-        
+
         if(!(estRep.existsById(id))){
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());

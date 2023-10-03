@@ -3,12 +3,14 @@ package br.com.api.ifjobs.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
+import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
 public class EmpresaService {
@@ -18,6 +20,12 @@ public class EmpresaService {
 
     @Autowired
     private Resposta r;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
 
     @Autowired
     private SenhaService ss;
@@ -46,6 +54,10 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } else{
+            String senhaCriptografada = passwordEncoder.encode(e.getSenha());
+
+            e.setSenha(senhaCriptografada);
+            
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<Empresa>(empRep.save(e), HttpStatus.CREATED);
         }
@@ -53,6 +65,10 @@ public class EmpresaService {
 
     //Método para editar empresas
     public ResponseEntity<?> editar(Empresa e){
+
+        Empresa empresa = usuarioAutenticadoService.getEmpresa();
+        System.out.println(empresa.getNomeUsuario());
+      
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         

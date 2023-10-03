@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,7 +23,7 @@ import br.com.api.ifjobs.services.EmpresaService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/empresa")
+@RequestMapping("/empresas")
 public class EmpresaController {
     
     @Autowired
@@ -31,19 +33,19 @@ public class EmpresaController {
     private EmpresaRepository empRep;
 
     //cadastro de empresas
-    @PostMapping("/cadastrar")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Empresa empresa){ 
         return empSer.cadastrar(empresa); 
     }
 
     //edicão de empresas
-    @PutMapping("/editar")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody Empresa empresa){ 
         return empSer.editar(empresa);
     }
 
     //exclusão de empresa
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping()
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return empSer.remover(id);
     }

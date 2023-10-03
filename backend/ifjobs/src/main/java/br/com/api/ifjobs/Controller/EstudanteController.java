@@ -2,7 +2,10 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EstudanteDTO;
@@ -20,10 +24,9 @@ import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.EstudanteService;
-import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/estudante")
+@RequestMapping("/estudantes")
 public class EstudanteController {  
 
     @Autowired

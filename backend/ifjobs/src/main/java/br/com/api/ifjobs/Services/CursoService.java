@@ -42,6 +42,7 @@ public class CursoService {
 
         } else{
             c.setCurriculo(cur);
+            cur.getCursos().add(c);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
         }

@@ -3,17 +3,18 @@ package br.com.api.ifjobs.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.validator.constraints.Length;
+//imports spring
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+import br.com.api.ifjobs.security.domain.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class Empresa {
 	
 	@NotBlank(message = "Insira o nome de sua empresa!")
 	@Column(nullable = false, length = 250)
+	@NotBlank
 	private String nome;
 
 	@NotBlank(message = "Insira seu nome de usuário!")
@@ -65,4 +67,7 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> vagasPublicadas = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "empresa")
+    @Column(nullable = false)
+    private List<Permissao> permissoes;
 }

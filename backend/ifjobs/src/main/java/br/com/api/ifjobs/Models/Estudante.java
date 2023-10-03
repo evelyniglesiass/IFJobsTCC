@@ -3,21 +3,21 @@ package br.com.api.ifjobs.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.validator.constraints.Length;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import br.com.api.ifjobs.security.domain.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,7 +55,7 @@ public class Estudante{
     private String email;
 
     @NotBlank(message = "Insira sua senha!")
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 250)
     private String senha;
 
     @Length(max = 11, min = 11, message = "Insira um telefone válido!")
@@ -74,4 +74,7 @@ public class Estudante{
         inverseJoinColumns = {@JoinColumn(name = "vaga_id")})
     private List<Vaga> vagas = new ArrayList<>();
 
+    @OneToMany(mappedBy = "estudante", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @Column(nullable = false)
+    private List<Permissao> permissoes;
 }

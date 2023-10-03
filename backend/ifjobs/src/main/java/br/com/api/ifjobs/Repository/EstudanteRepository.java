@@ -36,4 +36,5 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     List<Estudante> findAll(); // listar todos os estudantes
     List<Estudante> findByNomeContains(String nome); // listar estudantes em uma pesquisa
 
+    Estudante findByEmail(String email);
 } 
