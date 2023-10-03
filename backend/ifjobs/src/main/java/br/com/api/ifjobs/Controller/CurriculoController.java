@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity; 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,10 +22,9 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository; 
 import br.com.api.ifjobs.services.CurriculoService;
-import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/curriculo")
+@RequestMapping("/curriculos")
 public class CurriculoController {
 
     @Autowired
@@ -36,7 +37,7 @@ public class CurriculoController {
     private EstudanteRepository estRep;
 
     // cadastrar currículo
-    @PostMapping("/cadastrar/{estudante}")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.cadastrar(c, est);
@@ -44,7 +45,7 @@ public class CurriculoController {
     }
 
     // editar currículo
-    @PutMapping("/editar/{estudante}")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.editar(c, est);
@@ -52,7 +53,7 @@ public class CurriculoController {
     }
 
     // excluir currículo
-    @DeleteMapping("/remover/{id}/{estudante}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         return curSer.remover(id, est);
@@ -60,7 +61,7 @@ public class CurriculoController {
     }
 
     // listar currículo de um estudante
-    @GetMapping("/listar/estudante/{estudante}")
+    @GetMapping("/listar/estudante/{estudante}")//ver se precisa
     public List<CurriculoDTO> listarId(@PathVariable int estudante) {
         return CurriculoDTO.converterLista(curRep.listarCurriculo(estudante));
 

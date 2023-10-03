@@ -39,6 +39,8 @@ public class EstudanteService {
 
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
+    
+    @Autowired
     private SenhaService ss;
 
     // método para cadastrar estudantes
@@ -65,7 +67,6 @@ public class EstudanteService {
         }else{
 
             e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
-
             e.setSenha(passwordEncoder.encode(e.getSenha()));
 
             estRep.save(e);

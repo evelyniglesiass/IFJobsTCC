@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,10 +24,9 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
-import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/formacao")
+@RequestMapping("/formacoes")
 public class FormacaoAcademicaController {
     
     @Autowired
@@ -41,7 +42,7 @@ public class FormacaoAcademicaController {
     private CurriculoRepository curRep;
     
     //cadastro de formacões academicas
-    @PostMapping("/cadastrar/{estudante}")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -49,7 +50,7 @@ public class FormacaoAcademicaController {
     }
 
     //edicao de formacões academicas
-    @PutMapping("/editar/{estudante}")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -57,13 +58,13 @@ public class FormacaoAcademicaController {
     }
 
     //exclusão de formacões academicas
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return formAcaSer.remover(id);
     }
 
     //Listagem de formacões academicas de um determinado currículo
-    @GetMapping("/listar/estudante/{estudante}")
+    @GetMapping("/listar/estudante/{estudante}")//ver se precisa
     public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);

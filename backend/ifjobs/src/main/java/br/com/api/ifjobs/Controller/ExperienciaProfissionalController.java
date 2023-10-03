@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,10 +24,9 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.services.ExperienciaProfissionalService;
-import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/experiencia")
+@RequestMapping("/experiencias")
 public class ExperienciaProfissionalController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class ExperienciaProfissionalController {
     private EstudanteRepository estRep;
 
     // cadastrar experiência
-    @PostMapping("/cadastrar/{estudante}")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -49,7 +50,7 @@ public class ExperienciaProfissionalController {
     }
 
     // editar experiência
-    @PutMapping("/editar/{estudante}")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -57,13 +58,13 @@ public class ExperienciaProfissionalController {
     }
 
     // excluir experiência
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return expSer.remover(id);
     }
 
     // listar experiências de um determinado currículo
-    @GetMapping("/listar/estudante/{estudante}")
+    @GetMapping()
     public List<ExperienciaProfissionalDTO> listarExperincia(@PathVariable int estudante) {
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);

@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EstudanteDTO;
@@ -39,13 +37,13 @@ public class EstudanteController {
     private VagaRepository vagRep;
 
     // cadastrar estudante
-    @PostMapping("/cadastrar")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Estudante estudante){ 
         return estSer.cadastrar(estudante); 
     }
 
     // editar estudante
-    @PutMapping("/editar")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody Estudante estudante){ 
         return estSer.editar(estudante);
     }
@@ -60,7 +58,7 @@ public class EstudanteController {
     }
 
     // excluir estudante
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return estSer.remover(id);
     }

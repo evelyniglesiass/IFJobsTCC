@@ -1,8 +1,5 @@
 package br.com.api.ifjobs.security.controller.response;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Email;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

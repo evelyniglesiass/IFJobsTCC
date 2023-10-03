@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,10 +24,9 @@ import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.CursoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.services.CursoService;
-import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/curso")
+@RequestMapping("/cursos")
 public class CursoController {
     
     @Autowired
@@ -41,7 +42,7 @@ public class CursoController {
     private EstudanteRepository estRep;
     
     //cadastro de cursos
-    @PostMapping("/cadastrar/{estudante}")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Curso curso, @PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -49,7 +50,7 @@ public class CursoController {
     }
 
     //edicao de cursos
-    @PutMapping("/editar/{estudante}")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody Curso curso, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);
@@ -57,13 +58,13 @@ public class CursoController {
     }
 
     //exclusão de cursos
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return curSer.remover(id);
     }
 
     //Listagem de cursos de um determinado currículo
-    @GetMapping("/listar/estudante/{estudante}")
+    @GetMapping("/listar/estudante/{estudante}")//ver se precisa
     public List<CursoDTO> listarCurso(@PathVariable int estudante){
         Estudante est = estRep.findById(estudante);
         Curriculo cur = curRep.findByEstudante(est);

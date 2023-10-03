@@ -20,7 +20,6 @@ import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.services.EmpresaService;
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/empresas")
@@ -50,27 +49,26 @@ public class EmpresaController {
         return empSer.remover(id);
     }
 
-    //pesquisa de empresas
-    //@GetMapping("/listar/pesquisa/{nome}")
-    //public List<Empresa> listarPesquisa(@PathVariable String nome) {
-     //   return empRep.findByNomeContains(nome); 
+    //pesquisa de empresas por nome
+    @GetMapping("/listar/pesquisa/{nome}")
+    public List<EmpresaDTO> listarPesquisa(@PathVariable String nome) {
+        return EmpresaDTO.converterLista(empRep.findByNomeContains(nome)); 
+   }
 
-   // }
-
-    //listar empresa por id
+    //listar empresa expecífica
     @GetMapping("/listar/id/{id}")
     public List<EmpresaDTO> listarId(@PathVariable int id){
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
     }
 
-    //listagem de empresas por empresas
+    //listagem de empresas (onde a própia empresa não aparece)
     @GetMapping("/listar/{id}")
     public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
 
     }
 
-    //listagem de empresas por estudantes
+    //listagem de empresas (visão do estudante)
     @GetMapping("/listar")
     public List<EmpresaDTO> listarTodas() {
         return EmpresaDTO.converterLista(empRep.findAll());

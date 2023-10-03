@@ -2,6 +2,8 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,10 +22,9 @@ import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.VagaService;
-import jakarta.validation.Valid;
  
 @RestController
-@RequestMapping("/vaga")
+@RequestMapping("/vagas")
 public class VagaController {
 
     @Autowired 
@@ -36,21 +37,21 @@ public class VagaController {
     private EmpresaRepository empRep;
 
     // cadastrar vaga
-    @PostMapping("/cadastrar/{empresa}")
+    @PostMapping()
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }
 
     // editar vaga
-    @PutMapping("/editar/{empresa}")
+    @PutMapping()
     public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
         Empresa emp = empRep.findById(empresa);
         return vagSer.cadastrar(vaga, emp);
     }
 
     // excluir vaga
-    @DeleteMapping("/remover/{id}") 
+    @DeleteMapping() 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return vagSer.remover(id);
     }

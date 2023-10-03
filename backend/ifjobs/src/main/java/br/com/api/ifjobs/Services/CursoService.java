@@ -24,10 +24,6 @@ public class CursoService {
     @Autowired
     private Resposta r;
 
-    //Método de listagem de cursos
-    public Iterable<Curso> listar(){
-        return curRep.findAll();
-    }
 
     //Método para cadastrar cursos
     public ResponseEntity<?> cadastrar(Curso c, Curriculo cur){
@@ -43,8 +39,9 @@ public class CursoService {
         } else{
             c.setCurriculo(cur);
             cur.getCursos().add(c);
+            curRep.save(c);
             r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.CREATED);
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
         }
     }
 
@@ -65,8 +62,9 @@ public class CursoService {
 
         } else{
             c.setCurriculo(cur);
+            curRep.save(c);
             r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<Curso>(curRep.save(c), HttpStatus.OK);
+            return new ResponseEntity<>(r, HttpStatus.OK);
         }
     }
 

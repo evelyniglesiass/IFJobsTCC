@@ -23,11 +23,7 @@ public class FormacaoAcademicaService {
 
     @Autowired
     private Resposta r;
-
-    //Método de listagem de formações acadêmicas
-    public Iterable<FormacaoAcademica> listar(){
-        return forAcaRep.findAll();
-    }
+    
 
     //Método de cadastro de formações 
     public ResponseEntity<?> cadastrar(FormacaoAcademica fa, Curriculo c){
@@ -42,7 +38,8 @@ public class FormacaoAcademicaService {
 
         } else{
             fa.setCurriculo(c);
-            return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.CREATED);
+            forAcaRep.save(fa);
+            return new ResponseEntity<>(r, HttpStatus.CREATED);
         }
     }
 
@@ -64,7 +61,8 @@ public class FormacaoAcademicaService {
 
         } else{
             fa.setCurriculo(c);
-            return new ResponseEntity<FormacaoAcademica>(forAcaRep.save(fa), HttpStatus.OK);
+            forAcaRep.save(fa);
+            return new ResponseEntity<>(r, HttpStatus.OK);
         }
     }
 
