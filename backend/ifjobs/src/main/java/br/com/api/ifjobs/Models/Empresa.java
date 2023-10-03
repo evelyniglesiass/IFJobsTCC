@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+import br.com.api.ifjobs.security.domain.Permissao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -59,4 +60,7 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> vagasPublicadas = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "empresa")
+    @Column(nullable = false)
+    private List<Permissao> permissoes;
 }

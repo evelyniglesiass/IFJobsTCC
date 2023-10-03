@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
+import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
 public class EmpresaService {
@@ -21,6 +22,9 @@ public class EmpresaService {
     
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
 
     //Método de listagem de empresas
     public Iterable<Empresa> listar(){
@@ -81,6 +85,9 @@ public class EmpresaService {
 
     //Método para editar empresas
     public ResponseEntity<?> editar(Empresa e){
+
+        Empresa empresa = usuarioAutenticadoService.getEmpresa();
+        System.out.println(empresa.getNomeUsuario());
         
         //Verificando campos nulos
         if(e.getNome().equals("")){ 

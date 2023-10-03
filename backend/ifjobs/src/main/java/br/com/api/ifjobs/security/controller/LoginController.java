@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.api.ifjobs.models.Empresa;
+import br.com.api.ifjobs.security.controller.response.UsuarioResponse;
 import br.com.api.ifjobs.security.service.BuscarUsuarioService;
 
 @RestController
@@ -16,7 +16,7 @@ public class LoginController {
     private BuscarUsuarioService buscarUsuarioService;
     
     @PostMapping
-    public Empresa login(){
+    public UsuarioResponse login(){
         return buscarUsuarioService.buscar();
     }
 }

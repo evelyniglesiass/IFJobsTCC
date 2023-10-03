@@ -5,11 +5,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import br.com.api.ifjobs.dto.UsuarioDto;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.security.UsuarioSecurity;
+import br.com.api.ifjobs.security.controller.response.UsuarioResponse;
+import br.com.api.ifjobs.security.domain.enums.Funcao;
 
 import static java.util.Objects.isNull;
 
@@ -51,5 +54,23 @@ public class UsuarioAutenticadoService {
         }
 
         return estudanteRepository.findById(user.getId()).get();
+    }
+
+    public UsuarioResponse getResponse(){
+
+        UsuarioSecurity user = getUser();
+
+        if(user.getAuthorities().get(0).toString().equals(Funcao.EMPRESA.getRole())){
+
+            Empresa empresa = getEmpresa();
+
+            return UsuarioDto.toResponseFromEmpresa(empresa);
+        }
+        else{
+
+            Estudante estudante = getEstudante();
+
+            return UsuarioDto.toResponseFromEstudante(estudante);
+        }
     }
 }

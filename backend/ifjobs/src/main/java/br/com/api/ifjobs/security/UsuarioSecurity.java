@@ -1,6 +1,7 @@
 package br.com.api.ifjobs.security;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,10 +21,10 @@ public class UsuarioSecurity implements UserDetails {
         this.id = usuario.getId();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();
-        /*this.permissoes = usuario.getPermissoes()
+        this.permissoes = usuario.getPermissoes()
                 .stream()
                 .map(permissao -> new SimpleGrantedAuthority(permissao.getFuncao().getRole()))
-                .collect(toList());*/
+                .collect(Collectors.toList());
     }
 
     public UsuarioSecurity(Estudante usuario) {
@@ -31,10 +32,10 @@ public class UsuarioSecurity implements UserDetails {
         this.id = usuario.getId();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();
-        /*this.permissoes = usuario.getPermissoes()
+        this.permissoes = usuario.getPermissoes()
                 .stream()
                 .map(permissao -> new SimpleGrantedAuthority(permissao.getFuncao().getRole()))
-                .collect(toList());*/
+                .collect(Collectors.toList());
     }
 
     public Integer getId() {

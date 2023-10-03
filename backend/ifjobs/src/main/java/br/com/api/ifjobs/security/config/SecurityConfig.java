@@ -24,19 +24,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception{
 
-        /*http
+        http
             .csrf().disable().cors()
             .and()
-            .authorizeRequests().andMatchers(HttpMethod.POST, "/empresa").permitAll()
+            .authorizeRequests().antMatchers(HttpMethod.POST, "/empresas").permitAll()
             .and()
-            .authorizeRequests().andMatchers(HttpMethod.POST, "/estudante").permitAll()
+            .authorizeRequests().antMatchers(HttpMethod.POST, "/estudantes").permitAll()
             .and()
             .authorizeRequests().anyRequest().authenticated()
             .and()
             .httpBasic().authenticationEntryPoint((request, response, authException) -> response.setStatus(HttpStatus.UNAUTHORIZED.value()))
             .and()
-            .logout().logoutSucesHandler((request, response, authentication) -> response.setStatus(HtpStatus.OK.value()))
-        ;*/
+            .logout().logoutSuccessHandler((request, response, authentication) -> response.setStatus(HttpStatus.OK.value()))
+        ;
 
         return http.build(); 
     }

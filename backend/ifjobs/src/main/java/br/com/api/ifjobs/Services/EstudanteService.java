@@ -1,14 +1,20 @@
 package br.com.api.ifjobs.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.security.domain.Permissao;
+import br.com.api.ifjobs.security.domain.enums.Funcao;
+import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service 
 public class EstudanteService { 
@@ -18,6 +24,12 @@ public class EstudanteService {
 
     @Autowired
     private Resposta r;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar estudantes
     public ResponseEntity<?> cadastrar(Estudante e){ 
@@ -55,6 +67,11 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
+
+            e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
+
+            e.setSenha(passwordEncoder.encode(e.getSenha()));
+
             estRep.save(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -65,6 +82,8 @@ public class EstudanteService {
 
     // método para editar estudantes
     public ResponseEntity<?> editar(Estudante e){
+
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
 
         if(e.getNome().equals("")){
             r.setMensagem("O nome é obrigatório!");
@@ -99,7 +118,7 @@ public class EstudanteService {
             return new ResponseEntity<>(r, HttpStatus.BAD_REQUEST);
 
         }else{
-            estRep.save(e);
+            estRep.save(estudante);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
 
