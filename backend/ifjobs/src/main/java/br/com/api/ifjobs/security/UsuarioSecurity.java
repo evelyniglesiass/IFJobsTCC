@@ -18,6 +18,8 @@ public class UsuarioSecurity implements UserDetails {
 
     public UsuarioSecurity(Empresa usuario) {
 
+        System.out.println(usuario.getPermissoes().size());
+
         this.id = usuario.getId();
         this.email = usuario.getEmail();
         this.senha = usuario.getSenha();

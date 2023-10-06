@@ -59,6 +59,8 @@ public class UsuarioAutenticadoService {
     public UsuarioResponse getResponse(){
 
         UsuarioSecurity user = getUser();
+        System.out.println("LISTA:");
+        System.out.println(user.getAuthorities().size());
 
         if(user.getAuthorities().get(0).toString().equals(Funcao.EMPRESA.getRole())){
 

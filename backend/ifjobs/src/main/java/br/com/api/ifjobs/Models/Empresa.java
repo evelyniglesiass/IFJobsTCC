@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,7 +70,7 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> vagasPublicadas = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "empresa")
+	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @Column(nullable = false)
     private List<Permissao> permissoes;
 }

@@ -37,26 +37,33 @@ public class EmpresaService {
 
     //Método para cadastrar empresas
     public ResponseEntity<?> cadastrar(Empresa e){
+
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
         if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
-            r.setMensagem("O nome de usuário já existe!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+
+            ResponseStatusException response = new ResponseStatusException(HttpStatus.CONFLICT, "O nome de usuário já existe!");
+
+            System.out.println(response.getMessage());
+
+            throw response;
 
         }else if(!ss.verificarSenha(ss.getSenha())){
+            
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
-        }else if(empRep.existeEmail(e.getEmail(), e.getId()) !=0){
+        }else if(empRep.existeEmail(e.getEmail()) !=0){
             r.setMensagem("Esse email já foi cadastrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         } else{
 
             e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
-            e.setSenha(passwordEncoder.encode(e.getSenha()));
             
+            e.setSenha(passwordEncoder.encode(e.getSenha()));
+
             empRep.save(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -84,7 +91,7 @@ public class EmpresaService {
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        } else if(empRep.existeEmail(e.getEmail(), e.getId()) != 0){
+        } else if(empRep.existeEmail(e.getEmail()) != 0){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
