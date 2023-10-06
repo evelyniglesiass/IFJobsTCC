@@ -18,13 +18,13 @@ public interface FormacaoAcademicaRepository extends CrudRepository<FormacaoAcad
     //verifica se entidade existe
     boolean existsById (Integer id);
 
-    FormacaoAcademica findById(int id); // retornar formacao pelo id
+    // retornar formacao pelo id
+    FormacaoAcademica findById(int id); 
 
-    int countById(int id); // retornar 1 se a formacao existir
-
+     // listar formacao de um determinado estudante
     @Query(value = "SELECT * FROM formacao_academica WHERE curriculo_id = :curriculo", nativeQuery = true) 
-    List<FormacaoAcademica> listarFormacao(int curriculo); // listar formacao de um determinado estudante
-
+    List<FormacaoAcademica> listarFormacao(int curriculo);
+    
     //List<FormacaoAcademica> findByNomeContains(String nome); // listar empresas em uma pesquisa
 
     //List<FormacaoAcademica> findAll();// listar formacao

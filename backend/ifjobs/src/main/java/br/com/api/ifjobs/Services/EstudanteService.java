@@ -52,11 +52,11 @@ public class EstudanteService {
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        }else if(estRep.countByNomeUsuario(e.getNomeUsuario()) == 1 || empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
+        }else if(estRep.existsByNomeUsuario(e.getNomeUsuario()) || empRep.existsByNomeUsuario(e.getNomeUsuario())){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        }else if(estRep.countByEmail(e.getEmail()) == 1 || empRep.countByEmail(e.getEmail()) == 1){
+        }else if(estRep.existsByEmail(e.getEmail()) || empRep.existsByEmail(e.getEmail())){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 

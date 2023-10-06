@@ -12,6 +12,12 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     //verifica se entidade existe
     boolean existsById (Integer id);
 
+    ///verifica se nome de usuário existe
+    boolean existsByNomeUsuario(String nomeUsuario);
+
+    //verifica se email existe
+    boolean existsByEmail(String email);
+
     // consultas básicas
     Estudante findById(int id); // retornar estudante pelo id
     int countById(int id); // retornar 1 se o estudante existir

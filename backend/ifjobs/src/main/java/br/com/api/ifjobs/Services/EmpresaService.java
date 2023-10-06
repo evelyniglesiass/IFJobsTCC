@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.security.domain.Permissao;
 import br.com.api.ifjobs.security.domain.enums.Funcao;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
@@ -21,6 +22,9 @@ public class EmpresaService {
     
     @Autowired
     private EmpresaRepository empRep;
+
+    @Autowired
+    private EstudanteRepository estRep;
 
     @Autowired
     private Resposta r;
@@ -41,30 +45,25 @@ public class EmpresaService {
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
-        if(empRep.countByNomeUsuario(e.getNomeUsuario()) == 1){
+        if(empRep.existsByNomeUsuario(e.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())){
+            r.setMensagem("O nome de usuário já existe!");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
-            ResponseStatusException response = new ResponseStatusException(HttpStatus.CONFLICT, "O nome de usuário já existe!");
-
-            System.out.println(response.getMessage());
-
-            throw response;
-
-        }else if(!ss.verificarSenha(ss.getSenha())){
-            
+        }else if(!(ss.verificarSenha(ss.getSenha()))){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
-        }else if(empRep.existeEmail(e.getEmail()) !=0){
+        }else if(empRep.existsByEmail(e.getEmail()) || estRep.existsByNomeUsuario(e.getEmail())){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         } else{
 
             e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
-            
             e.setSenha(passwordEncoder.encode(e.getSenha()));
 
             empRep.save(e);
+
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
         }
@@ -74,8 +73,7 @@ public class EmpresaService {
     public ResponseEntity<?> editar(Empresa e){
 
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
-        System.out.println(empresa.getNomeUsuario());
-      
+
         //pegando senha para validação
         ss.setSenha(empresa.getSenha()); 
         
@@ -83,21 +81,17 @@ public class EmpresaService {
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else if(empRep.countByNomeUsuario(empresa.getNomeUsuario()) == 1){
+        } else if(empRep.existsByNomeUsuario(empresa.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())){
             r.setMensagem("O nome de usuário já existe!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
-        } else if(!ss.verificarSenha(ss.getSenha())){
+        } else if(!(ss.verificarSenha(ss.getSenha()))){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        } else if(empRep.existeEmail(e.getEmail()) != 0){
+        } else if(empRep.existsByEmail(empresa.getEmail()) || estRep.existsByNomeUsuario(e.getEmail())){
             r.setMensagem("Esse email já foi cadastrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-
-        }else if(empresa.getTelefone().toString().length() < 11 || empresa.getTelefone().toString().length() > 11){
-            r.setMensagem("Insira todos os dígitos de seu telefone!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         } else{
             empRep.save(empresa);

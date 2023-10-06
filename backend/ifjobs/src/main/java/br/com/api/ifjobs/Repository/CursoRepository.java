@@ -18,12 +18,12 @@ public interface CursoRepository extends CrudRepository<Curso, Integer>{
     //verifica se entidade existe
     boolean existsById (Integer id);
 
-    Curso findById(int id); // retornar curso pelo id
+    // retornar curso pelo id
+    Curso findById(int id);
 
-    int countById(int id); // retornar 1 se o curso existir
-
+    // listar curso de determinado estudante
     @Query(value = "SELECT * FROM curso WHERE curriculo_id = :curriculo", nativeQuery = true) 
-    List<Curso> listarCurso(int curriculo); // listar curso de determinado estudante
+    List<Curso> listarCurso(int curriculo); 
 
 
     //List<Curso> findByNomeContains(String nome); // listar cursos em uma pesquisa

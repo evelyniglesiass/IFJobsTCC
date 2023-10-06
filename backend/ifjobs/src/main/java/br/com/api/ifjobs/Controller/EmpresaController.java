@@ -44,12 +44,15 @@ public class EmpresaController {
     //edicão de empresas
     @Secured("ROLE_EMPRESA")
     @PutMapping()
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> editar(@Valid @RequestBody Empresa empresa){ 
         return empSer.editar(empresa);
     }
 
     //exclusão de empresa
-    @DeleteMapping()
+    @Secured("ROLE_EMPRESA")
+    @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return empSer.remover(id);
     }
@@ -63,10 +66,11 @@ public class EmpresaController {
     //listar empresa expecífica
     @GetMapping("/listar/id/{id}")
     public List<EmpresaDTO> listarId(@PathVariable int id){
-        return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
+        return EmpresaDTO.converterLista(empRep.findAllById(id));
     }
 
     //listagem de empresas (onde a própia empresa não aparece)
+    @Secured("ROLE_EMPRESA")
     @GetMapping("/listar/{id}")
     public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
         return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
@@ -74,6 +78,7 @@ public class EmpresaController {
     }
 
     //listagem de empresas (visão do estudante)
+    @Secured("ROLE_ESTUDANTE")
     @GetMapping("/listar")
     public List<EmpresaDTO> listarTodas() {
         return EmpresaDTO.converterLista(empRep.findAll());

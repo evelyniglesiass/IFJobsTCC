@@ -11,31 +11,32 @@ import br.com.api.ifjobs.models.Empresa;
 // @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
 
-    //verifica se entidade existe
+    //verifica se entidade existe pelo id
     boolean existsById (Integer id);
-
-    Empresa findById(int id); // retornar empresa pelo id
-
-    int countByNomeUsuario(String nome); // validar nome de usuário
-
-    int countById(int id); // retornar 1 se a empresa existir
-
-    int countByEmail(String email); // validar email  
-
-    List<Empresa> findByNomeContains(String nome); // listar empresas em uma pesquisa
-
-    List<Empresa> findAll();// listar empresas
-
-    @Query(value = "SELECT * FROM empresa WHERE id = :id", nativeQuery = true) 
-    List<Empresa> listarId(int id); // listar empresas com certo id
-
-    @Query(value = "SELECT * FROM empresa WHERE id <> :id", nativeQuery = true) 
-    List<Empresa> listarEmpresas(int id); // listar empresas menos o logado
-
-    @Query(value = "SELECT Count(email) FROM empresa WHERE email = :email", nativeQuery = true) 
-    int existeEmail(String email); // validar email
-
+    
+    //verifica se email existe
     boolean existsByEmail(String email);
 
+    //verifica se nome de usuário existe
+    boolean existsByNomeUsuario(String nomeUsuario);
+
+    //encontrar por email
     Empresa findByEmail(String email);
+
+    //retorna empresa por id
+    Empresa findById(int id);
+
+    //listar empresa por nome
+    List<Empresa> findByNomeContains(String nome); 
+
+    // listar empresas
+    List<Empresa> findAll();
+
+    // listar empresas por id
+    List<Empresa> findAllById(int id);
+
+    // listar empresas menos o logado
+    @Query(value = "SELECT * FROM empresa WHERE empresa.id <> :id", nativeQuery = true) 
+    List<Empresa> listarEmpresas(int id); 
+
 }
