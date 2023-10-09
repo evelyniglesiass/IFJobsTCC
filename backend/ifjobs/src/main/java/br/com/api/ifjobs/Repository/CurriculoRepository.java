@@ -10,6 +10,9 @@ import br.com.api.ifjobs.models.Estudante;
  
 public interface CurriculoRepository extends CrudRepository<Curriculo, Integer>{
 
+    // verifica se entidade existe
+    boolean existsById (Integer id);
+
     // consultas básicas
     Curriculo findById(int id); // retornar curriculo pelo id
     int countById(int id); // retornar 1 se o curriculo existir
@@ -21,8 +24,5 @@ public interface CurriculoRepository extends CrudRepository<Curriculo, Integer>{
     // listar
     @Query(value = "SELECT * FROM curriculo WHERE estudante_id = :estudante", nativeQuery = true) 
     List<Curriculo> listarCurriculo(int estudante); // listar curriculo de determinado estudante
-
-    //verifica se entidade existe
-    boolean existsById (Integer id);
 
 }

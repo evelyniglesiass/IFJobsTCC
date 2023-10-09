@@ -9,7 +9,7 @@ import br.com.api.ifjobs.models.ExperienciaProfissional;
 
 public interface ExperienciaProfissionalRepository extends CrudRepository<ExperienciaProfissional, Integer>{
 
-    //verifica se entidade existe
+    // verifica se entidade existe
     boolean existsById (Integer id);
 
     // consultas básicas

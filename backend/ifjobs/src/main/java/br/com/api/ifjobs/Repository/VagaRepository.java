@@ -9,7 +9,7 @@ import br.com.api.ifjobs.models.Vaga;
 
 public interface VagaRepository extends CrudRepository<Vaga, Integer>{
 
-    //verifica se entidade existe
+    // verifica se entidade existe
     boolean existsById (Integer id);
 
     // consultas básicas
@@ -23,6 +23,6 @@ public interface VagaRepository extends CrudRepository<Vaga, Integer>{
     @Query(value = "SELECT * FROM vaga WHERE status = 1", nativeQuery = true) 
     List<Vaga> listarVagas(); // listar vagas para o curso do estudante logado
 
-    List<Vaga> findByTituloContains(String titulo);
+    List<Vaga> findByTituloContains(String titulo); // listar vagas por pesquisa
 
 } 
