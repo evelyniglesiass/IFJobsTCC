@@ -48,17 +48,17 @@ public class EstudanteService {
 
         ss.setSenha(e.getSenha());
         
-        if(e.getIdade() < 0){
+        if(e.getIdade() < 0){ 
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else if(estRep.existsByNomeUsuario(e.getNomeUsuario()) || empRep.existsByNomeUsuario(e.getNomeUsuario())){
             r.setMensagem("O nome de usuário já existe!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }else if(estRep.existsByEmail(e.getEmail()) || empRep.existsByEmail(e.getEmail())){
             r.setMensagem("Esse email já foi cadastrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }else if(!ss.verificarSenha(ss.getSenha())){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
@@ -72,7 +72,6 @@ public class EstudanteService {
             estRep.save(e);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-
         }
 
     }
@@ -88,27 +87,27 @@ public class EstudanteService {
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        } else if(e.getIdade() < 0){
+        }else if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else if(estRep.existeUsuario(e.getNomeUsuario(), e.getId()) != 0){
             r.setMensagem("O nome de usuário já existe!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }else if(estRep.existeEmail(e.getEmail(), e.getId()) != 0){
             r.setMensagem("Esse email já foi cadastrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }else if(!ss.verificarSenha(ss.getSenha())){
             r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
+            
             estRep.save(estudante);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
         }
     }
 

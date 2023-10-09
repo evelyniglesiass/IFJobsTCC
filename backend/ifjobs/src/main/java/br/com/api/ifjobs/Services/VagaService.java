@@ -33,7 +33,7 @@ public class VagaService {
             r.setMensagem("Empresa não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        } else if(v.getIdadeMinima() < 0){
+        }else if(v.getIdadeMinima() < 0){
             r.setMensagem("Insira uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -42,6 +42,7 @@ public class VagaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
+
             v.setStatus(true);
             v.setEmpresa(e);
             v.setDataPublicacao(LocalDate.now());
@@ -59,11 +60,11 @@ public class VagaService {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        } else if(!(empRep.existsById(e.getId()))){
+        }else if(!(empRep.existsById(e.getId()))){
             r.setMensagem("Empresa não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        } else if(v.getSalario() < 0){
+        }else if(v.getSalario() < 0){
             r.setMensagem("Insira um valor válido para o salário!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         
@@ -72,6 +73,7 @@ public class VagaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }else{
+
             v.setStatus(true);
             v.setEmpresa(e);
             vagRep.save(v);
@@ -88,7 +90,8 @@ public class VagaService {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else{
+        }else{
+
             Vaga vag = vagRep.findById(id);
             vagRep.delete(vag);
             r.setMensagem("Vaga removida com sucesso!");

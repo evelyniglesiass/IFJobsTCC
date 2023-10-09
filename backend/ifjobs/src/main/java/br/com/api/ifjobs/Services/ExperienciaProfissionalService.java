@@ -34,9 +34,9 @@ public class ExperienciaProfissionalService {
         } else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-        }
 
-        else{
+        }else{
+
             e.setCurriculo(c);
             expRep.save(e);
             c.getExpProf().add(e);
@@ -53,15 +53,16 @@ public class ExperienciaProfissionalService {
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        } else if(!(curRep.existsById(c.getId()))){
+        }else if(!(curRep.existsById(c.getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+        }else if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        } else{
+        }else{
+
             e.setCurriculo(c);
             expRep.save(e);
             r.setMensagem("Edição feita com sucesso!");
@@ -76,12 +77,12 @@ public class ExperienciaProfissionalService {
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else{
+        }else{
+
             ExperienciaProfissional exp = expRep.findById(id);
             expRep.delete(exp);
             r.setMensagem("Experiência Profissional removida com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
         }
     }
     

@@ -29,19 +29,19 @@ public class CurriculoService {
         
         if(!(estRep.existsById(e.getId()))){
             r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }else if(curRep.validarCurriculo(e.getId()) != 0){
             r.setMensagem("Esse usuário já possui um currículo!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }else{
+
             c.setEstudante(e);
             e.setCurriculo(c);
             curRep.save(c);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-            
         }
         
     }
@@ -51,13 +51,14 @@ public class CurriculoService {
         
         if(!(curRep.existsById(c.getId()))){
             r.setMensagem("Currículo não encontrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else if(!(estRep.existsById(e.getId()))){
+        }else if(!(estRep.existsById(e.getId()))){
             r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else{
+        }else{
+
             c.setEstudante(e);
             // e.setCurriculo(c); necessário? dá erro com ele
             curRep.save(c);
@@ -74,9 +75,9 @@ public class CurriculoService {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } else if(!(estRep.existsById(e.getId()))){
+        }else if(!(estRep.existsById(e.getId()))){
             r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         }else{
             Curriculo cur = curRep.findById(id);

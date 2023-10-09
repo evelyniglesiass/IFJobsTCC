@@ -39,7 +39,7 @@ public class EmpresaService {
     private SenhaService ss;
     
 
-    //Método para cadastrar empresas
+    //Método para cadastrar empresas 
     public ResponseEntity<?> cadastrar(Empresa e){
 
         //pegando senha para validação
