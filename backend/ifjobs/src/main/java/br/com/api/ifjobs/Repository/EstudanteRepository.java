@@ -13,7 +13,9 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     boolean existsById (Integer id);
 
     // consultas básicas
+    @Query(value = "SELECT * FROM estudante WHERE id <> :id", nativeQuery = true) 
     Estudante findById(int id); // retornar estudante pelo id
+    
     int countById(int id); // retornar 1 se o estudante existir
 
     // validação

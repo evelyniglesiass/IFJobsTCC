@@ -41,7 +41,7 @@ public class CurriculoController {
 
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")
-    @PostMapping()
+    @PostMapping("/curriculos/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
         Estudante est = estRep.findById(estudante);
