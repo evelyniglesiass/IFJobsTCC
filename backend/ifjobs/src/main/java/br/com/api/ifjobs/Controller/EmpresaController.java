@@ -39,7 +39,7 @@ public class EmpresaController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Empresa empresa){ 
         return empSer.cadastrar(empresa); 
-    }
+    } 
 
     //edicão de empresas
     @Secured("ROLE_EMPRESA")
