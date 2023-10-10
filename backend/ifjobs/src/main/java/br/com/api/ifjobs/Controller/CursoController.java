@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +18,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.CursoDTO;
-import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Curso;
-import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.repository.CurriculoRepository;
-import br.com.api.ifjobs.repository.CursoRepository;
-import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.services.CursoService;
 
 @RestController
@@ -34,51 +28,35 @@ public class CursoController {
     
     @Autowired
     private CursoService curSer;
-
-    @Autowired
-    private CurriculoRepository curRep;
-
-    @Autowired
-    private CursoRepository cursoRep;
-
-    @Autowired
-    private EstudanteRepository estRep;
-
-    
+        
     
     //cadastro de cursos
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curso curso, @PathVariable int estudante){
-        Estudante est = estRep.findById(estudante).get();
-        Curriculo cur = curRep.findByEstudante(est);
-        return curSer.cadastrar(curso, cur);
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curso curso){
+        return curSer.cadastrar(curso);
     }
 
     //edicao de cursos
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Curso curso, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante).get();
-        Curriculo cur = curRep.findByEstudante(est);
-        return curSer.editar(curso, cur);
+    public ResponseEntity<?> editar(@Valid @RequestBody Curso curso){ 
+        return curSer.editar(curso);
     }
 
     //exclusão de cursos
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return curSer.remover(id);
+    public ResponseEntity<Resposta> remover(@RequestBody Curso curso){ 
+        return curSer.remover(curso);
     }
 
     //Listagem de cursos de um determinado currículo
-    @GetMapping("/listar/estudante/{estudante}")//ver se precisa
-    public List<CursoDTO> listarCurso(@PathVariable int estudante){
-        Estudante est = estRep.findById(estudante).get();
-        Curriculo cur = curRep.findByEstudante(est);
-        return CursoDTO.converterLista(cursoRep.listarCurso(cur.getId()));
+    @GetMapping("/listar")//ver se precisa
+    public List<CursoDTO> listarCurso(){
+        return curSer.listar();
     }
 }

@@ -1,12 +1,14 @@
 package br.com.api.ifjobs.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import br.com.api.ifjobs.models.Curriculo;
+import br.com.api.ifjobs.dto.CursoDTO;
 import br.com.api.ifjobs.models.Curso;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
@@ -57,7 +59,7 @@ public class CursoService {
     
         Estudante e = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsById(e.getCurriculo().getCursos().))){
+        if(!(curRep.existsById(c.getId()))){
             r.setMensagem("Curso não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         } 
@@ -81,18 +83,20 @@ public class CursoService {
     }
 
     //Método para remover curso
-    public ResponseEntity<Resposta> remover() {
+    public ResponseEntity<Resposta> remover(Curso curso) {
         
-        Estudante e = usuarioAutenticadoService.getEstudante();
-
-        if(!(curRep.existsById(e.getCurriculo().getCursos().get()))){
+        if(!(curRep.existsById(curso.getId()))){
             r.setMensagem("Curso não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
         }
-            Curso cur = curRep.findById(id);
+            Curso cur = curRep.findById(curso.getId()).get();
             curRep.delete(cur);
             r.setMensagem("Curso removido com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
+    }
+
+    public List<CursoDTO> listar(){
+        Estudante e = usuarioAutenticadoService.getEstudante();
+        return CursoDTO.converterLista(curRep.listarCurso(e.getCurriculo().getId()));
     }
 }

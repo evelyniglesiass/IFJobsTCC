@@ -20,7 +20,7 @@ public interface CursoRepository extends CrudRepository<Curso, Integer>{
 
     // retornar curso pelo id
     Curso findById(int id);
-
+    
     // listar curso de determinado estudante
     @Query(value = "SELECT * FROM curso WHERE curriculo_id = :curriculo", nativeQuery = true) 
     List<Curso> listarCurso(int curriculo); 

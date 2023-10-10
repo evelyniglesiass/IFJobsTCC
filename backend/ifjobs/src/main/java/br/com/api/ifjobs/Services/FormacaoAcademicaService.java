@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
-import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
@@ -80,25 +79,21 @@ public class FormacaoAcademicaService {
     }
 
     //Método para remover formacão
-    public ResponseEntity<Resposta> remover() {
-        
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
-        
-        if(!(forAcaRep.existsById(estudante.getCurriculo().getFormAcad().get()))){
+    public ResponseEntity<Resposta> remover(FormacaoAcademica f) {
+                
+        if(!(forAcaRep.existsById(f.getId()))){
             r.setMensagem("Formação acadêmica não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
         }
 
-            FormacaoAcademica forAca = forAcaRep.findById(estudante.getCurriculo().getFormAcad().get());
+            FormacaoAcademica forAca = forAcaRep.findById(f.getId()).get();
             forAcaRep.delete(forAca);
             r.setMensagem("Formação removido com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
     }
 
     public List<FormacaoAcademicaDTO> listarFormacao(int id){
-        Estudante est = estRep.findById(id).get();
-        Curriculo cur = curRep.findByEstudante(est);
-        return FormacaoAcademicaDTO.converterLista(forAcaRep.listarFormacao(cur.getId()));
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
+        return FormacaoAcademicaDTO.converterLista(forAcaRep.listarFormacao(estudante.getCurriculo().getId()));
     }
 }

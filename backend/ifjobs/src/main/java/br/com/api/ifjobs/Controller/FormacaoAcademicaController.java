@@ -50,8 +50,8 @@ public class FormacaoAcademicaController {
     @Secured("ROLE_EMPRESA")
     @DeleteMapping()
     @ResponseStatus(HttpStatus.OK) 
-    public ResponseEntity<Resposta> remover(){ 
-        return formAcaSer.remover();
+    public ResponseEntity<Resposta> remover(@RequestBody FormacaoAcademica formacao){ 
+        return formAcaSer.remover(formacao);
     }
 
     //Listagem de formacões academicas de um determinado currículo

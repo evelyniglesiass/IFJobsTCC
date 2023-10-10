@@ -60,7 +60,7 @@ public class ExperienciaProfissionalService {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(expRep.existsById(estudante.getCurriculo().getFormAcad().get()))){
+        if(!(expRep.existsById(e.getId()))){
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -82,16 +82,14 @@ public class ExperienciaProfissionalService {
     }
 
     // método para remover experiencia
-    public ResponseEntity<Resposta> remover() {
+    public ResponseEntity<Resposta> remover(ExperienciaProfissional e) {
         
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
-
-        if(!(expRep.existsById(estudante.getCurriculo().getExpProf().get()))){
+        if(!(expRep.existsById(e.getId()))){
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-            ExperienciaProfissional exp = expRep.findById(estudante.getCurriculo().getExpProf().get());
+            ExperienciaProfissional exp = expRep.findById(e.getId()).get();
             expRep.delete(exp);
             r.setMensagem("Experiência Profissional removida com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
@@ -99,7 +97,7 @@ public class ExperienciaProfissionalService {
 
     public List<ExperienciaProfissionalDTO> listarExperiencia(){
         Estudante estudante = usuarioAutenticadoService.getEstudante();
-        Curriculo cur = curRep.findById(estudante.getCurriculo().getExpProf().get());
+        Curriculo cur = curRep.findById(estudante.getCurriculo().getId()).get();
         return ExperienciaProfissionalDTO.converterLista(expRep.listarExperiencia(cur.getId()));
     }
     
