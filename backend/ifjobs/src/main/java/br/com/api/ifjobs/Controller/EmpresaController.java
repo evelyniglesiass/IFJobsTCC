@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.EmpresaDTO;
 import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.services.EmpresaService;
 
 @RestController
@@ -30,9 +29,6 @@ public class EmpresaController {
     
     @Autowired
     private EmpresaService empSer;
-
-    @Autowired
-    private EmpresaRepository empRep;
 
     //cadastro de empresas
     @PostMapping()
@@ -51,37 +47,36 @@ public class EmpresaController {
 
     //exclusão de empresa
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return empSer.remover(id);
+    public ResponseEntity<Resposta> remover(){ 
+        return empSer.remover();
     }
 
     //pesquisa de empresas por nome
     @GetMapping("/listar/pesquisa/{nome}")
     public List<EmpresaDTO> listarPesquisa(@PathVariable String nome) {
-        return EmpresaDTO.converterLista(empRep.findByNomeContains(nome)); 
+        return empSer.listarPorNome(nome);
    }
-
-    //listar empresa expecífica
-    @GetMapping("/listar/id/{id}")
-    public List<EmpresaDTO> listarId(@PathVariable int id){
-        return EmpresaDTO.converterLista(empRep.findAllById(id));
-    }
 
     //listagem de empresas (onde a própia empresa não aparece)
     @Secured("ROLE_EMPRESA")
-    @GetMapping("/listar/{id}")
-    public List<EmpresaDTO> listarEmpresas(@PathVariable int id) {
-        return EmpresaDTO.converterLista(empRep.listarEmpresas(id));
-
+    @GetMapping("/listar/empresa")
+    public List<EmpresaDTO> listarTodosEmpresa() {
+        return empSer.listarTodosEmpresa();
     }
 
     //listagem de empresas (visão do estudante)
     @Secured("ROLE_ESTUDANTE")
-    @GetMapping("/listar")
+    @GetMapping("/listar/estudante")
     public List<EmpresaDTO> listarTodas() {
-        return EmpresaDTO.converterLista(empRep.findAll());
+        return empSer.listarTodosEstudante();
+    }
 
+    // listar empresa expecífico
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @GetMapping("/listar/id/{id}")
+    public List<EmpresaDTO> listarId(@PathVariable int id) {
+        return empSer.listarPorId(id);
     }
 }

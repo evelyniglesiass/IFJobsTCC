@@ -15,8 +15,8 @@ server:
 logging:
   pattern:
     console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
-  #level:
-    #org.hibernate.SQL: DEBUG
-    #org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    #org.springframework.web.servlet: DEBUG
-    #org.springframework.security: DEBUG
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.web.servlet: DEBUG
+    org.springframework.security: DEBUG

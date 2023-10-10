@@ -19,11 +19,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.VagaDTO;
-import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
-import br.com.api.ifjobs.repository.EmpresaRepository;
-import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.VagaService;
  
 @RestController
@@ -31,59 +28,48 @@ import br.com.api.ifjobs.services.VagaService;
 public class VagaController {
 
     @Autowired 
-    private VagaRepository vagRep; 
-
-    @Autowired 
     private VagaService vagSer; 
-
-    @Autowired
-    private EmpresaRepository empRep;
 
     // cadastrar vaga
     @Secured("ROLE_EMPRESA")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
-        Empresa emp = empRep.findById(empresa);
-        return vagSer.cadastrar(vaga, emp);
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Vaga vaga){ 
+        return vagSer.cadastrar(vaga);
     }
 
     // editar vaga
     @Secured("ROLE_EMPRESA")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga, @PathVariable int empresa){ 
-        Empresa emp = empRep.findById(empresa);
-        return vagSer.cadastrar(vaga, emp);
+    public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga){ 
+        return vagSer.cadastrar(vaga);
     }
 
     // excluir vaga
     @Secured("ROLE_EMPRESA")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return vagSer.remover(id);
+    public ResponseEntity<Resposta> remover(@RequestBody Vaga vaga){ 
+        return vagSer.remover(vaga);
     }
 
     // listar todas as vagas
     @GetMapping("/listar")
-    public List<VagaDTO> listarVagaCurso() {
-        return VagaDTO.converterLista(vagRep.listarVagas());
-
+    public List<VagaDTO> listarTodas() {
+        return vagSer.listarTodas();
     }
 
     // listar vagas de uma empresa
-    @GetMapping("/listar/empresa/{empresa}")
-    public List<VagaDTO> listarId(@PathVariable int empresa) {
-        return VagaDTO.converterLista(vagRep.listarVagasEmpresa(empresa));
-
+    @GetMapping("/listar/{id}")
+    public List<VagaDTO> listarId(@PathVariable int id) {
+        return vagSer.listarPorEmpresa(id);
     }
 
     // pesquisa por titulo
-    @GetMapping("/listar/pesquisa/{titulo}")
+    @GetMapping("/listar/{titulo}")
     public List<VagaDTO> listarPesquisa(@PathVariable String titulo) {
-        return VagaDTO.converterLista(vagRep.findByTituloContains(titulo));
-
+        return vagSer.listarPorTitulo(titulo);
     }
 
 }

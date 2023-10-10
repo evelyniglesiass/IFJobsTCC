@@ -19,13 +19,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
-import br.com.api.ifjobs.models.Curriculo;
-import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.repository.CurriculoRepository;
-import br.com.api.ifjobs.repository.EstudanteRepository;
-import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
 
 @RestController
@@ -34,49 +29,34 @@ public class FormacaoAcademicaController {
     
     @Autowired
     private FormacaoAcademicaService formAcaSer;
-
-    @Autowired
-    private FormacaoAcademicaRepository formAcaRep;
-
-    @Autowired
-    private EstudanteRepository estRep;
-
-    @Autowired
-    private CurriculoRepository curRep;
     
     //cadastro de formacões academicas
     @Secured("ROLE_EMPRESA")
-    @PostMapping("/{id}")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return formAcaSer.cadastrar(formacaoAcademica, cur);
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademica formacaoAcademica){
+        return formAcaSer.cadastrar(formacaoAcademica);
     }
 
     //edicao de formacões academicas
     @Secured("ROLE_EMPRESA")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademica formacaoAcademica, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return formAcaSer.editar(formacaoAcademica, cur);
+    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademica formacaoAcademica){ 
+        return formAcaSer.editar(formacaoAcademica);
     }
 
     //exclusão de formacões academicas
     @Secured("ROLE_EMPRESA")
     @DeleteMapping()
     @ResponseStatus(HttpStatus.OK) 
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return formAcaSer.remover(id);
+    public ResponseEntity<Resposta> remover(){ 
+        return formAcaSer.remover();
     }
 
     //Listagem de formacões academicas de um determinado currículo
-    @GetMapping("/listar/estudante/{estudante}")//ver se precisa
+    @GetMapping("/listar")
     public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return FormacaoAcademicaDTO.converterLista(formAcaRep.listarFormacao(cur.getId()));
+        return formAcaSer.listarFormacao(estudante);
     }
 }

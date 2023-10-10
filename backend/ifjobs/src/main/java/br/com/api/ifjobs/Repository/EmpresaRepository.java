@@ -23,9 +23,6 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     //encontrar por email
     Empresa findByEmail(String email);
 
-    //retorna empresa por id
-    Empresa findById(int id);
-
     //listar empresa por nome
     List<Empresa> findByNomeContains(String nome); 
 

@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +18,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.ExperienciaProfissionalDTO;
-import br.com.api.ifjobs.models.Curriculo; 
-import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.ExperienciaProfissional;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.repository.CurriculoRepository;
-import br.com.api.ifjobs.repository.EstudanteRepository;
-import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.services.ExperienciaProfissionalService;
 
 @RestController
@@ -33,52 +27,36 @@ import br.com.api.ifjobs.services.ExperienciaProfissionalService;
 public class ExperienciaProfissionalController {
 
     @Autowired
-    private ExperienciaProfissionalRepository expRep;
-
-    @Autowired
     private ExperienciaProfissionalService expSer;
-
-    @Autowired
-    private CurriculoRepository curRep;
-
-    @Autowired
-    private EstudanteRepository estRep;
 
     // cadastrar experiência
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return expSer.cadastrar(experiencia, cur);
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia){ 
+        return expSer.cadastrar(experiencia);
     }
 
     // editar experiência
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return expSer.editar(experiencia, cur); 
+    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia){ 
+        return expSer.editar(experiencia); 
     }
 
     // excluir experiência
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return expSer.remover(id);
+    public ResponseEntity<Resposta> remover(){ 
+        return expSer.remover();
     }
 
     // listar experiências de um determinado currículo
-    @GetMapping()
-    public List<ExperienciaProfissionalDTO> listarExperincia(@PathVariable int estudante) {
-        Estudante est = estRep.findById(estudante);
-        Curriculo cur = curRep.findByEstudante(est);
-        return ExperienciaProfissionalDTO.converterLista(expRep.listarExperiencia(cur.getId()));
-
+    @GetMapping("/listar")
+    public List<ExperienciaProfissionalDTO> listarExperincia() {
+        return expSer.listarExperiencia();
     }
     
 }

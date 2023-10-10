@@ -25,7 +25,6 @@ public interface CursoRepository extends CrudRepository<Curso, Integer>{
     @Query(value = "SELECT * FROM curso WHERE curriculo_id = :curriculo", nativeQuery = true) 
     List<Curso> listarCurso(int curriculo); 
 
-
     //List<Curso> findByNomeContains(String nome); // listar cursos em uma pesquisa
 
     //List<Curso> findAll();// listar cursos

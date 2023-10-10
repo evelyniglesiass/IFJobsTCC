@@ -43,13 +43,15 @@ public class CursoController {
 
     @Autowired
     private EstudanteRepository estRep;
+
+    
     
     //cadastro de cursos
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Curso curso, @PathVariable int estudante){
-        Estudante est = estRep.findById(estudante);
+        Estudante est = estRep.findById(estudante).get();
         Curriculo cur = curRep.findByEstudante(est);
         return curSer.cadastrar(curso, cur);
     }
@@ -59,7 +61,7 @@ public class CursoController {
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> editar(@Valid @RequestBody Curso curso, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
+        Estudante est = estRep.findById(estudante).get();
         Curriculo cur = curRep.findByEstudante(est);
         return curSer.editar(curso, cur);
     }
@@ -75,7 +77,7 @@ public class CursoController {
     //Listagem de cursos de um determinado currículo
     @GetMapping("/listar/estudante/{estudante}")//ver se precisa
     public List<CursoDTO> listarCurso(@PathVariable int estudante){
-        Estudante est = estRep.findById(estudante);
+        Estudante est = estRep.findById(estudante).get();
         Curriculo cur = curRep.findByEstudante(est);
         return CursoDTO.converterLista(cursoRep.listarCurso(cur.getId()));
     }

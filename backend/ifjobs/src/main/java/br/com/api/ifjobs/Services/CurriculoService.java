@@ -6,11 +6,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import br.com.api.ifjobs.dto.CurriculoDTO;
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
-import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
  
 @Service
 public class CurriculoService {
@@ -19,74 +20,76 @@ public class CurriculoService {
     private CurriculoRepository curRep; 
 
     @Autowired
-    private EstudanteRepository estRep; 
-
-    @Autowired
     private Resposta r;
 
+    @Autowired
+    private UsuarioAutenticadoService usuarioAutenticadoService;
+
     // método para cadastrar curriculos
-    public ResponseEntity<?> cadastrar(Curriculo c, Estudante e){
+    public ResponseEntity<?> cadastrar(Curriculo c){
+
+        Estudante e = usuarioAutenticadoService.getEstudante();
         
-        if(!(estRep.existsById(e.getId()))){
-            r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        }else if(curRep.validarCurriculo(e.getId()) != 0){
+        if(curRep.existsById(e.getCurriculo().getId())){
             r.setMensagem("Esse usuário já possui um currículo!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
-
-        }else{
+        }
 
             c.setEstudante(e);
             e.setCurriculo(c);
             curRep.save(c);
             r.setMensagem("Cadastro feito com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.CREATED);
-        }
         
     }
 
     // método para editar curriculos 
-    public ResponseEntity<?> editar(Curriculo c, Estudante e){
+    public ResponseEntity<?> editar(Curriculo c){
+
+        Estudante e = usuarioAutenticadoService.getEstudante();// ver se precisa find by id
         
-        if(!(curRep.existsById(c.getId()))){
+        if(!(curRep.existsById(e.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
-        }else if(!(estRep.existsById(e.getId()))){
-            r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
-        }else{
-
+        }
+            c = e.getCurriculo();
             c.setEstudante(e);
             // e.setCurriculo(c); necessário? dá erro com ele
             curRep.save(c);
             r.setMensagem("Edição feita com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-        }
         
     }
 
     // método para remover curriculo
-    public ResponseEntity<Resposta> remover(int id, Estudante e) {
+    public ResponseEntity<Resposta> remover() {
         
-        if(!(curRep.existsById(id))){
+        Estudante e = usuarioAutenticadoService.getEstudante();
+
+        if(!(curRep.existsById(e.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+        }
 
-        }else if(!(estRep.existsById(e.getId()))){
-            r.setMensagem("Estudante não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-
-        }else{
-            Curriculo cur = curRep.findById(id);
             e.setCurriculo(null);
-            curRep.delete(cur);
+            curRep.deleteById(e.getCurriculo().getId());
             r.setMensagem("Currículo removido com sucesso!");
             return new ResponseEntity<>(r, HttpStatus.OK);
-
-        }
     }
     
+
+    //listar
+    public CurriculoDTO listar(){
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
+
+        Curriculo curriculo = curRep.findByEstudante(estudante);
+
+        return CurriculoDTO
+            .builder()
+            .id(curriculo.getId())
+            .idiomas(curriculo.getIdiomas())
+            .resumo(curriculo.getResumo())
+            .habilidades(curriculo.getHabilidades())    
+            .build();
+    }
 }

@@ -1,7 +1,5 @@
 package br.com.api.ifjobs.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,10 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.CurriculoDTO;
 import br.com.api.ifjobs.models.Curriculo;
-import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.repository.CurriculoRepository;
-import br.com.api.ifjobs.repository.EstudanteRepository; 
 import br.com.api.ifjobs.services.CurriculoService;
 
 @RestController
@@ -31,31 +25,23 @@ import br.com.api.ifjobs.services.CurriculoService;
 public class CurriculoController {
 
     @Autowired
-    private CurriculoRepository curRep;
-
-    @Autowired
     private CurriculoService curSer;
 
-    @Autowired 
-    private EstudanteRepository estRep;
 
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")
-    @PostMapping("/curriculos/{id}")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        return curSer.cadastrar(c, est);
-
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c){ 
+        return curSer.cadastrar(c);
     }
 
     // editar currículo
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        return curSer.editar(c, est);
+    public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c){ 
+        return curSer.editar(c);
 
     }
 
@@ -63,17 +49,19 @@ public class CurriculoController {
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id, @PathVariable int estudante){ 
-        Estudante est = estRep.findById(estudante);
-        return curSer.remover(id, est);
+    public ResponseEntity<Resposta> remover(){ 
+        //Estudante est = estRep.findById(estudante).get();
+        return curSer.remover();
 
     }
 
     // listar currículo de um estudante
+    @Secured("ROLE_ESTUDANTE")
     @GetMapping("/listar/{estudante}")
-    public List<CurriculoDTO> listarId(@PathVariable int estudante) {
-        return CurriculoDTO.converterLista(curRep.listarCurriculo(estudante));
+    @ResponseStatus(HttpStatus.OK)
+    public CurriculoDTO consultarCurriculo() {
 
+        return curSer.listar();
     }
     
 }

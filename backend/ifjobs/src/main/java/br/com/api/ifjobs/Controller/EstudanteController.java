@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.models.Vaga;
-import br.com.api.ifjobs.repository.EstudanteRepository;
-import br.com.api.ifjobs.repository.VagaRepository;
 import br.com.api.ifjobs.services.EstudanteService;
 
 @RestController
@@ -32,12 +29,6 @@ public class EstudanteController {
 
     @Autowired
     private EstudanteService estSer;
-
-    @Autowired
-    private EstudanteRepository estRep;
-
-    @Autowired
-    private VagaRepository vagRep;
 
     // cadastrar estudante
     @PostMapping()
@@ -58,47 +49,43 @@ public class EstudanteController {
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
-        return estSer.remover(id);
+    public ResponseEntity<Resposta> remover(){ 
+        return estSer.remover();
     }
 
     // listagem todos estudantes (visão da empresa)
     @Secured("ROLE_EMPRESA")
-    @GetMapping("/listar")
-    public List<EstudanteDTO> listarTodos() {
-        return EstudanteDTO.converterLista(estRep.findAll());
-
+    @GetMapping("/listar/empresa")
+    public List<EstudanteDTO> listarTodosEmpresa() {
+        return estSer.listarTodosEmpresa();
     }
 
     // listagem de estudantes (visão estudante onde ele proprio não aparece)
     @Secured("ROLE_ESTUDANTE")
-    @GetMapping("/listar/{id}")
-    public List<EstudanteDTO> listarEstudantes(@PathVariable int id) {
-        return EstudanteDTO.converterLista(estRep.listarEstudantes(id));
-
+    @GetMapping("/listar/estudante")
+    public List<EstudanteDTO> listarTodosEstudante() {
+        return estSer.listarTodosEstudante();
     }
 
     // pesquisa por nome
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/pesquisa/{nome}")
     public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
-        return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
-
+        return estSer.listarPorNome(nome);
     }
 
     // listar estudante expecífico
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/id/{id}")
     public List<EstudanteDTO> listarId(@PathVariable int id) {
-        return EstudanteDTO.converterLista(estRep.listarEstudante(id));
-
+        return estSer.listarPorId(id);
     }
 
     // candidatura
     @Secured("ROLE_ESTUDANTE")
-    @PutMapping("/candidatura/{estudante}/{vaga}")
-    public ResponseEntity<?> candidatura(@PathVariable int estudante, @PathVariable int vaga){ 
-        Estudante est = estRep.findById(estudante);
-        Vaga vag = vagRep.findById(vaga);
-        return estSer.candidatura(est, vag);
+    @PutMapping("/candidatura/{vaga}")
+    public ResponseEntity<?> candidatura(@PathVariable int vaga){ 
+        return estSer.candidatura(vaga);
 
     }
   
