@@ -47,7 +47,7 @@ public class EmpresaController {
 
     //exclusão de empresa
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping
+    @DeleteMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(){ 
         return empSer.remover();

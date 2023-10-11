@@ -35,29 +35,30 @@ public class CurriculoService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
-            c.setEstudante(e);
-            e.setCurriculo(c);
-            curRep.save(c);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        c.setEstudante(e);
+        e.setCurriculo(c);
+        curRep.save(c);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
         
     }
 
     // método para editar curriculos 
     public ResponseEntity<?> editar(Curriculo c){
 
-        Estudante e = usuarioAutenticadoService.getEstudante();// ver se precisa find by id
+        Estudante e = usuarioAutenticadoService.getEstudante(); // ver se precisa find by id
         
         if(!(curRep.existsById(e.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-            c = e.getCurriculo();
-            c.setEstudante(e);
-            // e.setCurriculo(c); necessário? dá erro com ele
-            curRep.save(c);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        // e.setCurriculo(c); necessário? dá erro com ele
+        e.setCurriculo(c);
+        c.setEstudante(e);
+        curRep.save(c);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
         
     }
 
@@ -71,18 +72,20 @@ public class CurriculoService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-            e.setCurriculo(null);
-            curRep.deleteById(e.getCurriculo().getId());
-            r.setMensagem("Currículo removido com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        e.setCurriculo(null);
+        curRep.deleteById(e.getCurriculo().getId());
+        r.setMensagem("Currículo removido com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
     
 
     //listar
     public CurriculoDTO listar(){
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        Curriculo curriculo = curRep.findByEstudante(estudante);
+        Estudante e = usuarioAutenticadoService.getEstudante();
+
+        Curriculo curriculo = curRep.findByEstudante(e);
 
         return CurriculoDTO
             .builder()
@@ -91,5 +94,6 @@ public class CurriculoService {
             .resumo(curriculo.getResumo())
             .habilidades(curriculo.getHabilidades())    
             .build();
+
     }
 }

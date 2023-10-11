@@ -48,9 +48,11 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         } 
 
-            fa.setCurriculo(estudante.getCurriculo());
-            forAcaRep.save(fa);
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        // adc fa no curriculo aq n?
+        fa.setCurriculo(estudante.getCurriculo());
+        forAcaRep.save(fa);
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+
     }
 
 
@@ -73,9 +75,11 @@ public class FormacaoAcademicaService {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
-            fa.setCurriculo(estudante.getCurriculo());
-            forAcaRep.save(fa);
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        fa.setCurriculo(estudante.getCurriculo());
+        forAcaRep.save(fa);
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     //Método para remover formacão
@@ -86,14 +90,16 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-            FormacaoAcademica forAca = forAcaRep.findById(f.getId()).get();
-            forAcaRep.delete(forAca);
-            r.setMensagem("Formação removido com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        FormacaoAcademica forAca = forAcaRep.findById(f.getId()).get(); // p que?
+        forAcaRep.delete(forAca);
+        r.setMensagem("Formação removido com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     public List<FormacaoAcademicaDTO> listarFormacao(int id){
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         return FormacaoAcademicaDTO.converterLista(forAcaRep.listarFormacao(estudante.getCurriculo().getId()));
     }
+
 }

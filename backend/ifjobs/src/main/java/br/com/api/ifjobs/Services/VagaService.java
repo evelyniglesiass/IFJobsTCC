@@ -53,12 +53,14 @@ public class VagaService {
 
         }
 
-            v.setStatus(true);
-            v.setEmpresa(empresa);
-            v.setDataPublicacao(LocalDate.now());
-            vagRep.save(v);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        // add vaga a empresa
+        v.setStatus(true);
+        v.setEmpresa(empresa);
+        v.setDataPublicacao(LocalDate.now());
+        vagRep.save(v);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+
     }
 
     // método para editar vagas
@@ -87,11 +89,11 @@ public class VagaService {
 
         }
 
-            v.setStatus(true);
-            v.setEmpresa(empresa);
-            vagRep.save(v);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        v.setStatus(true);
+        v.setEmpresa(empresa);
+        vagRep.save(v);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
         
     }
 
@@ -104,23 +106,24 @@ public class VagaService {
 
         }
 
-            Vaga v = vagRep.findById(vaga.getId()).get();
-            vagRep.delete(v);
-            r.setMensagem("Vaga removida com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        Vaga v = vagRep.findById(vaga.getId()).get(); // p que?
+        vagRep.delete(v);
+        r.setMensagem("Vaga removida com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
-    //listar todas as vagas disponiveis
+    // listar todas as vagas disponiveis
     public List<VagaDTO> listarTodas(){
         return VagaDTO.converterLista(vagRep.listarVagas());
     }
 
-    //listar vags de uma empresa
+    // listar vags de uma empresa
     public List<VagaDTO> listarPorEmpresa(int id){
         return VagaDTO.converterLista(vagRep.listarVagasEmpresa(id));
     }
 
-    //pesquisar por titulo da vaga
+    // pesquisar por titulo da vaga
     public List<VagaDTO> listarPorTitulo(String titulo){
         return VagaDTO.converterLista(vagRep.findByTituloContains(titulo));
     }

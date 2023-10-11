@@ -50,11 +50,12 @@ public class FormacaoAcademicaController {
     @Secured("ROLE_EMPRESA")
     @DeleteMapping()
     @ResponseStatus(HttpStatus.OK) 
-    public ResponseEntity<Resposta> remover(@RequestBody FormacaoAcademica formacao){ 
+    public ResponseEntity<Resposta> remover(@RequestBody FormacaoAcademica formacao){ // p que?
         return formAcaSer.remover(formacao);
     }
 
     //Listagem de formacões academicas de um determinado currículo
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar")
     public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
         return formAcaSer.listarFormacao(estudante);

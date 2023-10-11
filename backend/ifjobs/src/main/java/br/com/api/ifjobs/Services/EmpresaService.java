@@ -63,11 +63,12 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
-            e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
-            e.setSenha(passwordEncoder.encode(e.getSenha()));
-            empRep.save(e);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
+        e.setSenha(passwordEncoder.encode(e.getSenha()));
+        empRep.save(e);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+        
     }
 
     //Método para editar empresas
@@ -98,9 +99,10 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
-            empRep.save(empresa);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        empRep.save(empresa);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     //Método para remover empresa
@@ -108,10 +110,11 @@ public class EmpresaService {
         
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
 
-        Empresa emp = empRep.findById(empresa.getId()).get();
+        Empresa emp = empRep.findById(empresa.getId()).get(); // p que? 
         empRep.delete(emp);
         r.setMensagem("Empresa removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     //pesquisa por nome
@@ -132,7 +135,9 @@ public class EmpresaService {
 
     //listar empresa especifica por id
     public List<EmpresaDTO> listarPorId(int id){
+
         Empresa e = empRep.findById(id).get();
+
         return EstudanteDTO
             .builder()
             .id(e.getId())
@@ -144,6 +149,7 @@ public class EmpresaService {
             .telefone(e.getTelefone())
             .senha(e.getSenha())
             .build();
+
     }
 
 }

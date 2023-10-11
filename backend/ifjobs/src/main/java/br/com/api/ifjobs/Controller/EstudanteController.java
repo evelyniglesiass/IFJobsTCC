@@ -88,5 +88,13 @@ public class EstudanteController {
         return estSer.candidatura(vaga);
 
     }
+
+    // remover candidatura
+    @Secured("ROLE_ESTUDANTE")
+    @PutMapping("/remover/candidatura/{vaga}")
+    public ResponseEntity<?> removerCandidatura(@PathVariable int vaga){ 
+        return estSer.removerCandidatura(vaga);
+
+    }
   
 }

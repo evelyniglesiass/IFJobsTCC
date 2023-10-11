@@ -74,18 +74,21 @@ public class EstudanteService {
 
         }
 
-            e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
-            e.setSenha(passwordEncoder.encode(e.getSenha()));
+        e.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
+        e.setSenha(passwordEncoder.encode(e.getSenha()));
 
-            estRep.save(e);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        estRep.save(e);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+
     }
 
     // método para editar estudantes
     public ResponseEntity<?> editar(Estudante e){
 
-        //Estudante estudante = usuarioAutenticadoService.getEstudante();
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
+
+        e.setId(estudante.getId()); // acho q assim da
 
         ss.setSenha(e.getSenha());
 
@@ -118,9 +121,11 @@ public class EstudanteService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
-            estRep.save(e);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        estRep.save(e);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     // método para remover estudante
@@ -133,10 +138,43 @@ public class EstudanteService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }
-            Estudante est = estRep.findById(estudante.getId()).get();
-            estRep.delete(est);
-            r.setMensagem("Estudante removido com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        Estudante e = estRep.findById(estudante.getId()).get(); // p que?
+        estRep.delete(e);
+        r.setMensagem("Estudante removido com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
+    }
+
+    public List<EstudanteDTO> listarTodosEmpresa(){
+        return EstudanteDTO.converterLista(estRep.findAll());
+    }
+
+    public List<EstudanteDTO> listarTodosEstudante(){
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
+        return EstudanteDTO.converterLista(estRep.listarEstudantes(estudante.getId()));
+    }
+
+    public List<EstudanteDTO> listarPorNome(String nome){
+        return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
+    }
+
+    public List<EstudanteDTO> listarPorId(int id){
+
+        Estudante e = estRep.findById(id).get();
+
+        return EstudanteDTO
+            .builder()
+            .id(e.getId())
+            .nome(e.getNome())
+            .idade(e.getIdade())
+            .nomeUsuario(e.getNomeUsuario())
+            .email(e.getEmail())
+            .senha(e.getSenha())
+            .telefone(e.getTelefone())
+            .cidade(e.getCidade())
+            .build();
+
     }
 
     // método para candidatura
@@ -156,16 +194,19 @@ public class EstudanteService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }
-            estudante.getVagas().add(vaga);
-            vaga.getEstudantes().add(estudante);
-            r.setMensagem("Candidatura realizada com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        estudante.getVagas().add(vaga);
+        vaga.getEstudantes().add(estudante);
+        r.setMensagem("Candidatura realizada com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     // método para remover candidatura
-    public ResponseEntity<Resposta> removerCandidatura(Estudante e, Vaga v) {
+    public ResponseEntity<Resposta> removerCandidatura(int v) {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
+        Vaga vaga = vagRep.findById(v).get();
 
         if(!(estRep.existsById(estudante.getId()))){
             r.setMensagem("Usuário não encontrado!");
@@ -173,42 +214,17 @@ public class EstudanteService {
             
         }
         
-        if(!(vagRep.existsById(v.getId()))){
+        if(!(vagRep.existsById(vaga.getId()))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }
-            e.getVagas().remove(v);
-            v.getEstudantes().remove(e);
-            r.setMensagem("Candidatura removida com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        estudante.getVagas().remove(vaga);
+        vaga.getEstudantes().remove(estudante);
+        r.setMensagem("Candidatura removida com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
-    public List<EstudanteDTO> listarTodosEmpresa(){
-        return EstudanteDTO.converterLista(estRep.findAll());
-    }
-
-    public List<EstudanteDTO> listarTodosEstudante(){
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
-        return EstudanteDTO.converterLista(estRep.listarEstudantes(estudante.getId()));
-    }
-
-    public List<EstudanteDTO> listarPorNome(String nome){
-        return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
-    }
-
-    public List<EstudanteDTO> listarPorId(int id){
-        Estudante e = estRep.findById(id).get();
-        return EstudanteDTO
-            .builder()
-            .id(e.getId())
-            .nome(e.getNome())
-            .idade(e.getIdade())
-            .nomeUsuario(e.getNomeUsuario())
-            .email(e.getEmail())
-            .senha(e.getSenha())
-            .telefone(e.getTelefone())
-            .cidade(e.getCidade())
-            .build();
-    }
 }

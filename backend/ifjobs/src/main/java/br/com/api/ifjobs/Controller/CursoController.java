@@ -28,7 +28,6 @@ public class CursoController {
     
     @Autowired
     private CursoService curSer;
-        
     
     //cadastro de cursos
     @Secured("ROLE_ESTUDANTE")
@@ -54,8 +53,9 @@ public class CursoController {
         return curSer.remover(curso);
     }
 
-    //Listagem de cursos de um determinado currículo
-    @GetMapping("/listar")//ver se precisa
+    //listagem de cursos de um determinado currículo
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @GetMapping("/listar") // ver se precisa
     public List<CursoDTO> listarCurso(){
         return curSer.listar();
     }

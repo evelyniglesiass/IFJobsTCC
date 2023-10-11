@@ -48,11 +48,12 @@ public class ExperienciaProfissionalService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
 
-            e.setCurriculo(estudante.getCurriculo());
-            expRep.save(e);
-            estudante.getCurriculo().getExpProf().add(e);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+        e.setCurriculo(estudante.getCurriculo());
+        expRep.save(e);
+        estudante.getCurriculo().getExpProf().add(e);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+
     }
 
     // método para editar experiencia profissional
@@ -75,10 +76,11 @@ public class ExperienciaProfissionalService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
 
-            e.setCurriculo(estudante.getCurriculo());
-            expRep.save(e);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        e.setCurriculo(estudante.getCurriculo());
+        expRep.save(e);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     // método para remover experiencia
@@ -89,16 +91,20 @@ public class ExperienciaProfissionalService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-            ExperienciaProfissional exp = expRep.findById(e.getId()).get();
-            expRep.delete(exp);
-            r.setMensagem("Experiência Profissional removida com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        ExperienciaProfissional exp = expRep.findById(e.getId()).get(); // p que?
+        expRep.delete(exp);
+        r.setMensagem("Experiência Profissional removida com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     public List<ExperienciaProfissionalDTO> listarExperiencia(){
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
-        Curriculo cur = curRep.findById(estudante.getCurriculo().getId()).get();
+        Curriculo cur = curRep.findById(estudante.getCurriculo().getId()).get()
+        ;
         return ExperienciaProfissionalDTO.converterLista(expRep.listarExperiencia(cur.getId()));
+
     }
     
 }

@@ -47,11 +47,13 @@ public class CursoService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
-            c.setCurriculo(e.getCurriculo());
-            e.getCurriculo().getCursos().add(c);
-            curRep.save(c);
-            r.setMensagem("Cadastro feito com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.CREATED);
+
+        c.setCurriculo(e.getCurriculo());
+        e.getCurriculo().getCursos().add(c);
+        curRep.save(c);
+        r.setMensagem("Cadastro feito com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.CREATED);
+
     }
 
     //Método para editar cursos
@@ -76,10 +78,11 @@ public class CursoService {
 
         } 
 
-            c.setCurriculo(e.getCurriculo());
-            curRep.save(c);
-            r.setMensagem("Edição feita com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+        c.setCurriculo(e.getCurriculo());
+        curRep.save(c);
+        r.setMensagem("Edição feita com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     //Método para remover curso
@@ -89,14 +92,18 @@ public class CursoService {
             r.setMensagem("Curso não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-            Curso cur = curRep.findById(curso.getId()).get();
-            curRep.delete(cur);
-            r.setMensagem("Curso removido com sucesso!");
-            return new ResponseEntity<>(r, HttpStatus.OK);
+
+        Curso cur = curRep.findById(curso.getId()).get();
+        curRep.delete(cur);
+        r.setMensagem("Curso removido com sucesso!");
+        return new ResponseEntity<>(r, HttpStatus.OK);
+
     }
 
     public List<CursoDTO> listar(){
+
         Estudante e = usuarioAutenticadoService.getEstudante();
         return CursoDTO.converterLista(curRep.listarCurso(e.getCurriculo().getId()));
+
     }
 }

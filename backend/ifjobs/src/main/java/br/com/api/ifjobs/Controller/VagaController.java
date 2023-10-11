@@ -50,23 +50,26 @@ public class VagaController {
     @Secured("ROLE_EMPRESA")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@RequestBody Vaga vaga){ 
+    public ResponseEntity<Resposta> remover(@RequestBody Vaga vaga){ // p que? melhor pegar da url não?
         return vagSer.remover(vaga);
     }
 
     // listar todas as vagas
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar")
     public List<VagaDTO> listarTodas() {
         return vagSer.listarTodas();
     }
 
     // listar vagas de uma empresa
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{id}")
     public List<VagaDTO> listarId(@PathVariable int id) {
         return vagSer.listarPorEmpresa(id);
     }
 
     // pesquisa por titulo
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{titulo}")
     public List<VagaDTO> listarPesquisa(@PathVariable String titulo) {
         return vagSer.listarPorTitulo(titulo);

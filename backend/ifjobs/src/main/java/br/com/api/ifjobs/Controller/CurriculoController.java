@@ -42,7 +42,6 @@ public class CurriculoController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c){ 
         return curSer.editar(c);
-
     }
 
     // excluir currículo
@@ -50,17 +49,15 @@ public class CurriculoController {
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(){ 
-        //Estudante est = estRep.findById(estudante).get();
+        // Estudante est = estRep.findById(estudante).get();
         return curSer.remover();
-
     }
 
     // listar currículo de um estudante
-    @Secured("ROLE_ESTUDANTE")
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{estudante}")
     @ResponseStatus(HttpStatus.OK)
     public CurriculoDTO consultarCurriculo() {
-
         return curSer.listar();
     }
     

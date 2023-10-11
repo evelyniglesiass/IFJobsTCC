@@ -45,15 +45,16 @@ public class ExperienciaProfissionalController {
         return expSer.editar(experiencia); 
     }
 
-    // excluir experiência
+    // remover experiência
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@RequestBody ExperienciaProfissional experiencia){ 
+    public ResponseEntity<Resposta> remover(@RequestBody ExperienciaProfissional experiencia){ // p que?
         return expSer.remover(experiencia);
     }
 
     // listar experiências de um determinado currículo
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar")
     public List<ExperienciaProfissionalDTO> listarExperincia() {
         return expSer.listarExperiencia();
