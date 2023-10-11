@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-// import org.springframework.stereotype.Repository;
 
 import br.com.api.ifjobs.models.Empresa;
 
-// @Repository
 public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
 
     //verifica se entidade existe pelo id

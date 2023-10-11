@@ -98,15 +98,15 @@ public class VagaService {
     }
 
     // método para remover vaga
-    public ResponseEntity<Resposta> remover(Vaga vaga) {
+    public ResponseEntity<Resposta> remover(int id) {
         
-        if(!(vagRep.existsById(vaga.getId()))){
+        if(!(vagRep.existsById(id))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         }
 
-        Vaga v = vagRep.findById(vaga.getId()).get(); // p que?
+        Vaga v = vagRep.findById(id).get();
         vagRep.delete(v);
         r.setMensagem("Vaga removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);

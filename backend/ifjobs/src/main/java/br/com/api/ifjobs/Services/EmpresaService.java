@@ -10,9 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.dto.EmpresaDTO;
-import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.models.Empresa;
-import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.EmpresaRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
@@ -109,9 +107,7 @@ public class EmpresaService {
     public ResponseEntity<Resposta> remover() {
         
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
-
-        Empresa emp = empRep.findById(empresa.getId()).get(); // p que? 
-        empRep.delete(emp);
+        empRep.delete(empresa);
         r.setMensagem("Empresa removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -134,11 +130,11 @@ public class EmpresaService {
     }
 
     //listar empresa especifica por id
-    public List<EmpresaDTO> listarPorId(int id){
+    public EmpresaDTO listarPorId(int id){
 
         Empresa e = empRep.findById(id).get();
 
-        return EstudanteDTO
+        return EmpresaDTO
             .builder()
             .id(e.getId())
             .nome(e.getNome())

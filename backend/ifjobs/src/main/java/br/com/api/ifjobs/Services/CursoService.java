@@ -86,15 +86,15 @@ public class CursoService {
     }
 
     //Método para remover curso
-    public ResponseEntity<Resposta> remover(Curso curso) {
+    public ResponseEntity<Resposta> remover(int id) {
         
-        if(!(curRep.existsById(curso.getId()))){
+        if(!(curRep.existsById(id))){
             r.setMensagem("Curso não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        Curso cur = curRep.findById(curso.getId()).get();
-        curRep.delete(cur);
+        Curso c = curRep.findById(id).get();
+        curRep.delete(c);
         r.setMensagem("Curso removido com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

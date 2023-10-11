@@ -84,15 +84,15 @@ public class ExperienciaProfissionalService {
     }
 
     // método para remover experiencia
-    public ResponseEntity<Resposta> remover(ExperienciaProfissional e) {
+    public ResponseEntity<Resposta> remover(int id) {
         
-        if(!(expRep.existsById(e.getId()))){
+        if(!(expRep.existsById(id))){
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        ExperienciaProfissional exp = expRep.findById(e.getId()).get(); // p que?
-        expRep.delete(exp);
+        ExperienciaProfissional e = expRep.findById(id).get();
+        expRep.delete(e);
         r.setMensagem("Experiência Profissional removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

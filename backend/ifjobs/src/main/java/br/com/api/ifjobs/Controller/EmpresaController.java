@@ -55,7 +55,7 @@ public class EmpresaController {
 
     //pesquisa de empresas por nome
     @GetMapping("/listar/pesquisa/{nome}")
-    public List<EmpresaDTO> listarPesquisa(@PathVariable String nome) {
+    public List<EmpresaDTO> listarPorNome(@PathVariable String nome) {
         return empSer.listarPorNome(nome);
    }
 
@@ -69,14 +69,14 @@ public class EmpresaController {
     //listagem de empresas (visão do estudante)
     @Secured("ROLE_ESTUDANTE")
     @GetMapping("/listar/estudante")
-    public List<EmpresaDTO> listarTodas() {
+    public List<EmpresaDTO> listarTodosEstudante() {
         return empSer.listarTodosEstudante();
     }
 
     // listar empresa expecífico
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/id/{id}")
-    public List<EmpresaDTO> listarId(@PathVariable int id) {
+    public EmpresaDTO listarPorId(@PathVariable int id) {
         return empSer.listarPorId(id);
     }
 }

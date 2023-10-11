@@ -49,13 +49,12 @@ public class CurriculoController {
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(){ 
-        // Estudante est = estRep.findById(estudante).get();
         return curSer.remover();
     }
 
     // listar currículo de um estudante
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar/{estudante}")
+    @GetMapping("/listar")
     @ResponseStatus(HttpStatus.OK)
     public CurriculoDTO consultarCurriculo() {
         return curSer.listar();

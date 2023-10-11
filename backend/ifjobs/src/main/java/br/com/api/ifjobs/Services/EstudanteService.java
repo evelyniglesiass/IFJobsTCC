@@ -1,7 +1,6 @@
 package br.com.api.ifjobs.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -139,8 +138,7 @@ public class EstudanteService {
             
         }
 
-        Estudante e = estRep.findById(estudante.getId()).get(); // p que?
-        estRep.delete(e);
+        estRep.delete(estudante);
         r.setMensagem("Estudante removido com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -159,7 +157,7 @@ public class EstudanteService {
         return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
     }
 
-    public List<EstudanteDTO> listarPorId(int id){
+    public EstudanteDTO listarPorId(int id){
 
         Estudante e = estRep.findById(id).get();
 
@@ -170,7 +168,6 @@ public class EstudanteService {
             .idade(e.getIdade())
             .nomeUsuario(e.getNomeUsuario())
             .email(e.getEmail())
-            .senha(e.getSenha())
             .telefone(e.getTelefone())
             .cidade(e.getCidade())
             .build();

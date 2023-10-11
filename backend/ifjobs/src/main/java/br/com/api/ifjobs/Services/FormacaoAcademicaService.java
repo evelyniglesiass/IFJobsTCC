@@ -83,15 +83,15 @@ public class FormacaoAcademicaService {
     }
 
     //Método para remover formacão
-    public ResponseEntity<Resposta> remover(FormacaoAcademica f) {
+    public ResponseEntity<Resposta> remover(int id) {
                 
-        if(!(forAcaRep.existsById(f.getId()))){
+        if(!(forAcaRep.existsById(id))){
             r.setMensagem("Formação acadêmica não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        FormacaoAcademica forAca = forAcaRep.findById(f.getId()).get(); // p que?
-        forAcaRep.delete(forAca);
+        FormacaoAcademica f = forAcaRep.findById(id).get();
+        forAcaRep.delete(f);
         r.setMensagem("Formação removido com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping; 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,8 +50,8 @@ public class ExperienciaProfissionalController {
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping() 
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@RequestBody ExperienciaProfissional experiencia){ // p que?
-        return expSer.remover(experiencia);
+    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
+        return expSer.remover(id);
     }
 
     // listar experiências de um determinado currículo

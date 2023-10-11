@@ -70,14 +70,14 @@ public class EstudanteController {
     // pesquisa por nome
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/pesquisa/{nome}")
-    public List<EstudanteDTO> listarPesquisa(@PathVariable String nome) {
+    public List<EstudanteDTO> listarPorNome(@PathVariable String nome) {
         return estSer.listarPorNome(nome);
     }
 
     // listar estudante expecífico
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/id/{id}")
-    public List<EstudanteDTO> listarId(@PathVariable int id) {
+    public EstudanteDTO listarPorId(@PathVariable int id) {
         return estSer.listarPorId(id);
     }
 

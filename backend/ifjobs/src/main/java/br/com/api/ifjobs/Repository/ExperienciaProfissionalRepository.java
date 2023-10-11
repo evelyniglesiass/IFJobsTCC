@@ -11,10 +11,6 @@ public interface ExperienciaProfissionalRepository extends CrudRepository<Experi
 
     // verifica se entidade existe
     boolean existsById (Integer id);
-
-    // consultas básicas
-    ExperienciaProfissional findById(int id); // retornar experiencia pelo id
-    int countById(int id); // retornar 1 se a experiencia existir
  
     // listar
     @Query(value = "SELECT * FROM experiencia_profissional WHERE curriculo_id = :curriculo", nativeQuery = true) 
