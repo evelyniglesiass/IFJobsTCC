@@ -45,16 +45,18 @@ public class ExperienciaProfissionalService {
         if(!(curRep.existsById(estudante.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+
         }
         
         if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+
         }
 
         e.setCurriculo(estudante.getCurriculo());
-        expRep.save(e);
         estudante.getCurriculo().getExpProf().add(e);
+        expRep.save(e);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 

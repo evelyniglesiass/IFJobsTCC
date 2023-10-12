@@ -62,7 +62,7 @@ public class EstudanteController {
 
     // listagem de estudantes (visão estudante onde ele proprio não aparece)
     @Secured("ROLE_ESTUDANTE")
-    @GetMapping("/listar/estudante")
+    @GetMapping("/listar")
     public List<EstudanteDTO> listarTodosEstudante() {
         return estSer.listarTodosEstudante();
     }

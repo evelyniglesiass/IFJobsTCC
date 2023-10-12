@@ -16,6 +16,12 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     boolean existsByNomeUsuario(String nomeUsuario); // verifica se nome de usuário existe
     boolean existsByEmail(String email); // verifica se email existe  
 
+    @Query(value = "SELECT Count(nome_usuario) FROM estudante WHERE nome_usuario = :usuario AND id <> :id", nativeQuery = true) 
+    int existeUsuario(String usuario, int id); // validar nome de usuario para edição
+    
+    @Query(value = "SELECT Count(email) FROM estudante WHERE email = :email AND id <> :id", nativeQuery = true) 
+    int existeEmail(String email, int id); // validar email para edição
+
     // listar
     @Query(value = "SELECT * FROM estudante WHERE id <> :id", nativeQuery = true) 
     List<Estudante> listarEstudantes(int id); // listar estudantes menos o logado
@@ -24,4 +30,7 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     List<Estudante> findByNomeContains(String nome); // listar estudantes por pesquisa
 
     Estudante findByEmail(String email); // pro login
+
+    // Candidatura
+
 } 

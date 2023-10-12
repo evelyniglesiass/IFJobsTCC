@@ -34,14 +34,14 @@ public class CurriculoService {
 
         Estudante e = usuarioAutenticadoService.getEstudante();
         
-        if(curRep.existsById(e.getCurriculo().getId())){
+        if(curRep.existsByEstudante(e)){
             r.setMensagem("Esse usuário já possui um currículo!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
-
+        
         c.setEstudante(e);
-        e.setCurriculo(c);
         curRep.save(c);
+        e.setCurriculo(c);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
         
@@ -51,6 +51,8 @@ public class CurriculoService {
     public ResponseEntity<?> editar(Curriculo c){
 
         Estudante e = usuarioAutenticadoService.getEstudante(); // ver se precisa find by id
+
+        c.setId(e.getCurriculo().getId());
         
         if(!(curRep.existsById(e.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
@@ -58,7 +60,7 @@ public class CurriculoService {
         }
 
         // e.setCurriculo(c); necessário? dá erro com ele
-        e.setCurriculo(c);
+        // e.setCurriculo(c);
         c.setEstudante(e);
         curRep.save(c);
         r.setMensagem("Edição feita com sucesso!");

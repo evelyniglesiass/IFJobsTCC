@@ -103,13 +103,13 @@ public class EstudanteService {
 
         }
         
-        if(estRep.existsByNomeUsuario(e.getNomeUsuario()) || empRep.existsByNomeUsuario(e.getNomeUsuario())){
+        if(estRep.existeUsuario(e.getNomeUsuario(), estudante.getId()) != 0 || empRep.existeUsuario(e.getNomeUsuario(), 0) != 0){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }
         
-        if(estRep.existsByEmail(e.getEmail())){
+        if(estRep.existeEmail(e.getEmail(), estudante.getId()) != 0 || empRep.existeEmail(e.getEmail(), 0) != 0){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
@@ -121,6 +121,9 @@ public class EstudanteService {
 
         }
 
+        estudante.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
+        e.setSenha(passwordEncoder.encode(e.getSenha()));
+
         estRep.save(e);
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
@@ -130,7 +133,7 @@ public class EstudanteService {
     // método para remover estudante
     public ResponseEntity<Resposta> remover() {
 
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
+        Estudante estudante = estRep.findById(usuarioAutenticadoService.getEstudante().getId()).get();
         
         if(!(estRep.existsById(estudante.getId()))){
             r.setMensagem("Usuário não encontrado!");
@@ -158,6 +161,12 @@ public class EstudanteService {
     }
 
     public EstudanteDTO listarPorId(int id){
+
+        if(!estRep.existsById(id)){
+            r.setMensagem("Usuário não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+
+        }
 
         Estudante e = estRep.findById(id).get();
 

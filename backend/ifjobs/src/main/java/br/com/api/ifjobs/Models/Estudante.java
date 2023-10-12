@@ -78,7 +78,7 @@ public class Estudante{
         inverseJoinColumns = {@JoinColumn(name = "vaga_id")})
     private List<Vaga> vagas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "estudante", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // mudei p all aq pq se n da erro p deletar estudante
     @Column(nullable = false)
     private List<Permissao> permissoes;
 }

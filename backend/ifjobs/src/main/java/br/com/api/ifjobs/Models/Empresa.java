@@ -70,7 +70,7 @@ public class Empresa {
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)
 	private List<Vaga> vagasPublicadas = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "empresa", fetch = FetchType.EAGER, cascade = CascadeType.ALL) // mudei p all
     @Column(nullable = false)
     private List<Permissao> permissoes;
 }

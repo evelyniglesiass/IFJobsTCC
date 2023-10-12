@@ -74,15 +74,17 @@ public class EmpresaService {
 
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
 
+        e.setId(empresa.getId()); // acho q assim da
+
         //pegando senha para validação
-        ss.setSenha(empresa.getSenha()); 
+        ss.setSenha(e.getSenha()); 
         
-        if(!(empRep.existsById(empresa.getId()))){
+        if(!(empRep.existsById(e.getId()))){
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
         
-        if(empRep.existsByNomeUsuario(empresa.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())){
+        if(empRep.existeUsuario(e.getNomeUsuario(), empresa.getId()) != 0 || estRep.existeUsuario(e.getNomeUsuario(), 0) != 0){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         } 
@@ -92,12 +94,15 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         } 
         
-        if(empRep.existsByEmail(empresa.getEmail()) || estRep.existsByNomeUsuario(e.getEmail())){
+        if(empRep.existeEmail(e.getEmail(), empresa.getId()) != 0 || estRep.existeEmail(e.getEmail(), 0) != 0){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
-        empRep.save(empresa);
+        empresa.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
+        e.setSenha(passwordEncoder.encode(e.getSenha()));
+
+        empRep.save(e);
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

@@ -29,7 +29,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor 
 @ToString
 public class FormacaoAcademica {
     
@@ -69,7 +69,7 @@ public class FormacaoAcademica {
 	private LocalDate dataFinal;
 
     @ManyToOne
-    @JoinColumn(name="curriculo_id", nullable=false)    
+    @JoinColumn(name="curriculo_id", nullable = false)    
     private Curriculo curriculo;
     
 }
