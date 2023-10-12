@@ -14,6 +14,7 @@ import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.ExperienciaProfissional;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
@@ -26,6 +27,9 @@ public class ExperienciaProfissionalService {
     
     @Autowired
     private CurriculoRepository curRep;
+
+    @Autowired
+    private EstudanteRepository estRep;
 
     @Autowired
     private Resposta r;
@@ -98,11 +102,10 @@ public class ExperienciaProfissionalService {
 
     }
 
-    public List<ExperienciaProfissionalDTO> listarExperiencia(){
+    public List<ExperienciaProfissionalDTO> listarExperiencia(int id){
 
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
-        Curriculo cur = curRep.findById(estudante.getCurriculo().getId()).get()
-        ;
+        Estudante est = estRep.findById(id).get();
+        Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();
         return ExperienciaProfissionalDTO.converterLista(expRep.listarExperiencia(cur.getId()));
 
     }

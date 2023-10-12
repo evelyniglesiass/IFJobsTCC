@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
+import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
@@ -24,6 +26,9 @@ public class FormacaoAcademicaService {
 
     @Autowired
     private CurriculoRepository curRep;
+
+    @Autowired
+    private EstudanteRepository estRep;
 
     @Autowired
     private Resposta r;
@@ -48,9 +53,9 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         } 
 
-        // adc fa no curriculo aq n?
         fa.setCurriculo(estudante.getCurriculo());
         forAcaRep.save(fa);
+        estudante.getCurriculo().getFormAcad().add(fa);
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 
     }
@@ -98,8 +103,11 @@ public class FormacaoAcademicaService {
     }
 
     public List<FormacaoAcademicaDTO> listarFormacao(int id){
-        Estudante estudante = usuarioAutenticadoService.getEstudante();
-        return FormacaoAcademicaDTO.converterLista(forAcaRep.listarFormacao(estudante.getCurriculo().getId()));
+
+        Estudante est = estRep.findById(id).get();
+        Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();
+        return FormacaoAcademicaDTO.converterLista(forAcaRep.listarFormacao(cur.getId()));
+
     }
 
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.api.ifjobs.dto.CurriculoDTO;
+import br.com.api.ifjobs.dto.CurriculoDTO; 
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.CurriculoService;
@@ -30,7 +31,7 @@ public class CurriculoController {
 
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c){ 
         return curSer.cadastrar(c);
@@ -54,10 +55,9 @@ public class CurriculoController {
 
     // listar currículo de um estudante
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar")
-    @ResponseStatus(HttpStatus.OK)
-    public CurriculoDTO consultarCurriculo() {
-        return curSer.listar();
+    @GetMapping("/listar/{id}") // id do estudante
+    public CurriculoDTO consultarCurriculo(@PathVariable int id) {
+        return curSer.listar(id);
     }
     
 }

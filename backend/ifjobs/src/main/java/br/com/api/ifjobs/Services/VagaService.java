@@ -53,10 +53,10 @@ public class VagaService {
 
         }
 
-        // add vaga a empresa
         v.setStatus(true);
         v.setEmpresa(empresa);
         v.setDataPublicacao(LocalDate.now());
+        empresa.getVagasPublicadas().add(v);
         vagRep.save(v);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -115,7 +115,7 @@ public class VagaService {
 
     // listar todas as vagas disponiveis
     public List<VagaDTO> listarTodas(){
-        return VagaDTO.converterLista(vagRep.listarVagas());
+        return VagaDTO.converterLista(vagRep.listarVagas()); 
     }
 
     // listar vags de uma empresa

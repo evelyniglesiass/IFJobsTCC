@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EmpresaDTO;
-import br.com.api.ifjobs.models.Empresa;
+import br.com.api.ifjobs.models.Empresa; 
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.EmpresaService;
 

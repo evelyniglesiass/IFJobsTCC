@@ -48,7 +48,7 @@ public class CursoController {
 
     //exclusão de cursos
     @Secured("ROLE_ESTUDANTE")
-    @DeleteMapping() 
+    @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return curSer.remover(id);
@@ -56,8 +56,8 @@ public class CursoController {
 
     //listagem de cursos de um determinado currículo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar") 
-    public List<CursoDTO> listarCurso(){
-        return curSer.listar();
+    @GetMapping("/listar/{id}") 
+    public List<CursoDTO> listarCurso(@PathVariable int id){
+        return curSer.listar(id);
     }
 }

@@ -48,7 +48,7 @@ public class VagaController {
 
     // excluir vaga
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping() 
+    @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return vagSer.remover(id);
@@ -58,7 +58,7 @@ public class VagaController {
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar")
     public List<VagaDTO> listarTodas() {
-        return vagSer.listarTodas();
+        return vagSer.listarTodas(); 
     }
 
     // listar vagas de uma empresa

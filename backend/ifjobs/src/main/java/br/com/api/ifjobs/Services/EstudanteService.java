@@ -186,7 +186,7 @@ public class EstudanteService {
             
         }
         
-        if(!(vagRep.existsById(vaga.getId()))){
+        if(!(vagRep.existsById(v))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
@@ -211,7 +211,7 @@ public class EstudanteService {
             
         }
         
-        if(!(vagRep.existsById(vaga.getId()))){
+        if(!(vagRep.existsById(v))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             

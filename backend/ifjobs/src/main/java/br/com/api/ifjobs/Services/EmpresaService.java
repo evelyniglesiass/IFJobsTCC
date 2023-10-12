@@ -133,7 +133,7 @@ public class EmpresaService {
     public EmpresaDTO listarPorId(int id){
 
         Empresa e = empRep.findById(id).get();
-
+ 
         return EmpresaDTO
             .builder()
             .id(e.getId())

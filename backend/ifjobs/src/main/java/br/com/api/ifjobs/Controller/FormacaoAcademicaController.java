@@ -48,7 +48,7 @@ public class FormacaoAcademicaController {
 
     //exclusão de formacões academicas
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping()
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK) 
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return formAcaSer.remover(id);
@@ -56,8 +56,8 @@ public class FormacaoAcademicaController {
 
     //Listagem de formacões academicas de um determinado currículo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar")
-    public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable int estudante){
-        return formAcaSer.listarFormacao(estudante);
+    @GetMapping("/listar/{id}") // id do estudante
+    public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable Integer id){
+        return formAcaSer.listarFormacao(id);
     }
 }

@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.dto.CursoDTO;
+import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Curso;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.CursoRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
@@ -24,6 +26,9 @@ public class CursoService {
 
     @Autowired
     private CurriculoRepository curriculoRep;
+
+    @Autowired
+    private EstudanteRepository estRep;
 
     @Autowired
     private Resposta r;
@@ -100,10 +105,11 @@ public class CursoService {
 
     }
 
-    public List<CursoDTO> listar(){
+    public List<CursoDTO> listar(int id){
 
-        Estudante e = usuarioAutenticadoService.getEstudante();
-        return CursoDTO.converterLista(curRep.listarCurso(e.getCurriculo().getId()));
+        Estudante est = estRep.findById(id).get();
+        Curriculo cur = curriculoRep.findById(est.getCurriculo().getId()).get();
+        return CursoDTO.converterLista(curRep.listarCurso(cur.getId()));
 
     }
 }

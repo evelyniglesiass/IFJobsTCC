@@ -11,6 +11,7 @@ import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
+import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
  
 @Service
@@ -18,6 +19,9 @@ public class CurriculoService {
 
     @Autowired
     private CurriculoRepository curRep; 
+
+    @Autowired
+    private EstudanteRepository estRep; 
 
     @Autowired
     private Resposta r;
@@ -81,9 +85,9 @@ public class CurriculoService {
     
 
     //listar
-    public CurriculoDTO listar(){
+    public CurriculoDTO listar(int id){
 
-        Estudante e = usuarioAutenticadoService.getEstudante();
+        Estudante e = estRep.findById(id).get();
 
         Curriculo curriculo = curRep.findByEstudante(e);
 

@@ -48,7 +48,7 @@ public class ExperienciaProfissionalController {
 
     // remover experiência
     @Secured("ROLE_ESTUDANTE")
-    @DeleteMapping() 
+    @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 
         return expSer.remover(id);
@@ -56,9 +56,9 @@ public class ExperienciaProfissionalController {
 
     // listar experiências de um determinado currículo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar")
-    public List<ExperienciaProfissionalDTO> listarExperincia() {
-        return expSer.listarExperiencia();
+    @GetMapping("/listar/{id}") // id do estudante
+    public List<ExperienciaProfissionalDTO> listarExperincia(@PathVariable int id) {
+        return expSer.listarExperiencia(id);
     }
     
 }
