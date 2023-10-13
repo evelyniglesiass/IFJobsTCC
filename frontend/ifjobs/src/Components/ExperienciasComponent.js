@@ -5,7 +5,7 @@ const ExperienciasComponent = () => {
   return (
     <div className='container-cursos-exper'>
       <section className='cabecalho-cursos-exper'>
-        <h2 className='titulos-cursos-exper fonte-titulo'>Experiencia</h2>
+        <h4 className='titulos-cursos-exper fonte-titulo'>Título</h4>
         <h6 className='titulos-cursos-exper fonte-corpo'>Empresa</h6>
         <article>
           <h6 className='data-inicio fonte-corpo'>12/12/2020 - </h6>

@@ -1,5 +1,5 @@
 $verde-forte: #189395;
-$roxo-forte: #9546FC;
+$roxo-forte: #6a31b4;
 $preto: #323434;
 $branco: #FAFAFA;
 
@@ -109,7 +109,7 @@ $fonte-tres: Arial;
     width: 80%;
     min-height: 100vh;
     padding-top: 5vh;
-    padding-left: 20px;
+    padding-left: 50px;
     padding-bottom: 10px;
     float: right;
     text-align: center;
@@ -139,7 +139,7 @@ $fonte-tres: Arial;
     margin-left: 5px;
     width: 1100px;
     text-align: left;
-    color: $preto;
+    color: $branco;
 }
 
 .titulo-perfil {
@@ -172,7 +172,7 @@ $fonte-tres: Arial;
     height: 80px;
 }
 
-.sobre-perfis, .objetivo-curriculo{
+.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo{
     width: 1100px;
     margin-top: 20px;
     padding: 20px;
@@ -257,12 +257,17 @@ $fonte-tres: Arial;
 
 .container-vaga{
     width: 1000px;
+    padding-left: 15px;
+    margin: 0px;
+    background-color: #6a31b4;
 }
 
 .titulo-vagas, .corpo-vagas{
     width: 650px;
     text-align: left;
     float: left;
+    padding-left: 15px;
+    padding-top: 10px;
 }
 
 .botao-vagas{
@@ -300,6 +305,9 @@ $fonte-tres: Arial;
 
 .corpo-empresas{
     width: 200px;
+    padding: 10px;
+    text-align: center;
+    padding-right: 15px;
 }
 
 // Perfil Empresa
@@ -319,7 +327,9 @@ $fonte-tres: Arial;
 .container-cursos-exper{
     padding: 15px;
     border-radius: 25px;
-    background-color: $preto;
+    background-color: $roxo-forte;
+    margin-right: 50px;
+
 }
 
 .cabecalho-cursos-exper{
@@ -335,6 +345,7 @@ $fonte-tres: Arial;
 .data-inicio, .data-fim{
     width: 200px;
     float: left;
+    display: inline;
 }
 
 .data-inicio{
