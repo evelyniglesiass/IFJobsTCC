@@ -28,7 +28,7 @@ public class FormacaoAcademicaDTO {
     public FormacaoAcademicaDTO(FormacaoAcademica formacao){
         this.id = formacao.getId();
         this.descricao = formacao.getDescricao();
-        this.instituicao = formacao.getInstituiçao();
+        this.instituicao = formacao.getInstituicao();
         this.cidade = formacao.getCidade();
         this.nivel = formacao.getNivel();
         this.dataInicial = formacao.getDataInicial();

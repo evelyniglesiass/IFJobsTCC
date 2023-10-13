@@ -43,8 +43,8 @@ public class FormacaoAcademica {
 	private String descricao;
 
     @NotBlank(message = "Insira a instituição de sua formação acadêmica!")
-    @Column(nullable = false, length = 250)
-	private String instituiçao;
+    @Column(nullable = true, length = 250)
+	private String instituicao;
 
     @NotBlank(message = "Insira a cidade de sua formação acadêmica!")
     @Column(nullable = false, length = 250)

@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,9 +19,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -71,10 +70,8 @@ public class Vaga {
 	@Column(nullable = false, length = 50)
     private String cidade;
 
-	@Size(min = 1, message = "Insira palavras chave sobre sua vaga!")
-	@Column(nullable = false, length = 250)
-	@ElementCollection(targetClass=String.class)
-    private List<String> palavrasChave = new ArrayList<>();
+    @OneToMany(mappedBy = "vaga", cascade = CascadeType.ALL)
+    private List<PalavraChave> palavrasChave = new ArrayList<>();
 
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "dd-MM-yyyy")

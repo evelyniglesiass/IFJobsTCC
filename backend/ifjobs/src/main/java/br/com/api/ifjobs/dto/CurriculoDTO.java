@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.api.ifjobs.models.Curriculo; 
+import br.com.api.ifjobs.models.Curriculo;
+import br.com.api.ifjobs.models.Habilidade;
+import br.com.api.ifjobs.models.Idioma;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Builder.Default;
 
 @Getter
 @Setter
@@ -20,8 +23,10 @@ public class CurriculoDTO {
 
     private Integer id; 
     private String resumo;
-    private List<String> habilidades = new ArrayList<>(); 
-    private List<String> idiomas = new ArrayList<>();
+    @Default
+    private List<Habilidade> habilidades = new ArrayList<>();
+    @Default 
+    private List<Idioma> idiomas = new ArrayList<>();
 
     public CurriculoDTO(Curriculo curriculo) {
         this.id = curriculo.getId();

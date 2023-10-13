@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,15 +37,11 @@ public class Curriculo {
     @Column(nullable = false, length = 500)
     private String resumo;
 
-    @Size(min = 1, message = "Insira pelo menos uma habilidade!")
-    @Column(nullable = false, length = 250)
-    @ElementCollection(targetClass=String.class)
-    private List<String> habilidades = new ArrayList<>(); 
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
+    private List<Habilidade> habilidades = new ArrayList<>(); 
 
-    @Size(min = 1, message = "Insira pelo menos um idioma!")
-    @Column(nullable = false, length = 250)
-    @ElementCollection(targetClass=String.class)
-    private List<String> idiomas = new ArrayList<>();
+    @OneToMany(mappedBy = "curriculo", cascade = CascadeType.ALL)
+    private List<Idioma> idiomas = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "estudante_id")    

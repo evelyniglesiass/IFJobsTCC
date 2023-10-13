@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.api.ifjobs.models.Cursos;
+import br.com.api.ifjobs.models.PalavraChave;
 import br.com.api.ifjobs.models.Vaga;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,7 +26,7 @@ public class VagaDTO {
 	private Cursos curso;
 	private Double salario;
     private Integer idadeMinima;
-    private List<String> palavrasChave = new ArrayList<>();
+    private List<PalavraChave> palavrasChave = new ArrayList<>();
     private String cidade;
 	private LocalDate dataPublicacao; 
 
