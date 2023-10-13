@@ -30,7 +30,7 @@ public class HabilidadeController {
     @Autowired
     private HabilidadeService habSer;
 
-    // cadastrar experiência
+    // cadastrar habilidades
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,7 +38,7 @@ public class HabilidadeController {
         return habSer.cadastrar(habilidade);
     }
 
-    // editar experiência
+    // editar habilidades
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
@@ -46,7 +46,7 @@ public class HabilidadeController {
         return habSer.editar(habilidade); 
     }
 
-    // remover experiência
+    // remover habilidades
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
@@ -54,7 +54,7 @@ public class HabilidadeController {
         return habSer.remover(id);
     }
 
-    // listar experiências de um determinado currículo
+    // listar habilidades de um determinado currículo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{id}") // id do estudante
     public List<HabilidadeDTO> listarHabilidade(@PathVariable int id) {

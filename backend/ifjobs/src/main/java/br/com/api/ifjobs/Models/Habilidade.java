@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,12 +27,12 @@ public class Habilidade {
 	@Column(nullable = false)
     private Integer id;
     
-    @Size(min = 1, message = "Insira pelo menos uma habilidade!")
+    // @Size(min = 1, message = "Insira pelo menos uma habilidade!")
     @Column(nullable = false, length = 250)
     private String descricao;
 
     @ManyToOne
-    @JoinColumn(name="curriculo_id", nullable=false)    
+    @JoinColumn(name = "curriculo_id", nullable = false)    
     private Curriculo curriculo;
     
 }

@@ -37,8 +37,8 @@ public class PalavraChaveService {
 
         }
         
-        pc.setVaga(vagRep.findById(idVaga).get());
         Vaga v = vagRep.findById(idVaga).get();
+        pc.setVaga(v);
         v.getPalavrasChave().add(pc);
         palChaRep.save(pc);
         r.setMensagem("Cadastro feito com sucesso!");

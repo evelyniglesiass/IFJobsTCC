@@ -14,18 +14,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.IdiomaDTO;
 import br.com.api.ifjobs.models.Idioma;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.IdiomaService;
 
+@RestController
+@RequestMapping("/idiomas")
 public class IdiomaContoller {
+
     @Autowired
     private IdiomaService idiSer;
 
-    // cadastrar experiência
+    // cadastrar idioma
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -33,7 +38,7 @@ public class IdiomaContoller {
         return idiSer.cadastrar(idioma);
     }
 
-    // editar experiência
+    // editar idioma
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
@@ -41,7 +46,7 @@ public class IdiomaContoller {
         return idiSer.editar(idioma); 
     }
 
-    // remover experiência
+    // remover idioma
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
@@ -49,7 +54,7 @@ public class IdiomaContoller {
         return idiSer.remover(id);
     }
 
-    // listar experiências de um determinado currículo
+    // listar idioma de um determinado currículo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{id}") // id do estudante
     public List<IdiomaDTO> listarIdioma(@PathVariable int id) {

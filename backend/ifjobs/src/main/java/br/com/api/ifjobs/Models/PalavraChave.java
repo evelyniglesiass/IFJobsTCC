@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,11 +27,12 @@ public class PalavraChave {
 	@Column(nullable = false)
     private Integer id;
     
-    @Size(min = 1, message = "Insira palavras chave sobre sua vaga!")
+    // @Size(min = 1, message = "Insira palavras chave sobre sua vaga!")
 	@Column(nullable = false, length = 250)
     private String palavra;
 
     @ManyToOne
     @JoinColumn(name="vaga_id", nullable=false)    
     private Vaga vaga;
+
 }

@@ -14,35 +14,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.PalavraChaveDTO;
 import br.com.api.ifjobs.models.PalavraChave;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.PalavraChaveService;
 
+@RestController
+@RequestMapping("/palavrasChaves")
 public class PalavraChaveController {
+
     @Autowired
     private PalavraChaveService palChaSer;
 
     // cadastrar palavra chave
-    @Secured("ROLE_ESTUDANTE")
+    @Secured("ROLE_EMPRESA")
     @PostMapping("/{idVaga}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody  PalavraChave palavra, @PathVariable int idVaga){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga){ 
         return palChaSer.cadastrar(palavra, idVaga);
     }
 
     // editar palavra chave
-    @Secured("ROLE_ESTUDANTE")
+    @Secured("ROLE_EMPRESA")
     @PutMapping("/{idVaga}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody  PalavraChave palavra, @PathVariable int idVaga){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga){ 
         return palChaSer.editar(palavra, idVaga); 
     }
 
     // remover palavra chave
-    @Secured("ROLE_ESTUDANTE")
+    @Secured("ROLE_EMPRESA")
     @DeleteMapping("/{id}") 
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Resposta> remover(@PathVariable int id){ 

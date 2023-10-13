@@ -12,9 +12,6 @@ public interface VagaRepository extends CrudRepository<Vaga, Integer>{
     // verifica se entidade existe
     boolean existsById (Integer id);
 
-    //verifica se entidade existe por uma list
-    boolean existsByVaga (List<Vaga> vagas);
-
     // consultas básicas
     int countById(int id); // retornar 1 se a vaga existir
     

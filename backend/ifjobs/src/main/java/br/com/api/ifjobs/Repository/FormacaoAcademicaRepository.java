@@ -10,10 +10,10 @@ import br.com.api.ifjobs.models.FormacaoAcademica;
 
 public interface FormacaoAcademicaRepository extends CrudRepository<FormacaoAcademica, Integer>{
     
-    //verifica se entidade existe
+    // verifica se entidade existe
     boolean existsById (Integer id);
 
-     // listar formacao de um determinado estudante
+    // listar
     @Query(value = "SELECT * FROM formacao_academica WHERE curriculo_id = :curriculo", nativeQuery = true) 
-    List<FormacaoAcademica> listarFormacao(int curriculo);
+    List<FormacaoAcademica> listarFormacao(int curriculo); // listar formacao de um determinado estudante
 }

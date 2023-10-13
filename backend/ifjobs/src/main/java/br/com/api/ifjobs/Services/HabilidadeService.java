@@ -42,11 +42,11 @@ public class HabilidadeService {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+        if(!(curRep.existsByEstudante(estudante))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        }
+        } 
         
         h.setCurriculo(estudante.getCurriculo());
         estudante.getCurriculo().getHabilidades().add(h);
@@ -66,7 +66,7 @@ public class HabilidadeService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
         
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+        if(!(curRep.existsByEstudante(estudante))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
