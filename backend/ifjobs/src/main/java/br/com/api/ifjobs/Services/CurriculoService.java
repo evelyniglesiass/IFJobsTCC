@@ -73,13 +73,14 @@ public class CurriculoService {
         
         Estudante e = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsById(e.getCurriculo().getId()))){
+        if(!(curRep.existsByEstudante(e))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
+        Curriculo c = curRep.findByEstudante(e);
         e.setCurriculo(null);
-        curRep.deleteById(e.getCurriculo().getId());
+        curRep.deleteById(c.getId());
         r.setMensagem("Currículo removido com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
