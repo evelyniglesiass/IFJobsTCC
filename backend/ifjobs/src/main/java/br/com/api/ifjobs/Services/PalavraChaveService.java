@@ -49,11 +49,6 @@ public class PalavraChaveService {
     // método para editar palavra chave 
     public ResponseEntity<?> editar(PalavraChave pc, int idVaga){
         
-        if(!(palChaRep.existsById(pc.getId()))){
-            r.setMensagem("PalavraChave não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-        }
-        
         if(!(vagRep.existsById(idVaga))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());

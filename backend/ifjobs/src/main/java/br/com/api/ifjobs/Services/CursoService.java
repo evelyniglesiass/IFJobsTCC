@@ -66,12 +66,7 @@ public class CursoService {
     
         Estudante e = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsById(c.getId()))){
-            r.setMensagem("Curso não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-        } 
-
-        if(!(curriculoRep.existsById(e.getCurriculo().getId()))){
+        if(!(curriculoRep.existsByEstudante(e))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 

@@ -125,7 +125,7 @@ public class VagaService {
 
     // pesquisar por titulo da vaga
     public List<VagaDTO> listarPorTitulo(String titulo){
-        return VagaDTO.converterLista(vagRep.findByTituloContains(titulo));
+        return VagaDTO.converterLista(vagRep.findByTituloContainsIgnoreCase(titulo));
     }
     
 }

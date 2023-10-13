@@ -66,13 +66,8 @@ public class ExperienciaProfissionalService {
     public ResponseEntity<?> editar(ExperienciaProfissional e){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
-
-        if(!(expRep.existsById(e.getId()))){
-            r.setMensagem("Experiência profissional não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-        }
         
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+        if(!(curRep.existsByEstudante(estudante))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }

@@ -66,12 +66,7 @@ public class FormacaoAcademicaService {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         
-        if(!(forAcaRep.existsById(fa.getId()))){
-            r.setMensagem("Experiência profissional não encontrada!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-        } 
-        
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+        if(!(curRep.existsByEstudante(estudante))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem()); 
         }
@@ -83,6 +78,7 @@ public class FormacaoAcademicaService {
 
         fa.setCurriculo(estudante.getCurriculo());
         forAcaRep.save(fa);
+        r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
     }

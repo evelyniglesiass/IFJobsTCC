@@ -27,7 +27,7 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     List<Estudante> listarEstudantes(int id); // listar estudantes menos o logado
 
     List<Estudante> findAll(); // listar todos os estudantes
-    List<Estudante> findByNomeContains(String nome); // listar estudantes por pesquisa
+    List<Estudante> findByNomeContainsIgnoreCase(String nome); // listar estudantes por pesquisa
 
     Estudante findByEmail(String email); // pro login
 

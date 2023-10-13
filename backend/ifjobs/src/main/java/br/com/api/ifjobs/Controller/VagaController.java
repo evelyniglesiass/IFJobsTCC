@@ -70,7 +70,7 @@ public class VagaController {
 
     // pesquisa por titulo
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar/{titulo}")
+    @GetMapping("/listar/pesquisa/{titulo}")
     public List<VagaDTO> listarPorTitulo(@PathVariable String titulo) {
         return vagSer.listarPorTitulo(titulo);
     }

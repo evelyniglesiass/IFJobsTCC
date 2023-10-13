@@ -22,7 +22,7 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     Empresa findByEmail(String email);
 
     //listar empresa por nome
-    List<Empresa> findByNomeContains(String nome); 
+    List<Empresa> findByNomeContainsIgnoreCase(String nome); 
 
     // listar empresas
     List<Empresa> findAll();

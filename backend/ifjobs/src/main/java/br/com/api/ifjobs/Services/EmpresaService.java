@@ -120,7 +120,7 @@ public class EmpresaService {
 
     //pesquisa por nome
     public List<EmpresaDTO> listarPorNome(String nome){
-        return EmpresaDTO.converterLista(empRep.findByNomeContains(nome)); 
+        return EmpresaDTO.converterLista(empRep.findByNomeContainsIgnoreCase(nome)); 
     }
 
     //listar todos visão empresa

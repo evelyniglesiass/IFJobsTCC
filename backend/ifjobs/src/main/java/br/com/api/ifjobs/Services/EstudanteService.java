@@ -157,7 +157,7 @@ public class EstudanteService {
     }
 
     public List<EstudanteDTO> listarPorNome(String nome){
-        return EstudanteDTO.converterLista(estRep.findByNomeContains(nome));
+        return EstudanteDTO.converterLista(estRep.findByNomeContainsIgnoreCase(nome));
     }
 
     public EstudanteDTO listarPorId(int id){
