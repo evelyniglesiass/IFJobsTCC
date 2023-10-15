@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import br.com.api.ifjobs.dto.EstudanteDTO;
+import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
@@ -199,7 +200,7 @@ public class EstudanteService {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
-        }
+        } 
 
         estudante.getVagas().add(vaga);
         vaga.getEstudantes().add(estudante);
@@ -231,6 +232,14 @@ public class EstudanteService {
         r.setMensagem("Candidatura removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
+    }
+
+    public List<EstudanteDTO> listarEstudantesCandidatura(int id){
+        return EstudanteDTO.converterLista(estRep.listarEstudantesCandidatura(id));
+    }
+
+    public List<VagaDTO> listarVagasCandidatura(int id){
+        return VagaDTO.converterLista(vagRep.listarVagasCandidatura(id));
     }
 
 }

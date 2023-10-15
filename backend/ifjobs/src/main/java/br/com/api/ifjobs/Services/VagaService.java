@@ -63,10 +63,12 @@ public class VagaService {
 
     }
 
-    // método para editar vagas
+    // método para editar vagas 
     public ResponseEntity<?> editar(Vaga v){
         
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
+
+        Vaga vagaAnt = vagRep.findById(v.getId()).get();
 
         if(!(vagRep.existsById(v.getId()))){
             r.setMensagem("Vaga não encontrada!");
@@ -90,6 +92,7 @@ public class VagaService {
         }
 
         v.setStatus(true);
+        v.setDataPublicacao(vagaAnt.getDataPublicacao());
         v.setEmpresa(empresa);
         vagRep.save(v);
         r.setMensagem("Edição feita com sucesso!");

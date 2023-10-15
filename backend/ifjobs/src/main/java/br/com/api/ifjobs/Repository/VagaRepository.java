@@ -24,4 +24,10 @@ public interface VagaRepository extends CrudRepository<Vaga, Integer>{
 
     List<Vaga> findByTituloContainsIgnoreCase(String titulo); // listar vagas por pesquisa
 
+    // Candidatura
+    @Query(value = "Select * From vaga \n" + //
+                "Left Join candidatura On vaga.id = candidatura.vaga_id\n" + //
+                "Where vaga.id = candidatura.vaga_id And candidatura.estudante_id = :id;", nativeQuery = true) 
+    List<Vaga> listarVagasCandidatura(int id); // listar vagas que um estudante esta candidatado / pegar id do estudante
+
 } 

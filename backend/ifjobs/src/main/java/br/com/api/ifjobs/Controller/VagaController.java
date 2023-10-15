@@ -43,7 +43,7 @@ public class VagaController {
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga){ 
-        return vagSer.cadastrar(vaga);
+        return vagSer.editar(vaga);
     }
 
     // excluir vaga

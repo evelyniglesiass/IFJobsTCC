@@ -32,5 +32,9 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     Estudante findByEmail(String email); // pro login
 
     // Candidatura
+    @Query(value = "Select * From estudante \n" + //
+                "Left Join candidatura On estudante.id = candidatura.estudante_id\n" + //
+                "Where estudante.id = candidatura.estudante_id And candidatura.vaga_id = :id;", nativeQuery = true) 
+    List<Estudante> listarEstudantesCandidatura(int id); // listar estudantes candidatos a uma vaga / pegar id da vaga
 
 } 

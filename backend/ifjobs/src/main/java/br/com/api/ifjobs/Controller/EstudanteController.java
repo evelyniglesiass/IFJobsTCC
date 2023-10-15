@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.EstudanteDTO;
+import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.EstudanteService;
@@ -97,6 +98,20 @@ public class EstudanteController {
     public ResponseEntity<?> removerCandidatura(@PathVariable int vaga){ 
         return estSer.removerCandidatura(vaga);
 
+    }
+
+    // listar estudantes candidatos
+    @Secured("ROLE_EMPRESA")
+    @GetMapping("/listar/candidatura/estudantes/{vaga}")
+    public List<EstudanteDTO> listarEstudantesCandidatura(@PathVariable int id) {
+        return estSer.listarEstudantesCandidatura(id); 
+    }
+
+    // listar vagas em que um estudante se candidatou
+    @Secured("ROLE_ESTUDANTE")
+    @GetMapping("/listar/candidatura/vagas/{estudante}")
+    public List<VagaDTO> listarVagasCandidatura(@PathVariable int id) {
+        return estSer.listarVagasCandidatura(id); 
     }
   
 }
