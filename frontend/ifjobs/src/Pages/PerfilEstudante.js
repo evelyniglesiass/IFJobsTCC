@@ -1,7 +1,7 @@
 import React from 'react'
-import HeaderComponent from '../Components/HeaderComponent'
+import HeaderComponent from '../components/HeaderComponent'
 import '../App.scss';
-import CurriculoComponent from '../Components/CurriculoComponent';
+import CurriculoComponent from '../components/CurriculoComponent';
 
 const PerfilEstudante = () => {
   return (

@@ -28,7 +28,7 @@ $fonte-tres: Arial;
 
 // Header - USO GERAL
 .header{
-    width: 20%;
+    width: 15%;
     height: 100vh;
     padding-top: 30vh;
     position: fixed;
@@ -154,7 +154,8 @@ $fonte-tres: Arial;
     float: left;
     width: 150px;
     height: 150px;
-    background-color: $preto;
+    font-size: 3cm;
+    margin-right: 60px;
 }
 
 .curso, .sociais {

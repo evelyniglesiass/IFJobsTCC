@@ -7,10 +7,10 @@ const CurriculoComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
-          <img src="" alt="imagem" className='img-perfis'/>
-          <h2 className='titulo-perfil fonte-titulo'>Nome completo</h2>
+          <h1 className='img-perfis'>NC</h1>
+          <h2 className='titulo-perfil fonte-titulo'>Nome Completo</h2>
           <h5 className='curso fonte-titulo'>Curso</h5>
-          <p className='sociais fonte-titulo'>icones</p>
+          <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
         </article>
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Sobre mim</h3>

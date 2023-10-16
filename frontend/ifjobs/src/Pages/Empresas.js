@@ -1,8 +1,8 @@
 import React from 'react'
 import '../App.scss';
-import HeaderComponent from '../Components/HeaderComponent'
-import EmpresasComponent from '../Components/EmpresasComponent'
-import PesquisaComponent from '../Components/PesquisaComponent';
+import HeaderComponent from '../components/HeaderComponent'
+import EmpresasComponent from '../components/EmpresasComponent'
+import PesquisaComponent from '../components/PesquisaComponent';
 
 const Empresas = () => {
   return (

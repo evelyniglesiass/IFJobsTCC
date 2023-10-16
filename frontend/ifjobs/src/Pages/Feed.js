@@ -1,8 +1,8 @@
 import React from 'react'
 import '../App.scss';
-import HeaderComponent from '../Components/HeaderComponent'
-import VagasComponent from '../Components/VagasComponent';
-import PesquisaComponent from '../Components/PesquisaComponent';
+import HeaderComponent from '../components/HeaderComponent'
+import VagasComponent from '../components/VagasComponent';
+import PesquisaComponent from '../components/PesquisaComponent';
 
 const Feed = () => {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.scss';
-import HeaderComponent from '../Components/HeaderComponent'
-import VagasComponent from '../Components/VagasComponent'
+import HeaderComponent from '../components/HeaderComponent'
+import VagasComponent from '../components/VagasComponent'
 
 const Salvos = () => {
   return (

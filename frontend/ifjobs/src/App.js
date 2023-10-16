@@ -2,12 +2,12 @@ import './App.scss';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 // pages import
-import Home from './Pages/Home';
-import Feed from './Pages/Feed';
-import Empresas from './Pages/Empresas';
-import Salvos from './Pages/Salvos';
-import PerfilEstudante from './Pages/PerfilEstudante';
-import PerfilEmpresa from './Pages/PerfilEmpresa';
+import Home from './pages/Home';
+import Feed from './pages/Feed';
+import Empresas from './pages/Empresas';
+import Salvos from './pages/Salvos';
+import PerfilEstudante from './pages/PerfilEstudante';
+import PerfilEmpresa from './pages/PerfilEmpresa';
 
 function App() {
   return (

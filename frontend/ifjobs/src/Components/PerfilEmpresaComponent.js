@@ -6,10 +6,10 @@ const PerfilEmpresaComponent = () => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
-          <img src="" alt="imagem" className='img-perfis'/>
-          <h2 className='titulo-perfil fonte-titulo'>Nome da empresa</h2>
+        <h1 className='img-perfis'>NE</h1>
+          <h2 className='titulo-perfil fonte-titulo'>Nome da Empresa</h2>
           <h5 className='curso fonte-titulo'>Mini descrição</h5>
-          <p className='sociais fonte-titulo'>icones</p>
+          <p className='sociais fonte-titulo'>@LinkedIn</p>
         </section>
         <section className='sobre-perfis'>
           <h3 className='fonte-titulo'>Sobre a empresa</h3>

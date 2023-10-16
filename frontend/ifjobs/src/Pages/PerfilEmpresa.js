@@ -1,7 +1,7 @@
 import React from 'react'
 import '../App.scss';
-import HeaderComponent from '../Components/HeaderComponent';
-import PerfilEmpresaComponent from '../Components/PerfilEmpresaComponent';
+import HeaderComponent from '../components/HeaderComponent';
+import PerfilEmpresaComponent from '../components/PerfilEmpresaComponent';
 
 const PerfilEmpresa = () => {
   return (
