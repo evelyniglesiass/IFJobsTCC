@@ -37,7 +37,7 @@ public class HabilidadeService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    // método para cadastrar experiencia profissional
+    // método para cadastrar habilidade
     public ResponseEntity<?> cadastrar(Habilidade h){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
@@ -56,7 +56,7 @@ public class HabilidadeService {
 
     }
 
-    // método para editar experiencia profissional
+    // método para editar habilidade
     public ResponseEntity<?> editar(Habilidade h){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
@@ -78,7 +78,7 @@ public class HabilidadeService {
 
     }
 
-    // método para remover experiencia
+    // método para remover habilidade
     public ResponseEntity<Resposta> remover(int id) {
         
         if(!(habRep.existsById(id))){

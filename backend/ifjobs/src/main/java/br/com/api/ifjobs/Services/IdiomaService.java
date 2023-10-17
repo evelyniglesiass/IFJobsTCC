@@ -37,7 +37,7 @@ public class IdiomaService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    // método para cadastrar experiencia profissional
+    // método para cadastrar idioma
     public ResponseEntity<?> cadastrar(Idioma i){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
@@ -56,7 +56,7 @@ public class IdiomaService {
 
     }
 
-    // método para editar experiencia profissional
+    // método para editar idioma
     public ResponseEntity<?> editar(Idioma i){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();

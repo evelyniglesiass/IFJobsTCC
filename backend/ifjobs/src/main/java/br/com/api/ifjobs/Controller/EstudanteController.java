@@ -103,15 +103,15 @@ public class EstudanteController {
     // listar estudantes candidatos
     @Secured("ROLE_EMPRESA")
     @GetMapping("/listar/candidatura/estudantes/{vaga}")
-    public List<EstudanteDTO> listarEstudantesCandidatura(@PathVariable int id) {
-        return estSer.listarEstudantesCandidatura(id); 
+    public List<EstudanteDTO> listarEstudantesCandidatura(@PathVariable int vaga) {
+        return estSer.listarEstudantesCandidatura(vaga); 
     }
 
     // listar vagas em que um estudante se candidatou
     @Secured("ROLE_ESTUDANTE")
     @GetMapping("/listar/candidatura/vagas/{estudante}")
-    public List<VagaDTO> listarVagasCandidatura(@PathVariable int id) {
-        return estSer.listarVagasCandidatura(id); 
+    public List<VagaDTO> listarVagasCandidatura(@PathVariable int estudante) {
+        return estSer.listarVagasCandidatura(estudante); 
     }
   
 }

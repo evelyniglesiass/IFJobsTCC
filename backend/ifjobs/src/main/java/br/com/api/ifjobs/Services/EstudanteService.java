@@ -91,12 +91,6 @@ public class EstudanteService {
         e.setId(estudante.getId()); // acho q assim da
 
         ss.setSenha(e.getSenha());
-
-        if(!(estRep.existsById(e.getId()))){
-            r.setMensagem("Usuário não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        }
         
         if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
@@ -135,12 +129,6 @@ public class EstudanteService {
     public ResponseEntity<Resposta> remover() {
 
         Estudante estudante = estRep.findById(usuarioAutenticadoService.getEstudante().getId()).get();
-        
-        if(!(estRep.existsById(estudante.getId()))){
-            r.setMensagem("Usuário não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        }
 
         estRep.delete(estudante);
         r.setMensagem("Estudante removido com sucesso!");
@@ -188,22 +176,20 @@ public class EstudanteService {
     public ResponseEntity<Resposta> candidatura(int v) {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
-        Vaga vaga = vagRep.findById(v).get();
 
-        if(!(estRep.existsById(estudante.getId()))){
-            r.setMensagem("Usuário não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        }
-        
         if(!(vagRep.existsById(v))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         } 
 
+        Vaga vaga = vagRep.findById(v).get();
+
         estudante.getVagas().add(vaga);
         vaga.getEstudantes().add(estudante);
+        vagRep.save(vaga);
+        estRep.save(estudante);
+        
         r.setMensagem("Candidatura realizada com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -213,22 +199,20 @@ public class EstudanteService {
     public ResponseEntity<Resposta> removerCandidatura(int v) {
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
-        Vaga vaga = vagRep.findById(v).get();
 
-        if(!(estRep.existsById(estudante.getId()))){
-            r.setMensagem("Usuário não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        }
-        
         if(!(vagRep.existsById(v))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
             
         }
 
+        Vaga vaga = vagRep.findById(v).get();
+
         estudante.getVagas().remove(vaga);
         vaga.getEstudantes().remove(estudante);
+        vagRep.save(vaga);
+        estRep.save(estudante);
+
         r.setMensagem("Candidatura removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

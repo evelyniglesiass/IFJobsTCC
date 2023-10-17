@@ -38,9 +38,11 @@ public class PalavraChaveService {
         }
         
         Vaga v = vagRep.findById(idVaga).get();
+
         pc.setVaga(v);
         v.getPalavrasChave().add(pc);
         palChaRep.save(pc);
+
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 
@@ -56,6 +58,7 @@ public class PalavraChaveService {
 
         pc.setVaga(vagRep.findById(idVaga).get());
         palChaRep.save(pc);
+
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -71,6 +74,7 @@ public class PalavraChaveService {
 
         PalavraChave pc = palChaRep.findById(id).get();
         palChaRep.delete(pc);
+
         r.setMensagem("Palavra chave removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
