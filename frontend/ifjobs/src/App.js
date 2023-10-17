@@ -8,17 +8,20 @@ import Empresas from './pages/Empresas';
 import Salvos from './pages/Salvos';
 import PerfilEstudante from './pages/PerfilEstudante';
 import PerfilEmpresa from './pages/PerfilEmpresa';
-import { useLogin } from './hook/login/login.hook';
-import { GlobalUsuarioProvider } from './context/usuario/usuario.context';
+//import { useLogin } from './hook/login/login.hook';
+//import { GlobalUsuarioProvider } from './context/usuario/usuario.context'; TIREI LA DE BAIXO
 
 function App() {
-  const {fazerLogin} = useLogin();
+  //const {fazerLogin} = useLogin();
 
-  fazerLogin("heti90908@gmail.com", "senHa099")
+  // try {
+  //   fazerLogin("heti90908@gmail.com", "senHa099")
+  // } catch (error) {
+  //   console.log(error)
+  // }
 
   return (
     <div className='app'>
-      <GlobalUsuarioProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -29,7 +32,6 @@ function App() {
             <Route path='/perfil/empresa' element={<PerfilEmpresa />} />
           </Routes>
         </BrowserRouter>
-      </GlobalUsuarioProvider>
     </div>
   );
 }

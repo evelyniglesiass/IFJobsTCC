@@ -3,13 +3,13 @@ import '../App.scss';
 import HeaderComponent from '../components/HeaderComponent'
 import VagasComponent from '../components/VagasComponent';
 import PesquisaComponent from '../components/PesquisaComponent';
-import useGlobalUsuario from '../context/usuario/usuario.context';
+//import useGlobalUsuario from '../context/usuario/usuario.context';
 
 const Feed = () => {
 
-  const [usuario] = useGlobalUsuario();
+  //const [usuario] = useGlobalUsuario();
 
-  console.log(usuario);
+  //console.log(usuario);
   return (
     <div className='container-pages'>
         <nav className='header'><HeaderComponent/></nav>
