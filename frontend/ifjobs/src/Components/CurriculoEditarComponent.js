@@ -4,7 +4,7 @@ import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
 
-const CurriculoComponent = () => {
+const CurriculoEditarComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
@@ -41,4 +41,4 @@ const CurriculoComponent = () => {
   )
 }
 
-export default CurriculoComponent
+export default CurriculoEditarComponent

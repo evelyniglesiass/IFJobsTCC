@@ -7,6 +7,13 @@ $fonte-um: 'Abril Fatface';
 $fonte-dois: 'Libre Baskerville';
 $fonte-tres: Arial;
 
+// Imagens
+.logo-navbar{
+    width: 100px;
+    height: 100px;
+    margin-top: 5px;
+}
+
 // App ----------------------------------------------
 
 .app{
@@ -30,7 +37,7 @@ $fonte-tres: Arial;
 .header{
     width: 15%;
     height: 100vh;
-    padding-top: 30vh;
+    padding-top: 5vh;
     position: fixed;
     text-align: center;
     background-color: $verde-forte;
@@ -109,7 +116,7 @@ $fonte-tres: Arial;
     width: 80%;
     min-height: 100vh;
     padding-top: 5vh;
-    padding-left: 50px;
+    padding-left: 30px;
     padding-bottom: 10px;
     float: right;
     text-align: center;
@@ -137,7 +144,8 @@ $fonte-tres: Arial;
 .titulos-perfis{
     margin-top: 20px;
     margin-left: 5px;
-    width: 1100px;
+    //width: 1100px;
+    width: 100%;
     text-align: left;
     color: $branco;
 }
@@ -145,38 +153,47 @@ $fonte-tres: Arial;
 .titulo-perfil {
     float: left;
     text-align: left;
-    width: 900px;
-    height: 40px;
-    margin-left: 20px;
+    //width: 900px;
+    width: 83%;
+    //height: 40px;
+    height: auto;
+    //margin-left: 20px;
+    margin-left: 2%;
 }
 
 .img-perfis{
     float: left;
-    width: 150px;
-    height: 150px;
-    font-size: 3cm;
-    margin-right: 60px;
+    //width: 150px;
+    width: 15%;
+    //height: 150px;
+    height: 100%;
+    font-size: 2.5cm;
 }
 
 .curso, .sociais {
     float: left;
     text-align: left;
-    width: 900px;
-    margin-left: 20px;
+    //width: 900px;
+    width: 83%;
+    //margin-left: 20px;
+    margin-left: 2%;
 }
 
 .curso {
-    height: 30px;
+    //height: 30px;
+    height: auto;
 }
 
 .sociais {
-    height: 80px;
+    //height: 80px;
+    height: auto;
 }
 
-.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo{
-    width: 1100px;
+.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo, .formacao-curriculo{
+    width: 92%;
     margin-top: 20px;
     padding: 20px;
+    padding-top: 10px;
     border-radius: 25px;
     text-align: left;
     background-color: $preto;
@@ -239,6 +256,10 @@ $fonte-tres: Arial;
     padding-top: 30px;
 }
 
+.container-links img{ 
+    margin-bottom: 90px;
+}
+
 // Pesquisa
 .caixa-pesquisa{
     width: 500px;
@@ -251,20 +272,21 @@ $fonte-tres: Arial;
 // Vagas
 .container-geral-vagas{
     display: inline-block;
-    width: 1200px;
+    width: 100%;
     padding-bottom: 10px;
     text-align: center;
 }
 
 .container-vaga{
-    width: 1000px;
+    width: 80%;
     padding-left: 15px;
     margin: 0px;
     background-color: #6a31b4;
 }
 
 .titulo-vagas, .corpo-vagas{
-    width: 650px;
+    width: 75%;
+    //width: 650px;
     text-align: left;
     float: left;
     padding-left: 15px;
@@ -272,14 +294,17 @@ $fonte-tres: Arial;
 }
 
 .botao-vagas{
-    width: 230px;
+    //width: 230px;
+    width: 25%;
     margin-top: auto;
+    margin-bottom: auto;
     text-align: center;
     float: right;
 }
 
 .botao-vagas input{
-    width: 200px;
+    width: 100%;
+    margin-left: 7px;
     background-color: $branco;
     font-family: $fonte-tres;
     font-weight: bolder;
@@ -313,34 +338,44 @@ $fonte-tres: Arial;
 
 // Perfil Empresa
 .perfil-empresa-vaga{
-    width: 1000px;
+    //width: 1000px;
+    width: 100%;
     padding-bottom: 10px;
     margin-top: 0px;
 }
 
 // Curriculo
-.cursos-component, .experiencia-component{
-    width: 1100px;
+.cursos-component, .experiencia-component, .formacao-component{
+    //width: 1100px;
+    width: 100%;
     margin-top: 15px;
 }
 
-// Experiencias e Cursos
+// Experiencias, Cursos e Formação
 .container-cursos-exper{
     padding: 15px;
     border-radius: 25px;
     background-color: $roxo-forte;
     margin-right: 50px;
-
+    height: 100%;
+    width: 100%;
 }
 
 .cabecalho-cursos-exper{
     width: 100%;
+    height: 100%;
     text-align: left;
 }
 
 .titulos-cursos-exper{
-    width: 1100px;
+    //width: 1100px;
+    width: 100%;
     float: left;
+}
+
+.conteudo-experiencias, .conteudo-cursos, .conteudo-formacao{
+    height: auto;
+    display: inline;
 }
 
 .data-inicio, .data-fim{
@@ -350,9 +385,12 @@ $fonte-tres: Arial;
 }
 
 .data-inicio{
-    width: 90px;
+    //width: 90px;
+    width: 9%;
 }
 
 .data-fim{
-    width: 975px;
+    //width: 975px;
+    width: 91%;
+    padding-left: 3px;
 }
