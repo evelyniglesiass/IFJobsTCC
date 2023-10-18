@@ -1,7 +1,7 @@
 import '../App.scss';
 
-import LoginComponent from '../components/LoginComponent';
-import InfoComponent from '../components/InfoComponent';
+import LoginComponent from '../components/ui/LoginComponent';
+import InfoComponent from '../components/ui/InfoComponent';
 
 import Background from "../imagens/home.png";
 

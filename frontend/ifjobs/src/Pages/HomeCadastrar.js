@@ -1,9 +1,9 @@
 import '../App.scss';
 
-import InfoComponent from '../components/InfoComponent';
+import InfoComponent from '../components/ui/InfoComponent';
 
 import Background from "../imagens/home.png";
-import CadastrarComponent from '../components/CadastrarComponent';
+import CadastrarComponent from '../components/ui/CadastrarComponent';
 
 const HomeCadastrar = () => {
 
