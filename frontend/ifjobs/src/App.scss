@@ -38,7 +38,8 @@ $fonte-tres: Arial;
     border-color: $verde-forte;
     background-color: $verde-forte;
     height: 80px;
-    width: 80px;
+    //width: 80px;
+    width: 6.5%;
     position: relative;
     top: -95px;
     left: 550px;
@@ -54,6 +55,7 @@ $fonte-tres: Arial;
 // Header - USO GERAL
 .header{
     width: 15%;
+    min-width: 150px;
     height: 100vh;
     padding-top: 5vh;
     position: fixed;
@@ -268,6 +270,7 @@ $fonte-tres: Arial;
     font-weight: bolder;
     font-size: 25px;
     text-decoration: none;
+    width: 80%;
 }
 
 .container-links .link{ 
@@ -276,6 +279,7 @@ $fonte-tres: Arial;
 
 .container-links img{ 
     margin-bottom: 90px;
+    width: 80%;
 }
 
 // Pesquisa
@@ -331,26 +335,31 @@ $fonte-tres: Arial;
 // Empresas
 .container-geral-empresas{
     display: inline-block;
-    width: 1000px;
+    //width: 1000px;
+    width: 100%;
     text-align: left;
 }
 
 .container-empresa{
-    width: 220px;
-    margin-left: 80px;
+    width: 25%;
+    //width: 220px;
+    margin-left: 65px;
 }
 
 .titulo-empresas{
-    width: 200px;
-    margin-top: 100px;
+    //width: 200px;
+    width: 100%;
+    margin-top: 10px;
     text-align: center;
 }
 
 .corpo-empresas{
-    width: 200px;
+    //width: 200px;
+    width: 100%;
     padding: 10px;
     text-align: center;
     padding-right: 15px;
+    margin-bottom: 10px;
 }
 
 // Perfil Empresa
