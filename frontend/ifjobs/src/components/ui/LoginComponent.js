@@ -1,4 +1,4 @@
-import '../App.scss';
+import '../../App.scss';
 import { useState } from 'react';
 
 const LoginComponent = () => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../App.scss';
+import '../../App.scss';
 import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';

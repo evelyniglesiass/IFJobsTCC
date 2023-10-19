@@ -1,5 +1,5 @@
 import React from 'react'
-import '.../App.scss';
+import '../../App.scss';
 
 const DetalhesVagaComponent = () => {
   return (
@@ -20,7 +20,7 @@ const DetalhesVagaComponent = () => {
           <h3 className='fonte-titulo'>Estudantes</h3>
           <p className='fonte-corpo'>Nomes</p>
         </article>
-        
+
     </section>
   )
 }

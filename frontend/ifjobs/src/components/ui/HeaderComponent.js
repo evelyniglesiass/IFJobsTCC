@@ -1,6 +1,6 @@
 import React from 'react'
-import '../App.scss';
-import Logo from '../imagens/logoBrancoLegenda.png'
+import '../../App.scss';
+import Logo from '../../imagens/logoBrancoLegenda.png'
 import { Link } from "react-router-dom"
 
 const HeaderComponent = () => {
