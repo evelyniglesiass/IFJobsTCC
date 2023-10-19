@@ -9,8 +9,7 @@ $fonte-tres: Arial;
 
 // Imagens
 .logo-navbar{
-    width: 150px;
-    height: 150px;
+    height: 140px;
     margin-top: 5px;
 }
 
@@ -33,6 +32,7 @@ $fonte-tres: Arial;
 
 // Pages --------------------------------------------
 
+//botões de atalho
 .button-atalho-perfil{
     border-radius: 100%;
     border-color: $verde-forte;
@@ -49,6 +49,24 @@ $fonte-tres: Arial;
     color: $branco;
     font-weight: bolder;
     font-size: 25px;
+    text-decoration: none;
+}
+
+.button-editar{
+    border-radius: 25px;
+    border-color: $verde-forte;
+    background-color: $verde-forte;
+    height: 30px;
+    width: 100px;
+    position: relative;
+    top: -70%;
+    left: 30%;
+}
+
+.link-editar{
+    color: $branco;
+    font-weight: 300;
+    font-size: 15px;
     text-decoration: none;
 }
 
@@ -279,7 +297,7 @@ $fonte-tres: Arial;
 
 .container-links img{ 
     margin-bottom: 90px;
-    width: 80%;
+    width: 61%;
 }
 
 // Pesquisa

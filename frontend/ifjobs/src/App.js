@@ -2,16 +2,16 @@ import './App.scss';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 // pages import
-import Home from './pages/Home';
-import Feed from './pages/Feed';
-import Empresas from './pages/Empresas';
-import Salvos from './pages/Salvos';
-import PerfilEstudante from './pages/PerfilEstudante';
-import PerfilEmpresa from './pages/PerfilEmpresa';
-import Estudante from './pages/Estudante';
-import Empresa from './pages/Empresa';
-import DetalhesVaga from './pages/DetalhesVaga';
-import HomeCadastrar from './pages/HomeCadastrar';
+import Home from './pages/geral/Home';
+import Feed from './pages/geral/Feed';
+import Empresas from './pages/empresa/Empresas';
+import Salvos from './pages/geral/Salvos';
+import PerfilEstudante from './pages/estudante/PerfilEstudante';
+import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
+import Estudante from './pages/estudante/Estudante';
+import Empresa from './pages/empresa/Empresa';
+import DetalhesVaga from './pages/empresa/DetalhesVaga';
+import HomeCadastrar from './pages/geral/HomeCadastrar';
 import { ToastContainer } from 'react-toastify';
 //import { useLogin } from './hook/login/login.hook';
 //import { GlobalUsuarioProvider } from './context/usuario/usuario.context'; TIREI LA DE BAIXO

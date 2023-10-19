@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../App.scss';
+import EditarVagaComponent from '../ui/editar/EditarVagaComponent';
 
 const DetalhesVagaComponent = () => {
   return (
@@ -9,6 +10,7 @@ const DetalhesVagaComponent = () => {
           <h2 className='titulo-perfil fonte-titulo'>Título</h2>
           <h5 className='curso fonte-titulo'>Cidade</h5>
           <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
+          <EditarVagaComponent/>
         </article>
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Detalhes</h3>

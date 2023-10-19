@@ -1,9 +1,9 @@
-import '../App.scss';
+import '../../App.scss';
 
-import LoginComponent from '../components/ui/LoginComponent';
-import InfoComponent from '../components/ui/InfoComponent';
+import LoginComponent from '../../components/ui/LoginComponent';
+import InfoComponent from '../../components/ui/InfoComponent';
 
-import Background from "../imagens/home.png";
+import Background from "../../imagens/home.png";
 
 const Home = () => {
 

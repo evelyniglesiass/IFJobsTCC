@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 import VagasComponent from './VagasComponent'
+import EditarEmpresaComponent from '../ui/editar/EditarEmpresaComponent';
 
 const PerfilEmpresaComponent = () => {
   return ( 
@@ -10,6 +11,7 @@ const PerfilEmpresaComponent = () => {
           <h2 className='titulo-perfil fonte-titulo'>Nome da Empresa</h2>
           <h5 className='curso fonte-titulo'>Mini descrição</h5>
           <p className='sociais fonte-titulo'>@LinkedIn</p>
+          <EditarEmpresaComponent/>
         </section>
         <section className='sobre-perfis'>
           <h3 className='fonte-titulo'>Sobre a empresa</h3>

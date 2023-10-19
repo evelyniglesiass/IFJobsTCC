@@ -1,9 +1,9 @@
 import React from 'react'
-import '../App.scss';
-import HeaderComponent from '../components/ui/HeaderComponent'
-import VagasComponent from '../components/empresa/VagasComponent';
-import PesquisaComponent from '../components/ui/PesquisaComponent';
-import AtalhoPerfilComponent from '../components/ui/AtalhoPerfilComponent';
+import '../../App.scss';
+import HeaderComponent from '../../components/ui/HeaderComponent'
+import VagasComponent from '../../components/empresa/VagasComponent';
+import PesquisaComponent from '../../components/ui/PesquisaComponent';
+import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 
 // import useGlobalUsuario from '../context/usuario/usuario.context';
 

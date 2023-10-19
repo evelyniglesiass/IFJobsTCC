@@ -1,9 +1,9 @@
 import React from 'react'
-import '../App.scss';
-import HeaderComponent from '../components/ui/HeaderComponent'
-import EmpresasComponent from '../components/empresa/EmpresasComponent'
-import PesquisaComponent from '../components/ui/PesquisaComponent';
-import AtalhoPerfilComponent from '../components/ui/AtalhoPerfilComponent';
+import '../../App.scss';
+import HeaderComponent from '../../components/ui/HeaderComponent'
+import EmpresasComponent from '../../components/empresa/EmpresasComponent'
+import PesquisaComponent from '../../components/ui/PesquisaComponent';
+import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 
 const Empresas = () => {
   return (
