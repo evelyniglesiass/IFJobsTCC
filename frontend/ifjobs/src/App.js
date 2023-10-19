@@ -12,6 +12,7 @@ import Estudante from './pages/Estudante';
 import Empresa from './pages/Empresa';
 import DetalhesVaga from './pages/DetalhesVaga';
 import HomeCadastrar from './pages/HomeCadastrar';
+import { ToastContainer } from 'react-toastify';
 //import { useLogin } from './hook/login/login.hook';
 //import { GlobalUsuarioProvider } from './context/usuario/usuario.context'; TIREI LA DE BAIXO
 
@@ -40,6 +41,8 @@ function App() {
             <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
           </Routes>
         </BrowserRouter>
+
+        <ToastContainer/>
     </div>
   );
 }

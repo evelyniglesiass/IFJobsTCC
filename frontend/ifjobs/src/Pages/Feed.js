@@ -4,23 +4,16 @@ import HeaderComponent from '../components/ui/HeaderComponent'
 import VagasComponent from '../components/empresa/VagasComponent';
 import PesquisaComponent from '../components/ui/PesquisaComponent';
 import AtalhoPerfilComponent from '../components/ui/AtalhoPerfilComponent';
-//import { ToastContainer, toast } from 'react-toastify';
 
-//import useGlobalUsuario from '../context/usuario/usuario.context';
+// import useGlobalUsuario from '../context/usuario/usuario.context';
 
 const Feed = () => {
 
-  //const [usuario] = useGlobalUsuario();
-  //console.log(usuario);
-
-  //const notify = () => toast("Wow so easy !");
+  // const [usuario] = useGlobalUsuario();
+  // console.log(usuario);
 
   return (
-    <div className='container-pages'>
-
-        {/* <button onClick={notify}>Notify !</button> */}
-        {/* <ToastContainer /> */}
-        
+    <div className='container-pages'>                  
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-vagas'>
           <article className='pesquisa-vagas'><PesquisaComponent/></article>

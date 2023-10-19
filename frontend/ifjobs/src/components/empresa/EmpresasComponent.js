@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../App.scss';
+
 const EmpresasComponent = () => {
   return (
     <section className='container-geral-empresas'>

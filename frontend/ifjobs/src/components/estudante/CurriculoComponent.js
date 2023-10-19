@@ -4,6 +4,13 @@ import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
+
+const notify = () => {
+  toast.success('Parabéns!')
+}
+
 const CurriculoComponent = () => {
   return (
     <section>
@@ -36,6 +43,8 @@ const CurriculoComponent = () => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <article className='formacao-component'><FormacaoComponent/></article>
         </article>
+
+        <button onClick={notify}>Notify !</button>
         
     </section>
   )
