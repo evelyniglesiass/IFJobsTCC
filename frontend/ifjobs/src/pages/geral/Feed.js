@@ -5,12 +5,12 @@ import VagasComponent from '../../components/empresa/VagasComponent';
 import PesquisaComponent from '../../components/ui/PesquisaComponent';
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 
-// import useGlobalUsuario from '../context/usuario/usuario.context';
+//import useGlobalUsuario from '../context/usuario/usuario.context';
 
 const Feed = () => {
 
-  // const [usuario] = useGlobalUsuario();
-  // console.log(usuario);
+  //const [usuario] = useGlobalUsuario();
+  //console.log(usuario);
 
   return (
     <div className='container-pages'>                  

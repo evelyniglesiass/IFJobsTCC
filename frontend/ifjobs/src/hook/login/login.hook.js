@@ -1,4 +1,4 @@
-import useGlobalUsuario from '../../context/usuario/usuario.context';
+import useGlobalUsuario from '../../context/usuario/user.context';
 import { logarApi } from '../../api';
 import { useState } from 'react';
 

@@ -13,20 +13,26 @@ import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
 import HomeCadastrar from './pages/geral/HomeCadastrar';
 import { ToastContainer } from 'react-toastify';
-//import { useLogin } from './hook/login/login.hook';
-//import { GlobalUsuarioProvider } from './context/usuario/usuario.context'; TIREI LA DE BAIXO
+import { useLogin } from './hook/login/login.hook';
+import useGlobalUser from './context/usuario/user.context';
+import {GlobalUserProvider} from './context/usuario/user.context';
 
 function App() {
   //const {fazerLogin} = useLogin();
 
-  // try {
-  //   fazerLogin("heti90908@gmail.com", "senHa099")
-  // } catch (error) {
-  //   console.log(error)
-  // }
+  //const [user, setUser] = useGlobalUser();
+
+  /*try {
+    const usuarioLogado = fazerLogin("heti90908@gmail.com", "senHa099")
+
+    setUser(usuarioLogado);
+  } catch (error) {
+    console.log(error)
+  }*/
 
   return (
     <div className='app'>
+      <GlobalUserProvider>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
@@ -41,8 +47,8 @@ function App() {
             <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
           </Routes>
         </BrowserRouter>
-
-        <ToastContainer/>
+      </GlobalUserProvider>
+      <ToastContainer/>
     </div>
   );
 }
