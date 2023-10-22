@@ -9,8 +9,7 @@ const HomeCadastrar = () => {
 
   return (
     <section className='container-home' style={{ backgroundImage: `url(${Background})`}}> 
-      <article className='info-component'><InfoComponent/></article>
-      <article className='login-component'><CadastrarComponent/></article>
+      <article className='cadastrar-component'><CadastrarComponent/></article>
     </section>
   )
 }

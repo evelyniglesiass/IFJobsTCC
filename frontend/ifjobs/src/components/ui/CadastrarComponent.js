@@ -1,76 +1,35 @@
 import '../../App.scss';
-import { useState } from 'react';
 
 const CadastrarComponent = () => {
 
-    const [cadastro, setCadastro] = useState(false);
-
-    function mudarCadastro() {
-        setCadastro(true);
-    }
-
-    function mudarLogin() {
-        setCadastro(false);
-    }
-
   return (
-    <div className='container-login'>
+    <div className='container-cadastro'>
 
-        <h3>Bem vindo!</h3>
-        <h6>O que você deseja fazer?</h6>
-        <form className="cabecalho-login btn-group">
-            <input type="radio" className="btn-check" name="btnradio" id="btnlogin" autocomplete="off" onClick={mudarLogin}/>
-            <label className="btn btn-outline-dark" for="btnlogin">Login</label>
-
-            <input type="radio" className="btn-check" name="btnradio" id="btncadastro" autocomplete="off" onClick={mudarCadastro}/>
-            <label className="btn btn-outline-dark" for="btncadastro">Cadastrar</label>
+        <h3>Cadastro de estudante:</h3>
+        <form>
+            <div class="txt form-group">
+                <input type="text" class="form-control" id="nome" placeholder="Nome" />
+            </div>
+            <div class="txt form-group">
+                <input type="text" class="form-control" id="email" placeholder="Nome de usuário" />
+            </div>
+            <div class="txt form-group">
+                <input type="text" class="form-control" id="email" placeholder="Idade" />
+            </div>
+            <div class="txt form-group">
+                <input type="text" class="form-control" id="email" placeholder="Telefone" />
+            </div>
+            <div class="txt form-group">
+                <input type="email" class="form-control" id="email" placeholder="E-mail" />
+            </div>
+            <div class="txt form-group">
+                <input type="password" class="form-control" id="senha" placeholder="Senha" />
+            </div>
+            <div class="txt form-group">
+                <input type="text" class="form-control" id="email" placeholder="Cidade" />
+            </div>
+            <button type="submit" class="txt btn btn-primary">Cadastrar</button>
         </form>
-
-        {
-            cadastro
-            ? 
-            <form className='login'>
-                <div class="radio form-check">
-                    <input class="form-check-input" type="radio" name="usuario" id="estudante" checked/>
-                    <label class="form-check-label" for="estudante">
-                        Estudante
-                    </label>
-                </div>
-                <div class="radio form-check">
-                    <input class="form-check-input" type="radio" name="usuario" id="empresa"/>
-                    <label class="form-check-label" for="empresa">
-                        Empresa
-                    </label>
-                </div>
-
-                <input type='text' placeholder='Nome' value='' className='txt form-control'/> 
-                <input type='text' placeholder='Email' value='' className='txt form-control'/> 
-                <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
-                <input type='text' placeholder='Confirme sua senha' value='' className='txt form-control'/>
-
-                <input type="button" value='Cadastrar' className='btn btn-dark'/>
-            </form>
-            :
-            <form className='login'>
-                <div class="radio form-check">
-                    <input class="form-check-input" type="radio" name="usuario" id="estudante" checked/>
-                    <label class="form-check-label" for="estudante">
-                        Estudante
-                    </label>
-                </div>
-                <div class="radio form-check">
-                    <input class="form-check-input" type="radio" name="usuario" id="empresa"/>
-                    <label class="form-check-label" for="empresa">
-                        Empresa
-                    </label>
-                </div>
-
-                <input type='text' placeholder='Email' value='' className='txt form-control'/> 
-                <input type='text' placeholder='Senha' value='' className='txt form-control'/> 
-
-                <input type="button" value='Login' className='btn btn-dark'/>
-            </form>
-        }
 
     </div> 
   )

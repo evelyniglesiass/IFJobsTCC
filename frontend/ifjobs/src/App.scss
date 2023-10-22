@@ -126,10 +126,19 @@ $fonte-tres: Arial;
 }
  
 .login-component{
-    width: 30%;
-    height: 100%;
-    padding-top: 190px;
-    margin-left: 150px;
+    width: 22%;
+    height: 100vh;
+    padding-top: 250px;
+    margin-left: 210px;
+    float: left;
+    color: $preto;
+}
+
+.cadastrar-component{
+    width: 50vw;
+    height: 100vh;
+    padding-top: 120px;
+    margin-left: 400px;
     float: left;
     color: $preto;
 }
@@ -237,45 +246,66 @@ $fonte-tres: Arial;
     background-color: $preto;
 }
 
+// Cadastro
+
+.container-cadastro{
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 25px;
+    text-align: left;
+    background-color: $preto;
+    color: $branco;
+}
+
+.container-cadastro .txt{
+    margin: 15px auto 0px auto;
+}
+
 // Login
 .container-login {
     text-align: center;
 }
 
-.cabecalho-login{
-    margin: 0px auto 10px auto;
-    width: 150px;
+.container-login a {
+    text-decoration: none;
+    color: $preto;
 }
 
+// .cabecalho-login{ // tirar
+//     margin: 0px auto 10px auto;
+//     width: 150px;
+// }
+
 .login .txt{
-    width: 275px;
+    width: 80%;
 }
 
 .login .btn{
     width: 100px;
+    margin-top: 15px;
     background-color: $preto;
     border-color: $branco;
     color: $branco;
 }
 
 .login input{ 
-    margin: 10px auto 0px auto;
+    margin: 15px auto 0px auto;
 }
 
-.radio{ 
-    width: 100px;
-    text-align: left;
-    margin-left: 180px;
-}
+// .radio{ // tirar
+//     width: 100px;
+//     text-align: left;
+//     margin-left: 180px;
+// }
 
-.radio input{ 
-    height: 13px;
-    width: 13px;
-}
+// .radio input{  // tirar
+//     height: 13px;
+//     width: 13px;
+// }
 
-.radio label{ 
-    margin-top: 5px;
-}
+// .radio label{ // tirar
+//     margin-top: 5px;
+// }
 
 // Info
 .container-info{
