@@ -185,6 +185,12 @@ public class EstudanteService {
 
         Vaga vaga = vagRep.findById(v).get();
 
+        if(estudante.getIdade() < vaga.getIdadeMinima()){
+            r.setMensagem("Você não possui a idade mínima para esta vaga!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+
+        }
+
         estudante.getVagas().add(vaga);
         vaga.getEstudantes().add(estudante);
         vagRep.save(vaga);
