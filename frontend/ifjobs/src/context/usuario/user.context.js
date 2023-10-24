@@ -10,6 +10,7 @@ const [_useGlobalUser, Provider] = createGlobalState(initialState);
 
 
 function useGlobalUser() {
+  
   const [_user, _setUser] = _useGlobalUser();
 
   function setUser(user, postAction) {

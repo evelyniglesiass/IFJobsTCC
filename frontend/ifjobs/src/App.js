@@ -18,17 +18,17 @@ import useGlobalUser from './context/usuario/user.context';
 import {GlobalUserProvider} from './context/usuario/user.context';
 
 function App() {
-  //const {fazerLogin} = useLogin();
+  const {fazerLogin} = useLogin();
 
-  //const [user, setUser] = useGlobalUser();
+  const [user, setUser] = useGlobalUser();
 
-  /*try {
+  try {
     const usuarioLogado = fazerLogin("heti90908@gmail.com", "senHa099")
-
     setUser(usuarioLogado);
+
   } catch (error) {
     console.log(error)
-  }*/
+  }
 
   return (
     <div className='app'>
