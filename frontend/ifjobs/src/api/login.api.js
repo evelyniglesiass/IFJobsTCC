@@ -1,4 +1,4 @@
-import {axiosInstance} from '../';
+import {axiosInstance} from '../constants';
 
 export async function logarApi(email, senha){
 

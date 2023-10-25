@@ -1,5 +1,5 @@
 import useGlobalUsuario from '../../context/usuario/user.context';
-import { logarApi } from '../../api';
+import { logarApi } from '../api';
 import { useState } from 'react';
 
 export function useLogin(){
