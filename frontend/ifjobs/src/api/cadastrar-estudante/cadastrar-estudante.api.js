@@ -1,4 +1,4 @@
-import { axiosInstance } from "../";
+import { axiosInstance } from "../_base/axiosInstance";
 
 export async function criarEstudanteApi(nome, nomeUsuario, idade, telefone, email, senha, cidade){
 
