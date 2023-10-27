@@ -11,24 +11,25 @@ import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
 import Estudante from './pages/estudante/Estudante';
 import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
-import HomeCadastrar from './pages/geral/HomeCadastrar';
+import EstudanteCadastrar from './pages/geral/EstudanteCadastrar';
 import { ToastContainer } from 'react-toastify';
 import { useLogin } from './hook/login/login.hook';
 import useGlobalUser from './context/usuario/user.context';
 import {GlobalUserProvider} from './context/usuario/user.context';
+import EmpresaCadastrar from './pages/geral/EmpresaCadastrar';
 
 function App() {
-  const {fazerLogin} = useLogin();
+  // const {fazerLogin} = useLogin();
 
-  const [user, setUser] = useGlobalUser();
+  // const[user, setUser] = useGlobalUser();
 
-  try {
-    const usuarioLogado = fazerLogin("heti90908@gmail.com", "senHa099")
-    setUser(usuarioLogado);
+  // try {
+  //   const usuarioLogado = fazerLogin("heti90908@gmail.com", "senHa099")
+  //   setUser(usuarioLogado);
 
-  } catch (error) {
-    console.log(error)
-  }
+  // } catch (error) {
+  //   console.log(error)
+  // }
 
   return (
     <div className='app'>
@@ -36,7 +37,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/cadastrar' element={<HomeCadastrar />} />
+            <Route path='/cadastrar/estudante' element={<EstudanteCadastrar />} />
+            <Route path='/cadastrar/empresa' element={<EmpresaCadastrar />} />
             <Route path='/feed' element={<Feed />} />
             <Route path='/empresas' element={<Empresas />} />
             <Route path='/salvos' element={<Salvos />} />

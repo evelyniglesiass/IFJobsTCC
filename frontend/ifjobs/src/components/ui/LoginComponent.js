@@ -7,7 +7,7 @@ const LoginComponent = () => {
     <div className='container-login'>
 
         <h3>Bem vindo!</h3>
-        <h6 className='link'><Link to={"/cadastrar"}>Clique aqui para cadastrar-se.</Link><br /></h6>
+        <h6 className='link'>Cadastrar <Link className='link-cadastro' to={"/cadastrar/estudante"}>Estudante</Link> / <Link className='link-cadastro' to={"/cadastrar/empresa"}>Empresa</Link><br /></h6>
 
         <form className='login'>
             <input type='text' placeholder='Email' value='' className='txt form-control'/> 

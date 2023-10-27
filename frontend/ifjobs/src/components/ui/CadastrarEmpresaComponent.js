@@ -1,23 +1,23 @@
 import '../../App.scss';
 
-const CadastrarComponent = () => {
+const CadastrarEmpresaComponent = () => {
 
   return (
     <div className='container-cadastro'>
 
-        <h3>Cadastro de estudante:</h3>
+        <h3>Cadastrar empresa:</h3>
         <form>
             <div class="txt form-group">
                 <input type="text" class="form-control" id="nome" placeholder="Nome" />
             </div>
             <div class="txt form-group">
-                <input type="text" class="form-control" id="email" placeholder="Nome de usuário" />
+                <input type="text" class="form-control" id="usuario" placeholder="Nome de usuário" />
             </div>
             <div class="txt form-group">
-                <input type="text" class="form-control" id="email" placeholder="Idade" />
+                <textarea type="text" class="form-control" id="desc" placeholder="Descrição" />
             </div>
             <div class="txt form-group">
-                <input type="text" class="form-control" id="email" placeholder="Telefone" />
+                <input type="text" class="form-control" id="telefone" placeholder="Telefone" />
             </div>
             <div class="txt form-group">
                 <input type="email" class="form-control" id="email" placeholder="E-mail" />
@@ -26,7 +26,7 @@ const CadastrarComponent = () => {
                 <input type="password" class="form-control" id="senha" placeholder="Senha" />
             </div>
             <div class="txt form-group">
-                <input type="text" class="form-control" id="email" placeholder="Cidade" />
+                <input type="text" class="form-control" id="cidade" placeholder="Cidade" />
             </div>
             <button type="submit" class="txt btn btn-primary">Cadastrar</button>
         </form>
@@ -35,4 +35,4 @@ const CadastrarComponent = () => {
   )
 }
 
-export default CadastrarComponent
+export default CadastrarEmpresaComponent

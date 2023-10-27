@@ -115,6 +115,8 @@ $fonte-tres: Arial;
     min-height: 100vh;
     max-height: auto;
     background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 }
 
 .info-component{
@@ -138,7 +140,7 @@ $fonte-tres: Arial;
     width: 50vw;
     height: 100vh;
     padding-top: 120px;
-    margin-left: 400px;
+    margin-left: 26%;
     float: left;
     color: $preto;
 }
@@ -252,13 +254,29 @@ $fonte-tres: Arial;
     padding: 20px;
     padding-top: 10px;
     border-radius: 25px;
-    text-align: left;
+    text-align: center;
     background-color: $preto;
     color: $branco;
+    width: 100%;
 }
 
 .container-cadastro .txt{
     margin: 15px auto 0px auto;
+}
+
+.container-cadastro h3{
+    text-align: left;
+}
+
+.container-cadastro .btn{
+    background-color: $verde-forte;
+    border-color: $verde-forte;
+}
+
+.container-cadastro .btn:hover{
+    background-color: $branco;
+    border-color: $branco;
+    color: $preto;
 }
 
 // Login
@@ -269,6 +287,10 @@ $fonte-tres: Arial;
 .container-login a {
     text-decoration: none;
     color: $preto;
+}
+
+.container-login .link-cadastro:hover {
+    color: $verde-forte;
 }
 
 // .cabecalho-login{ // tirar
@@ -284,6 +306,12 @@ $fonte-tres: Arial;
     width: 100px;
     margin-top: 15px;
     background-color: $preto;
+    border-color: $branco;
+    color: $branco;
+}
+
+.login .btn:hover{
+    background-color: $verde-forte;
     border-color: $branco;
     color: $branco;
 }
@@ -319,6 +347,10 @@ $fonte-tres: Arial;
     font-size: 25px;
     text-decoration: none;
     width: 80%;
+}
+
+.container-links a:hover{ 
+    color: $roxo-forte;
 }
 
 .container-links .link{ 
