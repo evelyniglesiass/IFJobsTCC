@@ -21,6 +21,10 @@ $fonte-tres: Arial;
     color: $branco;
 }
 
+body{
+    background-color: $branco;
+}
+
 .fonte-titulo{
     font-weight: bolder;
     font-family: $fonte-tres;
@@ -210,6 +214,10 @@ $fonte-tres: Arial;
     margin-left: 2%;
 }
 
+.titulo-perfis-empresa{
+    color: $preto;
+}
+
 .img-perfis{
     float: left;
     //width: 150px;
@@ -373,7 +381,7 @@ $fonte-tres: Arial;
 
 // Vagas
 .container-geral-vagas{
-    display: inline-block;
+    //display: inline-block;
     width: 100%;
     padding-bottom: 10px;
     text-align: center;
@@ -383,6 +391,7 @@ $fonte-tres: Arial;
     width: 80%;
     padding-left: 15px;
     margin: 0px;
+    //display: inline-block;
 }
 
 .titulo-vagas, .corpo-vagas{
@@ -447,7 +456,7 @@ $fonte-tres: Arial;
     //width: 1000px;
     width: 100%;
     padding-bottom: 10px;
-    margin-top: 0px;
+    margin-top: 2.5%;
 }
 
 // Curriculo

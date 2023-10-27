@@ -13,10 +13,11 @@ import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
 import EstudanteCadastrar from './pages/geral/EstudanteCadastrar';
 import { ToastContainer } from 'react-toastify';
-import { useLogin } from './hook/login/login.hook';
-import useGlobalUser from './context/usuario/user.context';
+//import { useLogin } from './hook/login/login.hook';
+//import useGlobalUser from './context/usuario/user.context';
 import {GlobalUserProvider} from './context/usuario/user.context';
 import EmpresaCadastrar from './pages/geral/EmpresaCadastrar';
+import DetalhesVagaEstudante from './pages/estudante/DetalhesVagaEstudante';
 
 function App() {
   // const {fazerLogin} = useLogin();
@@ -36,17 +37,18 @@ function App() {
       <GlobalUserProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/cadastrar/estudante' element={<EstudanteCadastrar />} />
-            <Route path='/cadastrar/empresa' element={<EmpresaCadastrar />} />
-            <Route path='/feed' element={<Feed />} />
-            <Route path='/empresas' element={<Empresas />} />
-            <Route path='/salvos' element={<Salvos />} />
-            <Route path='/perfil/estudante' element={<PerfilEstudante />} />
-            <Route path='/perfil/empresa' element={<PerfilEmpresa />} />
+            <Route path='/' element={<Home/>} />
+            <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
+            <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
+            <Route path='/feed' element={<Feed/>} />
+            <Route path='/empresas' element={<Empresas/>} />
+            <Route path='/salvos' element={<Salvos/>} />
+            <Route path='/perfil/estudante' element={<PerfilEstudante/>} />
+            <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
             <Route path='/estudante' element={<Estudante/>} />
             <Route path='/empresa' element={<Empresa/>} />
             <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
+            <Route path='/detalhes/vaga/estudante' element={<DetalhesVagaEstudante/>} />
           </Routes>
         </BrowserRouter>
       </GlobalUserProvider>
