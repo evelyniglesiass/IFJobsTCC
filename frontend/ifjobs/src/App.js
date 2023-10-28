@@ -11,13 +11,14 @@ import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
 import Estudante from './pages/estudante/Estudante';
 import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
-import EstudanteCadastrar from './pages/geral/EstudanteCadastrar';
+import EstudanteCadastrar from './pages/estudante/EstudanteCadastrar';
 import { ToastContainer } from 'react-toastify';
 //import { useLogin } from './hook/login/login.hook';
 //import useGlobalUser from './context/usuario/user.context';
 import {GlobalUserProvider} from './context/usuario/user.context';
-import EmpresaCadastrar from './pages/geral/EmpresaCadastrar';
+import EmpresaCadastrar from './pages/empresa/EmpresaCadastrar';
 import DetalhesVagaEstudante from './pages/estudante/DetalhesVagaEstudante';
+import EditarCurriculoComponent from './components/estudante/EditarCurriculoComponent';
 
 function App() {
   // const {fazerLogin} = useLogin();
@@ -44,6 +45,7 @@ function App() {
             <Route path='/empresas' element={<Empresas/>} />
             <Route path='/salvos' element={<Salvos/>} />
             <Route path='/perfil/estudante' element={<PerfilEstudante/>} />
+            <Route path='/perfil/estudante/editar' element={<EditarCurriculoComponent/>} />
             <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
             <Route path='/estudante' element={<Estudante/>} />
             <Route path='/empresa' element={<Empresa/>} />

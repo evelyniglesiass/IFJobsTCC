@@ -1,8 +1,7 @@
 import React from 'react'
 import '../../App.scss';
-import EditarVagaButtonComponent from '../ui/editar/EditarVagaButtonComponent';
 
-const DetalhesVagaComponent = () => {
+const EditarDetalhesVagaComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
@@ -27,4 +26,4 @@ const DetalhesVagaComponent = () => {
   )
 }
 
-export default DetalhesVagaComponent
+export default EditarDetalhesVagaComponent

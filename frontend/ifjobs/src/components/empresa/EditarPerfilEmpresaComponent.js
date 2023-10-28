@@ -1,9 +1,8 @@
 import React from 'react'
 import '../../App.scss';
 import VagasComponent from './VagasComponent'
-import EditarEmpresaButtonComponent from '../ui/editar/EditarEmpresaButtonComponent';
 
-const PerfilEmpresaComponent = () => {
+const EditarPerfilEmpresaComponent = () => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
@@ -22,4 +21,4 @@ const PerfilEmpresaComponent = () => {
   )
 }
 
-export default PerfilEmpresaComponent
+export default EditarPerfilEmpresaComponent

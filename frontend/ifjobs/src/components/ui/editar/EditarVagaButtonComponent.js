@@ -1,7 +1,7 @@
 import '../../../App.scss';
 import {Link} from "react-router-dom"
 
-const EditarVagaComponent = () => {
+const EditarVagaButtonComponent = () => {
 
     return (
         <button className='button-editar'>
@@ -10,4 +10,4 @@ const EditarVagaComponent = () => {
     )
 }
 
-export default EditarVagaComponent
+export default EditarVagaButtonComponent
