@@ -69,6 +69,11 @@ body{
     left: 30%;
 }
 
+.button-editar:hover{
+    background-color: $roxo-forte;
+    border-color: $roxo-forte;
+}
+
 .link-editar{
     color: $branco;
     font-weight: 300;

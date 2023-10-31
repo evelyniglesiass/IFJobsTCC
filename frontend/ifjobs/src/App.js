@@ -61,7 +61,7 @@ function App() {
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             <Route path='/estudante' element={<Estudante/>} />
-            <Route path='/perfil/estudante' element={<PerfilEstudante/>} />
+            <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> 
             <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} />
 
             {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}
@@ -77,6 +77,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </GlobalUserProvider>
+
       <ToastContainer/>
     </div>
   );

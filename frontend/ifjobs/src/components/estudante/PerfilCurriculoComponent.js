@@ -8,9 +8,10 @@ import FormacaoComponent from './FormacaoComponent';
 
 // Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
+import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
 
 // Component de perfil do estudante com botão de editar
-const EditarCurriculoComponent = () => {
+const PerfilCurriculoComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
@@ -18,7 +19,7 @@ const EditarCurriculoComponent = () => {
           <h2 className='titulo-perfil fonte-titulo'>Nome Completo</h2>
           <h5 className='curso fonte-titulo'>Curso</h5>
           <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
-          <EditarCurriculoComponent/>
+          <EditarCurriculoButtonComponent/>
         </article>
         
         <article className='objetivo-curriculo'>
@@ -44,4 +45,4 @@ const EditarCurriculoComponent = () => {
   )
 }
 
-export default EditarCurriculoComponent
+export default PerfilCurriculoComponent

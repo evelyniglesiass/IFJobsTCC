@@ -12,7 +12,7 @@ const PerfilEstudante = () => {
     <>
       <nav className='header'><HeaderComponent/></nav>
       <section className='container-perfis'>
-        <article><PerfilCurriculoComponent/></article>
+        <PerfilCurriculoComponent/>
       </section>
     </>
   )

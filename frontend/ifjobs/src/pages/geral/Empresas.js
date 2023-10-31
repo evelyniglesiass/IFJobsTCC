@@ -14,7 +14,7 @@ const Empresas = () => {
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-empresas'>
           <article className='pesquisa-empresas'><PesquisaComponent/></article>
-          <AtalhoPerfilComponent></AtalhoPerfilComponent>
+          <AtalhoPerfilComponent/>
           <article className='div-empresa'><EmpresasComponent/></article>
         </section>
     </div>
