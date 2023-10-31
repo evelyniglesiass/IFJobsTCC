@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 
+// Component para formação acadêmica
 const FormacaoComponent = () => {
   return (
     <div className='container-cursos-exper'>

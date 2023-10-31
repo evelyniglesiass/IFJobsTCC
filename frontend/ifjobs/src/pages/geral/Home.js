@@ -1,10 +1,11 @@
 import '../../App.scss';
+import Background from "../../imagens/home.png";
 
+// Import de Components
 import LoginComponent from '../../components/ui/LoginComponent';
 import InfoComponent from '../../components/ui/InfoComponent';
 
-import Background from "../../imagens/home.png";
-
+// Página de login
 const Home = () => {
 
   return (
@@ -14,6 +15,5 @@ const Home = () => {
     </section>
   )
 }
-
  
 export default Home

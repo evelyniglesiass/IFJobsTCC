@@ -1,8 +1,10 @@
 import '../../App.scss';
-
 import Background from "../../imagens/home.png";
+
+// Import de Components
 import CadastrarEstudanteComponent from '../../components/estudante/CadastrarEstudanteComponent';
 
+// Página para cadastrar estudantes
 const HomeCadastrar = () => {
 
   return (
@@ -11,6 +13,5 @@ const HomeCadastrar = () => {
     </section>
   )
 }
-
  
 export default HomeCadastrar

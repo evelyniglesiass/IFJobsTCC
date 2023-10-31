@@ -3,18 +3,18 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import CurriculoComponent from '../../components/estudante/CurriculoComponent';
+import CurriculoEditarComponent from '../../components/estudante/CurriculoEditarComponent';
 
-// Visualizar perfis de estudantes
-const Estudante = () => {
+// Editar estudante 
+const EditarEstudante = () => {
   return (
     <>
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-perfis'>
-          <article><CurriculoComponent/></article>
+          <article><CurriculoEditarComponent/></article>
         </section>
     </>
   )
 }
 
-export default Estudante 
+export default EditarEstudante 

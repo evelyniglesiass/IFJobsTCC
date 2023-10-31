@@ -3,6 +3,7 @@ import '../../App.scss';
 import VagasComponent from './VagasComponent'
 import EditarEmpresaButtonComponent from '../ui/editar/EditarEmpresaButtonComponent';
 
+// Component de perfil da empresa com botão editar
 const PerfilEmpresaComponent = () => {
   return ( 
     <>

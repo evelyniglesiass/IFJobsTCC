@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 
+// Component para experiência profissional
 const ExperienciasComponent = () => { 
   return (
     <div className='container-cursos-exper'>

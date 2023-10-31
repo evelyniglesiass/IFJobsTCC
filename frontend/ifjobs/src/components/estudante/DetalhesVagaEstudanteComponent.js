@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 
+// Component para detalhar vaga na visão do estudante
 const DetalhesVagaEstudanteComponent = () => {
   return (
     <section>

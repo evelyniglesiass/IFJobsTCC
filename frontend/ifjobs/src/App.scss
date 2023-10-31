@@ -145,7 +145,7 @@ body{
 .cadastrar-component{
     width: 50vw;
     height: 100vh;
-    padding-top: 120px;
+    padding-top: 60px;
     margin-left: 26%;
     float: left;
     color: $preto;
@@ -420,7 +420,7 @@ body{
     float: right;
 }
 
-.botao-vagas input{
+.botao-vagas .btn{
     width: 100%;
     margin-left: 7px;
     background-color: $branco;
@@ -448,6 +448,15 @@ body{
     width: 100%;
     margin-top: 10px;
     text-align: center;
+}
+
+.titulo-empresas a{
+    text-decoration: none;
+    color: $branco;
+}
+
+.titulo-empresas a:hover{
+    color: $verde-forte;
 }
 
 .corpo-empresas{

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
 import '../../App.scss';
+import { Link } from 'react-router-dom';
 
+// Component de login
 const LoginComponent = () => {
 
   return (

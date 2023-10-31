@@ -1,13 +1,15 @@
 import React from 'react'
 import '../../App.scss';
+
+// Import de Components
 import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
 
+// Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
-import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
 
-
+// Component para visualizar perfis de estudantes
 const CurriculoComponent = () => {
   return (
     <section>
@@ -16,7 +18,6 @@ const CurriculoComponent = () => {
           <h2 className='titulo-perfil fonte-titulo'>Nome Completo</h2>
           <h5 className='curso fonte-titulo'>Curso</h5>
           <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
-          <EditarCurriculoButtonComponent/>
         </article>
         
         <article className='objetivo-curriculo'>
@@ -38,7 +39,6 @@ const CurriculoComponent = () => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <article className='formacao-component'><FormacaoComponent/></article>
         </article>
-        
     </section>
   )
 }

@@ -1,6 +1,10 @@
 import React from 'react'
 import '../../App.scss';
 
+// Import de Components
+import EditarVagaButtonComponent from '../ui/editar/EditarVagaButtonComponent';
+
+// Component com inputs para editar vaga
 const EditarDetalhesVagaComponent = () => {
   return (
     <section>
@@ -21,7 +25,6 @@ const EditarDetalhesVagaComponent = () => {
           <h3 className='fonte-titulo'>Estudantes</h3>
           <p className='fonte-corpo'>Nomes</p>
         </article>
-
     </section>
   )
 }

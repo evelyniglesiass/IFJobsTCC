@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 
+// Component para cursos
 const CursosComponent = () => {
   return (
     <div className='container-cursos-exper'>

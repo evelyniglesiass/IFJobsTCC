@@ -3,6 +3,7 @@ import '../../App.scss';
 import Logo from '../../imagens/logoBrancoLegendaFundo.png'
 import { Link } from "react-router-dom"
 
+// Component de cabeçalho
 const HeaderComponent = () => {
   return (
     <nav className='container-links'>

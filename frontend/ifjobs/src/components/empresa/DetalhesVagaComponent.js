@@ -2,6 +2,7 @@ import React from 'react'
 import '../../App.scss';
 import EditarVagaButtonComponent from '../ui/editar/EditarVagaButtonComponent';
 
+// Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = () => {
   return (
     <section>

@@ -1,5 +1,6 @@
 import '../../App.scss';
 
+// Component com informações na tela de login
 const InfoComponent = () => {
  
   return (
@@ -24,7 +25,6 @@ const InfoComponent = () => {
             </h2>
             <article id="accordionDois" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <p>O Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense é uma instituição pública federal brasileira, vinculada ao Ministério da Educação, que compõe a Rede Federal de Educação Profissional, Científica e Tecnológica.</p>                
                     <p>O Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense é uma instituição pública federal brasileira, vinculada ao Ministério da Educação, que compõe a Rede Federal de Educação Profissional, Científica e Tecnológica.</p>                
                 </div>
             </article>

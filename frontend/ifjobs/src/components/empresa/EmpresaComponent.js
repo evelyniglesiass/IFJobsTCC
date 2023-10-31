@@ -1,7 +1,10 @@
 import React from 'react'
 import '../../App.scss';
+
+// Import de Components
 import VagasComponent from './VagasComponent'
 
+// Component para visualizar perfis de empresas
 const EditarPerfilEmpresaComponent = () => {
   return ( 
     <>
@@ -10,7 +13,6 @@ const EditarPerfilEmpresaComponent = () => {
           <h2 className='titulo-perfil fonte-titulo'>Nome da Empresa</h2>
           <h5 className='curso fonte-titulo'>Mini descrição</h5>
           <p className='sociais fonte-titulo'>@LinkedIn</p>
-          <EditarEmpresaButtonComponent/>
         </section>
         <section className='sobre-perfis'>
           <h3 className='fonte-titulo'>Sobre a empresa</h3>

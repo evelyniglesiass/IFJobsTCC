@@ -1,9 +1,12 @@
 import React from 'react'
 import '../../App.scss';
+
+// Import de Components
 import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
 
+// Component com inputs para editar perfil do estudante
 const CurriculoEditarComponent = () => {
   return (
     <section>

@@ -3,19 +3,18 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
-import EmpresaComponent from '../../components/empresa/EmpresaComponent';
+import EmpresaEditarComponent from '../../components/empresa/EmpresaEditarComponent';
 
-
-// Visualizar perfis de empresas
-const Empresa = () => {
+// Editar empresa
+const EditarEmpresa = () => {
   return (
     <>
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-perfis'>
-          <article><EmpresaComponent/></article>
+          <article><EmpresaEditarComponent/></article>
         </section>
     </> 
   )
 }
 
-export default Empresa 
+export default EditarEmpresa 

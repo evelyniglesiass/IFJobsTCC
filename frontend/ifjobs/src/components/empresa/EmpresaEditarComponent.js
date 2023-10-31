@@ -1,8 +1,10 @@
 import React from 'react'
 import '../../App.scss';
 
+// Import de Components
 import VagasComponent from './VagasComponent'
 
+// Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = () => {
   return ( 
     <>

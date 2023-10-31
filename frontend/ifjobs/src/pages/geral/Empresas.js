@@ -1,10 +1,13 @@
 import React from 'react'
 import '../../App.scss';
+
+// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import EmpresasComponent from '../../components/empresa/EmpresasComponent'
 import PesquisaComponent from '../../components/ui/PesquisaComponent';
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 
+// Feed com empresas cadastradas
 const Empresas = () => {
   return (
     <div className='container-pages'>

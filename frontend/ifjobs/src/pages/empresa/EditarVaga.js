@@ -3,18 +3,18 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import DetalhesVagaComponent from '../../components/empresa/DetalhesVagaComponent';
+import EditarDetalhesVagaComponent from '../../components/empresa/EditarDetalhesVagaComponent';
 
-// Detalhes de vagas na visão da empresa
-const DetalhesVaga = () => {
+// Página com inputs para editar vaga
+const EditarVaga = () => {
   return (
     <>
     <nav className='header'><HeaderComponent/></nav>
     <section className='container-perfis'>
-      <article><DetalhesVagaComponent/></article>
+      <article><EditarDetalhesVagaComponent/></article>
     </section>
 </>
   )
 }
 
-export default DetalhesVaga
+export default EditarVaga

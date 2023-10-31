@@ -1,8 +1,10 @@
 import '../../App.scss';
-
 import Background from "../../imagens/home.png";
+
+// Import de Components
 import CadastrarEmpresaComponent from '../../components/empresa/CadastrarEmpresaComponent';
 
+// Página para cadastrar empresas
 const EmpresaCadastrar = () => {
 
   return (
@@ -11,6 +13,5 @@ const EmpresaCadastrar = () => {
     </section>
   )
 }
-
  
 export default EmpresaCadastrar

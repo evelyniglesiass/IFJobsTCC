@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../App.scss';
 
+// Component de pesquisa
 const PesquisaComponent = () => {
   return (
     <nav class="navbar bg-body-tertiary">

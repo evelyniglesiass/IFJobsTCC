@@ -1,11 +1,13 @@
 import '../../App.scss';
 
+// Component para cadastro de estudantes
 const CadastrarEstudanteComponent = () => {
 
   return (
     <div className='container-cadastro'>
 
         <h3>Seja bem-vindo!</h3>
+
         <form>
             <div class="txt-form-group">
                 <input type="text" class="form-control" id="nome" placeholder="Nome" />
@@ -30,7 +32,6 @@ const CadastrarEstudanteComponent = () => {
             </div>
             <button type="submit" class="txt btn btn-primary">Cadastrar</button>
         </form>
-
     </div> 
   )
 }

@@ -1,11 +1,12 @@
 import '../../App.scss';
 
+// Component para cadastro de empresas
 const CadastrarEmpresaComponent = () => {
-
   return (
     <div className='container-cadastro'>
 
         <h3>Seja bem-vindo!</h3>
+
         <form>
             <div class="txt-form-group">
                 <input type="text" class="form-control" id="nome" placeholder="Nome" />
@@ -34,5 +35,4 @@ const CadastrarEmpresaComponent = () => {
     </div> 
   )
 }
-
 export default CadastrarEmpresaComponent

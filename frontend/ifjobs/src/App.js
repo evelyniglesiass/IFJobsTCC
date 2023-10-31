@@ -1,24 +1,32 @@
+// Import SASS
 import './App.scss';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
-// pages import
+// Import de pages
 import Home from './pages/geral/Home';
 import Feed from './pages/geral/Feed';
-import Empresas from './pages/empresa/Empresas';
+import EmpresaCadastrar from './pages/empresa/EmpresaCadastrar';
+import EstudanteCadastrar from './pages/estudante/EstudanteCadastrar';
+import DetalhesVagaEstudante from './pages/estudante/DetalhesVagaEstudante';
+import EditarEstudante from './pages/estudante/EditarEstudante';
+import EditarEmpresa from './pages/empresa/EditarEmpresa';
+import Empresas from './pages/geral/Empresas';
 import Salvos from './pages/geral/Salvos';
 import PerfilEstudante from './pages/estudante/PerfilEstudante';
 import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
 import Estudante from './pages/estudante/Estudante';
 import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
-import EstudanteCadastrar from './pages/estudante/EstudanteCadastrar';
+
+// Import de Routes
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
+// Import Toastify
 import { ToastContainer } from 'react-toastify';
+
+import {GlobalUserProvider} from './context/usuario/user.context';
+import EditarVaga from './pages/empresa/EditarVaga';
 //import { useLogin } from './hook/login/login.hook';
 //import useGlobalUser from './context/usuario/user.context';
-import {GlobalUserProvider} from './context/usuario/user.context';
-import EmpresaCadastrar from './pages/empresa/EmpresaCadastrar';
-import DetalhesVagaEstudante from './pages/estudante/DetalhesVagaEstudante';
-import EditarCurriculoComponent from './components/estudante/EditarCurriculoComponent';
 
 function App() {
   // const {fazerLogin} = useLogin();
@@ -38,19 +46,34 @@ function App() {
       <GlobalUserProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Home/>} />
+
+            {/* Login */}
+            <Route path='/' element={<Home/>} /> 
+
+            {/* Cadastrar */}
             <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
             <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
+
+            {/* Feed com vagas, empresas e vagas salvas pelo estudante */}
             <Route path='/feed' element={<Feed/>} />
             <Route path='/empresas' element={<Empresas/>} />
             <Route path='/salvos' element={<Salvos/>} />
-            <Route path='/perfil/estudante' element={<PerfilEstudante/>} />
-            <Route path='/perfil/estudante/editar' element={<EditarCurriculoComponent/>} />
-            <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
+
+            {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             <Route path='/estudante' element={<Estudante/>} />
+            <Route path='/perfil/estudante' element={<PerfilEstudante/>} />
+            <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} />
+
+            {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}
             <Route path='/empresa' element={<Empresa/>} />
+            <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
+            <Route path='/perfil/empresa/editar' element={<EditarEmpresa/>} />
+
+            {/* Visualizar vaga, editar vaga */}
             <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
             <Route path='/detalhes/vaga/estudante' element={<DetalhesVagaEstudante/>} />
+            <Route path='/vaga/editar' element={<EditarVaga/>} />
+
           </Routes>
         </BrowserRouter>
       </GlobalUserProvider>

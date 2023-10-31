@@ -1,8 +1,11 @@
 import React from 'react'
 import '../../App.scss';
+
+// Imports de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import PerfilEmpresaComponent from '../../components/empresa/PerfilEmpresaComponent';
 
+// Perfil da empresa com botão editar
 const PerfilEmpresa = () => {
   return (
     <>

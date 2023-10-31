@@ -1,15 +1,19 @@
 import React from 'react'
-import HeaderComponent from '../../components/ui/HeaderComponent'
 import '../../App.scss';
-import CurriculoComponent from '../../components/estudante/CurriculoComponent';
 
+// Import de Components
+import HeaderComponent from '../../components/ui/HeaderComponent'
+import PerfilCurriculoComponent from '../../components/estudante/PerfilCurriculoComponent';
+
+
+// Perfil do estudante com botão editar
 const PerfilEstudante = () => {
   return (
     <>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-perfis'>
-          <article><CurriculoComponent/></article>
-        </section>
+      <nav className='header'><HeaderComponent/></nav>
+      <section className='container-perfis'>
+        <article><PerfilCurriculoComponent/></article>
+      </section>
     </>
   )
 }
