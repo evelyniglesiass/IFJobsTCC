@@ -25,6 +25,7 @@ import { ToastContainer } from 'react-toastify';
 
 import {GlobalUserProvider} from './context/usuario/user.context';
 import EditarVaga from './pages/empresa/EditarVaga';
+import Estudantes from './pages/geral/Estudantes';
 //import { useLogin } from './hook/login/login.hook';
 //import useGlobalUser from './context/usuario/user.context';
 
@@ -58,6 +59,7 @@ function App() {
             <Route path='/feed' element={<Feed/>} />
             <Route path='/empresas' element={<Empresas/>} />
             <Route path='/salvos' element={<Salvos/>} />
+            <Route path='/estudantes' element={<Estudantes/>} />
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             <Route path='/estudante' element={<Estudante/>} />

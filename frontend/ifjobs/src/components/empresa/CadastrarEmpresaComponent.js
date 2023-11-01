@@ -8,7 +8,7 @@ const CadastrarEmpresaComponent = () => {
         <h3>Seja bem-vindo!</h3>
 
         <form>
-            <div class="txt-form-group">
+            <div class="txt-form-group"> 
                 <input type="text" class="form-control" id="nome" placeholder="Nome" />
             </div>
             <div class="txt-form-group">
