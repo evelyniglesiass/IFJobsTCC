@@ -30,10 +30,12 @@ body{
 .fonte-titulo{
     font-weight: bolder;
     font-family: $fonte-tres;
+    
 }
 
 .fonte-corpo{
     font-family: $fonte-tres;
+    color: $preto;
 }
 
 // Pages --------------------------------------------
@@ -310,8 +312,15 @@ body{
     color: $preto;
 }
 
-.container-login .link-cadastro:hover {
+.container-login .link-cadastro {
     color: $verde-forte;
+}
+.container-login .link-cadastro:hover {
+    color: $preto;
+}
+
+.link{
+    padding-top: 6%;
 }
 
 // .cabecalho-login{ // tirar
@@ -355,6 +364,15 @@ body{
 // .radio label{ // tirar
 //     margin-top: 5px;
 // }
+
+
+//Editar
+#usuario, #idade, #nome{
+    padding: 0%;
+    margin: 0%;
+}
+
+
 
 // Info
 .container-info{
@@ -496,6 +514,7 @@ body{
     margin-right: 50px;
     height: 100%;
     width: 100%;
+    background-color: #FAFAFA;
 }
 
 .cabecalho-cursos-exper{
@@ -508,6 +527,11 @@ body{
     //width: 1100px;
     width: 100%;
     float: left;
+    color: $preto;
+}
+
+.fonte-titulo-objetivo{
+    color: $branco;
 }
 
 .conteudo-experiencias, .conteudo-cursos, .conteudo-formacao{

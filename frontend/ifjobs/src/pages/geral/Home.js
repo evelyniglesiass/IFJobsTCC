@@ -9,7 +9,7 @@ import InfoComponent from '../../components/ui/InfoComponent';
 const Home = () => {
 
   return (
-    <section className='container-home' style={{ backgroundImage: `url(${Background})`}}> 
+    <section className='container-home' style={{ backgroundImage: `url(${Background})`, position: 'fixed'}}> 
       <article className='info-component'><InfoComponent/></article>
       <article className='login-component'><LoginComponent/></article>
     </section>

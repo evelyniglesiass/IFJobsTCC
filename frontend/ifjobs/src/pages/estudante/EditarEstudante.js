@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import CurriculoEditarComponent from '../../components/estudante/CurriculoEditarComponent';
+import CurriculoEditarComponent from '../../components/estudante/editar/CurriculoEditarComponent';
 
 // Editar estudante 
 const EditarEstudante = () => {

@@ -19,6 +19,9 @@ const CadastrarEstudanteComponent = () => {
                 <input type="text" class="form-control" id="idade" placeholder="Idade" />
             </div>
             <div class="txt-form-group">
+                <input type="radio" class="form-control" id="curso" placeholder="Curso" />
+            </div>
+            <div class="txt-form-group">
                 <input type="text" class="form-control" id="telefone" placeholder="Telefone" />
             </div>
             <div class="txt-form-group">
