@@ -11,15 +11,20 @@ const CurriculoEditarComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
+        <button className='button-salvar'>Salvar</button>
           <h1 className='img-perfis'>NC</h1>
           <h2 className='titulo-perfil fonte-titulo'><input type="text" class="form-editar" id="nome" placeholder="Nome" /></h2>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="usuario" placeholder="Nome de usuário" /></p>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="idade" placeholder="Idade" /></p>
+          <p className='curso fonte-titulo'><input type="text" class="form-editar" id="telefone" placeholder="Telefone" /></p>
+          <p className='curso fonte-titulo'><input type="text" class="form-editar" id="cidade" placeholder="Cidade" /></p>
+          <p className='curso fonte-titulo'><input type="text" class="form-editar" id="email" placeholder="Email" /></p>
+          <p className='curso fonte-titulo'><input type="password" class="form-editar" id="senha" placeholder="Senha" /></p>
         </article>
         
-        <article className='objetivo-curriculo'>
+        <article className='objetivo-curriculo-editar'>
           <h3 className='fonte-titulo'>Objetivo</h3>
-          <p className='fonte-corpo'><input type="textarea" class="form-control" id="objetivo" placeholder="Objetivo" maxLength={250} rows={5}/></p>
+          <p className='fonte-corpo'><input type="textarea" class="form-editar" id="objetivo" placeholder="Objetivo" maxLength={250} rows={5}/></p>
         </article>
 
         <article className='experiencia-curriculo'>

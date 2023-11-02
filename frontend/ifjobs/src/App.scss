@@ -35,6 +35,10 @@ body{
 
 .fonte-corpo{
     font-family: $fonte-tres;
+    //color: $preto;
+}
+
+.conteudo-experiencias, .datas{
     color: $preto;
 }
 
@@ -198,7 +202,7 @@ body{
 
 // Perfil Empresa e Curriculo - USO COMUM
 .cabecalho-perfis{
-    width: 100%;
+    width: 95%;
     height: 150px;
     color: #323434;
 }
@@ -366,13 +370,71 @@ body{
 // }
 
 
-//Editar
+//Editar--------------------------------------------------------------------------------------------
 #usuario, #idade, #nome{
     padding: 0%;
     margin: 0%;
 }
 
+#nome, #experiencia, #nivel, #nome-curso::placeholder{
+    font-weight: bold;
+}
 
+#data-final{
+    margin-left: 7%;
+}
+
+#data-inicial, #data-final{
+    width: 133px;
+}
+
+#objetivo, #objetivo::placeholder{
+    background-color: $preto;
+    color: $branco;
+}
+
+#email, #senha, #cidade{
+    margin-left: 18%;
+}
+
+.form-editar{
+    border-radius: 5px;
+    border-width: 0px;
+    width: 100%;
+    background-color: $branco;
+
+}
+
+.form-editar::placeholder{
+    color: $preto;
+}
+
+.objetivo-curriculo-editar{
+    width: 92%;
+    margin-top: 175px;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 25px;
+    text-align: left;
+    background-color: $preto;
+}
+
+.button-salvar{
+    border-radius: 25px;
+    border-color: $verde-forte;
+    background-color: $verde-forte;
+    height: 30px;
+    width: 100px;
+    position: relative;
+    top: -5%;
+    left: 35%;
+}
+
+.button-salvar:hover{
+    background-color: $roxo-forte;
+    border-color: $roxo-forte;
+}
+//---------------------------------------------------------------------------------------------------
 
 // Info
 .container-info{
