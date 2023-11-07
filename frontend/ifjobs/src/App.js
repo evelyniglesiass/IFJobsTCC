@@ -26,24 +26,11 @@ import { ToastContainer } from 'react-toastify';
 import {GlobalUserProvider} from './context/usuario/user.context';
 import EditarVaga from './pages/empresa/EditarVaga';
 import Estudantes from './pages/geral/Estudantes';
-//import { useLogin } from './hook/login/login.hook';
-//import useGlobalUser from './context/usuario/user.context';
 
 function App() {
-  // const {fazerLogin} = useLogin();
-
-  // const[user, setUser] = useGlobalUser();
-
-  // try {
-  //   const usuarioLogado = fazerLogin("heti90908@gmail.com", "senHa099")
-  //   setUser(usuarioLogado);
-
-  // } catch (error) {
-  //   console.log(error)
-  // }
-
   return (
     <div className='app'>
+      <ToastContainer/>
       <GlobalUserProvider>
         <BrowserRouter>
           <Routes>
@@ -79,8 +66,6 @@ function App() {
           </Routes>
         </BrowserRouter>
       </GlobalUserProvider>
-
-      <ToastContainer/>
     </div>
   );
 }

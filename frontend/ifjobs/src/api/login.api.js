@@ -14,12 +14,12 @@ export async function logarApi(email, senha){
         return response.data;
     }
     catch(error){
-
+        console.log(error)
         if(error.response.status === 401){
 
-            throw new Error("Acesso não autorizado");
+            throw "Acesso não autorizado";
         }
 
-        throw new Error(error.response.data.message);
+        throw error.response.data.message;
     }
 }

@@ -18,7 +18,7 @@ function useGlobalUser() {
     _setUser(user);
   }
 
-  return [_user, setUser];
+  return {_user, setUser};
 }
 
 export const GlobalUserProvider = Provider;
