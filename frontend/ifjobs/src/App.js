@@ -41,7 +41,7 @@ function App() {
             {/* Cadastrar */}
             <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
             <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
-            <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} />
+            {/* <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} /> */}
 
             {/* Feed com vagas, empresas e vagas salvas pelo estudante */}
             <Route path='/feed' element={<Feed/>} />
