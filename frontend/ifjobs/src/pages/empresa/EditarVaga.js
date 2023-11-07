@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import EditarDetalhesVagaComponent from '../../components/empresa/EditarDetalhesVagaComponent';
+import EditarDetalhesVagaComponent from '../../components/empresa/editar/EditarDetalhesVagaComponent';
 
 // Página com inputs para editar vaga
 const EditarVaga = () => {
