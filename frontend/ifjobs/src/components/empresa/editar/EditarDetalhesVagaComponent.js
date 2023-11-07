@@ -1,8 +1,8 @@
 import React from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Import de Components
-import EditarVagaButtonComponent from '../ui/editar/EditarVagaButtonComponent';
+import EditarVagaButtonComponent from '../../ui/editar/EditarVagaButtonComponent';
 
 // Component com inputs para editar vaga
 const EditarDetalhesVagaComponent = () => {

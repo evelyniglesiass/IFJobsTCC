@@ -11,7 +11,6 @@ const EditarPerfilEmpresaComponent = () => {
         <section className='cabecalho-perfis'>
         <h1 className='img-perfis'>NE</h1>
           <h2 className='titulo-perfil fonte-titulo'>Nome da Empresa</h2>
-          <h5 className='curso fonte-titulo'>Mini descrição</h5>
           <p className='sociais fonte-titulo'>@LinkedIn</p>
         </section>
         <section className='sobre-perfis'>

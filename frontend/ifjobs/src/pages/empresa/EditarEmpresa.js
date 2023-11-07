@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
-import EmpresaEditarComponent from '../../components/empresa/EmpresaEditarComponent';
+import EmpresaEditarComponent from '../../components/empresa/editar/EmpresaEditarComponent';
 
 // Editar empresa
 const EditarEmpresa = () => {

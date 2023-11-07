@@ -393,10 +393,6 @@ body{
     color: $branco;
 }
 
-#email, #senha, #cidade{
-    margin-left: 18%;
-}
-
 .form-editar{
     border-radius: 5px;
     border-width: 0px;
@@ -426,14 +422,39 @@ body{
     height: 30px;
     width: 100px;
     position: relative;
-    top: -5%;
-    left: 35%;
+    top: 3%;
+    left: 5%;
 }
 
 .button-salvar:hover{
     background-color: $roxo-forte;
     border-color: $roxo-forte;
 }
+
+//empresa
+.sobre-perfis-editar{
+    width: 92%;
+    margin-top: 10%;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 25px;
+    text-align: left;
+    background-color: $preto;
+    position: relative;
+    top: -1000%
+}
+
+#desc, #desc::placeholder{
+    background-color: $preto;
+    color: $branco;
+}
+
+#usuario-empresa, #telefone-empresa, #email-empresa, #senha-empresa, #cidade-empresa{
+    position: relative;
+    left: 2%;
+    right: 90%;
+}
+
 //---------------------------------------------------------------------------------------------------
 
 // Info
