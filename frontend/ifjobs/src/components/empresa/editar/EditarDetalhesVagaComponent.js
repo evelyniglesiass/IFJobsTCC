@@ -2,29 +2,36 @@ import React from 'react'
 import '../../../App.scss';
 
 // Import de Components
-import EditarVagaButtonComponent from '../../ui/editar/EditarVagaButtonComponent';
 
 // Component com inputs para editar vaga
 const EditarDetalhesVagaComponent = () => {
   return (
     <section>
         <article className='cabecalho-perfis'>
-          <h1 className='img-perfis'>TL</h1>
-          <h2 className='titulo-perfil fonte-titulo'>Título</h2>
-          <h5 className='curso fonte-titulo'>Cidade</h5>
-          <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
-          <EditarVagaButtonComponent/>
-        </article>
-        <article className='sobre-perfis'>
-          <h3 className='fonte-titulo'>Detalhes</h3>
-          <p className='fonte-corpo'>Descrição</p>
-          <p className='fonte-corpo'>Salario e Idade</p>
+          <button className='button-salvar' id='button-salvar-vaga'>Salvar</button>
+          <h2 className='titulo-perfil fonte-titulo'>
+            <input type="text" class="form-editar" id="titulo-vaga" placeholder="Título" />
+          </h2>
+          <h5 className='curso fonte-titulo'>
+            <input type="text" class="form-editar" id="cidade-vaga" placeholder="Cidade" />
+          </h5>
         </article>
 
         <article className='sobre-perfis'>
-          <h3 className='fonte-titulo'>Estudantes</h3>
-          <p className='fonte-corpo'>Nomes</p>
+
+          <p className='fonte-corpo'>
+            <input type="text" class="form-editar" id="salario" placeholder="Salário" />
+          </p>
+
+          <p className='fonte-corpo'>
+            <input type="text" class="form-editar" id="idade" placeholder="Idade" />
+          </p>
+
+          <p className='fonte-corpo'>
+            <textarea type="text" class="form-editar" id="descricao-vaga" placeholder="Descrição" />
+          </p>
         </article>
+
     </section>
   )
 }

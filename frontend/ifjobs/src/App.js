@@ -5,6 +5,7 @@ import './App.scss';
 import Home from './pages/geral/Home';
 import Feed from './pages/geral/Feed';
 import EmpresaCadastrar from './pages/empresa/EmpresaCadastrar';
+import VagaCadastrar from './pages/empresa/VagaCadastrar';
 import EstudanteCadastrar from './pages/estudante/EstudanteCadastrar';
 import DetalhesVagaEstudante from './pages/estudante/DetalhesVagaEstudante';
 import EditarEstudante from './pages/estudante/EditarEstudante';
@@ -41,7 +42,7 @@ function App() {
             {/* Cadastrar */}
             <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
             <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
-            {/* <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} /> */}
+            <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} />
 
             {/* Feed com vagas, empresas e vagas salvas pelo estudante */}
             <Route path='/feed' element={<Feed/>} />
@@ -62,7 +63,7 @@ function App() {
             {/* Visualizar vaga, editar vaga */}
             <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
             <Route path='/detalhes/vaga/estudante' element={<DetalhesVagaEstudante/>} />
-            <Route path='/vaga/editar' element={<EditarVaga/>} />
+            <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} />
 
           </Routes>
         </BrowserRouter>

@@ -10,7 +10,6 @@ const DetalhesVagaComponent = () => {
           <h1 className='img-perfis'>TL</h1>
           <h2 className='titulo-perfil fonte-titulo'>Título</h2>
           <h5 className='curso fonte-titulo'>Cidade</h5>
-          <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
           <EditarVagaButtonComponent/>
         </article>
         <article className='sobre-perfis'>

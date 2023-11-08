@@ -388,7 +388,7 @@ body{
     width: 133px;
 }
 
-#objetivo, #objetivo::placeholder{
+#objetivo, #objetivo::placeholder, #salario, #salario::placeholder, #idade, #idade::placeholder, #descricao-vaga, #descricao-vaga::placeholder{
     background-color: $preto;
     color: $branco;
 }
@@ -453,6 +453,18 @@ body{
     position: relative;
     left: 2%;
     right: 90%;
+}
+
+#salario{
+    margin-top: 2%;
+}
+
+#titulo-vaga{
+    font-weight: bold;
+}
+
+#button-salvar-vaga{
+    left: 0%;
 }
 
 //---------------------------------------------------------------------------------------------------
