@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 export function useLogin(){
 
     const {setUser} = useGlobalUsuario();
-    const [error, setError] = useState();
+    const [error] = useState();
 
     async function fazerLogin(email, senha){
 

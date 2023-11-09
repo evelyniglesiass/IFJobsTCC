@@ -344,7 +344,18 @@ body{
     color: $branco;
 }
 
+.login .btn a{
+    border-color: $branco;
+    color: $branco;
+}
+
 .login .btn:hover{
+    background-color: $verde-forte;
+    border-color: $branco;
+    color: $branco;
+}
+
+.login .btn a:hover{
     background-color: $verde-forte;
     border-color: $branco;
     color: $branco;
@@ -494,6 +505,20 @@ body{
 .container-links img{ 
     margin-bottom: 90px;
     width: 61%;
+}
+
+.container-links .botao{ 
+    margin-top: 90px;
+    background-color: $preto;
+}
+
+.container-links .botao:hover{ 
+    color: $branco;
+    background-color: $roxo-forte;
+}
+
+.container-links .botao a:hover{ 
+    color: $branco;
 }
 
 // Pesquisa
