@@ -20,7 +20,7 @@ const Feed = () => {
 
       const response = await listarVagas();
       
-      setVagas(response)
+      setVagas(response) 
 
     }
 

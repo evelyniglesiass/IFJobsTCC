@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { listarVagasApi } from "../../constants";
+import { listarEmpresasEstApi } from "../../constants";
 import { toast } from "react-toastify";
 
-export function useListarVagas(){
+export function useListarEmpresasEst(){
 
     const [error] = useState();
 
-    async function listarVagas(){
+    async function listarEmpresasEst(){
 
         try{
-            const response = await listarVagasApi();
+            const response = await listarEmpresasEstApi();
 
             return response
         }
@@ -18,6 +18,6 @@ export function useListarVagas(){
         }
     }
 
-    return {listarVagas, error};
+    return {listarEmpresasEst, error};
 
 }

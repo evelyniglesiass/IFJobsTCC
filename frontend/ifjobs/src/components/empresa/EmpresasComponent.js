@@ -1,40 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 import { Link } from 'react-router-dom';
 
 // Component para exibir empresas cadastradas no feed
-const EmpresasComponent = () => {
+const EmpresasComponent = ({empresas}) => {
+
+    const [empresasTag, setEmpresasTag] = useState([]);
+
+    useEffect(() => {
+
+        setEmpresasTag([]);
+        
+        empresas.forEach(e => {
+            setEmpresasTag((oldEmpresasTag) => ([...oldEmpresasTag, 
+                                                    <article className='container-empresa'>
+                                                        <h4 className='titulo-empresas fonte-titulo'><Link to={"/empresa"}>{e.nome}</Link></h4>
+                                                        <p className='corpo-empresas fonte-corpo'>{e.descricao}</p>
+                                                    </article>
+                                                ]))
+        });
+
+    }, [empresas])
+
   return (
-    <section className='container-geral-empresas'>
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
-
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
-
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
-
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
-
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
-
-        <article className='container-empresa'>
-            <h4 className='titulo-empresas fonte-titulo'>Empresas<Link to={"/empresa"}></Link></h4>
-            <p className='corpo-empresas fonte-corpo'>It is a long established fact that a reader will be distracted making it look like readable English.</p>
-        </article>
+    <section className='container-geral-empresas'> 
+        {empresasTag}
     </section>
   )
 }

@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function listarVagasApi(){
+export async function listarEstudantesEmpApi(){
 
     try{
-        const response = await axiosInstance.get("/vagas/listar");
+        const response = await axiosInstance.get("/estudantes/listar/empresa");
         
         return response.data;
     } catch(error){

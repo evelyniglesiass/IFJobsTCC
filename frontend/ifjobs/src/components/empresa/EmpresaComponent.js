@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 
 // Import de Components
 import VagasComponent from './VagasComponent'
+import { useListarVagasEmpresa } from '../../hook/vagas/listarVagasEmpresa.hook';
 
 // Component para visualizar perfis de empresas
 const EditarPerfilEmpresaComponent = () => {
+
   return ( 
     <>
         <section className='cabecalho-perfis'>
