@@ -14,7 +14,7 @@ const CurriculoEditarComponent = () => {
         <button className='button-salvar'>Salvar</button>
           <h2 className='titulo-perfil fonte-titulo'><input type="text" class="form-editar" id="nome" placeholder="Nome" /></h2>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="usuario" placeholder="Nome de usuário" /></p>
-          <p className='curso fonte-titulo'><input type="text" class="form-editar" id="idade" placeholder="Idade" /></p>
+          <p className='curso fonte-titulo'><input type="text" class="form-editar" id="idade-estudante-editar" placeholder="Idade" /></p>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="telefone" placeholder="Telefone" /></p>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="cidade" placeholder="Cidade" /></p>
           <p className='curso fonte-titulo'><input type="text" class="form-editar" id="email" placeholder="Email" /></p>
