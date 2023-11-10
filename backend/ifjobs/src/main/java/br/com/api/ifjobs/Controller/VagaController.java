@@ -56,7 +56,7 @@ public class VagaController {
 
     // listar todas as vagas
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar")
+     @GetMapping("/listar")
     public List<VagaDTO> listarTodas() {
         return vagSer.listarTodas(); 
     }

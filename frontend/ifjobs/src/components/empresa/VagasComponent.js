@@ -1,46 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 import { Link } from 'react-router-dom';
 
 // Component de vagas
-const VagasComponent = () => {
+const VagasComponent = ({vagas}) => {
+
+  const [vagasTag, setVagasTag] = useState([]);
+
+  useEffect(() => {
+
+    setVagasTag([]);
+    
+    vagas.forEach(v => {
+      setVagasTag((oldVagasTag) => ([...oldVagasTag, 
+                                        <section className='container-vaga'>
+                                          <h2 className='titulo-vagas fonte-titulo'>{v.titulo}</h2>
+                                          <p className='corpo-vagas fonte-corpo'>{v.descricao}</p>
+                                          <article className='botao-vagas'>
+                                              <Link className='btn btn-dark' to={"/detalhes/vaga"}>Visualizar</Link>        
+                                          </article>
+                                        </section>
+                                    ]))
+    });
+
+  }, [vagas])
+
   return (
     <div className='container-geral-vagas'>
-      <section className='container-vaga'>
-        <h2 className='titulo-vagas fonte-titulo'>Título teste</h2>
-        <p className='corpo-vagas fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.        </p>
-        <article className='botao-vagas'>
-            <Link className='btn btn-dark' to={"/detalhes/vaga"}>Visualizar</Link>        
-            {/* <input type="button" value='Visualizar vaga' className='btn btn-dark'/> */}
-        </article>
-      </section>
-
-      <section className='container-vaga'>
-        <h2 className='titulo-vagas fonte-titulo'>Título teste</h2>
-        <p className='corpo-vagas fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.        </p>
-        <article className='botao-vagas'>
-            <Link className='btn btn-dark' to={"/detalhes/vaga"}>Visualizar</Link>        
-            {/* <input type="button" value='Visualizar vaga' className='btn btn-dark'/> */}
-        </article>
-      </section>
-
-      <section className='container-vaga'>
-        <h2 className='titulo-vagas fonte-titulo'>Título teste</h2>
-        <p className='corpo-vagas fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.        </p>
-        <article className='botao-vagas'>
-            <Link className='btn btn-dark' to={"/detalhes/vaga"}>Visualizar</Link>        
-            {/* <input type="button" value='Visualizar vaga' className='btn btn-dark'/> */}
-        </article>
-      </section>
-
-      <section className='container-vaga'>
-        <h2 className='titulo-vagas fonte-titulo'>Título teste</h2>
-        <p className='corpo-vagas fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.        </p>
-        <article className='botao-vagas'>
-            <Link className='btn btn-dark' to={"/detalhes/vaga"}>Visualizar</Link>        
-            {/* <input type="button" value='Visualizar vaga' className='btn btn-dark'/> */}
-        </article>
-      </section>
+      {vagasTag}
     </div>    
   )
 }
