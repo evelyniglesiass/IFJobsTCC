@@ -12,7 +12,6 @@ export function useCadastroEstudante(){
             await criarEstudanteApi(nome, nomeUsuario, idade, telefone, email, senha, cidade);
         }
         catch(errorApi){
-            console.log(errorApi)
             toast.error(errorApi);
         }
     }

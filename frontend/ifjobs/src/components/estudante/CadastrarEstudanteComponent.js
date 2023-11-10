@@ -27,7 +27,7 @@ const CadastrarEstudanteComponent = () => {
         event.preventDefault();
 
         await cadastroEstudante(formInput.nome, formInput.usuario, formInput.idade, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
-
+        
     }
 
     return (
@@ -60,7 +60,7 @@ const CadastrarEstudanteComponent = () => {
                 <div class="txt-form-group">
                     <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                 </div>
-                
+
                 <button type="submit" class="txt btn btn-primary">Cadastrar</button>
             </form>
         </div> 

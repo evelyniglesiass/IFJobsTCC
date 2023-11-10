@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
 export async function criarEstudanteApi(nome, nomeUsuario, idade, telefone, email, senha, cidade){
@@ -7,9 +8,11 @@ export async function criarEstudanteApi(nome, nomeUsuario, idade, telefone, emai
             nome, email, senha, cidade, nomeUsuario, idade, telefone
         });
 
+        toast.success(response.data.mensagem)
         return response.data;
     } catch(error){
+        toast.error(error.response.data.message);
+        throw new Error(error)
 
-        throw new Error(error);
     }
 }
