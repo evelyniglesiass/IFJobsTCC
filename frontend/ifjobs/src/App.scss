@@ -1,4 +1,5 @@
 $verde-forte: #189395;
+$verde-titulo: #146869;
 $roxo-forte: #50307c;
 $preto: #323434;
 $branco: #FAFAFA;
@@ -79,6 +80,11 @@ body{
 .button-editar:hover{
     background-color: $roxo-forte;
     border-color: $roxo-forte;
+}
+
+#botao-editar-vaga{
+    top: -45%;
+    left: 35%;
 }
 
 .link-editar{
@@ -205,6 +211,10 @@ body{
     //margin-bottom: 20%;
 }
 
+.container-empresa .titulo-empresas{
+    color: $preto;
+}
+
 // Perfil Empresa e Curriculo - USO COMUM
 .cabecalho-perfis{
     width: 95%;
@@ -218,7 +228,7 @@ body{
     //width: 1100px;
     width: 100%;
     text-align: left;
-    color: $branco;
+    color: $verde-titulo;
 }
 
 .titulo-perfil {
@@ -271,7 +281,9 @@ body{
     padding-top: 10px;
     border-radius: 25px;
     text-align: left;
-    background-color: $preto;
+    background-color: $branco;
+    border: solid 2px $preto-borda;
+    color: $preto;
 }
 
 // Cadastro
@@ -405,8 +417,8 @@ body{
 }
 
 #objetivo, #objetivo::placeholder, #salario, #salario::placeholder, #idade, #idade::placeholder, #descricao-vaga, #descricao-vaga::placeholder{
-    background-color: $preto;
-    color: $branco;
+    background-color: $branco;
+    color: $preto;
 }
 
 .form-editar{
@@ -428,7 +440,15 @@ body{
     padding-top: 10px;
     border-radius: 25px;
     text-align: left;
-    background-color: $preto;
+    background-color: $branco;
+    color: $preto;
+    border: solid $preto-borda 2px;
+    border-radius: 20px;
+}
+
+#objetivo{
+    border: solid 2px $preto-borda;
+    border-radius: 20px;
 }
 
 .button-salvar{
@@ -493,8 +513,8 @@ body{
 // Header
 .container-links a{ 
     color: $branco;
-    font-weight: bolder;
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 19px;
     text-decoration: none;
     width: 80%;
 }
@@ -660,6 +680,11 @@ body{
     background-color: #FAFAFA;
 }
 
+.experiencia-component, .cursos-component, .formacao-component {
+    border: solid $preto-borda 2px;
+    border-radius: 20px;
+}
+
 .cabecalho-cursos-exper{
     width: 100%;
     height: 100%;
@@ -671,10 +696,6 @@ body{
     width: 100%;
     float: left;
     color: $preto;
-}
-
-.fonte-titulo-objetivo{
-    color: $branco;
 }
 
 .conteudo-experiencias, .conteudo-cursos, .conteudo-formacao{

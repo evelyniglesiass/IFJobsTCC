@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 const EditarVagaButtonComponent = () => {
 
     return (
-        <button className='button-editar'>
+        <button className='button-editar' id='botao-editar-vaga'>
             <Link className='link-editar' to={"/vaga/editar"}>Editar</Link>        
         </button>
     )

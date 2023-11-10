@@ -17,8 +17,8 @@ const HeaderComponent = () => {
 
   return (
     <nav className='container-links'>
-        <img src={Logo} alt='Logo' className='logo-navbar' />
-        <div className='link'><Link to={"/perfil/estudante"}>Perfil</Link><br /></div>
+        <Link to={"/feed"}><img src={Logo} alt='Logo' className='logo-navbar'/></Link>
+        <div className='link' id='perfil-header'><Link to={"/perfil/estudante"}>Perfil</Link><br /></div>
         <div className='link'><Link to={"/feed"}>Vagas</Link><br /></div>
         <div className='link'><Link to={"/empresas"}>Empresas</Link><br /></div>
         <div className='link'><Link to={"/salvos"}>Salvos</Link><br /></div>
