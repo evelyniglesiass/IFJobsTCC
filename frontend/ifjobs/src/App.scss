@@ -4,6 +4,7 @@ $roxo-forte: #50307c;
 $preto: #323434;
 $branco: #FAFAFA;
 $preto-borda: #32343421;
+$preto-modal: #32343496;
 
 $fonte-um: 'Abril Fatface';
 $fonte-dois: 'Libre Baskerville';
@@ -460,6 +461,7 @@ body{
     position: relative;
     top: 3%;
     left: 5%;
+    color: $branco;
 }
 
 .button-salvar:hover{
@@ -667,6 +669,61 @@ body{
     //width: 1100px;
     width: 100%;
     margin-top: 15px;
+}
+
+// Dicas
+.container-modal{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    top: -43px;
+    left: 5px;
+    margin-bottom: 0px;
+}
+
+.modal-overlay{
+    background: $preto-modal;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content{
+    width: 90%;
+    max-width: 500px;
+    background-color: $branco;
+    padding: 29px;
+    border-radius: 15px;
+}
+
+.button-modal{
+    padding: 5px;
+    font-size: large;
+    float: right;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: $verde-forte;
+    border: none;
+    color: $branco;
+    margin: 15px;
+}
+
+.button-modal-open{
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: rgba(165, 42, 42, 0);
+    border: none;
+    color: $branco;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: x-large;
 }
 
 // Experiencias, Cursos e Formação
