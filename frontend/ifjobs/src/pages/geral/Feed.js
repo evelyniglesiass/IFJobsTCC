@@ -34,7 +34,7 @@ const Feed = () => {
       <section className='container-vagas'>
         <article className='pesquisa-vagas'><PesquisaComponent /></article>
         <AtalhoPerfilComponent />
-        <article className='div-vaga'><VagasComponent vagas={vagas} /></article>
+        <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
       </section>
     </div>
   )

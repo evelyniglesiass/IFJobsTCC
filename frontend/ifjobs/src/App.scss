@@ -593,8 +593,9 @@ body{
 .botao-vagas{
     //width: 230px;
     width: 25%;
-    margin-top: auto;
-    margin-bottom: auto;
+    position: relative;
+    top: -20px;
+    bottom: -20px; // ver isso
     text-align: center;
     float: right;
 }
@@ -638,11 +639,11 @@ body{
 
 .titulo-empresas a{
     text-decoration: none;
-    color: $preto;
+    color: $verde-titulo;
 }
 
 .titulo-empresas a:hover{
-    color: $verde-forte;
+    color: $preto;
 }
 
 .corpo-empresas{

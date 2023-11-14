@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 
 // Import de Components
 import VagasComponent from '../VagasComponent'
+import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 
 // Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = () => {
+
+  const [vagas, setVagas] = useState([])
+
+  const { listarVagas } = useListarVagas();
+
+  useEffect(() => {
+    async function listar() {
+
+      const response = await listarVagas();
+      
+      setVagas(response) 
+
+    }
+
+    listar();
+  }, [])
+
   return ( 
     <form>
         <section className='cabecalho-perfis'>
@@ -36,7 +54,7 @@ const EmpresaEditarComponent = () => {
             <textarea type="text" class="form-editar" id="desc" placeholder="Descrição" />
           </p>
         </section>
-        <div className='perfil-empresa-vaga'><VagasComponent/></div>
+        <div className='perfil-empresa-vaga'><VagasComponent vagas={vagas}/></div>
     </form> 
   )
 }
