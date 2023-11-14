@@ -5,6 +5,12 @@ import '../../../App.scss';
 import ExperienciasEditarComponent from './ExperienciasEditarComponent';
 import CursosEditarComponent from './CursosEditarComponent';
 import FormacaoEditarComponent from './FormacaoEditarComponent';
+import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
+import DicasExperienciaComponent from '../../dicas/DicasExperienciaComponent';
+import DicasCursosComponent from '../../dicas/DicasCursosComponent';
+import DicasFormacoesComponent from '../../dicas/DicasFormacoesComponent';
+
+
 
 // Component com inputs para editar perfil do estudante
 const CurriculoEditarComponent = () => {
@@ -23,21 +29,25 @@ const CurriculoEditarComponent = () => {
         
         <article className='objetivo-curriculo-editar'>
           <h3 className='fonte-titulo'>Objetivo</h3>
+          <DicasObjetivoComponent/>
           <p className='fonte-corpo'><textarea type="textarea" class="form-editar" id="objetivo" placeholder="Objetivo" maxLength={250} rows={5}/></p>
         </article>
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
+          <DicasExperienciaComponent/>
           <div className='experiencia-component'><ExperienciasEditarComponent/></div>
         </article>
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
+          <DicasCursosComponent/>
           <article className='cursos-component'><CursosEditarComponent/></article>
         </article>
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
+          <DicasFormacoesComponent/>
           <article className='formacao-component'><FormacaoEditarComponent/></article>
         </article>
         
