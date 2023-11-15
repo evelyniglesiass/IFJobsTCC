@@ -9,7 +9,6 @@ export async function listarVagasEmpresaApi(){
         return response.data;
     } catch(error){
         toast.error(error.response.data.message);
-        console.log(error.response.data.message)
         throw new Error(error.response.data.message)
 
     }

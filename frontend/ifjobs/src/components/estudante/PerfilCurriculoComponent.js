@@ -11,14 +11,12 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
 
 // Component de perfil do estudante com botão de editar
-const PerfilCurriculoComponent = ({estudante}, {curriculo}) => {
+const PerfilCurriculoComponent = ({estudante}, {curriculo}) => { 
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
 
   useEffect(() => {
-    console.log(estudante);
-    console.log(curriculo);
 
     const icone = estudante.nome;
     icone = icone.slice(0, 2);
@@ -42,7 +40,7 @@ const PerfilCurriculoComponent = ({estudante}, {curriculo}) => {
                             </section>
                           ]))
 
-  }, [estudante])
+  }, [estudante, curriculo])
 
   return (
     <section>

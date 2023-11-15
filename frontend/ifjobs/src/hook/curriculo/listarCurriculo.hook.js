@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { listarCurriculoApi } from "../../api/estudante/listar-curriculo.api";
+import { listarCurriculoApi } from "../../constants";
 
 export function useListarCurriculo(){
 
@@ -10,7 +10,6 @@ export function useListarCurriculo(){
 
         try{
             const response = await listarCurriculoApi(estudante);
-
             return response
         }
         catch(errorApi){
