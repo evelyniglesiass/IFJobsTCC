@@ -26,7 +26,7 @@ import br.com.api.ifjobs.services.CurriculoService;
 public class CurriculoController {
 
     @Autowired
-    private CurriculoService curSer;
+    private CurriculoService curSer; 
 
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")

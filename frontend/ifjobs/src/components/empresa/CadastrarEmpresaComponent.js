@@ -1,6 +1,7 @@
 import '../../App.scss';
 import { useState } from 'react';
-import { useCadastroEmpresa } from '../../hook/cadastro/cadastroEmpresa.hook';
+import '../../App.scss';
+import { useCadastroEmpresa } from '../../hook/empresa/cadastroEmpresa.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");

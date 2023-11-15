@@ -22,7 +22,7 @@ import br.com.api.ifjobs.dto.EstudanteDTO;
 import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Estudante;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.services.EstudanteService;
+import br.com.api.ifjobs.services.EstudanteService; 
 
 @RestController
 @RequestMapping("/estudantes")

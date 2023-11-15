@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
-import br.com.api.ifjobs.services.VagaService;
+import br.com.api.ifjobs.services.VagaService; 
  
 @RestController
 @RequestMapping("/vagas")

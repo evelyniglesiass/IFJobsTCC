@@ -1,6 +1,6 @@
 package br.com.api.ifjobs.controller;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.validation.Valid;
 

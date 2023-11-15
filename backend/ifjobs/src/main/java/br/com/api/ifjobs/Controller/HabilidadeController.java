@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.HabilidadeDTO;
 import br.com.api.ifjobs.models.Habilidade;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.services.HabilidadeService;
+import br.com.api.ifjobs.services.HabilidadeService; 
 
 @RestController
 @RequestMapping("/habilidades")

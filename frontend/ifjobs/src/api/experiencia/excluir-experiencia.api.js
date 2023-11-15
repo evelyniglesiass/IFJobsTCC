@@ -1,12 +1,14 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function listarVagasEmpresaApi(){
+export async function excluirExperienciaApi(){
 
     try{
-        const response = await axiosInstance.get("/vagas/listar");
-        
+        const response = await axiosInstance.delete(`/experiencias`);
+
+        toast.success(response.data.mensagem)
         return response.data;
+
     } catch(error){
         toast.error(error.response.data.message);
         throw new Error(error.response.data.message)

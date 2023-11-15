@@ -1,4 +1,4 @@
-import {axiosInstance} from '../constants';
+import {axiosInstance} from '../../constants';
 
 export async function logoutApi(){
 
