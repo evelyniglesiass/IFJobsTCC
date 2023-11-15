@@ -29,6 +29,10 @@ export { listarSalvosEstudantesApi } from '../api/estudante/listar-salvos-estuda
 export { listarCandidatosVagaApi } from '../api/estudante/listar-candidatos-vaga.api.js';
 
 // vagas
+export { criarVagaApi } from '../api/vaga/cadastrar-vaga.api.js';
+export { editarVagaApi } from '../api/vaga/editar-vaga.api.js';
+export { excluirVagaApi } from '../api/vaga/excluir-vaga.api.js';
+export { listarVagaTituloApi } from '../api/vaga/listar-vaga-titulo.api.js';
 export { listarVagasEmpresaApi } from '../api/vaga/listar-vagas-empresa.api.js';
 export { listarVagasApi } from '../api/vaga/listar-vagas.api.js';
 
@@ -55,3 +59,21 @@ export { criarFormacaoApi } from '../api/formacao/cadastrar-formacao.api.js';
 export { editarFormacaoApi } from '../api/formacao/editar-formacao.api.js';
 export { excluirFormacaoApi } from '../api/formacao/excluir-formacao.api.js';
 export { listarFormacaoApi } from '../api/formacao/listar-formacao.api.js';
+
+// habilidade
+export { criarHabilidadeApi } from '../api/habilidade/cadastrar-habilidade.api.js';
+export { editarHabilidadesApi } from '../api/habilidade/editar-habilidade.api.js';
+export { excluirHabilidadeApi } from '../api/habilidade/excluir-habilidade.api.js';
+export { listarHabilidadeApi } from '../api/habilidade/listar-habilidade.api.js';
+
+// idioma
+export { criarIdiomaApi } from '../api/idioma/cadastrar-idioma.api.js';
+export { editarIdiomaApi } from '../api/idioma/editar-idioma.api.js';
+export { excluirIdiomaApi } from '../api/idioma/excluir-idioma.api.js';
+export { listarIdiomaApi } from '../api/idioma/listar-idioma.api.js';
+
+// palavra chave
+export { criarPalavraChaveApi } from '../api/palavra/cadastrar-palavra.api.js';
+export { editarPalavraChaveApi } from '../api/palavra/editar-palavra.api.js';
+export { excluirPalavraChaveApi } from '../api/palavra/excluir-palavra.api.js';
+export { listarPalavraChaveApi } from '../api/palavra/listar-palavra.api.js';
