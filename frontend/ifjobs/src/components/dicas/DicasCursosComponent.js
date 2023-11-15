@@ -29,12 +29,12 @@ const DicasCursosComponent = () => {
                 <h2>Dicas para seus cursos e certificados</h2>
                 <hr/>
                 <p>- Seja sincero, porém cuide para não ser narcisista ou meritocrático</p>
-                <p>- Escreva seu objetivo tendo o tipo de vaga que você quer em mente</p>
-                <p>- Se venda com equilíbrio, não exagere e não se diminua</p>
-                <p>- Descreva seus almejos profissionais</p>
-                <p>- Conte como você pretende construir sua carreira na área</p>
-                <p>- Seja simples e direto</p>
-                <p>- Se você não possui experiência profissional, foque em sua área acadêmica e atividades voluntárias</p>
+                <p>- Escreva sobre seus cursos tendo o tipo de vaga que você quer em mente</p>
+                <p>- Não esqueça de adicionar as datas referentes ao seu curso</p>
+                <p>- Aqui você também pode adicionar seus certificados, prêmios, 
+                    serviços acadêmicos, filiações e papéis em comitês, sociedades e 
+                    conselhos editoriais de cunho científico ou profissional e atividades como supervisor ou conselheiro!</p>
+                    
                 <button onClick={closeModal} className='button-modal'>Fechar</button>
             </Modal>
         </div>

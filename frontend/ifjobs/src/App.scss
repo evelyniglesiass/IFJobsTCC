@@ -1,14 +1,13 @@
 $verde-forte: #189395;
 $verde-titulo: #146869;
-$roxo-forte: #50307c;
+$verde-borda: #14686940;
+$roxo-forte: #4c369b;
 $preto: #323434;
 $branco: #FAFAFA;
 $preto-borda: #32343421;
 $preto-modal: #32343496;
 
-$fonte-um: 'Abril Fatface';
-$fonte-dois: 'Libre Baskerville';
-$fonte-tres: Arial;
+$fonte-um: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 // Imagens
 .logo-navbar{
@@ -19,7 +18,7 @@ $fonte-tres: Arial;
 // App ----------------------------------------------
 
 .app{
-    font-family: $fonte-um, $fonte-dois, $fonte-tres;
+    font-family: $fonte-um;
     font-size: 16px;
     color: $branco;
 }
@@ -32,12 +31,12 @@ body{
 
 .fonte-titulo{
     font-weight: bolder;
-    font-family: $fonte-tres;
+    font-family: $fonte-um;
     
 }
 
 .fonte-corpo{
-    font-family: $fonte-tres;
+    font-family: $fonte-um;
     //color: $preto;
 }
 
@@ -313,17 +312,6 @@ body{
     padding-bottom: 3%;
 }
 
-.container-cadastro .btn{
-    background-color: $verde-forte;
-    border-color: $verde-forte;
-}
-
-.container-cadastro .btn:hover{
-    background-color: $branco;
-    border-color: $branco;
-    color: $preto;
-}
-
 // Login
 .container-login {
     text-align: center;
@@ -409,10 +397,6 @@ body{
     font-weight: bold;
 }
 
-#data-final{
-    margin-left: 7%;
-}
-
 #data-inicial, #data-final{
     width: 133px;
 }
@@ -427,7 +411,6 @@ body{
     border-width: 0px;
     width: 100%;
     background-color: $branco;
-
 }
 
 .form-editar::placeholder{
@@ -513,9 +496,13 @@ body{
 }
 
 // Header
+
+.container-links{
+    border-right: solid 3px $verde-borda;
+}
 .container-links a{ 
     color: $branco;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 19px;
     text-decoration: none;
     width: 80%;
@@ -558,6 +545,8 @@ body{
 .container-links .botao a:hover{ 
     color: $branco;
 }
+
+
 
 // Pesquisa
 .caixa-pesquisa{
@@ -606,7 +595,7 @@ body{
     width: 100%;
     margin-left: 7px;
     background-color: $branco;
-    font-family: $fonte-tres;
+    font-family: $fonte-um;
     font-weight: bolder;
     color: $preto;
     background-color: $verde-forte;
@@ -672,7 +661,7 @@ body{
     margin-top: 15px;
 }
 
-// Dicas
+// Modal dicas
 .container-modal{
     display: flex;
     justify-content: right;
@@ -727,6 +716,50 @@ body{
     font-size: x-large;
 }
 
+.button-modal-open, .cadastro-estudante-modal{
+    color: $verde-forte;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 0;
+    padding-top: 12px;
+    display: inline-block;
+    position: relative;
+    left: -40%;
+}
+
+#botao-cadastro-modal{
+    background-color: $verde-forte;
+    border-color: $verde-forte;
+    margin-top: 15px;
+}
+
+#botao-cadastro-modal:hover{
+    background-color: $preto;
+    border-color: $preto;
+}
+
+// Modal cadastros
+.button-fechar{
+    background-color: #14686900;
+    border: none;
+    width: fit-content;
+    color: $preto-modal;
+    position: relative;
+    left: 95%;
+    top: 50%;
+    display: inline-block;
+}
+
+.titulo-modal{
+    position: relative;
+    top: -100%;
+    display: inline-block;
+}
+
+.cadastros-curriculo{
+    padding: 8px;
+}
+
 // Experiencias, Cursos e Formação
 .container-cursos-exper{
     padding: 15px;
@@ -764,7 +797,12 @@ body{
 .data-inicio, .data-fim{
     width: 200px;
     float: left;
-    display: inline;
+    //display: inline;
+}
+
+.data-fim{
+    position: relative;
+    left: 100px;
 }
 
 .data-inicio{

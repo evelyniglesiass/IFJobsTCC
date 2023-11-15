@@ -11,7 +11,6 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 import DicasFormacoesComponent from '../../dicas/DicasFormacoesComponent';
 
 
-
 // Component com inputs para editar perfil do estudante
 const CurriculoEditarComponent = () => {
   return (
