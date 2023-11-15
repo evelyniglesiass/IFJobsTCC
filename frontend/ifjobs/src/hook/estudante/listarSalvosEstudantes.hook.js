@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { listarSalvosEstudantesApi } from "../../api/estudante/listar-salvos-estudantes.api";
+import { listarSalvosEstudantesApi } from "../../constants";
 
 export function useListarSalvosEstudantes(){
 
