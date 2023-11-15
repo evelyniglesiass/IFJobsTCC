@@ -28,7 +28,6 @@ public class CurriculoController {
     @Autowired
     private CurriculoService curSer;
 
-
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
@@ -52,7 +51,7 @@ public class CurriculoController {
     public ResponseEntity<Resposta> remover(){ 
         return curSer.remover();
     }
-
+ 
     // listar currículo de um estudante
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/{id}") // id do estudante

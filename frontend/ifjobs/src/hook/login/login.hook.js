@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export function useLogin(){
 
-    const {setUser} = useGlobalUsuario();
+    const [user, setUser] = useGlobalUsuario();
     const [error] = useState();
 
     async function fazerLogin(email, senha){
@@ -14,8 +14,9 @@ export function useLogin(){
         try{
             const response = await logarApi(email, senha);
             console.log(response);
-
             setUser(response);
+            console.log("oi")
+            console.log(user)
         }
         catch(errorApi){
             console.log(errorApi)

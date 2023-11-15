@@ -10,6 +10,7 @@ public class UsuarioDto {
 
         return UsuarioResponse
             .builder()
+            .id(empresa.getId())
             .nome(empresa.getNome())
             .nomeUsuario(empresa.getNomeUsuario())
             .descricao(empresa.getDescricao())
@@ -23,6 +24,7 @@ public class UsuarioDto {
 
          return UsuarioResponse
             .builder()
+            .id(estudante.getId())
             .nome(estudante.getNome())
             .nomeUsuario(estudante.getNomeUsuario())
             .cidade(estudante.getCidade())

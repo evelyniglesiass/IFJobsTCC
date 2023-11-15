@@ -97,7 +97,7 @@ public class EstudanteController {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> removerCandidatura(@PathVariable int vaga){ 
         return estSer.removerCandidatura(vaga);
-
+ 
     }
 
     // listar estudantes candidatos

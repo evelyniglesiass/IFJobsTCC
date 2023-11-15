@@ -6,19 +6,22 @@ import HeaderComponent from '../../components/ui/HeaderComponent'
 import VagasComponent from '../../components/empresa/VagasComponent'
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import PesquisaComponent from '../../components/ui/PesquisaComponent';
-import { useListarVagas } from '../../hook/vagas/listarVagas.hook';
+import { useListarSalvosEstudantes } from '../../hook/estudante/listarSalvosEstudantes.hook';
+import useGlobalUser from '../../context/usuario/user.context';
 
 // Feed com vagas em que o estudante se candidatou
 const Salvos = () => {
 
-  const [vagas, setVagas] = useState([])
+  const [vagas, setVagas] = useState([]);
+  const [user] = useGlobalUser();
 
-  const { listarVagas } = useListarVagas();
+  const { listarSalvosEstudantes } = useListarSalvosEstudantes();
 
   useEffect(() => {
     async function listar() {
 
-      const response = await listarVagas();
+      console.log(user.id)
+      const response = await listarSalvosEstudantes(user.id);
       
       setVagas(response) 
 

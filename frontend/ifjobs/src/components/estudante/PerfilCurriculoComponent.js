@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 
 // Import de Components
@@ -11,20 +11,48 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
 
 // Component de perfil do estudante com botão de editar
-const PerfilCurriculoComponent = () => {
+const PerfilCurriculoComponent = ({estudante}, {curriculo}) => {
+
+  const [estudanteTag, setEstudanteTag] = useState([]);
+  const [curriculoTag, setCurriculoTag] = useState([]);
+
+  useEffect(() => {
+    console.log(estudante);
+    console.log(curriculo);
+
+    const icone = estudante.nome;
+    icone = icone.slice(0, 2);
+
+    setEstudanteTag([]);
+    setCurriculoTag([]);
+    
+    setEstudanteTag(() => ([
+                            <section>
+                              <h1 className='img-perfis'>{icone.toUpperCase()}</h1>
+                              <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
+                              <h5 className='curso fonte-titulo'>Curso</h5>
+                              <p className='sociais fonte-titulo'>{estudante.email}</p>
+                            </section>
+                          ]))
+
+    setCurriculoTag(() => ([
+                            <section>
+                              <h3 className='fonte-titulo'>Resumo</h3>
+                              <p className='fonte-corpo'>{curriculo.resumo}</p>
+                            </section>
+                          ]))
+
+  }, [estudante])
+
   return (
     <section>
         <article className='cabecalho-perfis'>
-          <h1 className='img-perfis'>NC</h1>
-          <h2 className='titulo-perfil fonte-titulo'>Nome Completo</h2>
-          <h5 className='curso fonte-titulo'>Curso</h5>
-          <p className='sociais fonte-titulo'>@LinkedIn @GitHub </p>
+          {estudanteTag}
           <EditarCurriculoButtonComponent/>
         </article>
         
         <article className='objetivo-curriculo'>
-          <h3 className='fonte-titulo'>Objetivo</h3>
-          <p className='fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+          {curriculoTag}
         </article>
 
         <article className='experiencia-curriculo'>
