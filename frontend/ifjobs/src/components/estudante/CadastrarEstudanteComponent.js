@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../App.scss';
-import { useCadastroEstudante } from '../../hook/cadastro/cadastrarEstudante.hook';
+import { useCadastroEstudante } from '../../hook/estudante/cadastrarEstudante.hook';
 
 // Component para cadastro de estudantes
 const CadastrarEstudanteComponent = () => {

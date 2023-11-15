@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../App.scss';
-import { useCadastroEmpresa } from '../../hook/cadastro/cadastroEmpresa.hook';
+import { useCadastroEmpresa } from '../../hook/empresa/cadastroEmpresa.hook';
 
 // Component para cadastro de empresas
 const CadastrarEmpresaComponent = () => {
