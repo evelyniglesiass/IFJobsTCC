@@ -5,7 +5,7 @@ export async function editarFormacaoApi(descricao, cidade, instituicao, dataInic
 
     try{
         const response = await axiosInstance.put("/formacoes", {
-            cdescricao, cidade, instituicao, dataInicial, dataFinal, nivel
+            descricao, cidade, instituicao, dataInicial, dataFinal, nivel
         });
 
         toast.success(response.data.mensagem)
