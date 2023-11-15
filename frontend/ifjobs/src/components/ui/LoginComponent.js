@@ -2,6 +2,8 @@ import '../../App.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
+import CadastrarEstudanteComponent from '../estudante/cadastro/CadastrarEstudanteComponent';
+import CadastrarEmpresaComponent from '../empresa/CadastrarEmpresaComponent';
 
 // Component de login
 const LoginComponent = () => {
@@ -37,7 +39,13 @@ const LoginComponent = () => {
 
             <button className='btn btn-dark'><Link to={"/feed"}>Entrar</Link></button>
 
-            <h6 className='link'>Ainda não tem cadastro? Cadastre-se como <Link className='link-cadastro' to={"/cadastrar/estudante"}>Estudante</Link> ou <Link className='link-cadastro' to={"/cadastrar/empresa"}>Empresa</Link><br /></h6>
+
+            <h6 className='link'>Ainda não tem cadastro? Cadastre-se como</h6>
+            <br/>
+            <CadastrarEstudanteComponent/>
+            <h6>ou</h6>
+            <br />
+            <CadastrarEmpresaComponent/>
 
         </form>
 

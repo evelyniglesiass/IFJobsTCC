@@ -29,12 +29,12 @@ const DicasFormacoesComponent = () => {
                 <h2>Dicas para suas formações</h2>
                 <hr/>
                 <p>- Seja sincero, porém cuide para não ser narcisista ou meritocrático</p>
-                <p>- Escreva seu objetivo tendo o tipo de vaga que você quer em mente</p>
+                <p>- Escreva sobre suas formações tendo o tipo de vaga que você quer em mente</p>
                 <p>- Se venda com equilíbrio, não exagere e não se diminua</p>
-                <p>- Descreva seus almejos profissionais</p>
-                <p>- Conte como você pretende construir sua carreira na área</p>
+                <p>- Conecte sua formação com seus almejos profissionais, mostrando como você pretende construir sua carreira</p>
                 <p>- Seja simples e direto</p>
-                <p>- Se você não possui experiência profissional, foque em sua área acadêmica e atividades voluntárias</p>
+                <p>- Você pode focar aqui se não possui experiência profissional</p>
+                <p>- Não esqueca de preencher os dados da sua instituição e o período</p>
                 <button onClick={closeModal} className='button-modal'>Fechar</button>
             </Modal>
         </div>
