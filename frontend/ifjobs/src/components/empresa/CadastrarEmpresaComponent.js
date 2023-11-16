@@ -1,6 +1,5 @@
 import '../../App.scss';
 import { useState } from 'react';
-import '../../App.scss';
 import { useCadastroEmpresa } from '../../hook/empresa/cadastroEmpresa.hook';
 import Modal from 'react-modal';
 
@@ -46,7 +45,7 @@ const CadastrarEmpresaComponent = () => {
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>Empresa</button>
+            <button onClick={openModal} className='button-modal-open' id='botao-open-cadastro'>Empresa</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

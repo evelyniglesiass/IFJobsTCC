@@ -45,7 +45,7 @@ const CadastrarEstudanteComponent = () => {
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open tela-login'>Estudante</button>
+            <button onClick={openModal} className='button-modal-open' id='botao-open-cadastro'>Estudante</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

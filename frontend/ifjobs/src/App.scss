@@ -198,6 +198,12 @@ body{
 
 // Components ---------------------------------------
 
+// UI
+
+#button-excluir{
+    background-color: $preto;
+}
+
 // Empresas e Vagas - USO COMUM
 .container-empresa, .container-vaga{
     display: inline-block;
@@ -716,13 +722,14 @@ body{
     font-size: x-large;
 }
 
-.button-modal-open, .cadastro-estudante-modal{
+// Modal cadastros
+
+#botao-open-cadastro{
     color: $verde-forte;
     font-size: 16px;
     font-weight: 600;
     margin-left: 0;
     padding-top: 12px;
-    display: inline-block;
     position: relative;
     left: -40%;
 }
@@ -738,7 +745,6 @@ body{
     border-color: $preto;
 }
 
-// Modal cadastros
 .button-fechar{
     background-color: #14686900;
     border: none;

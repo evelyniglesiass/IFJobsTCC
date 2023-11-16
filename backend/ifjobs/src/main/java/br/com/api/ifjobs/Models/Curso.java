@@ -37,6 +37,10 @@ public class Curso {
 	@Column(nullable = false)
     private Integer id;
 
+    @NotBlank(message = "Insira o título de seu curso!")
+    @Column(nullable = false, length = 250)
+	private String titulo;
+
     @NotBlank(message = "Insira detalhes sobre seu curso na descrição!")
     @Column(nullable = false, length = 500)
 	private String descricao;
