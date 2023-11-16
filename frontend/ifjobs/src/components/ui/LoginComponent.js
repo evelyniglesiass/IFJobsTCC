@@ -39,15 +39,16 @@ const LoginComponent = () => {
 
             <button className='btn btn-dark'><Link to={"/feed"}>Entrar</Link></button>
 
+        </form>
 
+        <div>
             <h6 className='link'>Ainda não tem cadastro? Cadastre-se como</h6>
             <br/>
             <CadastrarEstudanteComponent/>
             <h6>ou</h6>
             <br />
             <CadastrarEmpresaComponent/>
-
-        </form>
+        </div>
 
     </div> 
   )

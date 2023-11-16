@@ -1,37 +1,91 @@
 import '../../App.scss';
+import { useState } from 'react';
+import '../../App.scss';
+import Modal from 'react-modal';
+import { useCadastrarVaga } from '../../hook/vagas/cadastrarVaga.hook';
 
-// Component para cadastro de empresas
+Modal.setAppElement("#root");
+
+// Component de de dicas para objetivo
 const CadastrarVagaComponent = () => {
-  return (
-    <div className='container-cadastro'>
 
-        <h3>Insira as informações da sua vaga!</h3>
+    const [modalIsOpen, setIsOpen] = useState(false);
 
-        <form>
-            <div class="txt-form-group"> 
-                <input type="text" class="form-control" id="titulo-vaga-cadastrar" placeholder="Título" />
-            </div>
+    function openModal() {
+        setIsOpen(true);
+    }
 
-            <div class="txt-form-group"> 
-                <input type="text" class="form-control" id="cidade-vaga" placeholder="Cidade" />
-            </div>
+    function closeModal() {
+        setIsOpen(false);
+    }
 
-            <div class="txt-form-group"> 
-                <textarea type="text" class="form-control" id="descricao-vaga-cadastrar" placeholder="Descrição" />
-            </div>
+    const [formInput, setFormInput] = useState({
+        titulo: '',
+        cidade: '',
+        descricao: '',
+        salario: '',
+        idadeMinima: ''
+    })
 
-            <div class="txt-form-group"> 
-                <input type="number" class="form-control" id="salario-cadastrar" placeholder="Salário" />
-            </div>
+    function handleChange(event){
+        const { name, value } = event.target;
 
-            <div class="txt-form-group"> 
-                <input type="number" class="form-control" id="idade-cadastrar" placeholder="Idade" />
-            </div>
-            
-            <button type="submit" class="txt btn btn-primary">Cadastrar</button>
-        </form>
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    }
 
-    </div> 
-  )
+    const {cadastrarVaga} = useCadastrarVaga();
+
+    async function onSubmit(event){
+        event.preventDefault();
+
+        await cadastrarVaga(formInput.titulo, formInput.cidade, formInput.descricao, formInput.salario, formInput.idadeMinima);
+        
+    }
+
+    return (
+        <div className='container-modal'>
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>➕</button>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                overlayClassName="modal-overlay"
+                className="modal-content">
+
+                <h2 className='titulo-modal'>Cadastre sua vaga!</h2>
+                <hr/>
+                <div className='container-cursos-exper'>
+                <form onSubmit={onSubmit}>
+                    <div class="txt-form-group"> 
+                        <input type="text" class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group"> 
+                        <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group"> 
+                        <textarea type="text" class="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group"> 
+                        <input type="number" class="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group"> 
+                        <input type="number" class="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
+                    </div>
+
+                    {/* <div class="txt-form-group"> 
+                        <input type="" class="form-control" name='curso' placeholder="Curso" />
+                    </div> */}
+                    
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                </form>
+                </div>
+            </Modal>
+        </div>
+    )
 }
+
 export default CadastrarVagaComponent

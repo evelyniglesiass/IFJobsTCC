@@ -17,6 +17,7 @@ import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
 import Estudante from './pages/estudante/Estudante';
 import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
+import TesteB from './pages/estudante/TesteB';
 
 // Import de Routes
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
@@ -41,6 +42,7 @@ function App() {
 
             {/* Cadastrar */}
             <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
+            <Route path='/cadastrar/estudante/teste' element={<TesteB/>} />
             <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
             <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} />
 

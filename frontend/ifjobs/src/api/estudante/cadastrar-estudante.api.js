@@ -9,9 +9,11 @@ export async function criarEstudanteApi(nome, nomeUsuario, idade, telefone, emai
         });
 
         toast.success(response.data.mensagem)
+        console.log(response.data.mensagem)
         return response.data;
     } catch(error){
         toast.error(error.response.data.message);
+        console.log(error)
         throw new Error(error)
 
     }

@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarEstudanteComponent = () => {
+const Teste = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -92,4 +92,4 @@ const CadastrarEstudanteComponent = () => {
     )
 }
 
-export default CadastrarEstudanteComponent
+export default Teste
