@@ -35,6 +35,7 @@ export { excluirVagaApi } from '../api/vaga/excluir-vaga.api.js';
 export { listarVagaTituloApi } from '../api/vaga/listar-vaga-titulo.api.js';
 export { listarVagasEmpresaApi } from '../api/vaga/listar-vagas-empresa.api.js';
 export { listarVagasApi } from '../api/vaga/listar-vagas.api.js';
+export { listarVagaEspecificaApi } from '../api/vaga/listar-vaga-especifica.api.js';
 
 // curriculo
 export { listarCurriculoApi } from '../api/curriculo/listar-curriculo.api.js';
@@ -77,3 +78,4 @@ export { criarPalavraChaveApi } from '../api/palavra/cadastrar-palavra.api.js';
 export { editarPalavraChaveApi } from '../api/palavra/editar-palavra.api.js';
 export { excluirPalavraChaveApi } from '../api/palavra/excluir-palavra.api.js';
 export { listarPalavraChaveApi } from '../api/palavra/listar-palavra.api.js';
+
