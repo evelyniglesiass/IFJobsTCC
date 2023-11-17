@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Component para formação acadêmica
 const FormacaoComponent = () => {

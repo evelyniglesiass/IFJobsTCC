@@ -1,8 +1,7 @@
-import '../../App.scss';
+import '../../../App.scss';
 import { useState } from 'react';
-import '../../App.scss';
 import Modal from 'react-modal';
-import { useCadastrarVaga } from '../../hook/vagas/cadastrarVaga.hook';
+import { useCadastrarVaga } from '../../../hook/vagas/cadastrarVaga.hook';
 
 Modal.setAppElement("#root");
 

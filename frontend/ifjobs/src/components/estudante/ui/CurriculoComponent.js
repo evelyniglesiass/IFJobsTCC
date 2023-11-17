@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Import de Components
 import ExperienciasComponent from './ExperienciasComponent';

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Import de Components
 import VagasComponent from './VagasComponent'
-import { useListarVagas } from '../../hook/vagas/listarVagas.hook';
+import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 
 // Component para visualizar perfis de empresas
 const EditarPerfilEmpresaComponent = () => {

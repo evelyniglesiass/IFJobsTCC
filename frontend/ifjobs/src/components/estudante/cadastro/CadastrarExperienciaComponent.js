@@ -1,5 +1,6 @@
 import '../../../App.scss';
 import { useState } from 'react';
+import { useCadastrarExperiencia } from '../../../hook/experiencia/cadastrarExperiencia.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
@@ -17,6 +18,30 @@ const CadastrarExperienciaComponent = () => {
         setIsOpen(false);
     }
 
+    const [formInput, setFormInput] = useState({
+        titulo: '',
+        empresa: '',
+        cargo: '',
+        dataInicial: '',
+        dataFinal: '',
+        descricao: ''
+    })
+
+    function handleChange(event){
+        const { name, value } = event.target;
+
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    }
+
+    const {cadastroExperiencia} = useCadastrarExperiencia();
+
+    async function onSubmit(event){
+        event.preventDefault();
+
+        await cadastroExperiencia(formInput.titulo, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        
+    }
+
     return (
         <div className='container-modal'>
             <button onClick={openModal} className='button-modal-open'>➕</button>
@@ -27,22 +52,33 @@ const CadastrarExperienciaComponent = () => {
                 overlayClassName="modal-overlay"
                 className="modal-content"
             >
-                <button onClick={closeModal} className='button-fechar'>X</button>
-
                 <h2 className='titulo-modal'>Experiência profissional</h2>
                 <hr/>
                 <div className='container-cursos-exper'>
-                <section className='cabecalho-cursos-exper'>
-                    <h4 className='titulos-cursos-exper fonte-titulo'><input type="text" class="form-editar cadastros-curriculo" id="experiencia" placeholder="Título" /></h4>
-                    <h6 className='titulos-cursos-exper fonte-corpo'><input type="text" class="form-editar cadastros-curriculo" id="empresa" placeholder="Empresa" /></h6>
-                    <article>
-                    <h6 className='data-inicio fonte-corpo'><input type="date" class="form-editar cadastros-curriculo" id="data-inicial"/> </h6>
-                    <h6 className='data-fim fonte-corpo'><input type="date" class="form-editar cadastros-curriculo" id="data-final"/></h6>
-                    </article>
-                    <p className='conteudo-experiencias fonte-corpo'><textarea type="textarea" class="form-editar cadastros-curriculo" id="conteudo-experiencia" placeholder="Descrição" maxLength={250} /></p>
-                </section>
+
+                    <form onSubmit={onSubmit}>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='titulo' placeholder="Título" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='empresa' placeholder="Empresa" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='cargo' placeholder="Cargo" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-editar cadastros-curriculo" name='dataInicial'onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-editar cadastros-curriculo" name='dataFinal'onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <textarea type="textarea" class="form-editar cadastros-curriculo" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                        </div>
+                        
+                        <button type='submit' className='button-modal'>Salvar</button>
+                    </form>
                 </div> 
-                <button type='submit' className='button-modal'>Salvar</button>
             </Modal>
         </div>
     )

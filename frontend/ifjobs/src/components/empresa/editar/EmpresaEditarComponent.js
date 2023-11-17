@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 
 // Import de Components
-import VagasComponent from '../VagasComponent'
+import VagasComponent from '../ui/VagasComponent'
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 
 // Component com inputs para editar perfil da empresa

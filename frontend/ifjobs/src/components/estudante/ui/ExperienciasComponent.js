@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Component para experiência profissional
 const ExperienciasComponent = ({experiencias}) => { 

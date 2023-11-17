@@ -6,10 +6,10 @@ export function useCadastrarExperiencia(){
 
     const [error] = useState();
 
-    async function cadastrarExperiencia(descricao, empresa, cargo, dataInicial, dataFinal){
+    async function cadastrarExperiencia(titulo, descricao, empresa, cargo, dataInicial, dataFinal){
 
         try{
-            await criarExperienciaApi(descricao, empresa, cargo, dataInicial, dataFinal);
+            await criarExperienciaApi(titulo, descricao, empresa, cargo, dataInicial, dataFinal);
         }
         catch(errorApi){
             toast.error(errorApi);

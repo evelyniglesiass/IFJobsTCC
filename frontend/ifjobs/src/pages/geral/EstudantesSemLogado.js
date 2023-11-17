@@ -4,7 +4,7 @@ import '../../App.scss';
 // Import de Components 
 import PesquisaComponent from '../../components/ui/PesquisaComponent';
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
-import EstudantesComponent from '../../components/estudante/EstudantesComponent';
+import EstudantesComponent from '../../components/estudante/ui/EstudantesComponent';
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import { useListarEstudantesEst } from '../../hook/estudante/listarEstudantesEst.hook';
 

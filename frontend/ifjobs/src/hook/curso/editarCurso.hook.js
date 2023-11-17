@@ -6,10 +6,10 @@ export function useEditarCurso(){
 
     const [error] = useState();
 
-    async function editarCurso(cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
+    async function editarCurso(titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
 
         try{
-            await editarCursoApi(cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao);
+            await editarCursoApi(titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao);
         }
         catch(errorApi){
             toast.error(errorApi);

@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
 import CadastrarEstudanteComponent from './CadastrarUsuarioComponent';
+import CadastrarExperienciaComponent from '../estudante/cadastro/CadastrarExperienciaComponent';
+import CadastrarFormacaoComponent from '../estudante/cadastro/CadastrarFormacaoComponent';
+import CadastrarCursoComponent from '../estudante/cadastro/CadastrarCursoComponent';
+
 
 // Component de login
 const LoginComponent = () => {
@@ -44,6 +48,10 @@ const LoginComponent = () => {
             <h6 className='link'>Ainda não tem cadastro? Cadastre-se como</h6>
             <br/>
             <CadastrarEstudanteComponent/>
+
+            <CadastrarExperienciaComponent/>
+            <CadastrarFormacaoComponent/>
+            <CadastrarCursoComponent/>
         </div>
 
     </div> 

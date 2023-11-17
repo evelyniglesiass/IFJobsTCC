@@ -2,7 +2,7 @@ import '../../App.scss';
 import Background from "../../imagens/home.png";
 
 // Import de Components
-import CadastrarVagaComponent from '../../components/empresa/CadastrarVagaComponent';
+import CadastrarVagaComponent from '../../components/empresa/cadastrar/CadastrarVagaComponent';
 
 // Página para cadastrar empresas
 const VagaCadastrar = () => {

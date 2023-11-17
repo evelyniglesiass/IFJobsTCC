@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
-import EmpresaComponent from '../../components/empresa/EmpresaComponent';
+import EmpresaComponent from '../../components/empresa/ui/EmpresaComponent';
 
 
 // Visualizar perfis de empresas

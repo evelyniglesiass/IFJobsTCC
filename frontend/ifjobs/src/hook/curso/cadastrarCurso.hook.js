@@ -6,10 +6,10 @@ export function useCadastrarCurso(){
 
     const [error] = useState();
 
-    async function cadastrarCurso(cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
+    async function cadastrarCurso(titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
 
         try{
-            await criarCursoApi(cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao);
+            await criarCursoApi(titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao);
         }
         catch(errorApi){
             toast.error(errorApi);

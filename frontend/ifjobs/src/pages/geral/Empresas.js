@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
-import EmpresasComponent from '../../components/empresa/EmpresasComponent';
+import EmpresasComponent from '../../components/empresa/ui/EmpresasComponent';
 import PesquisaComponent from '../../components/ui/PesquisaComponent';
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import { useListarEmpresasEst } from '../../hook/empresa/listarEmpresasEst.hook';

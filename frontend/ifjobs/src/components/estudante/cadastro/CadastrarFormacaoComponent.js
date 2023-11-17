@@ -1,5 +1,6 @@
 import '../../../App.scss';
 import { useState } from 'react';
+import { useCadastrarFormacao } from '../../../hook/formacao/cadastrarFormacao.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
@@ -17,6 +18,30 @@ const CadastrarFormacaoComponent = () => {
         setIsOpen(false);
     }
 
+    const [formInput, setFormInput] = useState({
+        nivel: '',
+        instituicao: '',
+        cidade: '',
+        dataInicial: '',
+        dataFinal: '',
+        descricao: ''
+    })
+
+    function handleChange(event){
+        const { name, value } = event.target;
+
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    }
+
+    const {cadastroFormacao} = useCadastrarFormacao();
+
+    async function onSubmit(event){
+        event.preventDefault();
+
+        await cadastroFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        
+    }
+
     return (
         <div className='container-modal'>
             <button onClick={openModal} className='button-modal-open'>➕</button>
@@ -32,17 +57,30 @@ const CadastrarFormacaoComponent = () => {
                 <h2 className='titulo-modal'>Formação acadêmica</h2>
                 <hr/>
                 <div className='container-cursos-exper'>
-                <section className='cabecalho-cursos-exper'>
-                    <h4 className='titulos-cursos-exper fonte-titulo'><input type="text" class="form-editar cadastros-curriculo" id="nivel" placeholder="Nível" /></h4>
-                    <h6 className='titulos-cursos-exper fonte-corpo'><input type="text" class="form-editar cadastros-curriculo" id="nome-instituicao" placeholder="Nome da Instituição" /></h6>
-                    <article>
-                    <h6 className='data-inicio fonte-corpo'><input type="date" class="form-editar cadastros-curriculo" id="data-inicial"/></h6>
-                    <h6 className='data-fim fonte-corpo'><input type="date" class="form-editar cadastros-curriculo" id="data-final"/></h6>
-                    </article>
-                    <p className='conteudo-formacao fonte-corpo'><textarea type="textarea" class="form-editar cadastros-curriculo" id="conteudo-formacao" placeholder="Descrição" maxLength={250} /></p>
-                </section>
+
+                    <form onSubmit={onSubmit}>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='nivel' placeholder="Nível" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-editar cadastros-curriculo" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-editar cadastros-curriculo" name='dataInicial'onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-editar cadastros-curriculo" name='dataFinal'onChange={handleChange}/>
+                        </div>
+                        <div className='txt-form-group'>
+                            <textarea type="textarea" class="form-editar cadastros-curriculo" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                        </div>
+                        
+                        <button type='submit' className='button-modal'>Salvar</button>
+                    </form>
                 </div> 
-                <button type='submit' className='button-modal'>Salvar</button>
             </Modal>
         </div>
     )

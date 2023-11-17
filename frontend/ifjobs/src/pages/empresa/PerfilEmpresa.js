@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Imports de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
-import PerfilEmpresaComponent from '../../components/empresa/PerfilEmpresaComponent';
+import PerfilEmpresaComponent from '../../components/empresa/ui/PerfilEmpresaComponent';
 import { useListarEmpresaEspecifica } from '../../hook/empresa/listarEmpresaEspecifica.hook';
 import useGlobalUser from '../../context/usuario/user.context';
 

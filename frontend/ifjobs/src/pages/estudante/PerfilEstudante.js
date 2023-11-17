@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import PerfilCurriculoComponent from '../../components/estudante/PerfilCurriculoComponent';
+import PerfilCurriculoComponent from '../../components/estudante/ui/PerfilCurriculoComponent';
 import { useListarEstudanteEspecifico } from '../../hook/estudante/listarEstudanteEspecifico.hook';
 import useGlobalUser from '../../context/usuario/user.context';
 import { useListarCurriculo } from '../../hook/curriculo/listarCurriculo.hook';

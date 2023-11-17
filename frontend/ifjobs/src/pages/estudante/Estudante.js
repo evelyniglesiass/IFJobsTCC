@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import CurriculoComponent from '../../components/estudante/CurriculoComponent';
+import CurriculoComponent from '../../components/estudante/ui/CurriculoComponent';
 
 // Visualizar perfis de estudantes
 const Estudante = () => {

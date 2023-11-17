@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 import { Link } from 'react-router-dom';
 
 // Component para exibir empresas cadastradas no feed

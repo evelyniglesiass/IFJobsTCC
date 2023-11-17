@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 
 // Import de Components
 import ExperienciasComponent from './ExperienciasComponent';
@@ -8,9 +8,9 @@ import FormacaoComponent from './FormacaoComponent';
 
 // Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
-import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
-import { useListarExperiencia } from '../../hook/experiencia/listarExperiencia.hook';
-import useGlobalUser from '../../context/usuario/user.context';
+import EditarCurriculoButtonComponent from '../../ui/editar/EditarCurriculoButtonComponent';
+import { useListarExperiencia } from '../../../hook/experiencia/listarExperiencia.hook';
+import useGlobalUser from '../../../context/usuario/user.context';
 
 // Component de perfil do estudante com botão de editar
 const PerfilCurriculoComponent = ({estudante, curriculo}) => { 

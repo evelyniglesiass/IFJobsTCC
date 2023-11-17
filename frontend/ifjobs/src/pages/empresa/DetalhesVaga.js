@@ -3,7 +3,7 @@ import '../../App.scss';
 
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
-import DetalhesVagaComponent from '../../components/empresa/DetalhesVagaComponent';
+import DetalhesVagaComponent from '../../components/empresa/ui/DetalhesVagaComponent';
 
 // Detalhes de vagas na visão da empresa
 const DetalhesVaga = () => {

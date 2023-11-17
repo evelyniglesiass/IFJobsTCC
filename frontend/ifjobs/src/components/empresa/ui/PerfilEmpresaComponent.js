@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import '../../App.scss';
+import '../../../App.scss';
 import VagasComponent from './VagasComponent'
-import EditarEmpresaButtonComponent from '../ui/editar/EditarEmpresaButtonComponent';
-import { useListarVagasEmpresa } from '../../hook/vagas/listarVagasEmpresa.hook';
-import useGlobalUser from '../../context/usuario/user.context';
+import EditarEmpresaButtonComponent from '../../ui/editar/EditarEmpresaButtonComponent';
+import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
+import useGlobalUser from '../../../context/usuario/user.context';
 
 // Component de perfil da empresa com botão editar
 const PerfilEmpresaComponent = ({empresa}) => {
