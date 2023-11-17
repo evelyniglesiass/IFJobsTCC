@@ -17,16 +17,14 @@ import PerfilEmpresa from './pages/empresa/PerfilEmpresa';
 import Estudante from './pages/estudante/Estudante';
 import Empresa from './pages/empresa/Empresa';
 import DetalhesVaga from './pages/empresa/DetalhesVaga';
-
-// Import de Routes
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-
-// Import Toastify
-import { ToastContainer } from 'react-toastify';
-
-import {GlobalUserProvider} from './context/usuario/user.context';
 import EditarVaga from './pages/empresa/EditarVaga';
 import Estudantes from './pages/geral/Estudantes';
+
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import {GlobalUserProvider} from './context/usuario/user.context';
+import EstudantesSemLogado from './pages/geral/EstudantesSemLogado';
+import EmpresasSemLogada from './pages/geral/EmpresasSemLogada';
 
 function App() {
   return (
@@ -44,11 +42,15 @@ function App() {
             <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
             <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} />
 
-            {/* Feed com vagas, empresas e vagas salvas pelo estudante */}
-            <Route path='/feed' element={<Feed/>} />
-            <Route path='/empresas' element={<Empresas/>} />
-            <Route path='/salvos' element={<Salvos/>} />
-            <Route path='/estudantes' element={<Estudantes/>} />
+            {/* Feed com vagas, empresas, estudantes e vagas salvas pelo estudante (falta pesquisar em todos) */}
+            <Route path='/feed' element={<Feed/>} /> {/*feed com todas as vagas OK*/}
+            <Route path='/salvos' element={<Salvos/>} /> {/*feed com vagas salvas por um estudante OK*/}
+
+            <Route path='/estudantes' element={<Estudantes/>} /> {/*feed estudantes visão empresa OK*/}
+            <Route path='/empresas' element={<Empresas/>} /> {/*feed empresas visão estudante OK*/}
+
+            <Route path='/estudantes/sem' element={<EstudantesSemLogado/>} /> {/*feed estudantes visão estudante OK*/}
+            <Route path='/empresas/sem' element={<EmpresasSemLogada/>} /> {/*feed empresas visão empresa OK*/}
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             <Route path='/estudante' element={<Estudante/>} />

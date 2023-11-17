@@ -10,11 +10,10 @@ export function useListarVagaTitulo(){
 
         try{
             const response = await listarVagaTituloApi(titulo);
-
+            console.log(response)
             return response
         }
         catch(errorApi){
-            console.log(errorApi)
             toast.error(errorApi);
         }
     }

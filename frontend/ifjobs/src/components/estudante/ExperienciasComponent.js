@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 
 // Component para experiência profissional
-const ExperienciasComponent = () => { 
+const ExperienciasComponent = ({experiencias}) => { 
+
+  const [experienciaTag, setExperienciaTag] = useState([]);
+
+  useEffect(() => {
+
+    setExperienciaTag([]);
+    
+    experiencias.forEach(e => {
+      setExperienciaTag((oldExpTag) => ([...oldExpTag,
+                                <section className='cabecalho-cursos-exper'>
+                                  <h4 className='titulos-cursos-exper fonte-titulo'>{e.cargo}</h4>
+                                  <h6 className='titulos-cursos-exper fonte-corpo'>{e.empresa}</h6>
+                                  <article className='datas'>
+                                    <h6 className='data-inicio fonte-corpo'>{e.dataInicial}</h6>
+                                    <h6 className='data-fim fonte-corpo'>{e.dataFinal}</h6>
+                                  </article>
+                                  <p className='conteudo-experiencias'>{e.descricao}</p>
+                                </section>
+                            ]))
+    });
+                          
+  }, [experiencias])
+
   return (
     <div className='container-cursos-exper'>
-      <section className='cabecalho-cursos-exper'>
-        <h4 className='titulos-cursos-exper fonte-titulo'>Título</h4>
-        <h6 className='titulos-cursos-exper fonte-corpo'>Empresa</h6>
-        <article className='datas'>
-          <h6 className='data-inicio fonte-corpo'>12/12/2020 </h6>
-          <h6 className='data-fim fonte-corpo'>12/12/2023</h6>
-        </article>
-        <p className='conteudo-experiencias'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
-      </section>
+      {experienciaTag}
     </div> 
   )
 }

@@ -2,19 +2,53 @@ import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 import VagasComponent from './VagasComponent'
 import EditarEmpresaButtonComponent from '../ui/editar/EditarEmpresaButtonComponent';
-import { useListarVagas } from '../../hook/vagas/listarVagas.hook';
+import { useListarVagasEmpresa } from '../../hook/vagas/listarVagasEmpresa.hook';
+import useGlobalUser from '../../context/usuario/user.context';
 
 // Component de perfil da empresa com botão editar
-const PerfilEmpresaComponent = () => {
+const PerfilEmpresaComponent = ({empresa}) => {
+
+  const [empresaUm, setEmpresaUm] = useState([]);
+  const [empresaDois, setEmpresaDois] = useState([]);
+
+  useEffect(() => {
+
+    console.log("oi")
+    console.log(empresa)
+
+    setEmpresaUm([]);
+    setEmpresaDois([]);
+    
+    //const icone = empresa.nome;
+    //icone = icone.slice(0, 2);
+    //{icone.toUpperCase()}
+
+    setEmpresaUm((oldEmpresaUm) => ([...oldEmpresaUm, 
+                                      <section className=''>
+                                        <h1 className='img-perfis'>EM</h1>
+                                        <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
+                                        <h5 className='curso fonte-titulo'>{empresa.telefone}</h5>
+                                        <p className='sociais fonte-titulo'>{empresa.email}</p> 
+                                      </section>
+                                  ]))
+    setEmpresaDois((oldEmpresaDois) => ([...oldEmpresaDois, 
+                                        <section className=''>
+                                          <h3 className='fonte-titulo'>Sobre a empresa</h3>
+                                          <p className='fonte-corpo'>{empresa.descricao}</p>
+                                        </section>
+                                        ]))
+
+  }, [empresa])
 
   const [vagas, setVagas] = useState([])
+  const [user] = useGlobalUser();
 
-  const { listarVagas } = useListarVagas();
+  const { listarVagasEmpresa } = useListarVagasEmpresa();
 
   useEffect(() => {
     async function listar() {
 
-      const response = await listarVagas();
+      const response = await listarVagasEmpresa(user.id);
       
       setVagas(response) 
 
@@ -27,15 +61,11 @@ const PerfilEmpresaComponent = () => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
-        <h1 className='img-perfis'>NE</h1>
-          <h2 className='titulo-perfil fonte-titulo'>Nome da Empresa</h2>
-          <h5 className='curso fonte-titulo'>Mini descrição</h5>
-          <p className='sociais fonte-titulo'>@LinkedIn</p> 
+          {empresaUm}
           <EditarEmpresaButtonComponent/>
         </section>
         <section className='sobre-perfis'>
-          <h3 className='fonte-titulo'>Sobre a empresa</h3>
-          <p className='fonte-corpo'>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+          {empresaDois}
         </section>
         <div className='perfil-empresa-vaga'><VagasComponent vagas={vagas}/></div>
     </>

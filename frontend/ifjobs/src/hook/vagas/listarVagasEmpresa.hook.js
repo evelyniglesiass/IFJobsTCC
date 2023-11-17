@@ -6,15 +6,14 @@ export function useListarVagasEmpresa(){
 
     const [error] = useState();
 
-    async function listarVagasEmpresa(){
+    async function listarVagasEmpresa(empresa){
 
         try{
-            const response = await listarVagasEmpresaApi();
+            const response = await listarVagasEmpresaApi(empresa);
 
             return response
         }
         catch(errorApi){
-            console.log(errorApi)
             toast.error(errorApi);
         }
     }

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
 import CadastrarEstudanteComponent from '../estudante/cadastro/CadastrarEstudanteComponent';
 import CadastrarEmpresaComponent from '../empresa/CadastrarEmpresaComponent';
-import ButtonExcluirComponent from './ButtonExcluirComponent';
 
 // Component de login
 const LoginComponent = () => {

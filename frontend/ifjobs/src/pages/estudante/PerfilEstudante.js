@@ -12,27 +12,21 @@ import { useListarCurriculo } from '../../hook/curriculo/listarCurriculo.hook';
 // Perfil do estudante com botão editar
 const PerfilEstudante = () => {
 
-  const [estudante, setEstudante] = useState();
-  const [curriculo, setCurriculo] = useState();
+  const [estudante, setEstudante] = useState([]);
+  const [curriculo, setCurriculo] = useState([]);
   const [user] = useGlobalUser();
 
   const { listarEstudanteEspecifico } = useListarEstudanteEspecifico();
   const { listarCurriculo } = useListarCurriculo();
 
-  console.log("aqui")
-
   useEffect(() => {
-    async function listar() {
+    async function listar() { 
 
-      const response = await listarEstudanteEspecifico(1);
-      console.log(response)
+      const response = await listarEstudanteEspecifico(user.id);
       setEstudante(response);
-      console.log(estudante)
 
-      const curResp = await listarCurriculo(1);
-      console.log(curResp)
-      setCurriculo({...curResp});
-      console.log(curriculo)
+      const curResp = await listarCurriculo(user.id);
+      setCurriculo(curResp);
 
     }
 

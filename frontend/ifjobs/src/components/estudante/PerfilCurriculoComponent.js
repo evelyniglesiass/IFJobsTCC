@@ -9,24 +9,30 @@ import FormacaoComponent from './FormacaoComponent';
 // Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import EditarCurriculoButtonComponent from '../ui/editar/EditarCurriculoButtonComponent';
+import { useListarExperiencia } from '../../hook/experiencia/listarExperiencia.hook';
+import useGlobalUser from '../../context/usuario/user.context';
 
 // Component de perfil do estudante com botão de editar
-const PerfilCurriculoComponent = ({estudante}, {curriculo}) => { 
+const PerfilCurriculoComponent = ({estudante, curriculo}) => { 
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
 
   useEffect(() => {
 
-    const icone = estudante.nome;
-    icone = icone.slice(0, 2);
+    // const icone = estudante.nome;
+    // icone = icone.slice(0, 2);
+    // {icone.toUpperCase()}
+
+    console.log(estudante)
+    console.log(curriculo)
 
     setEstudanteTag([]);
     setCurriculoTag([]);
     
     setEstudanteTag(() => ([
                             <section>
-                              <h1 className='img-perfis'>{icone.toUpperCase()}</h1>
+                              <h1 className='img-perfis'>EV</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='curso fonte-titulo'>Curso</h5>
                               <p className='sociais fonte-titulo'>{estudante.email}</p>
@@ -36,11 +42,27 @@ const PerfilCurriculoComponent = ({estudante}, {curriculo}) => {
     setCurriculoTag(() => ([
                             <section>
                               <h3 className='fonte-titulo'>Resumo</h3>
-                              <p className='fonte-corpo'>{curriculo.resumo}</p>
+                              <p className='fonte-corpo'>{curriculo.resumo}</p> 
                             </section>
                           ]))
 
   }, [estudante, curriculo])
+
+  const [experiencia, setExperiencia] = useState([]);
+  const [user] = useGlobalUser();
+
+  const { listarExperiencia } = useListarExperiencia();
+
+  useEffect(() => {
+    async function listar() { 
+
+      const response = await listarExperiencia(user.id);
+      setExperiencia(response);
+
+    }
+
+    listar();
+  }, [])
 
   return (
     <section>
@@ -55,7 +77,7 @@ const PerfilCurriculoComponent = ({estudante}, {curriculo}) => {
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
-          <div className='experiencia-component'><ExperienciasComponent/></div>
+          <div className='experiencia-component'><ExperienciasComponent experiencias={experiencia}/></div>
         </article>
 
         <article className='curso-curriculo'>
