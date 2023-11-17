@@ -52,21 +52,36 @@ const Feed = () => {
 
   return (
     <div className='container-pages'>
+
       <nav className='header'><HeaderComponent /></nav>
+
       <section className='container-vagas'>
+
         <article className='pesquisa-vagas'>
+
           <nav class="navbar bg-body-tertiary">
+
             <section class="container-fluid">
+
                 <form class="d-flex" role="search" onSubmit={onSubmit}>
+
                   <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" handleChange={handleChange}/>
                   <button class="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
+
                 </form>
+
             </section>
-          </nav>    
+
+          </nav>  
+
         </article>
+        
         <AtalhoPerfilComponent />
+
         <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
+
       </section>
+
     </div>
   )
 }

@@ -63,7 +63,7 @@ function App() {
             <Route path='/perfil/empresa/editar' element={<EditarEmpresa/>} />
 
             {/* Visualizar vaga, editar vaga */}
-            <Route path='/detalhes/vaga' element={<DetalhesVaga/>} />
+            <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} />
             <Route path='/detalhes/vaga/estudante' element={<DetalhesVagaEstudante/>} />
             <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} />
 
