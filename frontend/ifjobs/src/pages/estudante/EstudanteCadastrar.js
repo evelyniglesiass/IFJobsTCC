@@ -2,7 +2,7 @@ import '../../App.scss';
 import Background from "../../imagens/home.png";
 
 // Import de Components
-import CadastrarEstudanteComponent from '../../components/estudante/cadastro/CadastrarEstudanteComponent';
+import CadastrarEstudanteComponent from '../../components/ui/CadastrarUsuarioComponent';
 
 // Página para cadastrar estudantes
 const HomeCadastrar = () => {

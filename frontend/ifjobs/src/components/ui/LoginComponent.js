@@ -2,8 +2,7 @@ import '../../App.scss';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
-import CadastrarEstudanteComponent from '../estudante/cadastro/CadastrarEstudanteComponent';
-import CadastrarEmpresaComponent from '../empresa/CadastrarEmpresaComponent';
+import CadastrarEstudanteComponent from './CadastrarUsuarioComponent';
 
 // Component de login
 const LoginComponent = () => {
@@ -45,9 +44,6 @@ const LoginComponent = () => {
             <h6 className='link'>Ainda não tem cadastro? Cadastre-se como</h6>
             <br/>
             <CadastrarEstudanteComponent/>
-            <h6>ou</h6>
-            <br/>
-            <CadastrarEmpresaComponent/>
         </div>
 
     </div> 

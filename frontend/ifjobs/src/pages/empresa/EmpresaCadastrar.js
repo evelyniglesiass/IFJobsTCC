@@ -2,7 +2,7 @@ import '../../App.scss';
 import Background from "../../imagens/home.png";
 
 // Import de Components
-import CadastrarEmpresaComponent from '../../components/empresa/CadastrarEmpresaComponent';
+import CadastrarEmpresaComponent from '../../components/ui/CadastrarUsuarioComponent';
 
 // Página para cadastrar empresas
 const EmpresaCadastrar = () => {

@@ -670,7 +670,7 @@ body{
 // Modal dicas
 .container-modal{
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
     position: relative;
     top: -43px;
@@ -730,8 +730,10 @@ body{
     font-weight: 600;
     margin-left: 0;
     padding-top: 12px;
-    position: relative;
-    left: -40%;
+}
+
+#span-ou{
+    padding-left: 5px;
 }
 
 #botao-cadastro-modal{
