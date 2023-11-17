@@ -9,6 +9,7 @@ import br.com.api.ifjobs.models.Cursos;
 import br.com.api.ifjobs.models.PalavraChave;
 import br.com.api.ifjobs.models.Vaga;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class VagaDTO {
 
 	private Integer id;

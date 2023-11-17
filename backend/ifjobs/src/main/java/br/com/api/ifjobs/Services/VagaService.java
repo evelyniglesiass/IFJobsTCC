@@ -119,5 +119,29 @@ public class VagaService {
     public List<VagaDTO> listarPorTitulo(String titulo){
         return VagaDTO.converterLista(vagRep.findByTituloContainsIgnoreCase(titulo));
     }
+
+    // pesquisar vaga especifica
+    public VagaDTO listarVaga(int id){
+
+        if(!vagRep.existsById(id)){
+            r.setMensagem("Vaga não encontrada!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+
+        }
+
+        Vaga v = vagRep.findById(id).get();
+
+        return VagaDTO
+            .builder()
+            .id(v.getId())
+            .status(v.isStatus())
+            .titulo(v.getTitulo())
+            .descricao(v.getDescricao())
+            .curso(v.getCurso())
+            .salario(v.getSalario())
+            .idadeMinima(v.getIdadeMinima())
+            .cidade(v.getCidade())
+            .build();
+    }
     
 }

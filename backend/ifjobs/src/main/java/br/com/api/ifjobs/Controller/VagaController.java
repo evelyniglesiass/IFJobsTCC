@@ -75,4 +75,11 @@ public class VagaController {
         return vagSer.listarPorTitulo(titulo);
     }
 
+    // listar vaga especifica
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @GetMapping("/listar/id/{id}")
+    public VagaDTO listarVaga(@PathVariable int id) {
+        return vagSer.listarVaga(id);
+    }
+
 }
