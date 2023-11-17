@@ -394,53 +394,6 @@ body{
 
 
 //Editar--------------------------------------------------------------------------------------------
-#usuario, #idade, #nome{
-    padding: 0%;
-    margin: 0%;
-}
-
-#nome, #experiencia, #nivel, #nome-curso::placeholder{
-    font-weight: bold;
-}
-
-#data-inicial, #data-final{
-    width: 133px;
-}
-
-#objetivo, #objetivo::placeholder, #salario, #salario::placeholder, #idade, #idade::placeholder, #descricao-vaga, #descricao-vaga::placeholder{
-    background-color: $branco;
-    color: $preto;
-}
-
-.form-editar{
-    border-radius: 5px;
-    border-width: 0px;
-    width: 100%;
-    background-color: $branco;
-}
-
-.form-editar::placeholder{
-    color: $preto;
-}
-
-.objetivo-curriculo-editar{
-    width: 92%;
-    margin-top: 175px;
-    padding: 20px;
-    padding-top: 10px;
-    border-radius: 25px;
-    text-align: left;
-    background-color: $branco;
-    color: $preto;
-    border: solid $preto-borda 2px;
-    border-radius: 20px;
-}
-
-#objetivo{
-    border: solid 2px $preto-borda;
-    border-radius: 20px;
-}
-
 .button-salvar{
     border-radius: 25px;
     border-color: $verde-forte;
@@ -456,38 +409,6 @@ body{
 .button-salvar:hover{
     background-color: $roxo-forte;
     border-color: $roxo-forte;
-}
-
-//empresa
-.sobre-perfis-editar{
-    width: 92%;
-    margin-top: 10%;
-    padding: 20px;
-    padding-top: 10px;
-    border-radius: 25px;
-    text-align: left;
-    background-color: $preto;
-    position: relative;
-    top: -1000%
-}
-
-#desc, #desc::placeholder{
-    background-color: $preto;
-    color: $branco;
-}
-
-#usuario-empresa, #telefone-empresa, #email-empresa, #senha-empresa, #cidade-empresa{
-    position: relative;
-    left: 2%;
-    right: 90%;
-}
-
-#salario{
-    margin-top: 2%;
-}
-
-#titulo-vaga{
-    font-weight: bold;
 }
 
 #button-salvar-vaga{

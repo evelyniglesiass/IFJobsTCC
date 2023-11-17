@@ -58,25 +58,25 @@ const CadastrarExperienciaComponent = () => {
 
                     <form onSubmit={onSubmit}>
                         <div className='txt-form-group'>
-                            <input type="text" class="form-editar cadastros-curriculo" name='titulo' placeholder="Título" onChange={handleChange}/>
+                            <input type="text" class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" class="form-editar cadastros-curriculo" name='empresa' placeholder="Empresa" onChange={handleChange}/>
+                            <input type="text" class="form-control" name='empresa' placeholder="Empresa" onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" class="form-editar cadastros-curriculo" name='cargo' placeholder="Cargo" onChange={handleChange}/>
+                            <input type="text" class="form-control" name='cargo' placeholder="Cargo" onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" class="form-editar cadastros-curriculo" name='dataInicial'onChange={handleChange}/>
+                            <input type="date" class="form-control" name='dataInicial'onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" class="form-editar cadastros-curriculo" name='dataFinal'onChange={handleChange}/>
+                            <input type="date" class="form-control" name='dataFinal'onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <textarea type="textarea" class="form-editar cadastros-curriculo" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                            <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                         </div>
                         
-                        <button type='submit' className='button-modal'>Salvar</button>
+                        <button type='submit' class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                     </form>
                 </div> 
             </Modal>

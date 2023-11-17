@@ -1,8 +1,7 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useEditarCurriculo } from '../../../hook/curriculo/editarCurriculo.hook';
+import { useCadastrarCurriculo } from '../../../hook/curriculo/cadastrarCurriculo.hook';
 import Modal from 'react-modal';
-import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 
 Modal.setAppElement("#root");
 
@@ -29,21 +28,18 @@ const CadastrarCurriculoComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoCurriculo} = useEditarCurriculo();
+    const {cadastroCurriculo} = useCadastrarCurriculo();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurriculo(formInput.resumo);
+        await cadastroCurriculo(formInput.resumo);
         
     }
 
     return (
         <div className='container-modal'>
-
-            <button onClick={openModal} className='button-modal-open'>📝</button>
-            <DicasObjetivoComponent/>
-
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>➕</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
