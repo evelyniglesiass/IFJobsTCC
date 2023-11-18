@@ -14,7 +14,7 @@ const EmpresasComponent = ({empresas}) => {
         empresas.forEach(e => {
             setEmpresasTag((oldEmpresasTag) => ([...oldEmpresasTag, 
                                                     <article className='container-empresa'>
-                                                        <h4 className='titulo-empresas fonte-titulo'><Link to={"/empresa"}>{e.nome}</Link></h4>
+                                                        <h4 className='titulo-empresas fonte-titulo'><Link to={`/empresa/${e.id}`}>{e.nome}</Link></h4>
                                                         <p className='corpo-empresas fonte-corpo'>{e.descricao}</p>
                                                     </article>
                                                 ]))

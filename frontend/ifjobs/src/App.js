@@ -53,19 +53,19 @@ function App() {
             <Route path='/empresas/sem' element={<EmpresasSemLogada/>} /> {/*feed empresas visão empresa OK*/}
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
-            <Route path='/estudante' element={<Estudante/>} />
+            <Route path='/estudante/:id' element={<Estudante/>} />
             <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> 
             <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} />
 
             {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}
-            <Route path='/empresa' element={<Empresa/>} />
+            <Route path='/empresa/:id' element={<Empresa/>} />
             <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
             <Route path='/perfil/empresa/editar' element={<EditarEmpresa/>} />
 
             {/* Visualizar vaga, editar vaga */}
             <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} />
-            <Route path='/detalhes/vaga/estudante' element={<DetalhesVagaEstudante/>} />
-            <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} />
+            <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} />
+            <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} /> 
 
           </Routes>
         </BrowserRouter>

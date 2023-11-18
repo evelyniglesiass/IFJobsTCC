@@ -3,13 +3,15 @@ import '../../../App.scss';
 import EditarVagaButtonComponent from '../../ui/editar/EditarVagaButtonComponent';
 
 // Component para detalhar vaga na visão da empresa
-const DetalhesVagaComponent = ({vaga}) => {
+const DetalhesVagaComponent = ({vaga, estudantes}) => {
 
   const [vagaTag, setVagaTag] = useState([]);
+  const [estudantesTag, setEstudantesTag] = useState([]);
 
   useEffect(() => {
 
     setVagaTag([]);
+    setEstudantesTag([]);
 
     setVagaTag((oldVagaTag) => ([...oldVagaTag, 
                                       <section>
@@ -26,9 +28,17 @@ const DetalhesVagaComponent = ({vaga}) => {
                                             <p className='fonte-corpo'>Idade mínima: {vaga.idadeMinima}</p>
                                           </article>
                                       </section>
-                                  ]))
+                                  ])) 
 
-  }, [vaga])
+    estudantes.forEach(e => {
+    setEstudantesTag((oldEstudantesTag) => ([...oldEstudantesTag, 
+                                    <section>
+                                      <p className='fonte-corpo'>{e.nome}</p>
+                                    </section>
+                                ]))
+    });
+
+  }, [vaga, estudantes])
 
   return (
     <section>
@@ -36,7 +46,7 @@ const DetalhesVagaComponent = ({vaga}) => {
 
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Estudantes</h3>
-          <p className='fonte-corpo'>Nomes</p>
+          {estudantesTag}
         </article>
 
     </section>
