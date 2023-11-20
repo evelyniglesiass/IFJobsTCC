@@ -52,6 +52,9 @@ const CadastrarExperienciaComponent = () => {
                 overlayClassName="modal-overlay"
                 className="modal-content"
             >
+                
+                <button onClick={closeModal} className='button-fechar'>X</button>
+
                 <h2 className='titulo-modal'>Experiência profissional</h2>
                 <hr/>
                 <div className='container-cursos-exper'>
@@ -76,7 +79,7 @@ const CadastrarExperienciaComponent = () => {
                             <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                         </div>
                         
-                        <button type='submit' class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                        <button type='submit' class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
                     </form>
                 </div> 
             </Modal>

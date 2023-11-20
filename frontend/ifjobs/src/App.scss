@@ -700,6 +700,17 @@ body{
     background-color: #FAFAFA;
 }
 
+.form-control{
+    -webkit-appearance: default-button;
+    appearance: auto;
+}
+
+#label-form{
+    margin-left: 5px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
 // .experiencia-component, .cursos-component, .formacao-component {
 //     // border: solid $preto-borda 2px;
 //     // border-radius: 20px;

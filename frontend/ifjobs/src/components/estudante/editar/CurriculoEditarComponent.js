@@ -51,6 +51,8 @@ const CadastrarCurriculoComponent = () => {
                 overlayClassName="modal-overlay"
                 className="modal-content">
 
+                <button onClick={closeModal} className='button-fechar'>X</button>
+
                 <h2 className='titulo-modal'>Cursos e certificados</h2>
                 <hr/>
                 <div className='container-cursos-exper'>

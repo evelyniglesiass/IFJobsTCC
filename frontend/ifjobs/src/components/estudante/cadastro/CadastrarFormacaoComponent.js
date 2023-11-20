@@ -19,7 +19,7 @@ const CadastrarFormacaoComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        nivel: '',
+        nivel: 0,
         instituicao: '',
         cidade: '',
         dataInicial: '',
@@ -59,8 +59,15 @@ const CadastrarFormacaoComponent = () => {
                 <div className='container-cursos-exper'>
 
                     <form onSubmit={onSubmit}>
-                        <div className='txt-form-group'>
-                            <input type="text" class="form-control" name='nivel' placeholder="Nível" onChange={handleChange}/>
+                        <div class="txt-form-group">
+                            <select className='form-control' name='nivel' onChange={handleChange}>
+                                <option value="" disabled selected>Nível</option>
+                                <option value="0">Fundamental</option>
+                                <option value="1">Médio</option>
+                                <option value="2">Técnico</option>
+                                <option value="3">Médio técnico</option>
+                                <option value="4">Superior</option>
+                            </select>
                         </div>
                         <div className='txt-form-group'>
                             <input type="text" class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
@@ -78,7 +85,7 @@ const CadastrarFormacaoComponent = () => {
                             <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                         </div>
                         
-                        <button type='submit' className='button-modal'>Salvar</button>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
                     </form>
                 </div> 
             </Modal>

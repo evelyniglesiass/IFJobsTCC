@@ -25,7 +25,8 @@ const CadastrarEstudanteComponent = () => {
     const [formInputEstudante, setFormInputEstudante] = useState({
         nome: '',
         usuario: '',
-        idade: 0,
+        idade: '',
+        curso: 0,
         telefone: '',
         email: '',
         senha: '',
@@ -43,7 +44,7 @@ const CadastrarEstudanteComponent = () => {
     async function onSubmitEstudante(event){
         event.preventDefault();
 
-        await cadastroEstudante(formInputEstudante.nome, formInputEstudante.usuario, formInputEstudante.idade, formInputEstudante.telefone, formInputEstudante.email, formInputEstudante.senha, formInputEstudante.cidade);
+        await cadastroEstudante(formInputEstudante.nome, formInputEstudante.usuario, formInputEstudante.idade, formInputEstudante.curso, formInputEstudante.telefone, formInputEstudante.email, formInputEstudante.senha, formInputEstudante.cidade);
         
     }
 
@@ -112,9 +113,15 @@ const CadastrarEstudanteComponent = () => {
                     <div class="txt-form-group">
                         <input type="text" class="form-control" name="idade" placeholder="Idade" onChange={handleChangeEstudante}/>
                     </div>
-                    {/* <div class="txt-form-group">
-                        <input type="text" class="form-control" name="curso" placeholder="Curso" />
-                    </div> */}
+                    <div class="txt-form-group">
+                        <select className='form-control' name='curso' onChange={handleChangeEstudante}>
+                            <option value="" disabled selected>Cursos</option>
+                            <option value="0">Informática</option>
+                            <option value="1">Eventos</option>
+                            <option value="2">Mecânica</option>
+                            <option value="3">Plásticos</option>
+                        </select>
+                    </div>
                     <div class="txt-form-group">
                         <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChangeEstudante}/>
                     </div>

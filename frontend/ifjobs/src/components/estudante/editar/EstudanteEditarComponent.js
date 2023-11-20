@@ -22,7 +22,8 @@ const EstudanteEditarComponent = () => {
     const [formInput, setFormInput] = useState({
         nome: '',
         usuario: '',
-        idade: 0,
+        idade: '',
+        curso: 0,
         telefone: '',
         email: '',
         senha: '',
@@ -40,7 +41,7 @@ const EstudanteEditarComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoEstudante(formInput.nome, formInput.usuario, formInput.idade, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
+        await edicaoEstudante(formInput.nome, formInput.usuario, formInput.idade, formInput.curso, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
         
     }
 
@@ -53,6 +54,8 @@ const EstudanteEditarComponent = () => {
                 contentLabel="Example Modal"
                 overlayClassName="modal-overlay"
                 className="modal-content">
+
+                <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Cursos e certificados</h2>
                 <hr/>
@@ -67,9 +70,15 @@ const EstudanteEditarComponent = () => {
                     <div class="txt-form-group">
                         <input type="text" class="form-control" name="idade" placeholder="Idade" onChange={handleChange}/>
                     </div>
-                    {/* <div class="txt-form-group">
-                        <input type="text" class="form-control" name="curso" placeholder="Curso" />
-                    </div> */}
+                    <div class="txt-form-group">
+                        <select className='form-control' name='curso' onChange={handleChange}>
+                            <option value="" disabled selected>Cursos</option>
+                            <option value="0">Informática</option>
+                            <option value="1">Eventos</option>
+                            <option value="2">Mecânica</option>
+                            <option value="3">Plásticos</option>
+                        </select>
+                    </div>
                     <div class="txt-form-group">
                         <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
                     </div>

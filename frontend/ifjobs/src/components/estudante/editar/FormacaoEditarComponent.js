@@ -21,7 +21,7 @@ const FormacaoEditarComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        nivel: '',
+        nivel: 0,
         instituicao: '',
         cidade: '',
         dataInicial: '',
@@ -52,8 +52,9 @@ const FormacaoEditarComponent = () => {
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
                 overlayClassName="modal-overlay"
-                className="modal-content"
-            >
+                className="modal-content">
+
+                <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Formação acadêmica</h2>
                 <DicasFormacoesComponent/>
@@ -61,8 +62,15 @@ const FormacaoEditarComponent = () => {
                 <div className='container-cursos-exper'>
 
                     <form onSubmit={onSubmit}>
-                        <div className='txt-form-group'>
-                            <input type="text" class="form-control" name='nivel' placeholder="Nível" onChange={handleChange}/>
+                        <div class="txt-form-group">
+                            <select className='form-control' name='nivel' onChange={handleChange}>
+                                <option value="" disabled selected>Nível</option>
+                                <option value="0">Fundamental</option>
+                                <option value="1">Médio</option>
+                                <option value="2">Técnico</option>
+                                <option value="3">Médio técnico</option>
+                                <option value="4">Superior</option>
+                            </select>
                         </div>
                         <div className='txt-form-group'>
                             <input type="text" class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
