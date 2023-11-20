@@ -96,8 +96,7 @@ const CadastrarEstudanteComponent = () => {
                 onRequestClose={closeModalEstudante}
                 contentLabel="Example Modal"
                 overlayClassName="modal-overlay"
-                className="modal-content"
-            >
+                className="modal-content">
 
                 <h2 className='titulo-modal'>Seja bem vindo!</h2>
                 <hr/>
@@ -115,7 +114,7 @@ const CadastrarEstudanteComponent = () => {
                     </div>
                     <div class="txt-form-group">
                         <select className='form-control' name='curso' onChange={handleChangeEstudante}>
-                            <option value="" disabled selected>Cursos</option>
+                            <option value="" disabled selected>Curso</option>
                             <option value="0">Informática</option>
                             <option value="1">Eventos</option>
                             <option value="2">Mecânica</option>

@@ -72,7 +72,7 @@ const EstudanteEditarComponent = () => {
                     </div>
                     <div class="txt-form-group">
                         <select className='form-control' name='curso' onChange={handleChange}>
-                            <option value="" disabled selected>Cursos</option>
+                            <option value="" disabled selected>Curso</option>
                             <option value="0">Informática</option>
                             <option value="1">Eventos</option>
                             <option value="2">Mecânica</option>

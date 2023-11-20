@@ -1,38 +1,101 @@
 import React from 'react'
 import '../../../App.scss';
+import { useState } from 'react';
+import { useEditarVaga } from '../../../hook/vagas/editarVaga.hook';
+import Modal from 'react-modal';
+
+Modal.setAppElement("#root");
 
 // Import de Components
 
 // Component com inputs para editar vaga
 const EditarDetalhesVagaComponent = () => {
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const [formInput, setFormInput] = useState({
+        titulo: '',
+        cidade: '',
+        descricao: '',
+        salario: '',
+        idadeMinima: '',
+        curso: 0
+    })
+
+    function handleChange(event){
+        const { name, value } = event.target;
+
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    }
+
+    const {editarVaga} = useEditarVaga();
+
+    async function onSubmit(event){
+        event.preventDefault();
+
+        await editarVaga(formInput.titulo, formInput.cidade, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.curso);
+        
+    }
+
   return (
-    <section>
-        <article className='cabecalho-perfis'>
-          <button className='button-salvar' id='button-salvar-vaga'>Salvar</button>
-          <h2 className='titulo-perfil fonte-titulo'>
-            <input type="text" class="form-editar" id="titulo-vaga" placeholder="Título" />
-          </h2>
-          <h5 className='curso fonte-titulo'>
-            <input type="text" class="form-editar" id="cidade-vaga" placeholder="Cidade" />
-          </h5>
-        </article>
+    <div className='container-modal'>
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>📝</button>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Example Modal"
+                overlayClassName="modal-overlay"
+                className="modal-content">
 
-        <article className='sobre-perfis'>
+                <button onClick={closeModal} className='button-fechar'>X</button>
 
-          <p className='fonte-corpo'>
-            <input type="text" class="form-editar" id="salario" placeholder="Salário" />
-          </p>
+                <h2 className='titulo-modal'>Edite sua vaga!</h2>
+                <hr/>
+                <div className='container-cursos-exper'>
+                <form onSubmit={onSubmit}>
+                    <div class="txt-form-group"> 
+                        <input type="text" class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
+                    </div>
 
-          <p className='fonte-corpo'>
-            <input type="text" class="form-editar" id="idade" placeholder="Idade" />
-          </p>
+                    <div class="txt-form-group"> 
+                        <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                    </div>
 
-          <p className='fonte-corpo'>
-            <textarea type="text" class="form-editar" id="descricao-vaga" placeholder="Descrição" />
-          </p>
-        </article>
+                    <div class="txt-form-group"> 
+                        <textarea type="text" class="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
+                    </div>
 
-    </section>
+                    <div class="txt-form-group"> 
+                        <input type="number" class="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group"> 
+                        <input type="number" class="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
+                    </div>
+
+                    <div class="txt-form-group">
+                        <select className='form-control' name='curso' onChange={handleChange}>
+                            <option value="" disabled selected>Curso</option>
+                            <option value="0">Informática</option>
+                            <option value="1">Eventos</option>
+                            <option value="2">Mecânica</option>
+                            <option value="3">Plásticos</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                </form>
+                </div>
+            </Modal>
+        </div>
   )
 }
 

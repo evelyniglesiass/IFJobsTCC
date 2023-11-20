@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import Modal from 'react-modal';
 
 // Import de Components
 import VagasComponent from '../ui/VagasComponent'
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
+import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook'
+
+Modal.setAppElement("#root");
 
 // Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = () => {
 
+  // Listagem de vagas
   const [vagas, setVagas] = useState([])
 
   const { listarVagas } = useListarVagas();
@@ -24,38 +29,83 @@ const EmpresaEditarComponent = () => {
     listar();
   }, [])
 
-  return ( 
-    <form>
-        <section className='cabecalho-perfis'>
-        <button className='button-salvar'>Salvar</button>
+  // Modal
+  const [modalIsOpen, setIsOpen] = useState(false);
 
-          <h2 className='titulo-perfil fonte-titulo'>
-            <input type="text" class="form-editar" id="nome" placeholder="Nome" />
-          </h2>
-          <p>
-            <input type="text" class="form-editar" id="usuario-empresa" placeholder="Nome de usuário" />
-          </p>
-          <p>
-            <input type="text" class="form-editar" id="telefone-empresa" placeholder="Telefone" />
-          </p>
-          <p>
-            <input type="email" class="form-editar" id="email-empresa" placeholder="E-mail" />
-          </p>
-          <p>
-            <input type="password" class="form-editar" id="senha-empresa" placeholder="Senha" />
-          </p>
-          <p>
-            <input type="text" class="form-editar" id="cidade-empresa" placeholder="Cidade" />
-          </p>
-        </section>
-        <section className='sobre-perfis-editar'>
-          <h3 className='fonte-titulo'>Sobre a empresa</h3>
-          <p className='fonte-corpo'>            
-            <textarea type="text" class="form-editar" id="desc" placeholder="Descrição" />
-          </p>
-        </section>
-        <div className='perfil-empresa-vaga'><VagasComponent vagas={vagas}/></div>
-    </form> 
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+
+    const [formInput, setFormInput] = useState({
+        nome: '',
+        usuario: '',
+        descricao: '',
+        telefone: '',
+        email: '',
+        senha: '',
+        cidade: ''
+    })
+
+    function handleChangeEmpresa(event){
+        const { name, value } = event.target;
+
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    }
+
+    const {editarEmpresa} = useEditarEmpresa();
+
+    async function onSubmit(event){
+        event.preventDefault();
+
+        await editarEmpresa(formInputEmpresa.nome, formInputEmpresa.usuario, formInputEmpresa.descricao, formInputEmpresa.telefone, formInputEmpresa.email, formInputEmpresa.senha, formInputEmpresa.cidade);
+        
+    }
+
+  return ( 
+    <div className='container-modal'>
+      <button onClick={openModalEmpresa} className='button-modal-open'>📝</button>
+      <Modal
+        isOpen={modalEstudanteIsOpen}
+        onRequestClose={closeModalEstudante}
+        contentLabel="Example Modal"
+        overlayClassName="modal-overlay"
+        className="modal-content">
+
+                <h2 className='titulo-modal'>Seja bem vindo!</h2>
+                <hr/>
+                <div className='container-cursos-exper'>
+                <form onSubmit={onSubmitEmpresa}>
+                    <div class="txt-form-group"> 
+                        <input type="text" class="form-control" name="nome" placeholder="Nome" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <textarea type="text" class="form-control" name="descricao" placeholder="Descrição" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <input type="email" class="form-control" name="email" placeholder="E-mail" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <input type="password" class="form-control" name="senha" placeholder="Senha" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <div class="txt-form-group">
+                        <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChangeEmpresa}/>
+                    </div>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                </form>
+                </div>
+
+      </Modal>
+    </div>
   )
 }
 
