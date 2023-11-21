@@ -50,7 +50,7 @@ const EmpresaEditarComponent = () => {
         cidade: ''
     })
 
-    function handleChangeEmpresa(event){
+    function handleChange(event){
         const { name, value } = event.target;
 
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
@@ -61,48 +61,50 @@ const EmpresaEditarComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarEmpresa(formInputEmpresa.nome, formInputEmpresa.usuario, formInputEmpresa.descricao, formInputEmpresa.telefone, formInputEmpresa.email, formInputEmpresa.senha, formInputEmpresa.cidade);
+        await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
         
     }
 
   return ( 
     <div className='container-modal'>
-      <button onClick={openModalEmpresa} className='button-modal-open'>📝</button>
+
+      <button onClick={openModal} className='button-modal-open'>📝</button>
+
       <Modal
-        isOpen={modalEstudanteIsOpen}
-        onRequestClose={closeModalEstudante}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
         contentLabel="Example Modal"
         overlayClassName="modal-overlay"
         className="modal-content">
 
-                <h2 className='titulo-modal'>Seja bem vindo!</h2>
-                <hr/>
-                <div className='container-cursos-exper'>
-                <form onSubmit={onSubmitEmpresa}>
-                    <div class="txt-form-group"> 
-                        <input type="text" class="form-control" name="nome" placeholder="Nome" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <textarea type="text" class="form-control" name="descricao" placeholder="Descrição" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <input type="email" class="form-control" name="email" placeholder="E-mail" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <input type="password" class="form-control" name="senha" placeholder="Senha" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <div class="txt-form-group">
-                        <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChangeEmpresa}/>
-                    </div>
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
-                </form>
+          <h2 className='titulo-modal'>Edite seus dados!</h2>
+          <hr/>
+          <div className='container-cursos-exper'>
+            <form onSubmit={onSubmit}>
+                <div class="txt-form-group"> 
+                    <input type="text" class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
                 </div>
+                <div class="txt-form-group">
+                  <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
+                </div>
+                <div class="txt-form-group">
+                  <textarea type="text" class="form-control" name="descricao" placeholder="Descrição" onChange={handleChange}/>
+                </div>
+                <div class="txt-form-group">
+                  <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
+                </div>
+                <div class="txt-form-group">
+                  <input type="email" class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
+                </div>
+                <div class="txt-form-group">
+                  <input type="password" class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                </div>
+                <div class="txt-form-group">
+                  <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
+                </div>
+                  <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+            </form>
+            </div>
 
       </Modal>
     </div>
