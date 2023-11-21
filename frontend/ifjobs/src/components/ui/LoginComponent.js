@@ -6,6 +6,7 @@ import CadastrarEstudanteComponent from './CadastrarUsuarioComponent';
 import CadastrarExperienciaComponent from '../estudante/cadastro/CadastrarExperienciaComponent';
 import CadastrarFormacaoComponent from '../estudante/cadastro/CadastrarFormacaoComponent';
 import CadastrarCursoComponent from '../estudante/cadastro/CadastrarCursoComponent';
+import EmpresaEditarComponent from '../empresa/editar/EmpresaEditarComponent';
 
 
 // Component de login
@@ -52,6 +53,8 @@ const LoginComponent = () => {
             <CadastrarExperienciaComponent/>
             <CadastrarFormacaoComponent/>
             <CadastrarCursoComponent/>
+            <EmpresaEditarComponent/>
+
         </div>
 
     </div> 
