@@ -31,7 +31,7 @@ const EmpresaEditarComponent = () => {
   // Modal
   const [modalIsOpen, setIsOpen] = useState(false);
 
-    function openModalEmpresa() {
+    function openModal() {
         setIsOpen(true);
     }
 
@@ -39,7 +39,7 @@ const EmpresaEditarComponent = () => {
         setIsOpen(false);
     }
 
-    const [formInputEmpresa, setFormInputEmpresa] = useState({
+    const [formInput, setFormInputEmpresa] = useState({
         nome: '',
         usuario: '',
         descricao: '',
@@ -57,7 +57,7 @@ const EmpresaEditarComponent = () => {
 
     const {editarEmpresa} = useEditarEmpresa();
 
-    async function onSubmitEmpresa(event){
+    async function onSubmit(event){
         event.preventDefault();
 
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
