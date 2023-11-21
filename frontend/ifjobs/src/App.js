@@ -54,7 +54,7 @@ function App() {
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             <Route path='/estudante/:id' element={<Estudante/>} /> {/*ta dando um erro sem sentido ALGUM*/}
-            <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> {/*falta cursos e formacao*/}
+            <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> {/*OK*/}
             <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} /> {/*vai sair*/}
 
             {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}

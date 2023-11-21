@@ -37,7 +37,8 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                             <section>
                               <h1 className='img-perfis'>EV</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
-                              <h5 className='curso fonte-titulo'>{estudante.curso}</h5>
+                              <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>
+                              <h5 className='curso fonte-titulo'>Curso{/*estudante.curso*/}</h5>
                             </section>
                           ]))
 
