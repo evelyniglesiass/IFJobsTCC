@@ -87,7 +87,7 @@ public class CurriculoService {
     }
     
 
-    //listar
+    // listar
     public CurriculoDTO listar(int id){
 
         Estudante e = estRep.findById(id).get();
@@ -97,9 +97,9 @@ public class CurriculoService {
         return CurriculoDTO
             .builder()
             .id(curriculo.getId())
-            .idiomas(curriculo.getIdiomas())
+            //.idiomas(curriculo.getIdiomas())
             .resumo(curriculo.getResumo())
-            .habilidades(curriculo.getHabilidades())    
+            //.habilidades(curriculo.getHabilidades())    
             .build();
 
     }

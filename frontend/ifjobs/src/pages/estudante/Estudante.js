@@ -23,11 +23,9 @@ const Estudante = () => {
 
       const response = await listarEstudanteEspecifico(id);
       setEstudante(response);
-      console.log(response)
 
       const curResp = await listarCurriculo(id);
       setCurriculo(curResp);
-      console.log(curResp)
 
     }
 

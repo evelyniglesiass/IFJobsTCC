@@ -6,7 +6,7 @@ const ExperienciasComponent = ({experiencias}) => {
 
   const [experienciaTag, setExperienciaTag] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { 
 
     setExperienciaTag([]);
     

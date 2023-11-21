@@ -38,8 +38,8 @@ function App() {
             <Route path='/' element={<Home/>} /> 
 
             {/* Cadastrar */}
-            <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} />
-            <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} />
+            <Route path='/cadastrar/estudante' element={<EstudanteCadastrar/>} /> {/*ta com algum problema*/}
+            <Route path='/cadastrar/empresa' element={<EmpresaCadastrar/>} /> {/*OK*/}
             <Route path='/cadastrar/vaga' element={<VagaCadastrar/>} />
 
             {/* Feed com vagas, empresas, estudantes e vagas salvas pelo estudante (falta pesquisar em todos) */}
@@ -53,19 +53,20 @@ function App() {
             <Route path='/empresas/sem' element={<EmpresasSemLogada/>} /> {/*feed empresas visão empresa OK*/}
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
-            <Route path='/estudante/:id' element={<Estudante/>} />
-            <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> 
-            <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} />
+            <Route path='/estudante/:id' element={<Estudante/>} /> {/*ta dando um erro sem sentido ALGUM*/}
+            <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> {/*falta cursos e formacao*/}
+            <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} /> {/*vai sair*/}
 
             {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}
-            <Route path='/empresa/:id' element={<Empresa/>} />
-            <Route path='/perfil/empresa' element={<PerfilEmpresa/>} />
-            <Route path='/perfil/empresa/editar' element={<EditarEmpresa/>} />
+            <Route path='/empresa/:id' element={<Empresa/>} /> {/*perfil da empresa logada OK*/}
+            <Route path='/perfil/empresa' element={<PerfilEmpresa/>} /> {/*perfil da empresa logada OK*/}
+            <Route path='/perfil/empresa/editar' element={<EditarEmpresa/>} /> {/*vai sair*/}
 
             {/* Visualizar vaga, editar vaga */}
-            <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} />
-            <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} />
-            <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} /> 
+            <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} /> {/*detalhes vaga visão empresa que postou OK*/}
+            <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} /> {/*detalhes vaga visualizar OK*/}
+            {/*falta uma page para uma outra empresa visualizar a vaga sem o botão editar ou candidatar-se*/}
+            <Route path='/detalhes/vaga/editar' element={<EditarVaga/>} /> {/*vai sair*/}
 
           </Routes>
         </BrowserRouter>

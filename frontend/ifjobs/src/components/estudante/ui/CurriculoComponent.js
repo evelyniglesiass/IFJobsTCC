@@ -10,7 +10,7 @@ import FormacaoComponent from './FormacaoComponent';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
 // Component para visualizar perfis de estudantes
-const CurriculoComponent = ({estudante, curriculo}) => {
+const CurriculoComponent = ({estudante, curriculo}) => { 
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);

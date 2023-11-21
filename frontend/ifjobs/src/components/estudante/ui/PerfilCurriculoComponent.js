@@ -15,6 +15,8 @@ import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
 import CursosEditarComponent from '../editar/CursosEditarComponent';
 import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
+import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
+import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
 
 
 // Component de perfil do estudante com botão de editar
@@ -47,15 +49,25 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   }, [estudante, curriculo])
 
   const [experiencia, setExperiencia] = useState([]);
+  const [curso, setCurso] = useState([]);
+  const [formacao, setFormacao] = useState([]);
   const [user] = useGlobalUser();
 
   const { listarExperiencia } = useListarExperiencia();
+  const { listarCurso } = useListarCurso();
+  const { listarFormacao } = useListarFormacao();
 
   useEffect(() => {
     async function listar() { 
 
       const response = await listarExperiencia(user.id);
       setExperiencia(response);
+
+      const curResp = await listarCurso(user.id);
+      setCurso(curResp);
+
+      const forResp = await listarFormacao(user.id);
+      setFormacao(forResp);
 
     }
 
@@ -83,13 +95,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
           <CursosEditarComponent/>
-          <article className='cursos-component'><CursosComponent/></article>
+          <article className='cursos-component'><CursosComponent cursos={curso}/></article>
         </article>
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <FormacaoEditarComponent/>
-          <article className='formacao-component'><FormacaoComponent/></article>
+          <article className='formacao-component'><FormacaoComponent formacoes={formacao}/></article>
         </article>   
     </section>
   )

@@ -3,7 +3,6 @@ import '../../../App.scss';
 import Modal from 'react-modal';
 
 // Import de Components
-import VagasComponent from '../ui/VagasComponent'
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook'
 
@@ -32,7 +31,7 @@ const EmpresaEditarComponent = () => {
   // Modal
   const [modalIsOpen, setIsOpen] = useState(false);
 
-    function openModal() {
+    function openModalEmpresa() {
         setIsOpen(true);
     }
 
@@ -40,7 +39,7 @@ const EmpresaEditarComponent = () => {
         setIsOpen(false);
     }
 
-    const [formInput, setFormInput] = useState({
+    const [formInputEmpresa, setFormInputEmpresa] = useState({
         nome: '',
         usuario: '',
         descricao: '',
@@ -53,12 +52,12 @@ const EmpresaEditarComponent = () => {
     function handleChangeEmpresa(event){
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInputEmpresa((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
     const {editarEmpresa} = useEditarEmpresa();
 
-    async function onSubmit(event){
+    async function onSubmitEmpresa(event){
         event.preventDefault();
 
         await editarEmpresa(formInputEmpresa.nome, formInputEmpresa.usuario, formInputEmpresa.descricao, formInputEmpresa.telefone, formInputEmpresa.email, formInputEmpresa.senha, formInputEmpresa.cidade);
@@ -69,8 +68,8 @@ const EmpresaEditarComponent = () => {
     <div className='container-modal'>
       <button onClick={openModalEmpresa} className='button-modal-open'>📝</button>
       <Modal
-        isOpen={modalEstudanteIsOpen}
-        onRequestClose={closeModalEstudante}
+        isOpen={openModalEmpresa}
+        onRequestClose={closeModal}
         contentLabel="Example Modal"
         overlayClassName="modal-overlay"
         className="modal-content">

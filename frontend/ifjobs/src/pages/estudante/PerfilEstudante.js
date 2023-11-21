@@ -22,7 +22,7 @@ const PerfilEstudante = () => {
   useEffect(() => {
     async function listar() { 
 
-      const response = await listarEstudanteEspecifico(user.id);
+      const response = await listarEstudanteEspecifico(user.id); 
       setEstudante(response);
 
       const curResp = await listarCurriculo(user.id);
