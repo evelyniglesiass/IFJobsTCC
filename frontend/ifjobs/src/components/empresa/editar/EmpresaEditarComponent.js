@@ -4,12 +4,17 @@ import Modal from 'react-modal';
 
 // Import de Components
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
-import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook'
+import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook';
+import useGlobalUser from '../../../context/usuario/user.context';
 
 Modal.setAppElement("#root");
 
 // Component com inputs para editar perfil da empresa
-const EmpresaEditarComponent = () => {
+const EmpresaEditarComponent = ({empresa}) => {
+
+  // Pegando dados do usuário
+  const [empresa, setEmpresa] = useState([]);
+  setEmpresa([]);
 
   // Listagem de vagas
   const [vagas, setVagas] = useState([])
@@ -40,10 +45,10 @@ const EmpresaEditarComponent = () => {
     }
 
     const [formInput, setFormInputEmpresa] = useState({
-        nome: '',
-        usuario: '',
-        descricao: '',
-        telefone: '',
+        nome: empresa.nome,
+        usuario: empresa.nomeUsuario,
+        descricao: empresa.descricao,
+        telefone: empresa.telefone,
         email: '',
         senha: '',
         cidade: ''
