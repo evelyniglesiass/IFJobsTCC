@@ -14,18 +14,21 @@ const CurriculoComponent = ({estudante, curriculo}) => {
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
+  const [sobreMimTag, setSobreMimTag] = useState([]);
+
 
   useEffect(() => {
 
     setEstudanteTag([]);
     setCurriculoTag([]);
+    setSobreMimTag([]);
     
     setEstudanteTag(() => ([
                             <section>
                               <h1 className='img-perfis'>EV</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
-                              <h5 className='curso fonte-titulo'>Curso</h5>
-                              <p className='sociais fonte-titulo'>{estudante.email}</p>
+                              <h5 className='fonte-titulo'>{estudante.usuario}</h5>
+                              <h5 className='curso fonte-titulo'>{estudante.curso}</h5>
                             </section>
                           ]))
 
@@ -33,6 +36,15 @@ const CurriculoComponent = ({estudante, curriculo}) => {
                             <section>
                               <h3 className='fonte-titulo'>Resumo</h3>
                               <p className='fonte-corpo'>{curriculo.resumo}</p> 
+                            </section>
+                          ]))
+
+    setSobreMimTag(() => ([
+                            <section>
+                              <h3 className='fonte-titulo'>Sobre mim</h3>
+                              <p className='fonte-corpo'>{estudante.email}</p>
+                              <p className='fonte-corpo'>{estudante.telefone}</p>
+                              <p className='fonte-corpo'>{estudante.cidade}</p> 
                             </section>
                           ]))
 
@@ -44,6 +56,10 @@ const CurriculoComponent = ({estudante, curriculo}) => {
           {estudanteTag}
         </article>
         
+        <article className='objetivo-curriculo'>
+          {sobreMimTag}
+        </article>
+
         <article className='objetivo-curriculo'>
           {curriculoTag}
         </article>
