@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarEstudanteComponent = () => {
+const CadastrarUsuarioComponent = () => {
 
     // Estudante
 
@@ -180,4 +180,4 @@ const CadastrarEstudanteComponent = () => {
     )
 }
 
-export default CadastrarEstudanteComponent
+export default CadastrarUsuarioComponent

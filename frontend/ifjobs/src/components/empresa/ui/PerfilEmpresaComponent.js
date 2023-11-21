@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import VagasComponent from './VagasComponent'
 import EditarEmpresaButtonComponent from '../../ui/editar/EditarEmpresaButtonComponent';
+import CadastrarVagaComponent from '../../empresa/cadastrar/CadastrarVagaComponent'
 import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
 
@@ -69,7 +70,10 @@ const PerfilEmpresaComponent = ({empresa}) => {
         <section className='sobre-perfis'>
           {empresaDois}
         </section>
-        <div className='perfil-empresa-vaga'><VagasComponent vagas={vagas}/></div>
+        <div className='perfil-empresa-vaga'>
+          <CadastrarVagaComponent/>
+          <VagasComponent vagas={vagas}/>
+        </div>
     </>
   )
 }

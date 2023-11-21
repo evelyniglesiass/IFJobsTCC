@@ -12,11 +12,16 @@ import { useListarExperiencia } from '../../../hook/experiencia/listarExperienci
 import useGlobalUser from '../../../context/usuario/user.context';
 
 import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
+import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
+import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
+import CurriculoEditarComponent from '../editar/CurriculoEditarComponent';
 import CursosEditarComponent from '../editar/CursosEditarComponent';
 import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
+import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
+import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
 
 
 // Component de perfil do estudante com botão de editar
@@ -99,25 +104,38 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         
         <article className='objetivo-curriculo'>
           {curriculoTag}
-          <CursosEditarComponent/>
+          <CadastrarCurriculoComponent/>
+          <CurriculoEditarComponent/>
         </article>
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
+          <CadastrarExperienciaComponent/>
           <ExperienciasEditarComponent/>
-          <div className='experiencia-component'><ExperienciasComponent experiencias={experiencia}/></div>
+
+          <div className='experiencia-component'>
+            <ExperienciasComponent experiencias={experiencia}/>
+          </div>
         </article>
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
+          <CadastrarCursoComponent/>
           <CursosEditarComponent/>
-          <article className='cursos-component'><CursosComponent cursos={curso}/></article>
+
+          <article className='cursos-component'>
+            <CursosComponent cursos={curso}/>
+          </article>
         </article>
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
+          <CadastrarFormacaoComponent/>
           <FormacaoEditarComponent/>
-          <article className='formacao-component'><FormacaoComponent formacoes={formacao}/></article>
+
+          <article className='formacao-component'>
+            <FormacaoComponent formacoes={formacao}/>
+          </article>
         </article>   
     </section>
   )
