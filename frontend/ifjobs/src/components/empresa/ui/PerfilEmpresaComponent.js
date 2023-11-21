@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import VagasComponent from './VagasComponent'
-import EditarEmpresaButtonComponent from '../../ui/editar/EditarEmpresaButtonComponent';
 import CadastrarVagaComponent from '../../empresa/cadastrar/CadastrarVagaComponent'
 import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
+import EmpresaEditarComponent from '../editar/EmpresaEditarComponent';
 
 // Component de perfil da empresa com botão editar
 const PerfilEmpresaComponent = ({empresa}) => {
@@ -64,12 +64,14 @@ const PerfilEmpresaComponent = ({empresa}) => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
+          <EmpresaEditarComponent/>
           {empresaUm}
-          <EditarEmpresaButtonComponent/>
         </section>
+
         <section className='sobre-perfis'>
           {empresaDois}
         </section>
+
         <div className='perfil-empresa-vaga'>
           <CadastrarVagaComponent/>
           <VagasComponent vagas={vagas}/>
