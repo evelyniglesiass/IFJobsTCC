@@ -22,11 +22,14 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
+  const [sobreMimTag, setSobreMimTag] = useState([]);
+
 
   useEffect(() => {
 
     setEstudanteTag([]);
     setCurriculoTag([]);
+    setSobreMimTag([]);
     
     setEstudanteTag(() => ([
                             <section>
@@ -41,6 +44,15 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                             <section>
                               <h3 className='fonte-titulo'>Resumo</h3>
                               <p className='fonte-corpo'>{curriculo.resumo}</p> 
+                            </section>
+                          ]))
+
+    setSobreMimTag(() => ([
+                            <section>
+                              <h3 className='fonte-titulo'>Sobre mim</h3>
+                              <p className='fonte-corpo'>{estudante.email}</p>
+                              <p className='fonte-corpo'>{estudante.telefone}</p>
+                              <p className='fonte-corpo'>{estudante.cidade}</p> 
                             </section>
                           ]))
 
@@ -67,6 +79,10 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='cabecalho-perfis'>
           {estudanteTag}
           <EstudanteEditarComponent/>
+        </article>
+
+        <article className='objetivo-curriculo'>
+          {sobreMimTag}
         </article>
         
         <article className='objetivo-curriculo'>
