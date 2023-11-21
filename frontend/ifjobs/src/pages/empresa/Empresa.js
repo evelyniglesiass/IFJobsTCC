@@ -32,7 +32,7 @@ const Empresa = () => {
     <>
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-perfis'>
-          <article><EmpresaComponent empresa={empresa}/></article>
+          <article><EmpresaComponent empresa={empresa} /></article>
         </section>
     </> 
   )

@@ -3,7 +3,8 @@ import '../../../App.scss';
 
 // Import de Components
 import VagasComponent from './VagasComponent'
-import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
+import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
+import { useParams } from 'react-router-dom';
 
 // Component para visualizar perfis de empresas
 const EditarPerfilEmpresaComponent = ({empresa}) => {
@@ -33,12 +34,14 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
   }, [empresa])
 
   const [vagas, setVagas] = useState([])
-  const { listarVagas } = useListarVagas();
+  const { listarVagasEmpresa } = useListarVagasEmpresa();
+
+  const { id } = useParams();
 
   useEffect(() => {
     async function listar() {
 
-      const response = await listarVagas();
+      const response = await listarVagasEmpresa(id);
       
       setVagas(response) 
 

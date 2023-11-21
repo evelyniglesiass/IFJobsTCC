@@ -3,7 +3,6 @@ import '../../../App.scss';
 import Modal from 'react-modal';
 
 // Import de Components
-import VagasComponent from '../ui/VagasComponent'
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook'
 
@@ -40,7 +39,7 @@ const EmpresaEditarComponent = () => {
         setIsOpen(false);
     }
 
-    const [formInput, setFormInput] = useState({
+    const [formInput, setFormInputEmpresa] = useState({
         nome: '',
         usuario: '',
         descricao: '',
@@ -53,7 +52,7 @@ const EmpresaEditarComponent = () => {
     function handleChange(event){
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInputEmpresa((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
     const {editarEmpresa} = useEditarEmpresa();
