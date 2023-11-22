@@ -30,20 +30,37 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
-
+  const [cursoTag, setCursoTag] = useState();
 
   useEffect(() => {
 
     setEstudanteTag([]);
     setCurriculoTag([]);
     setSobreMimTag([]);
+
+    switch (estudante.curso) {
+      case "INFORMATICA":
+        setCursoTag("Informática")
+        break;
+      case "EVENTOS":
+        setCursoTag("Eventos")
+        break;
+      case "MECANICA":
+        setCursoTag("Mecânica")
+        break;
+      case "PLASTICOS":
+        setCursoTag("Plásticos")
+        break;
+      default:
+        break;
+    }
     
     setEstudanteTag(() => ([
                             <section>
                               <h1 className='img-perfis'>EV</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>
-                              <h5 className='curso fonte-titulo'>Curso{/*estudante.curso*/}</h5>
+                              <h5 className='curso fonte-titulo'>{cursoTag}</h5>
                             </section>
                           ]))
 

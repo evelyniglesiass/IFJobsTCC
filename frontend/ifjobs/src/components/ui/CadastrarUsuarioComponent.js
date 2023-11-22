@@ -11,7 +11,6 @@ Modal.setAppElement("#root");
 const CadastrarUsuarioComponent = () => {
 
     // Estudante
-
     const [modalEstudanteIsOpen, setEstudanteIsOpen] = useState(false);
 
     function openModalEstudante() {
@@ -35,7 +34,7 @@ const CadastrarUsuarioComponent = () => {
 
     function handleChangeEstudante(event){
         const { name, value } = event.target;
-
+        console.log(value)
         setFormInputEstudante((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
@@ -43,7 +42,7 @@ const CadastrarUsuarioComponent = () => {
 
     async function onSubmitEstudante(event){
         event.preventDefault();
-
+        console.log(formInputEstudante.curso)
         await cadastroEstudante(formInputEstudante.nome, formInputEstudante.usuario, formInputEstudante.idade, formInputEstudante.curso, formInputEstudante.telefone, formInputEstudante.email, formInputEstudante.senha, formInputEstudante.cidade);
         
     }

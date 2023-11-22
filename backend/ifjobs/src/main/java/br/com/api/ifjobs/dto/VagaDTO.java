@@ -1,12 +1,10 @@
 package br.com.api.ifjobs.dto;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.api.ifjobs.models.Cursos;
-import br.com.api.ifjobs.models.PalavraChave;
 import br.com.api.ifjobs.models.Vaga;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

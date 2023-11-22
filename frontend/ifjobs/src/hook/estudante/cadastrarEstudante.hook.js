@@ -6,10 +6,10 @@ export function useCadastroEstudante(){
 
     const [error] = useState();
 
-    async function cadastroEstudante(nome, nomeUsuario, idade, telefone, email, senha, cidade){
+    async function cadastroEstudante(nome, nomeUsuario, idade, curso, telefone, email, senha, cidade){
 
         try{
-            await criarEstudanteApi(nome, nomeUsuario, idade, telefone, email, senha, cidade);
+            await criarEstudanteApi(nome, nomeUsuario, idade, curso, telefone, email, senha, cidade);
         }
         catch(errorApi){
             toast.error(errorApi);
