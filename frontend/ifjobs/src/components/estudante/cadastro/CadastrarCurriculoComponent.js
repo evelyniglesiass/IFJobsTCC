@@ -1,6 +1,7 @@
 import '../../../App.scss';
 import { useState } from 'react';
 import { useCadastrarCurriculo } from '../../../hook/curriculo/cadastrarCurriculo.hook';
+import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
@@ -50,6 +51,8 @@ const CadastrarCurriculoComponent = () => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Currículo</h2>
+                <DicasObjetivoComponent/>
+                
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>

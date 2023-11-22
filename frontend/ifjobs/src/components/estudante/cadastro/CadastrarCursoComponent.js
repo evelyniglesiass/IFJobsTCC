@@ -1,6 +1,8 @@
 import '../../../App.scss';
 import { useState } from 'react';
 import { useCadastrarCurso } from '../../../hook/curso/cadastrarCurso.hook';
+import DicasCursosComponent from '../../dicas/DicasCursosComponent';
+
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
@@ -56,6 +58,8 @@ const CadastrarCursoComponent = () => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
                 
                 <h2 className='titulo-modal'>Cursos e certificados</h2>
+                <DicasCursosComponent/>
+
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
