@@ -5,16 +5,11 @@ import Modal from 'react-modal';
 // Import de Components
 import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook';
-import useGlobalUser from '../../../context/usuario/user.context';
 
 Modal.setAppElement("#root");
 
 // Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = ({empresa}) => {
-
-  // Pegando dados do usuário
-  const [empresa, setEmpresa] = useState([]);
-  setEmpresa([]);
 
   // Listagem de vagas
   const [vagas, setVagas] = useState([])
@@ -49,9 +44,9 @@ const EmpresaEditarComponent = ({empresa}) => {
         usuario: empresa.nomeUsuario,
         descricao: empresa.descricao,
         telefone: empresa.telefone,
-        email: '',
-        senha: '',
-        cidade: ''
+        email: empresa.email,
+        senha: empresa.senha,
+        cidade: empresa.cidade
     })
 
     function handleChange(event){
@@ -88,25 +83,25 @@ const EmpresaEditarComponent = ({empresa}) => {
           <div className='container-cursos-exper'>
             <form onSubmit={onSubmit}>
                 <div class="txt-form-group"> 
-                    <input type="text" class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
+                    <input type="text" value={empresa.nome} class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
+                  <input type="text" value={empresa.nomeUsuario} class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <textarea type="text" class="form-control" name="descricao" placeholder="Descrição" onChange={handleChange}/>
+                  <textarea type="text" value={empresa.descricao} class="form-control" name="descricao" placeholder="Descrição" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
+                  <input type="text" value={empresa.telefone} class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="email" class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
+                  <input type="email" value={empresa.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="password" class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                  <input type="password" value={empresa.senha} class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
+                  <input type="text" value={empresa.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                 </div>
                   <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
             </form>
