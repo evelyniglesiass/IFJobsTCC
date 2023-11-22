@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
 
 // Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = ({vaga, estudantes}) => {
@@ -15,10 +16,10 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
     setVagaTag((oldVagaTag) => ([...oldVagaTag, 
                                       <section>
                                           <article className='cabecalho-perfis'>
+                                            <EditarDetalhesVagaComponent vaga={vaga}/>
                                             <h1 className='img-perfis'>TL</h1>
                                             <h2 className='titulo-perfil fonte-titulo'>{vaga.titulo}</h2>
                                             <h5 className='curso fonte-titulo'>{vaga.cidade}</h5>
-                                            {/* <EditarVagaButtonComponent/> */}
                                           </article>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
