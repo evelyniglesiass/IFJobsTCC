@@ -7,7 +7,7 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EstudanteEditarComponent = () => {
+const EstudanteEditarComponent = ({estudante}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,14 +20,14 @@ const EstudanteEditarComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        nome: '',
-        usuario: '',
-        idade: '',
-        curso: 0,
-        telefone: '',
-        email: '',
-        senha: '',
-        cidade: ''
+        nome: estudante.nome,
+        usuario: estudante.nomeUsuario,
+        idade: estudante.idade,
+        curso: estudante.curso,
+        telefone: estudante.telefone,
+        email: estudante.email,
+        senha: estudante.senha,
+        cidade: estudante.cidade
     })
 
     function handleChange(event){
@@ -62,16 +62,16 @@ const EstudanteEditarComponent = () => {
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
+                        <input type="text" value={estudante.nome} class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
+                        <input type="text" value={estudante.nomeUsuario} class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="idade" placeholder="Idade" onChange={handleChange}/>
+                        <input type="text" value={estudante.idade} class="form-control" name="idade" placeholder="Idade" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <select className='form-control' name='curso' onChange={handleChange}>
+                        <select value={estudante.curso} className='form-control' name='curso' onChange={handleChange}>
                             <option value="" disabled selected>Curso</option>
                             <option value="0">Informática</option>
                             <option value="1">Eventos</option>
