@@ -164,6 +164,7 @@ public class EstudanteService {
             .id(e.getId())
             .nome(e.getNome())
             .idade(e.getIdade())
+            .curso(e.getCurso())
             .nomeUsuario(e.getNomeUsuario())
             .email(e.getEmail())
             .telefone(e.getTelefone())
