@@ -95,7 +95,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
     <section>
         <article className='cabecalho-perfis'>
           {estudanteTag}
-          <div className='btn-editar-estudante'><EstudanteEditarComponent/></div>
+          <div className='btn-editar-estudante'>
+            <EstudanteEditarComponent estudante={estudante}/>
+          </div>
         </article>
 
         <article className='objetivo-curriculo'>
@@ -105,13 +107,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           {curriculoTag}
           <CadastrarCurriculoComponent/>
-          <CurriculoEditarComponent/>
+          <CurriculoEditarComponent estudante={estudante}/>
         </article>
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
           <CadastrarExperienciaComponent/>
-          <ExperienciasEditarComponent/>
+          <ExperienciasEditarComponent experiencias={experiencia}/>
 
           <div className='experiencia-component'>
             <ExperienciasComponent experiencias={experiencia}/>
@@ -121,7 +123,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
           <CadastrarCursoComponent/>
-          <CursosEditarComponent/>
+          <CursosEditarComponent cursos={curso}/>
 
           <article className='cursos-component'>
             <CursosComponent cursos={curso}/>
@@ -131,7 +133,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <CadastrarFormacaoComponent/>
-          <FormacaoEditarComponent/>
+          <FormacaoEditarComponent formacoes={formacao}/>
 
           <article className='formacao-component'>
             <FormacaoComponent formacoes={formacao}/>

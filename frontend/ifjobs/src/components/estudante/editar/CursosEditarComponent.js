@@ -7,7 +7,7 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CursosEditarComponent = () => {
+const CursosEditarComponent = ({cursos}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,13 +20,13 @@ const CursosEditarComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        titulo: '',
-        instituicao: '',
-        cidade: '',
-        cargaHoraria: '',
-        dataInicial: '',
-        dataFinal: '',
-        descricao: ''
+        titulo: cursos.titulo,
+        instituicao: cursos.instituicao,
+        cidade: cursos.cidade,
+        cargaHoraria: cursos.cargaHoraria,
+        dataInicial: cursos.dataInicial,
+        dataFinal: cursos.dataFinal,
+        descricao: cursos.descricao
     })
 
     function handleChange(event){
@@ -62,25 +62,25 @@ const CursosEditarComponent = () => {
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
                     <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='titulo' placeholder="Nome" onChange={handleChange}/>
+                        <input type="text" value={cursos.titulo} class="form-control" name='titulo' placeholder="Nome" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
+                        <input type="text" value={cursos.instituicao} class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                        <input type="text" value={cursos.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
+                        <input type="text" value={cursos.cargaHoraria} class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                    <input type="date" class="form-control" name='dataInicial' onChange={handleChange}/>
+                    <input type="date" value={cursos.dataInicial} class="form-control" name='dataInicial' onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="date" class="form-control" name='dataFinal' onChange={handleChange}/>
+                        <input type="date" value={cursos.dataFinal} class="form-control" name='dataFinal' onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                        <textarea type="textarea" value={cursos.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>

@@ -14,9 +14,6 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
   useEffect(() => {
 
-    console.log("oi")
-    console.log(empresa)
-
     setEmpresaUm([]);
     setEmpresaDois([]);
     
@@ -64,7 +61,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
-          <EmpresaEditarComponent/>
+          <EmpresaEditarComponent empresa={empresa}/>
           {empresaUm}
         </section>
 
