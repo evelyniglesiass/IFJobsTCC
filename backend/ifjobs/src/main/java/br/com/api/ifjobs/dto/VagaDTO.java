@@ -28,7 +28,6 @@ public class VagaDTO {
 	private Cursos curso;
 	private Double salario;
     private Integer idadeMinima;
-    private List<PalavraChave> palavrasChave = new ArrayList<>();
     private String cidade;
 	private LocalDate dataPublicacao; 
 
@@ -40,7 +39,6 @@ public class VagaDTO {
         this.curso = vaga.getCurso();
         this.salario = vaga.getSalario();
         this.idadeMinima = vaga.getIdadeMinima();
-        this.palavrasChave = vaga.getPalavrasChave();
         this.cidade = vaga.getCidade();
         this.dataPublicacao = vaga.getDataPublicacao();
     }
