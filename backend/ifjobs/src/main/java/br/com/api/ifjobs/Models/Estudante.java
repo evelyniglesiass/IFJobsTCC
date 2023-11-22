@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -48,6 +50,11 @@ public class Estudante{
     @NotNull(message = "Insira sua idade!")
     @Column(nullable = false) 
     private Integer idade;
+
+    @NotNull(message = "Insira seu curso!")
+	@Column(nullable = false) 
+	@Enumerated(EnumType.STRING)
+	private Cursos curso;
 
     @NotBlank(message = "Insira seu nome de usuário!")
     @Column(nullable = false, length = 50)
