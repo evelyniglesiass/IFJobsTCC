@@ -10,7 +10,6 @@ export function useListarVagaTitulo(){
 
         try{
             const response = await listarVagaTituloApi(titulo);
-            console.log(response)
             return response
         }
         catch(errorApi){

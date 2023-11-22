@@ -17,7 +17,7 @@ const DicasCursosComponent = () => {
         setIsOpen(false);
     }
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-dica-editar'>
             <button onClick={openModal} className='button-modal-open'>💡</button>
             <Modal
                 isOpen={modalIsOpen}

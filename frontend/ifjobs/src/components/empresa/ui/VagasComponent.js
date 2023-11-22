@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import { Link } from 'react-router-dom';
+import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
 
 // Component de vagas
 const VagasComponent = ({vagas}) => {

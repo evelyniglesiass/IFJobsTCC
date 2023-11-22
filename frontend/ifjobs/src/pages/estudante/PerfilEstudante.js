@@ -13,7 +13,7 @@ import { useListarCurriculo } from '../../hook/curriculo/listarCurriculo.hook';
 const PerfilEstudante = () => {
 
   const [estudante, setEstudante] = useState([]);
-  const [curriculo, setCurriculo] = useState([]);
+  const [curriculo, setCurriculo] = useState([]); 
   const [user] = useGlobalUser();
 
   const { listarEstudanteEspecifico } = useListarEstudanteEspecifico();

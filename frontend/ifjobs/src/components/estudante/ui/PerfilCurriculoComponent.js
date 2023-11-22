@@ -95,7 +95,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
     <section>
         <article className='cabecalho-perfis'>
           {estudanteTag}
-          <EstudanteEditarComponent/>
+          <div className='btn-editar-estudante'><EstudanteEditarComponent/></div>
         </article>
 
         <article className='objetivo-curriculo'>

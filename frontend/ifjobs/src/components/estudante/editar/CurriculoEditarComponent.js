@@ -53,7 +53,7 @@ const CadastrarCurriculoComponent = () => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Cursos e certificados</h2>
+                <h2 className='titulo-modal'>Currículo</h2>
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
