@@ -1,13 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useEditarCurriculo } from '../../../hook/curriculo/editarCurriculo.hook';
+import { useEditarHabilidade } from '../../../hook/habilidade/editarHabilidade.hook';
 import Modal from 'react-modal';
-import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EditarCurriculoComponent = ({estudante}) => {
+const HabilidadeEditarComponent = ({habilidade}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,7 +19,7 @@ const EditarCurriculoComponent = ({estudante}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        resumo: estudante.resumo
+        resumo: habilidade.descricao
     })
 
     function handleChange(event){
@@ -29,12 +28,12 @@ const EditarCurriculoComponent = ({estudante}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoCurriculo} = useEditarCurriculo();
+    const {edicaoHabilidade} = useEditarHabilidade();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurriculo(formInput.resumo);
+        await edicaoHabilidade(formInput.descricao);
         
     }
 
@@ -52,14 +51,13 @@ const EditarCurriculoComponent = ({estudante}) => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Currículo</h2>
-                <DicasObjetivoComponent/>
+                <h2 className='titulo-modal'>Habilidade</h2>
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 
                     <div className='txt-form-group'>
-                        <textarea type="textarea" value={estudante.resumo} class="form-control" name='resumo' placeholder="Resumo" maxLength={250} onChange={handleChange}/>
+                        <input type="text" value={habilidade.descricao} class="form-control" name='descricao' placeholder="Habilidade" onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
@@ -71,4 +69,4 @@ const EditarCurriculoComponent = ({estudante}) => {
     )
 }
 
-export default EditarCurriculoComponent
+export default CadastrarCurriculoComponent

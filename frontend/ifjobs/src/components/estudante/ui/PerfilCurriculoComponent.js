@@ -20,8 +20,10 @@ import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
+import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.hook';
 import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
 import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
+import HabilidadesComponent from './HabilidadesComponent';
 
 
 // Component de perfil do estudante com botão de editar
@@ -85,11 +87,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [experiencia, setExperiencia] = useState([]);
   const [curso, setCurso] = useState([]);
   const [formacao, setFormacao] = useState([]);
+  const [habilidade, setHabilidade] = useState([]);
   const [user] = useGlobalUser();
 
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
+  const { listarHabilidade } = useListarHabilidade();
 
   useEffect(() => {
     async function listar() { 
@@ -103,6 +107,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
       const forResp = await listarFormacao(user.id);
       setFormacao(forResp);
 
+      const habResp = await listarHabilidade(user.id);
+      setHabilidade(habResp);
+
     }
 
     listar();
@@ -113,7 +120,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='cabecalho-perfis'>
           {estudanteTag}
           <div className='btn-editar-estudante'>
-            <EstudanteEditarComponent estudante={estudante}/>
+            {/* <EstudanteEditarComponent estudante={estudante}/> */}
           </div>
         </article>
 
@@ -123,14 +130,14 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         
         <article className='objetivo-curriculo'>
           {curriculoTag}
-          <CadastrarCurriculoComponent/>
-          <CurriculoEditarComponent estudante={estudante}/>
+          {/* <CadastrarCurriculoComponent/> */}
+          {/* <CurriculoEditarComponent estudante={estudante}/> */}
         </article>
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
-          <CadastrarExperienciaComponent/>
-          <ExperienciasEditarComponent experiencias={experiencia}/>
+          {/* <CadastrarExperienciaComponent/> */}
+          {/* <ExperienciasEditarComponent experiencia={experiencia}/> */}
 
           <div className='experiencia-component'>
             <ExperienciasComponent experiencias={experiencia}/>
@@ -139,8 +146,8 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
-          <CadastrarCursoComponent/>
-          <CursosEditarComponent cursos={curso}/>
+          {/* <CadastrarCursoComponent/> */}
+          {/* <CursosEditarComponent cursos={curso}/> */}
 
           <article className='cursos-component'>
             <CursosComponent cursos={curso}/>
@@ -149,12 +156,17 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
-          <CadastrarFormacaoComponent/>
-          <FormacaoEditarComponent formacoes={formacao}/>
+          {/* <CadastrarFormacaoComponent/>
+          <FormacaoEditarComponent formacao={formacao}/> */}
 
           <article className='formacao-component'>
             <FormacaoComponent formacoes={formacao}/>
           </article>
+        </article>
+
+        <article className='habilidade-component'>
+          <h3>Habilidades e conhecimentos</h3>
+          <HabilidadesComponent/>
         </article>   
     </section>
   )

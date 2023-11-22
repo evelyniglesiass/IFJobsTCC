@@ -2,7 +2,6 @@ import '../../../App.scss';
 import { useState } from 'react';
 import { useEditarEstudante } from '../../../hook/estudante/editarEstudante.hook';
 import Modal from 'react-modal';
-import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 
 Modal.setAppElement("#root");
 

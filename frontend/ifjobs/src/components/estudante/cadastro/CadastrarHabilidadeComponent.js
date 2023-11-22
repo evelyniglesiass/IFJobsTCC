@@ -1,13 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useEditarCurriculo } from '../../../hook/curriculo/editarCurriculo.hook';
+import { useCadastrarHabilidade } from '../../../hook/habilidade/cadastrarHabilidade.hook';
 import Modal from 'react-modal';
-import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EditarCurriculoComponent = ({estudante}) => {
+const CadastrarHabilidadeComponent = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,7 +19,7 @@ const EditarCurriculoComponent = ({estudante}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        resumo: estudante.resumo
+        descricao: ''
     })
 
     function handleChange(event){
@@ -29,20 +28,18 @@ const EditarCurriculoComponent = ({estudante}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoCurriculo} = useEditarCurriculo();
+    const {cadastroHabilidade} = useCadastrarHabilidade();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurriculo(formInput.resumo);
+        await cadastroHabilidade(formInput.descricao);
         
     }
 
     return (
         <div className='container-modal'>
-
-            <button onClick={openModal} className='button-modal-open'>📝</button>
-
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>➕</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -52,14 +49,13 @@ const EditarCurriculoComponent = ({estudante}) => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Currículo</h2>
-                <DicasObjetivoComponent/>
+                <h2 className='titulo-modal'>Habilidade</h2>                
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 
                     <div className='txt-form-group'>
-                        <textarea type="textarea" value={estudante.resumo} class="form-control" name='resumo' placeholder="Resumo" maxLength={250} onChange={handleChange}/>
+                        <input type="text" class="form-control" name='descricao' placeholder="Hailidade" onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
@@ -71,4 +67,4 @@ const EditarCurriculoComponent = ({estudante}) => {
     )
 }
 
-export default EditarCurriculoComponent
+export default CadastrarHabilidadeComponent
