@@ -75,6 +75,13 @@ public class EstudanteController {
         return estSer.listarPorNome(nome);
     }
 
+    // pesquisa por nome sem aparecer o logado
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @GetMapping("/listar/pesquisa/sem/{id}/{nome}")
+    public List<EstudanteDTO> listarPorNomeSemLogado(@PathVariable int id, @PathVariable String nome) {
+        return estSer.listarPorNomeSemLogado(id, nome);
+    }
+
     // listar estudante expecífico
     @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/id/{id}")
@@ -112,6 +119,12 @@ public class EstudanteController {
     @GetMapping("/listar/candidatura/vagas/{estudante}")
     public List<VagaDTO> listarVagasCandidatura(@PathVariable int estudante) {
         return estSer.listarVagasCandidatura(estudante); 
+    }
+
+    @Secured("ROLE_ESTUDANTE")
+    @GetMapping("/listar/vagas/salvos/pesquisa/{id}/{titulo}") // id estudante e titulo vaga
+    public List<VagaDTO> listarVagasPesquisaSalvos(@PathVariable int id, @PathVariable String titulo) {
+        return estSer.listarVagasPesquisaSalvos(id, titulo); 
     }
   
 }

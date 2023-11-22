@@ -16,14 +16,10 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
     setEmpresaUm([]);
     setEmpresaDois([]);
-    
-    //const icone = empresa.nome;
-    //icone = icone.slice(0, 2);
-    //{icone.toUpperCase()}
 
     setEmpresaUm((oldEmpresaUm) => ([...oldEmpresaUm, 
                                       <section className=''>
-                                        <h1 className='img-perfis'>EM</h1>
+                                        <h1 className='img-perfis'>EV{/*`${empresa.nome.slice(0, 2).toUpperCase()}`*/}</h1>
                                         <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
                                         <h5 className='curso fonte-titulo'>{empresa.nomeUsuario}</h5>
                                         <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>

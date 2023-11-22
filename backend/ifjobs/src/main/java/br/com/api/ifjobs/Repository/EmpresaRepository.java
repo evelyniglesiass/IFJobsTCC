@@ -34,6 +34,10 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     @Query(value = "SELECT * FROM empresa WHERE empresa.id <> :id", nativeQuery = true) 
     List<Empresa> listarEmpresas(int id); 
 
+    // listar pesquisa por nome sem a logada
+    @Query(value = "SELECT * FROM empresa WHERE empresa.id <> :id And nome Like '%:nome%'", nativeQuery = true) 
+    List<Empresa> listarPorNomeSemLogada(int id, String nome); 
+
     // Validacao
     @Query(value = "SELECT Count(nome_usuario) FROM empresa WHERE nome_usuario = :usuario AND id <> :id", nativeQuery = true) 
     int existeUsuario(String usuario, int id); // validar nome de usuario para edição

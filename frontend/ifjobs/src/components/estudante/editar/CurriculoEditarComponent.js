@@ -42,7 +42,6 @@ const CadastrarCurriculoComponent = ({estudante}) => {
         <div className='container-modal'>
 
             <button onClick={openModal} className='button-modal-open'>📝</button>
-            <DicasObjetivoComponent/>
 
             <Modal
                 isOpen={modalIsOpen}
@@ -54,6 +53,7 @@ const CadastrarCurriculoComponent = ({estudante}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Currículo</h2>
+                <DicasObjetivoComponent/>
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>

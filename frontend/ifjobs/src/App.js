@@ -53,7 +53,7 @@ function App() {
             <Route path='/empresas/sem' element={<EmpresasSemLogada/>} /> {/*feed empresas visão empresa OK*/}
 
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
-            <Route path='/estudante/:id' element={<Estudante/>} /> {/*ta dando um erro sem sentido ALGUM*/}
+            <Route path='/estudante/:id' element={<Estudante/>} /> {/*OK*/}
             <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> {/*OK*/}
             <Route path='/perfil/estudante/editar' element={<EditarEstudante/>} /> {/*vai sair*/}
 

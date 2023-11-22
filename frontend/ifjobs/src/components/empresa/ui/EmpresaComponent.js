@@ -18,7 +18,7 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
     setEmpresaTag((oldEmpresaTag) => ([...oldEmpresaTag, 
                                       <section>
                                         <section className='cabecalho-perfis'>
-                                          <h1 className='img-perfis'>NE</h1>
+                                          <h1 className='img-perfis'>{/*`${empresa.nome.slice(0, 2).toUpperCase()}`*/}</h1>
                                           <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
                                           <h5 className='curso fonte-titulo'>{empresa.nomeUsuario}</h5>
                                           <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>
