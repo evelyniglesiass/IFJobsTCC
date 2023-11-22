@@ -8,11 +8,15 @@ import FormacaoComponent from './FormacaoComponent';
 
 // Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
+import { useListarExperiencia } from '../../../hook/experiencia/listarExperiencia.hook';
+import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
+import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
+import { useParams } from 'react-router-dom';
 
 // Component para visualizar perfis de estudantes
 const CurriculoComponent = ({estudante, curriculo}) => { 
 
-  const [estudanteTag, setEstudanteTag] = useState([]);
+  const [estudanteTag, setEstudanteTag] = useState([]); 
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
 
@@ -50,6 +54,32 @@ const CurriculoComponent = ({estudante, curriculo}) => {
 
   }, [estudante, curriculo])
 
+  const [experiencia, setExperiencia] = useState([]);
+  const [curso, setCurso] = useState([]);
+  const [formacao, setFormacao] = useState([]);
+  const { id } = useParams();
+
+  const { listarExperiencia } = useListarExperiencia();
+  const { listarCurso } = useListarCurso();
+  const { listarFormacao } = useListarFormacao();
+
+  useEffect(() => {
+    async function listar() { 
+
+      const response = await listarExperiencia(id);
+      setExperiencia(response);
+
+      const curResp = await listarCurso(id);
+      setCurso(curResp);
+
+      const forResp = await listarFormacao(id);
+      setFormacao(forResp);
+
+    }
+
+    listar();
+  }, [])
+
   return (
     <section>
         <article className='cabecalho-perfis'>
@@ -66,17 +96,17 @@ const CurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
-          <div className='experiencia-component'><ExperienciasComponent/></div>
+          <div className='experiencia-component'><ExperienciasComponent experiencias={experiencia}/></div>
         </article>
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
-          <article className='cursos-component'><CursosComponent/></article>
+          <article className='cursos-component'><CursosComponent cursos={curso}/></article>
         </article>
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
-          <article className='formacao-component'><FormacaoComponent/></article>
+          <article className='formacao-component'><FormacaoComponent formacoes={formacao}/></article>
         </article>
     </section>
   )

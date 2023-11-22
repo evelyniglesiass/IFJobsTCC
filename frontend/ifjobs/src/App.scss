@@ -52,7 +52,7 @@ body{
     border-color: $verde-forte;
     background-color: $verde-forte;
     height: 80px;
-    //width: 80px;
+    //width: 80px; 
     width: 6.5%;
     position: relative;
     top: -95px;
@@ -641,6 +641,12 @@ body{
     padding-left: 5px;
     padding-right: 5px;
     font-size: x-large;
+}
+
+.modal-dica-editar {
+    width: 20px;
+    margin-left: 80%;
+    margin-top: -3px;
 }
 
 // Modal cadastros

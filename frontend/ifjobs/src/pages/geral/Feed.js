@@ -40,15 +40,15 @@ const Feed = () => {
   const { listarVagaTitulo } = useListarVagaTitulo();
 
   async function onSubmit(event){
-    //event.preventDefault();
+    event.preventDefault();
 
     const response = await listarVagaTitulo(formInput.pesquisa);
     console.log(response)
+    console.log(formInput.pesquisa)
     
     setVagas(response) 
     
   }
-
 
   return (
     <div className='container-pages'>
@@ -65,7 +65,7 @@ const Feed = () => {
 
                 <form class="d-flex" role="search" onSubmit={onSubmit}>
 
-                  <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" handleChange={handleChange}/>
+                  <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange}/>
                   <button class="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
 
                 </form>

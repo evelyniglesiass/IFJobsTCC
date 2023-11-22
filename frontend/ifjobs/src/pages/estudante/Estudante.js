@@ -18,7 +18,7 @@ const Estudante = () => {
   const { listarEstudanteEspecifico } = useListarEstudanteEspecifico();
   const { listarCurriculo } = useListarCurriculo();
 
-  useEffect(() => {
+  useEffect(() => { 
     async function listar() { 
 
       const response = await listarEstudanteEspecifico(id);
