@@ -13,6 +13,7 @@ export { listarEmpresasEmpApi } from '../api/empresa/listar-empresa-emp.api.js';
 export { listarEmpresaEspecificaApi } from '../api/empresa/listar-empresa-especifica.api.js';
 export { listarEmpresaNomeApi } from '../api/empresa/listar-empresa-nome.api.js';
 export { listarEmpresasEstApi } from '../api/empresa/listar-empresa-est.api.js';
+export { listarEmpresaNomeSemApi } from '../api/empresa/listar-empresa-nome-sem.api.js';
 
 // estudantes
 export {criarEstudanteApi} from '../api/estudante/cadastrar-estudante.api.js';
@@ -22,6 +23,7 @@ export { listarEstudantesEmpApi } from '../api/estudante/listar-estudantes-emp.a
 export { listarEstudanteEspecificoApi } from '../api/estudante/listar-estudante-especifico.api.js';
 export { listarEstudanteNomeApi } from '../api/estudante/listar-estudante-nome.api.js';
 export { listarEstudantesEstApi } from '../api/estudante/listar-estudantes-est.api.js';
+export { listarEstudanteNomeSemApi } from '../api/estudante/listar-estudante-nome-sem.api.js';
 
 export { criarCandidaturaApi } from '../api/estudante/candidatura.api.js';
 export { removerCandidaturaApi } from '../api/estudante/remover-candidatura.api.js';

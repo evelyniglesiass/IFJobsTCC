@@ -54,15 +54,17 @@ public class EmpresaController {
     }
 
     //pesquisa de empresas por nome
+    @Secured("ROLE_ESTUDANTE")
     @GetMapping("/listar/pesquisa/{nome}")
     public List<EmpresaDTO> listarPorNome(@PathVariable String nome) {
         return empSer.listarPorNome(nome);
     }
 
     //pesquisa de empresas por nome sem a logada
-    @GetMapping("/listar/pesquisa/sem/{id}/{nome}")
-    public List<EmpresaDTO> listarPorNomeSemLogada(@PathVariable int id, @PathVariable String nome) {
-        return empSer.listarPorNomeSemLogada(id, nome);
+    @Secured("ROLE_EMPRESA")
+    @GetMapping("/listar/pesquisa/sem/{nome}")
+    public List<EmpresaDTO> listarPorNomeSemLogada(@PathVariable String nome) {
+        return empSer.listarPorNomeSemLogada(nome);
     }
 
     //listagem de empresas (onde a própia empresa não aparece)

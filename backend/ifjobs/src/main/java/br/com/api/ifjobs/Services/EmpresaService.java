@@ -123,8 +123,10 @@ public class EmpresaService {
         return EmpresaDTO.converterLista(empRep.findByNomeContainsIgnoreCase(nome)); 
     }
 
-    public List<EmpresaDTO> listarPorNomeSemLogada(int id, String nome){
-        return EmpresaDTO.converterLista(empRep.listarPorNomeSemLogada(id, nome)); 
+    public List<EmpresaDTO> listarPorNomeSemLogada(String nome){
+        Empresa empresa = usuarioAutenticadoService.getEmpresa();
+
+        return EmpresaDTO.converterLista(empRep.findAllByNomeContainingAndIdNot(nome, empresa.getId())); 
     }
 
     //listar todos visão empresa

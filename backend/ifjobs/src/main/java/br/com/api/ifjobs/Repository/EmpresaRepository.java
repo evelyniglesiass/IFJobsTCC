@@ -35,8 +35,9 @@ public interface EmpresaRepository extends CrudRepository<Empresa, Integer>{
     List<Empresa> listarEmpresas(int id); 
 
     // listar pesquisa por nome sem a logada
-    @Query(value = "SELECT * FROM empresa WHERE empresa.id <> :id And nome Like '%:nome%'", nativeQuery = true) 
-    List<Empresa> listarPorNomeSemLogada(int id, String nome); 
+    // @Query(value = "SELECT * FROM empresa WHERE empresa.id <> :id And empresa.nome Like '%:nome%'", nativeQuery = true) 
+    // List<Empresa> listarPorNomeSemLogada(int id, String nome); 
+    List<Empresa> findAllByNomeContainingAndIdNot(String nome, int id);
 
     // Validacao
     @Query(value = "SELECT Count(nome_usuario) FROM empresa WHERE nome_usuario = :usuario AND id <> :id", nativeQuery = true) 

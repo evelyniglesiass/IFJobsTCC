@@ -52,6 +52,6 @@ public class ApiExceptionHandler {
             return "Erro de validação.";
         }
 
-        return erro.getField() + " " + erro.getDefaultMessage();
+        return erro.getDefaultMessage();
     }
 }

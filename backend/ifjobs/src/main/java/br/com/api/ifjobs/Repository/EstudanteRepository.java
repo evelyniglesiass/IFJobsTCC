@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
 import br.com.api.ifjobs.models.Estudante;
  
 public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
@@ -29,8 +28,10 @@ public interface EstudanteRepository extends CrudRepository<Estudante, Integer>{
     List<Estudante> findAll(); // listar todos os estudantes
     List<Estudante> findByNomeContainsIgnoreCase(String nome); // listar estudantes por pesquisa
 
-    @Query(value = "SELECT * FROM estudante WHERE id <> :id And nome Like '%:nome%'", nativeQuery = true) 
-    List<Estudante> listarPorNomeSemLogado(int id, String nome); // listar pesquisa estudantes menos o logado
+    // listar pesquisa estudantes menos o logado
+    // @Query(value = "SELECT * FROM estudante WHERE id <> :id And nome Like '%:nome%'", nativeQuery = true) 
+    // List<Estudante> listarPorNomeSemLogado(int id, String nome); 
+    List<Estudante> findAllByNomeContainingAndIdNot(String nome, int id);
 
     Estudante findByEmail(String email); // pro login
 

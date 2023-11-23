@@ -149,8 +149,10 @@ public class EstudanteService {
         return EstudanteDTO.converterLista(estRep.findByNomeContainsIgnoreCase(nome));
     }
 
-    public List<EstudanteDTO> listarPorNomeSemLogado(int id, String nome){
-        return EstudanteDTO.converterLista(estRep.listarPorNomeSemLogado(id, nome));
+    public List<EstudanteDTO> listarPorNomeSemLogado(String nome){
+        Estudante estudante = usuarioAutenticadoService.getEstudante();
+
+        return EstudanteDTO.converterLista(estRep.findAllByNomeContainingAndIdNot(nome, estudante.getId()));
     }
 
     public EstudanteDTO listarPorId(int id){
@@ -235,10 +237,6 @@ public class EstudanteService {
 
     public List<VagaDTO> listarVagasCandidatura(int id){
         return VagaDTO.converterLista(vagRep.listarVagasCandidatura(id));
-    }
-
-    public List<VagaDTO> listarVagasPesquisaSalvos(int id, String titulo){
-        return VagaDTO.converterLista(vagRep.listarVagasPesquisaSalvos(id, titulo));
     }
 
 }
