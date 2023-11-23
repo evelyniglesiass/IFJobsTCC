@@ -58,7 +58,7 @@ const Salvos = () => {
     <div className='container-pages'> 
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-vagas'>
-          <article className='pesquisa-vagas'>
+          {/* <article className='pesquisa-vagas'>
             <nav class="navbar bg-body-tertiary">
                 <section class="container-fluid">
                     <form class="d-flex" role="search" onSubmit={onSubmit}>
@@ -67,8 +67,8 @@ const Salvos = () => {
                     </form>
                 </section>
             </nav>  
-          </article>
-          <AtalhoPerfilComponent/>
+          </article> */}
+          {/* <AtalhoPerfilComponent/> */}
           <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
         </section>
     </div>
