@@ -57,8 +57,9 @@ const PerfilEmpresaComponent = ({empresa}) => {
   return ( 
     <>
         <section className='cabecalho-perfis'>
-          <EmpresaEditarComponent empresa={empresa}/>
           {empresaUm}
+          <EmpresaEditarComponent empresa={empresa}/>
+          <CadastrarVagaComponent/>
         </section>
 
         <section className='sobre-perfis'>
@@ -66,7 +67,6 @@ const PerfilEmpresaComponent = ({empresa}) => {
         </section>
 
         <div className='perfil-empresa-vaga'>
-          <CadastrarVagaComponent/>
           <VagasComponent vagas={vagas}/>
         </div>
     </>

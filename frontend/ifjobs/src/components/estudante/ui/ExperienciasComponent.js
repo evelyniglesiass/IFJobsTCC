@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
 
 // Component para experiência profissional
 const ExperienciasComponent = ({experiencias}) => { 
@@ -20,6 +21,7 @@ const ExperienciasComponent = ({experiencias}) => {
                                     <h6 className='data-fim fonte-corpo'>{e.dataFinal}</h6>
                                   </article>
                                   <p className='conteudo-experiencias'>{e.descricao}</p>
+                                  <ExperienciasEditarComponent experiencia={e}/>
                                 </section>
                             ]))
     });

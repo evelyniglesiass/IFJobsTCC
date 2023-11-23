@@ -45,7 +45,7 @@ const EmpresaEditarComponent = ({empresa}) => {
         descricao: empresa.descricao,
         telefone: empresa.telefone,
         email: empresa.email,
-        senha: empresa.senha,
+        senha: '',
         cidade: empresa.cidade
     })
 
@@ -65,7 +65,7 @@ const EmpresaEditarComponent = ({empresa}) => {
     }
 
   return ( 
-    <div className='container-modal'>
+    <div className='container-modal modal-editar-emp'>
 
       <button onClick={openModal} className='button-modal-open'>📝</button>
 
@@ -98,12 +98,12 @@ const EmpresaEditarComponent = ({empresa}) => {
                   <input type="email" value={empresa.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="password" value={empresa.senha} class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                  <input type="password" value={''} class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
                   <input type="text" value={empresa.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                 </div>
-                  <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                  <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
             </form>
             </div>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 
 // Component para formação acadêmica
 const FormacaoComponent = ({formacoes}) => {
@@ -20,6 +21,7 @@ const FormacaoComponent = ({formacoes}) => {
                                       <h6 className='data-fim fonte-corpo'>{f.dataFinal}</h6>
                                     </article>
                                     <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
+                                    <FormacaoEditarComponent formacao={f}/>
                                   </section>
                                     ]))
     });

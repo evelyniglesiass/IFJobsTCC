@@ -45,7 +45,7 @@ const CursosEditarComponent = ({cursos}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-editar-curso'>
             <button onClick={openModal} className='button-modal-open'>📝</button>
             <Modal
                 isOpen={modalIsOpen}
@@ -83,7 +83,7 @@ const CursosEditarComponent = ({cursos}) => {
                         <textarea type="textarea" value={cursos.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                     </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
 

@@ -17,7 +17,7 @@ const DicasExperienciaComponent = () => {
         setIsOpen(false);
     }
     return (
-        <div className='container-modal modal-dica-editar'>
+        <div className='container-modal modal-dica-exp'>
             <button onClick={openModal} className='button-modal-open'>💡</button>
             <Modal
                 isOpen={modalIsOpen}

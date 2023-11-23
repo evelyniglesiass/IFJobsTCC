@@ -280,7 +280,7 @@ body{
     height: auto;
 }
 
-.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo, .formacao-curriculo{
+.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo, .formacao-curriculo, .habilidade-component{
     width: 92%;
     margin-top: 20px;
     padding: 20px;
@@ -588,6 +588,13 @@ body{
     margin-top: 15px;
 }
 
+.habilidades-component{
+    //width: 1100px;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+
 // Modal dicas
 .container-modal{
     display: flex;
@@ -649,6 +656,30 @@ body{
     margin-top: -3px;
 }
 
+.modal-dica-cur {
+    width: 20px;
+    margin-left: 33%;
+    margin-top: -3px;
+}
+
+.modal-dica-exp {
+    width: 20px;
+    margin-left: 80%;
+    margin-top: -3px;
+}
+
+.modal-dica-curso {
+    width: 20px;
+    margin-left: 70%;
+    margin-top: -3px;
+}
+
+.modal-dica-for {
+    width: 20px;
+    margin-left: 71%;
+    margin-top: -3px;
+}
+
 // Modal cadastros
 
 #botao-open-cadastro{
@@ -695,9 +726,75 @@ body{
     padding: 8px;
 }
 
+.modal-cadastrar-cur {
+    width: 20px;
+    margin-left: 92%;
+    margin-top: -40px;
+}
+
+.modal-cadastrar-exp {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -12px;
+}
+
+.modal-cadastrar-curso {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -12px;
+}
+
+.modal-cadastrar-for {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -12px;
+}
+
+.modal-cadastrar-vaga {
+    width: 20px;
+    margin-left: 99%;
+}
+
+// modal editar
+
+.modal-editar-emp {
+    width: 20px;
+    margin-left: 99%;
+}
+
+.modal-editar-est {
+    width: 20px;
+    margin-left: 99%;
+}
+
+.modal-editar-cur {
+    width: 20px;
+    margin-left: 97%;
+    margin-top: -40px;
+}
+
+.modal-editar-exp {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -3%;
+}
+
+.modal-editar-curso {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -4%;
+}
+
+.modal-editar-for {
+    width: 20px;
+    margin-left: 96%;
+    margin-top: -4%;
+}
+
 // Experiencias, Cursos e Formação
 .container-cursos-exper{
     padding: 15px;
+    padding-top: 0px;
     border-radius: 25px;
     background-color: $roxo-forte;
     margin-right: 50px;
@@ -727,7 +824,7 @@ body{
     height: 100%;
     text-align: left;
     padding: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     border: solid $preto-borda 2px;
     border-radius: 20px;
 }

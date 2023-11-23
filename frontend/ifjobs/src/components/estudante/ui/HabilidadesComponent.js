@@ -12,7 +12,9 @@ const HabilidadesComponent = ({habilidades}) => {
     
     habilidades.forEach(h => {
       setHabilidadesTag((oldHabilidadesTag) => ([...oldHabilidadesTag,
-                                            <h6 className='titulos-cursos-exper fonte-corpo'>{h.descricao}</h6>
+                                          <article className='cabecalho-cursos-exper'>
+                                            <h6 className='fonte-corpo'>{h.descricao}</h6>
+                                          </article>
                                         ]))
     });
                           

@@ -44,7 +44,7 @@ const CadastrarFormacaoComponent = () => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-cadastrar-for'>
             <button onClick={openModal} className='button-modal-open'>➕</button>
             <Modal
                 isOpen={modalIsOpen}

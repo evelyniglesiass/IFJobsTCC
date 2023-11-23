@@ -1,5 +1,5 @@
 import '../../../App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditarEstudante } from '../../../hook/estudante/editarEstudante.hook';
 import Modal from 'react-modal';
 
@@ -30,6 +30,7 @@ const EstudanteEditarComponent = ({estudante}) => {
     })
 
     function handleChange(event){
+        console.log(formInput)
         const { name, value } = event.target;
 
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
@@ -45,7 +46,7 @@ const EstudanteEditarComponent = ({estudante}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-editar-est'>
             <button onClick={openModal} className='button-modal-open'>📝</button>
             <Modal
                 isOpen={modalIsOpen}
@@ -79,16 +80,16 @@ const EstudanteEditarComponent = ({estudante}) => {
                         </select>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
+                        <input type="text" value={estudante.telefone} class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="email" class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
+                        <input type="email" value={estudante.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
                         <input type="password" class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
+                        <input type="text" value={estudante.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>

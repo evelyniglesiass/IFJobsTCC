@@ -45,7 +45,7 @@ const FormacaoEditarComponent = ({formacao}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-editar-for'>
             <button onClick={openModal} className='button-modal-open'>📝</button>
             <Modal
                 isOpen={modalIsOpen}

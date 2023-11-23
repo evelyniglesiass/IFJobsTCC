@@ -7,7 +7,7 @@ import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EditarCurriculoComponent = ({estudante}) => {
+const EditarCurriculoComponent = ({curriculo}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const EditarCurriculoComponent = ({estudante}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        resumo: estudante.resumo
+        resumo: curriculo.resumo
     })
 
     function handleChange(event){
@@ -39,7 +39,7 @@ const EditarCurriculoComponent = ({estudante}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-editar-cur'>
 
             <button onClick={openModal} className='button-modal-open'>📝</button>
 
@@ -59,10 +59,10 @@ const EditarCurriculoComponent = ({estudante}) => {
                 <form onSubmit={onSubmit}>
 
                     <div className='txt-form-group'>
-                        <textarea type="textarea" value={estudante.resumo} class="form-control" name='resumo' placeholder="Resumo" maxLength={250} onChange={handleChange}/>
+                        <textarea type="textarea" value={curriculo.resumo} class="form-control" name='resumo' placeholder="Resumo" maxLength={250} onChange={handleChange}/>
                     </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
 

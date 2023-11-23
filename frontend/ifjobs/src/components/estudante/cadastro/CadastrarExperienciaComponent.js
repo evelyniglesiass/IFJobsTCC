@@ -44,7 +44,7 @@ const CadastrarExperienciaComponent = () => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-cadastrar-exp'>
             <button onClick={openModal} className='button-modal-open'>➕</button>
             <Modal
                 isOpen={modalIsOpen}
