@@ -20,8 +20,8 @@ const ExperienciasComponent = ({experiencias}) => {
                                     <h6 className='data-inicio fonte-corpo'>{e.dataInicial}</h6>
                                     <h6 className='data-fim fonte-corpo'>{e.dataFinal}</h6>
                                   </article>
-                                  <p className='conteudo-experiencias'>{e.descricao}</p>
                                   <ExperienciasEditarComponent experiencia={e}/>
+                                  <p className='conteudo-experiencias'>{e.descricao}</p>
                                 </section>
                             ]))
     });

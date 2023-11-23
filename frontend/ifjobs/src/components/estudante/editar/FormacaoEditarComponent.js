@@ -63,7 +63,7 @@ const FormacaoEditarComponent = ({formacao}) => {
 
                     <form onSubmit={onSubmit}>
                         <div class="txt-form-group">
-                            <select value={formacao.nivel} className='form-control' name='nivel' onChange={handleChange}>
+                            <select defaultValue={formacao.nivel} className='form-control' name='nivel' onChange={handleChange}>
                                 <option value="" disabled selected>Nível</option>
                                 <option value="0">Fundamental</option>
                                 <option value="1">Médio</option>
@@ -73,19 +73,19 @@ const FormacaoEditarComponent = ({formacao}) => {
                             </select>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" value={formacao.instituicao} class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
+                            <input type="text" defaultValue={formacao.instituicao} class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" value={formacao.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                            <input type="text" defaultValue={formacao.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" value={formacao.dataInicial} class="form-control" name='dataInicial'onChange={handleChange}/>
+                            <input type="date" defaultValue={formacao.dataInicial} class="form-control" name='dataInicial'onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" value={formacao.dataFinal} class="form-control" name='dataFinal'onChange={handleChange}/>
+                            <input type="date" defaultValue={formacao.dataFinal} class="form-control" name='dataFinal'onChange={handleChange}/>
                         </div>
                         <div className='txt-form-group'>
-                            <textarea type="textarea" value={formacao.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                            <textarea type="textarea" defaultValue={formacao.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                         </div>
                         
                         <button type='submit' class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>

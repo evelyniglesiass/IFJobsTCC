@@ -20,8 +20,8 @@ const FormacaoComponent = ({formacoes}) => {
                                       <h6 className='data-inicio fonte-corpo'>{f.dataInicial}</h6>
                                       <h6 className='data-fim fonte-corpo'>{f.dataFinal}</h6>
                                     </article>
-                                    <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
                                     <FormacaoEditarComponent formacao={f}/>
+                                    <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
                                   </section>
                                     ]))
     });

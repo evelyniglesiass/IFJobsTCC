@@ -57,7 +57,7 @@ const HabilidadeEditarComponent = ({habilidade}) => {
                 <form onSubmit={onSubmit}>
 
                     <div className='txt-form-group'>
-                        <input type="text" value={habilidade.descricao} class="form-control" name='descricao' placeholder="Habilidade" onChange={handleChange}/>
+                        <input type="text" defaultValue={habilidade.descricao} class="form-control" name='descricao' placeholder="Habilidade" onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>

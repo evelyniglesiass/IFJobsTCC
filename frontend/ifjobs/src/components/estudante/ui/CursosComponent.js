@@ -18,10 +18,10 @@ const CursosComponent = ({cursos}) => {
                                             <h6 className='titulos-cursos-exper fonte-corpo'>{c.instituicao}</h6>
                                             <article>
                                               <h6 className='data-inicio fonte-corpo'>{c.dataInicial}</h6>
-                                              <h6 className='data-fim fonte-corpo'>{c.dataFinal}</h6>
-                                            </article>
-                                            <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
+                                              <h6 className='data-fim fonte-corpo'>{c.dataFinal}</h6> 
+                                            </article> 
                                             <CursosEditarComponent cursos={c}/>
+                                            <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
                                           </section>
                                         ]))
     });
