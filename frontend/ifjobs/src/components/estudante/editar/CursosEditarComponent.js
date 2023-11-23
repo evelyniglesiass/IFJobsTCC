@@ -46,7 +46,7 @@ const CursosEditarComponent = ({cursos}) => {
 
     return (
         <div className='container-modal modal-editar-curso'>
-            <button onClick={openModal} className='button-modal-open'>📝</button>
+            <button onClick={openModal} className='button-modal-open'>✎</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

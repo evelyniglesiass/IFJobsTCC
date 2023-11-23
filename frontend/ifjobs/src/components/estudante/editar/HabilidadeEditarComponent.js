@@ -40,7 +40,7 @@ const HabilidadeEditarComponent = ({habilidade}) => {
     return (
         <div className='container-modal'>
 
-            <button onClick={openModal} className='button-modal-open'>📝</button>
+            <button onClick={openModal} className='button-modal-open'>✎</button>
 
             <Modal
                 isOpen={modalIsOpen}

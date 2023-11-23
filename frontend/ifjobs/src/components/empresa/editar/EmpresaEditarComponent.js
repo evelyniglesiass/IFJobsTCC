@@ -67,7 +67,7 @@ const EmpresaEditarComponent = ({empresa}) => {
   return ( 
     <div className='container-modal modal-editar-emp'>
 
-      <button onClick={openModal} className='button-modal-open'>📝</button>
+      <button onClick={openModal} className='button-modal-open'>✎</button>
 
       <Modal
         isOpen={modalIsOpen}
