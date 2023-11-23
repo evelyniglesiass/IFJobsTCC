@@ -28,7 +28,7 @@ const EmpresasSemLogada = () => {
   }, [])
 
   const [formInput, setFormInput] = useState({
-    pesquisa: ''
+    pesquisa: ' '
   })
 
   function handleChange(event){
@@ -42,11 +42,14 @@ const EmpresasSemLogada = () => {
   async function onSubmit(event){
     event.preventDefault();
 
-    const response = await listarEmpresaNomeSem(formInput.pesquisa);
-    setEmpresas(response) 
-    
+    if (formInput.pesquisa != " " && formInput.pesquisa != "") {
+      const response = await listarEmpresaNomeSem(formInput.pesquisa);
+      setEmpresas(response) 
+    } else {
+      const response = await listarEmpresasEmp();
+      setEmpresas(response) 
+    }
   }
-
 
   return (
     <div className='container-pages'>

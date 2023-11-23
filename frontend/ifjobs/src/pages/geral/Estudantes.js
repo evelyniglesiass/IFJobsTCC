@@ -29,7 +29,7 @@ const Estudantes = () => {
   }, [])
 
   const [formInput, setFormInput] = useState({
-    pesquisa: ''
+    pesquisa: ' '
   })
 
   function handleChange(event){
@@ -43,9 +43,13 @@ const Estudantes = () => {
   async function onSubmit(event){
     event.preventDefault();
 
-    const response = await listarEstudanteNome(formInput.pesquisa);
-    setEstudantes(response) 
-    
+    if (formInput.pesquisa != " " && formInput.pesquisa != "") {
+      const response = await listarEstudanteNome(formInput.pesquisa);
+      setEstudantes(response) 
+    } else {
+      const response = await listarEstudantesEmp();
+      setEstudantes(response) 
+    }
   }
 
   return (

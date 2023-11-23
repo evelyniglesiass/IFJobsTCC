@@ -23,7 +23,7 @@ const HeaderComponent = () => {
         <div className='link'><Link to={"/empresas"}>Empresas</Link><br /></div>
         <div className='link'><Link to={"/salvos"}>Salvos</Link><br /></div>
 
-        <button onClick={onClick} className='botao btn'>Sair<Link to={"/"}></Link><br/></button>
+        <button onClick={onClick} className='botao btn'><Link to={"/"}>Sair</Link><br/></button>
     </nav>
   )
 }
