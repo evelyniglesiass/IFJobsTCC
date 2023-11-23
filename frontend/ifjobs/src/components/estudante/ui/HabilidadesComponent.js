@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 
-// Component para cursos
+// Component para habilidades
 const HabilidadesComponent = ({habilidades}) => {
 
   const [habilidadesTag, setHabilidadesTag] = useState([]);
