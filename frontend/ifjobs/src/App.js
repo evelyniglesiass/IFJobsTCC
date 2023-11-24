@@ -52,7 +52,6 @@ function App() {
             {/* Visualizar vaga, editar vaga */}
             <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} /> {/*detalhes vaga visão empresa que postou OK*/}
             <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} /> {/*detalhes vaga visualizar OK*/}
-            {/*falta uma page para uma outra empresa visualizar a vaga sem o botão editar ou candidatar-se*/}
 
           </Routes>
         </BrowserRouter>

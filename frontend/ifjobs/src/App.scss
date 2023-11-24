@@ -214,7 +214,7 @@ body{
     color: $preto;
     border-color: $preto;
     border: solid 2px $preto-borda;
-    //margin-bottom: 20%;
+    // margin-bottom: 20%;
 }
 
 .container-empresa .titulo-empresas{
@@ -512,6 +512,7 @@ body{
     width: 80%;
     padding-left: 15px;
     margin: 0px;
+    margin-bottom: 10px;
     //display: inline-block;
 }
 
@@ -791,8 +792,8 @@ body{
 
 .modal-editar-vaga {
     width: 20px;
-    margin-left: 94%;
-    margin-top: 0px;
+    margin-left: 70%;
+    margin-top: 33px;
 }
 
 .modal-editar-est {

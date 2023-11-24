@@ -71,7 +71,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
         </section>
 
         <div className='perfil-empresa-vaga'>
-          <VagasComponent vagas={vagas}/>
+          <VagasComponent vagas={vagas} acao={"editar"}/>
         </div>
     </>
   )

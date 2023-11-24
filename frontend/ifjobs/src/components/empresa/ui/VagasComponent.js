@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
 
 // Component de vagas
-const VagasComponent = ({vagas}) => {
+const VagasComponent = ({vagas, acao}) => {
 
   const [vagasTag, setVagasTag] = useState([]);
 
@@ -16,9 +16,10 @@ const VagasComponent = ({vagas}) => {
       setVagasTag((oldVagasTag) => ([...oldVagasTag, 
                                         <section className='container-vaga'>
                                           <h2 className='titulo-vagas fonte-titulo'>{v.titulo}</h2>
+                                          {acao == "editar" ? <EditarDetalhesVagaComponent vaga={v}/> : ""}
                                           <p className='corpo-vagas fonte-corpo'>{v.descricao}</p>
                                           <article className='botao-vagas'>
-                                              <Link className='btn btn-dark' to={`/detalhes/vaga/${v.id}`}>Visualizar</Link>        
+                                            <Link className='btn btn-dark' to={`/detalhes/vaga/${v.id}`}>Visualizar</Link>        
                                           </article>
                                         </section>
                                     ]))

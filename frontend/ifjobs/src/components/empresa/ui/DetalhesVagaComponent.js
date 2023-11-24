@@ -28,7 +28,6 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                             "Mecânica"
                                             }</h5>
                                           </article>
-                                          <EditarDetalhesVagaComponent vaga={vaga}/>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
