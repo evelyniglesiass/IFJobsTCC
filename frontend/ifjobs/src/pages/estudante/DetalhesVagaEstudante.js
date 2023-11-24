@@ -5,7 +5,6 @@ import '../../App.scss';
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import DetalhesVagaEstudanteComponent from '../../components/estudante/ui/DetalhesVagaEstudanteComponent';
 import { useListarVagaEspecifica } from '../../hook/vagas/listarVagaEspecifica.hook';
-import { useListarCandidatosVaga } from '../../hook/estudante/listarCandidatosVaga.hook';
 import { useParams } from 'react-router-dom';
 
 // Detalhes de vagas na visão do estudante
@@ -20,8 +19,9 @@ const DetalhesVagaEstudante = () => {
   useEffect(() => {
     async function listar() {
 
-      const vagResp = await listarVagaEspecifica(id);
-      setVaga(vagResp) 
+      const vagResp = await listarVagaEspecifica(id, setVaga);
+      console.log("aqui tres", vagResp)
+       setVaga(vagResp) 
 
     }
 

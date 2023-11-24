@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { useListarExperiencia } from '../../../hook/experiencia/listarExperiencia.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
 
-import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
 import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
 import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
 import CurriculoEditarComponent from '../editar/CurriculoEditarComponent';
@@ -32,8 +31,8 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
-  const [cursoTag, setCursoTag] = useState();
-  const [icone, setIcone] = useState("");
+
+  const [c, setC] = useState("");
 
   useEffect(() => {
 
@@ -41,43 +40,29 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
     setCurriculoTag([]);
     setSobreMimTag([]);
 
-    switch (estudante.curso) {
-      case "INFORMATICA":
-        setCursoTag("Informática")
-        break;
-      case "EVENTOS":
-        setCursoTag("Eventos")
-        break;
-      case "MECANICA":
-        setCursoTag("Mecânica")
-        break;
-      case "PLASTICOS":
-        setCursoTag("Plásticos")
-        break;
-      default:
-        break;
-    }
-
-    if (estudante.nome != null) {
-      setIcone(estudante.nome.slice(0, 2).toUpperCase())
-    } else {
-      setIcone("👤")
-    }
+    setC(curriculo.resumo)
     
     setEstudanteTag(() => ([
                             <section>
-                              <h1 className='img-perfis'>{icone}</h1>
+                              <h1 className='img-perfis'>{
+                                estudante.nome != null ? estudante.nome.slice(0, 2).toUpperCase() : "👤"
+                              }</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>
-                              <h5 className='curso fonte-titulo'>{cursoTag}</h5>
+                              <h5 className='curso fonte-titulo'>{
+                              estudante.curso == 'INFORMATICA' ? "Informática" : 
+                              estudante.curso == "EVENTOS" ? "Eventos" : 
+                              estudante.curso == "PLÁSTICOS" ? "Plásticos" : 
+                              "Mecânica"
+                              }</h5>
                             </section>
                           ]))
 
     setCurriculoTag(() => ([
-                            <section>
-                              <p className='fonte-corpo'>{curriculo.resumo}</p> 
-                            </section>
-                          ]))
+        <section>
+          <p className='fonte-corpo'>{curriculo.resumo}</p> 
+        </section>
+      ]))
 
     setSobreMimTag(() => ([
                             <section>
@@ -120,15 +105,6 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
     listar();
   }, [])
 
-  function cur() {
-    if (curriculo == null) {
-      return 
-    } else {
-      return 
-    }
-
-  }
-
   return (
     <section>
         <article className='cabecalho-perfis'>
@@ -139,12 +115,12 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         </article>
 
         <article className='objetivo-curriculo'>
-          <h3 className='fonte-titulo'>Sobre mim</h3>
+          <h3 className='fonte-titulo fonte-sobre'>Sobre mim</h3>
           {sobreMimTag}
         </article>
         
         <article className='objetivo-curriculo'>
-          <h3 className='fonte-titulo'>Resumo</h3>
+          <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
           <CadastrarCurriculoComponent/>
           <CurriculoEditarComponent curriculo={curriculo}/>

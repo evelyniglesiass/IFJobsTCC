@@ -3,8 +3,9 @@ import '../../../App.scss';
 
 // Component para detalhar vaga na visão do estudante
 const DetalhesVagaEstudanteComponent = ({vaga}) => {
-
+  let vagaLocal = vaga
   const [vagaTag, setVagaTag] = useState([]);
+  const [cursoTag, setCursoTag] = useState("");
 
   useEffect(() => {
 
@@ -13,9 +14,16 @@ const DetalhesVagaEstudanteComponent = ({vaga}) => {
     setVagaTag((oldVagaTag) => ([...oldVagaTag, 
                                       <section>
                                           <article className='cabecalho-perfis'>
-                                            <h1 className='img-perfis'>TL</h1>
+                                            <h1 className='img-perfis'>⚐</h1>
                                             <h2 className='titulo-perfil fonte-titulo'>{vaga.titulo}</h2>
                                             <h5 className='curso fonte-titulo'>{vaga.cidade}</h5>
+                                            <h5 className='curso fonte-titulo'> {
+                                            vaga.curso == 'INFORMATICA' ? "Informática" : 
+                                            vaga.curso == "EVENTOS" ? "Eventos" : 
+                                            vaga.curso == "PLÁSTICOS" ? "Plásticos" : 
+                                            "Mecânica"
+                                            }
+                                            </h5>
                                           </article>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
@@ -26,7 +34,7 @@ const DetalhesVagaEstudanteComponent = ({vaga}) => {
                                       </section>
                                   ]))
 
-  }, [vaga])
+  }, [vagaLocal])
 
   return (
     <section>

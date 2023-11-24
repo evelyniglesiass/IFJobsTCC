@@ -26,33 +26,34 @@ const CurriculoComponent = ({estudante, curriculo}) => {
     setEstudanteTag([]);
     setCurriculoTag([]);
     setSobreMimTag([]);
-
-    if (estudante.nome != null) {
-      setIcone(estudante.nome.slice(0, 2).toUpperCase())
-    } else {
-      setIcone("👤")
-    }
     
     setEstudanteTag(() => ([
                             <section>
-                              <h1 className='img-perfis'>{icone}</h1>
+                              <h1 className='img-perfis'>{
+                                estudante.nome != null ? estudante.nome.slice(0, 2).toUpperCase() : "👤"
+                              }</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='fonte-titulo'>{estudante.usuario}</h5>
                               <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>
-                              <h5 className='curso fonte-titulo'>{estudante.curso}</h5>
+                              <h5 className='curso fonte-titulo'>{
+                              estudante.curso == 'INFORMATICA' ? "Informática" : 
+                              estudante.curso == "EVENTOS" ? "Eventos" : 
+                              estudante.curso == "PLÁSTICOS" ? "Plásticos" : 
+                              "Mecânica"
+                              }</h5>
                             </section>
                           ]))
                   
     setCurriculoTag(() => ([
                             <section>
-                              <h3 className='fonte-titulo'>Resumo</h3>
+                              <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
                               <p className='fonte-corpo'>{curriculo.resumo}</p> 
                             </section>
                           ]))
 
     setSobreMimTag(() => ([
                             <section>
-                              <h3 className='fonte-titulo'>Sobre mim</h3>
+                              <h3 className='fonte-titulo fonte-sobre'>Sobre mim</h3>
                               <p className='fonte-corpo'>{estudante.email}</p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
