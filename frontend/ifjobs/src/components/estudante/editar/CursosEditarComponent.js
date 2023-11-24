@@ -20,7 +20,6 @@ const CursosEditarComponent = ({cursos}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        titulo: cursos.titulo,
         instituicao: cursos.instituicao,
         cidade: cursos.cidade,
         cargaHoraria: cursos.cargaHoraria,
@@ -40,7 +39,7 @@ const CursosEditarComponent = ({cursos}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurso(formInput.titulo, formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await edicaoCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 
@@ -61,9 +60,6 @@ const CursosEditarComponent = ({cursos}) => {
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
-                    <div className='txt-form-group'>
-                        <input type="text" defaultValue={cursos.titulo} class="form-control" name='titulo' placeholder="Nome" onChange={handleChange}/>
-                    </div>
                     <div className='txt-form-group'>
                         <input type="text" defaultValue={cursos.instituicao} class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
                     </div>

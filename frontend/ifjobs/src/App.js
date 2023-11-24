@@ -50,8 +50,8 @@ function App() {
             <Route path='/perfil/empresa' element={<PerfilEmpresa/>} /> {/*perfil da empresa logada OK*/}
 
             {/* Visualizar vaga, editar vaga */}
-            <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} /> {/*detalhes vaga visão empresa que postou OK*/}
-            <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} /> {/*detalhes vaga visualizar OK*/}
+            <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} /> {/*detalhes vaga visão empresa OK*/}
+            <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} /> {/*detalhes vaga visão estudante OK*/}
 
           </Routes>
         </BrowserRouter>

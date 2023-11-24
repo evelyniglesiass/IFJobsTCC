@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function criarCursoApi(titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
+export async function criarCursoApi(cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao){
 
     try{
         const response = await axiosInstance.post("/cursos", {
-            titulo, cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao
+            cargaHoraria, cidade, descricao, dataInicial, dataFinal, instituicao
         });
 
         toast.success(response.data.mensagem)

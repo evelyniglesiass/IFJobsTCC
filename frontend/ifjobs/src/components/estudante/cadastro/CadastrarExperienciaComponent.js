@@ -20,7 +20,6 @@ const CadastrarExperienciaComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        titulo: '',
         empresa: '',
         cargo: '',
         dataInicial: '',
@@ -39,7 +38,7 @@ const CadastrarExperienciaComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroExperiencia(formInput.titulo, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastroExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 
@@ -63,9 +62,6 @@ const CadastrarExperienciaComponent = () => {
                 <div className='container-cursos-exper'>
 
                     <form onSubmit={onSubmit}>
-                        <div className='txt-form-group'>
-                            <input type="text" class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
-                        </div>
                         <div className='txt-form-group'>
                             <input type="text" class="form-control" name='empresa' placeholder="Empresa" onChange={handleChange}/>
                         </div>

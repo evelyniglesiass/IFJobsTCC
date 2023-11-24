@@ -21,7 +21,6 @@ const CadastrarCursoComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        titulo: '',
         instituicao: '',
         cidade: '',
         cargaHoraria: '',
@@ -41,7 +40,7 @@ const CadastrarCursoComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroCurso(formInput.titulo, formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastroCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 
@@ -63,9 +62,6 @@ const CadastrarCursoComponent = () => {
                 <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
-                    <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='titulo' placeholder="Nome" onChange={handleChange}/>
-                    </div>
                     <div className='txt-form-group'>
                         <input type="text" class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
                     </div>

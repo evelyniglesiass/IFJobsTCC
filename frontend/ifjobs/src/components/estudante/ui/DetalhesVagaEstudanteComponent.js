@@ -5,7 +5,6 @@ import '../../../App.scss';
 const DetalhesVagaEstudanteComponent = ({vaga}) => {
   let vagaLocal = vaga
   const [vagaTag, setVagaTag] = useState([]);
-  const [cursoTag, setCursoTag] = useState("");
 
   useEffect(() => {
 
@@ -28,8 +27,8 @@ const DetalhesVagaEstudanteComponent = ({vaga}) => {
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
-                                            <p className='fonte-corpo'>Salário: {vaga.salario}</p>
-                                            <p className='fonte-corpo'>Idade mínima: {vaga.idadeMinima}</p>
+                                            <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
+                                            <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
                                           </article>
                                       </section>
                                   ]))

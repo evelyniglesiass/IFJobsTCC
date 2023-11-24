@@ -8,7 +8,6 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
 
   const [vagaTag, setVagaTag] = useState([]);
   const [estudantesTag, setEstudantesTag] = useState([]);
-  const [cursoTag, setCursoTag] = useState([]);
 
   useEffect(() => {
 
@@ -31,8 +30,8 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
-                                            <p className='fonte-corpo'>Salário: {vaga.salario}</p>
-                                            <p className='fonte-corpo'>Idade mínima: {vaga.idadeMinima}</p>
+                                            <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
+                                            <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
                                           </article>
                                       </section>
                                   ])) 

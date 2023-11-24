@@ -36,9 +36,9 @@ public class ExperienciaProfissional {
 	@Column(nullable = false)
     private Integer id;
 
-    @NotBlank(message = "Insira um título para sua experiência!")
-    @Column(nullable = false, length = 50)
-	private String titulo;
+    // @NotBlank(message = "Insira um título para sua experiência!")
+    // @Column(nullable = false, length = 50)
+	// private String titulo;
 
     @NotBlank(message = "Insira detalhes sobre a sua experiência profissional na descrição!")
     @Column(nullable = false, length = 500) 
