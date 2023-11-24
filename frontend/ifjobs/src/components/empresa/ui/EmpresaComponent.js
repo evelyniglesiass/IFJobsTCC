@@ -10,15 +10,22 @@ import { useParams } from 'react-router-dom';
 const EditarPerfilEmpresaComponent = ({empresa}) => {
 
   const [empresaTag, setEmpresaTag] = useState([]);
+  const [icone, setIcone] = useState("");
 
   useEffect(() => {
 
     setEmpresaTag([]);
 
+    if (empresa.nome != null) {
+      setIcone(empresa.nome.slice(0, 2).toUpperCase())
+    } else {
+      setIcone("👤")
+    }
+
     setEmpresaTag((oldEmpresaTag) => ([...oldEmpresaTag, 
                                       <section>
                                         <section className='cabecalho-perfis'>
-                                          <h1 className='img-perfis'>{/*`${empresa.nome.slice(0, 2).toUpperCase()}`*/}</h1>
+                                          <h1 className='img-perfis'>{icone}</h1>
                                           <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
                                           <h5 className='curso fonte-titulo'>{empresa.nomeUsuario}</h5>
                                           <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>

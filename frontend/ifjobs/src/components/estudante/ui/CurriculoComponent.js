@@ -19,16 +19,23 @@ const CurriculoComponent = ({estudante, curriculo}) => {
   const [estudanteTag, setEstudanteTag] = useState([]); 
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
+  const [icone, setIcone] = useState("");
 
   useEffect(() => {
 
     setEstudanteTag([]);
     setCurriculoTag([]);
     setSobreMimTag([]);
+
+    if (estudante.nome != null) {
+      setIcone(estudante.nome.slice(0, 2).toUpperCase())
+    } else {
+      setIcone("👤")
+    }
     
     setEstudanteTag(() => ([
                             <section>
-                              <h1 className='img-perfis'>EV{/*`${estudante.nome.slice(0, 2).toUpperCase()}`*/}</h1>
+                              <h1 className='img-perfis'>{icone}</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='fonte-titulo'>{estudante.usuario}</h5>
                               <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>

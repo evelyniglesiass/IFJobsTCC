@@ -11,15 +11,22 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
   const [empresaUm, setEmpresaUm] = useState([]);
   const [empresaDois, setEmpresaDois] = useState([]);
+  const [icone, setIcone] = useState("");
 
   useEffect(() => {
 
     setEmpresaUm([]);
     setEmpresaDois([]);
 
+    if (empresa.nome != null) {
+      setIcone(empresa.nome.slice(0, 2).toUpperCase())
+    } else {
+      setIcone("👤")
+    }
+
     setEmpresaUm((oldEmpresaUm) => ([...oldEmpresaUm, 
                                       <section className=''>
-                                        <h1 className='img-perfis'>EV{/*`${empresa.nome.slice(0, 2).toUpperCase()}`*/}</h1>
+                                        <h1 className='img-perfis'>{icone}</h1>
                                         <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
                                         <h5 className='curso fonte-titulo'>{empresa.nomeUsuario}</h5>
                                         <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>
