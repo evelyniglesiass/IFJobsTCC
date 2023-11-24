@@ -47,7 +47,7 @@ const CurriculoComponent = ({estudante, curriculo}) => {
     setCurriculoTag(() => ([
                             <section>
                               <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
-                              <p className='fonte-corpo'>{curriculo.resumo}</p> 
+                              <p className='fonte-corpo'>{curriculo != null ? curriculo.resumo : ""}</p> 
                             </section>
                           ]))
 

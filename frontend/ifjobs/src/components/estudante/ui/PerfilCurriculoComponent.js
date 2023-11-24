@@ -58,11 +58,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                             </section>
                           ]))
 
-    setCurriculoTag(() => ([
+    if (curriculo != null) {
+      setCurriculoTag(() => ([
         <section>
-          <p className='fonte-corpo'>{curriculo.resumo}</p> 
+          <p className='fonte-corpo'>{curriculo != null ? curriculo.resumo : ""}</p> 
         </section>
       ]))
+    }
 
     setSobreMimTag(() => ([
                             <section>
@@ -88,17 +90,20 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   useEffect(() => {
     async function listar() { 
 
-      const response = await listarExperiencia(user.id);
-      setExperiencia(response);
+      if (curriculo != null) {
+        console.log(curriculo)
+        const response = await listarExperiencia(user.id);
+        setExperiencia(response);
 
-      const curResp = await listarCurso(user.id);
-      setCurso(curResp);
+        const curResp = await listarCurso(user.id);
+        setCurso(curResp);
 
-      const forResp = await listarFormacao(user.id);
-      setFormacao(forResp);
+        const forResp = await listarFormacao(user.id);
+        setFormacao(forResp);
 
-      const habResp = await listarHabilidade(user.id);
-      setHabilidade(habResp);
+        const habResp = await listarHabilidade(user.id);
+        setHabilidade(habResp);
+      }
 
     }
 
@@ -130,7 +135,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
           <CadastrarExperienciaComponent/>
           <div className='experiencia-component'>
-            <ExperienciasComponent experiencias={experiencia}/>
+            {curriculo != null ? <ExperienciasComponent experiencias={experiencia}/> : "" }
           </div>
         </article>
 
@@ -138,7 +143,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
           <CadastrarCursoComponent/>
           <article className='cursos-component'>
-            <CursosComponent cursos={curso}/>
+            {curriculo != null ? <CursosComponent cursos={curso}/> : "" }
           </article>
         </article>
 
@@ -146,14 +151,14 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <CadastrarFormacaoComponent/>
           <article className='formacao-component'>
-            <FormacaoComponent formacoes={formacao}/>
+            {curriculo != null ? <FormacaoComponent formacoes={formacao}/> : "" }
           </article>
         </article>
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
           <article className='habilidades-component'>
-            <HabilidadesComponent habilidades={habilidade}/>
+            {curriculo != null ? <HabilidadesComponent habilidades={habilidade}/> : "" }
           </article>
         </article>   
 
