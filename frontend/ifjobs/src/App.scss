@@ -546,6 +546,16 @@ body{
     color: $branco;
 }
 
+.candidatos a{
+    text-decoration: none;
+    color: $preto;
+}
+
+.candidatos a:hover{
+    text-decoration: none;
+    color: $verde-forte;
+}
+
 // Empresas
 .container-geral-empresas{
     display: inline-block;
@@ -773,6 +783,12 @@ body{
 .modal-editar-emp {
     width: 20px;
     margin-left: 99%;
+}
+
+.modal-editar-vaga {
+    width: 20px;
+    margin-left: 94%;
+    margin-top: 0px;
 }
 
 .modal-editar-est {

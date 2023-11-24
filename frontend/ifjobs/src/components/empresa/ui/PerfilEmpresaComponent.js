@@ -32,6 +32,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
                                         <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>
                                       </section>
                                   ]))
+                                  
     setEmpresaDois((oldEmpresaDois) => ([...oldEmpresaDois, 
                                         <section className=''>
                                           <h3 className='fonte-titulo'>Sobre a empresa</h3>

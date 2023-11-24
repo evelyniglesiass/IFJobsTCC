@@ -40,7 +40,7 @@ const LoginComponent = () => {
             <input type='text' name='email' placeholder='Email' className='txt form-control' onChange={handleChange}/> 
             <input type='password' name='senha' placeholder='Senha' className='txt form-control' onChange={handleChange}/> 
 
-            <button className='botao btn' onClick={onClick}><Link to={"/feed"}>Entrar</Link></button>
+            <button className='botao btn' onClick={onClick}>Entrar</button>
 
         </form>
 

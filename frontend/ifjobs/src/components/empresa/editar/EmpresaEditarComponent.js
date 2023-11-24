@@ -45,7 +45,7 @@ const EmpresaEditarComponent = ({empresa}) => {
         descricao: empresa.descricao,
         telefone: empresa.telefone,
         email: empresa.email,
-        senha: '',
+        senha: empresa.senha,
         cidade: empresa.cidade
     })
 
@@ -59,6 +59,7 @@ const EmpresaEditarComponent = ({empresa}) => {
 
     async function onSubmit(event){
         event.preventDefault();
+        console.log(formInput.usuario)
 
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
         
@@ -98,7 +99,7 @@ const EmpresaEditarComponent = ({empresa}) => {
                   <input type="email" defaultValue={empresa.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="password" defaultValue={empresa.senha} class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                  <input type="text" class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
                   <input type="text" defaultValue={empresa.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
