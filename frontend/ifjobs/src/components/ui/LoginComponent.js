@@ -1,5 +1,5 @@
 import '../../App.scss';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
 import CadastrarUsuarioComponent from './CadastrarUsuarioComponent';
@@ -25,11 +25,10 @@ const LoginComponent = () => {
 
   const {fazerLogin} = useLogin();
 
-  async function onSubmit(event){
+  async function onClick(event){
     event.preventDefault();
 
     await fazerLogin(formInput.email, formInput.senha);
-
   }
 
   return (
@@ -37,11 +36,11 @@ const LoginComponent = () => {
 
         <h3>Bem vindo!</h3>
 
-        <form className='login' onSubmit={onSubmit}>
+        <form className='login'>
             <input type='text' name='email' placeholder='Email' className='txt form-control' onChange={handleChange}/> 
             <input type='password' name='senha' placeholder='Senha' className='txt form-control' onChange={handleChange}/> 
 
-            <button className='btn btn-dark'><Link to={"/feed"}>Entrar</Link></button>
+            <button className='botao btn' onClick={onClick}>Entrar</button>
 
         </form>
 

@@ -29,7 +29,7 @@ const EstudantesSemLogado = () => {
   }, [])
 
   const [formInput, setFormInput] = useState({
-    pesquisa: ''
+    pesquisa: ' '
   })
 
   function handleChange(event){
@@ -43,9 +43,14 @@ const EstudantesSemLogado = () => {
   async function onSubmit(event){
     event.preventDefault();
 
-    const estResp = await listarEstudanteNomeSem(formInput.pesquisa);
-    setEstudantes(estResp) 
-    
+    if (formInput.pesquisa != " " && formInput.pesquisa != "") {
+      const estResp = await listarEstudanteNomeSem(formInput.pesquisa);
+      setEstudantes(estResp) 
+    } else {
+      const response = await listarEstudantesEst();
+      setEstudantes(response) 
+    }
+
   }
 
   return (

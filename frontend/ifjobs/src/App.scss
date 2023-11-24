@@ -323,11 +323,6 @@ body{
     text-align: center;
 }
 
-.container-login a {
-    text-decoration: none;
-    color: $preto;
-}
-
 .container-login .link-cadastro {
     color: $verde-forte;
 }
@@ -344,11 +339,22 @@ body{
 //     width: 150px;
 // }
 
+// .container-login .botao {
+//     text-decoration: none;
+//     color: $preto;
+// }
+
+// .container-login .botao:hover{
+//     background-color: $verde-forte;
+//     border-color: $branco;
+//     color: $branco;
+// }
+
 .login .txt{
     width: 80%;
 }
 
-.login .btn{
+.login .botao{
     width: 100px;
     margin-top: 15px;
     background-color: $preto;
@@ -356,20 +362,27 @@ body{
     color: $branco;
 }
 
-.login .btn a{
-    border-color: $branco;
-    color: $branco;
-}
-
 .login .btn:hover{
     background-color: $verde-forte;
-    border-color: $branco;
+    // border-color: $branco;
     color: $branco;
 }
 
-.login .btn a:hover{
-    background-color: $verde-forte;
-    border-color: $branco;
+.login .botao a:hover{
+    // background-color: $verde-forte;
+    // border-color: $branco;
+    color: $branco;
+}
+
+.login a {
+    color: $branco;
+    font-weight: 400;
+    font-size: 19px;
+    text-decoration: none;
+    width: 80%;
+}
+
+.login a:hover {
     color: $branco;
 }
 
@@ -427,6 +440,7 @@ body{
 .container-links{
     border-right: solid 3px $verde-borda;
 }
+
 .container-links a{ 
     color: $branco;
     font-weight: 600;
@@ -472,8 +486,6 @@ body{
 .container-links .botao a:hover{ 
     color: $branco;
 }
-
-
 
 // Pesquisa
 .caixa-pesquisa{
@@ -532,6 +544,16 @@ body{
 .botao-vagas .btn:hover{
     background-color: $preto;
     color: $branco;
+}
+
+.candidatos a{
+    text-decoration: none;
+    color: $preto;
+}
+
+.candidatos a:hover{
+    text-decoration: none;
+    color: $verde-forte;
 }
 
 // Empresas
@@ -761,6 +783,12 @@ body{
 .modal-editar-emp {
     width: 20px;
     margin-left: 99%;
+}
+
+.modal-editar-vaga {
+    width: 20px;
+    margin-left: 94%;
+    margin-top: 0px;
 }
 
 .modal-editar-est {

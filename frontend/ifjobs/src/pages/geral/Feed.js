@@ -28,7 +28,7 @@ const Feed = () => {
   }, [])
 
   const [formInput, setFormInput] = useState({
-    pesquisa: ''
+    pesquisa: ' '
   })
 
   function handleChange(event){
@@ -42,11 +42,13 @@ const Feed = () => {
   async function onSubmit(event){
     event.preventDefault();
 
-    const response = await listarVagaTitulo(formInput.pesquisa);
-    console.log(response)
-    console.log(formInput.pesquisa)
-    
-    setVagas(response) 
+    if (formInput.pesquisa != " " && formInput.pesquisa != "") {
+      const response = await listarVagaTitulo(formInput.pesquisa);
+      setVagas(response) 
+    } else {
+      const response = await listarVagas();
+      setVagas(response) 
+    }
     
   }
 

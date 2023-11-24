@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
+import { Link } from 'react-router-dom';
 
 // Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = ({vaga, estudantes}) => {
@@ -16,11 +17,11 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
     setVagaTag((oldVagaTag) => ([...oldVagaTag, 
                                       <section>
                                           <article className='cabecalho-perfis'>
-                                            <EditarDetalhesVagaComponent vaga={vaga}/>
                                             <h1 className='img-perfis'>TL</h1>
                                             <h2 className='titulo-perfil fonte-titulo'>{vaga.titulo}</h2>
                                             <h5 className='curso fonte-titulo'>{vaga.cidade}</h5>
                                           </article>
+                                          <EditarDetalhesVagaComponent vaga={vaga}/>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
@@ -33,7 +34,7 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
     estudantes.forEach(e => {
     setEstudantesTag((oldEstudantesTag) => ([...oldEstudantesTag, 
                                     <section>
-                                      <p className='fonte-corpo'>{e.nome}</p>
+                                      <p className='fonte-corpo candidatos'><Link to={`/estudante/${e.id}`}>{e.nome}</Link></p>
                                     </section>
                                 ]))
     });
@@ -45,7 +46,7 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
         {vagaTag}
 
         <article className='sobre-perfis'>
-          <h3 className='fonte-titulo'>Estudantes</h3>
+          <h3 className='fonte-titulo'>Candidatos</h3>
           {estudantesTag}
         </article>
 

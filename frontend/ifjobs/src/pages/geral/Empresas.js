@@ -28,7 +28,7 @@ const Empresas = () => {
   }, [])
 
   const [formInput, setFormInput] = useState({
-    pesquisa: ''
+    pesquisa: ' '
   })
 
   function handleChange(event){
@@ -42,9 +42,13 @@ const Empresas = () => {
   async function onSubmit(event){
     event.preventDefault();
 
-    const response = await listarEmpresaNome(formInput.pesquisa);
-    setEmpresas(response) 
-    
+    if (formInput.pesquisa != " " && formInput.pesquisa != "") {
+      const response = await listarEmpresaNome(formInput.pesquisa);
+      setEmpresas(response) 
+    } else {
+      const response = await listarEmpresasEst();
+      setEmpresas(response) 
+    }
   }
 
   return (
