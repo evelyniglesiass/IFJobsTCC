@@ -32,12 +32,12 @@ const ExperienciasEditarComponent = ({experiencia}) => {
 
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
-    const {edicaoExperiencia} = useEditarExperiencia();
+    const {editarExperiencia} = useEditarExperiencia();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await editarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

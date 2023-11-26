@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
+import ExcluirExperienciaComponent from '../excluir/ExcluirExperienciaComponent'
 import * as moment from 'moment';
 
 // Component para experiência profissional
@@ -22,6 +23,7 @@ const ExperienciasComponent = ({experiencias}) => {
                                     <h6 className='data-fim fonte-corpo'>{e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
                                   </article>
                                   <ExperienciasEditarComponent experiencia={e}/>
+                                  <ExcluirExperienciaComponent experiencia={e}/>
                                   <p className='conteudo-experiencias'>{e.descricao}</p>
                                 </section>
                             ]))

@@ -34,12 +34,12 @@ const CursosEditarComponent = ({cursos}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoCurso} = useEditarCurso();
+    const {editarCurso} = useEditarCurso();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await editarCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

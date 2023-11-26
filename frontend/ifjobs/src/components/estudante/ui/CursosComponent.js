@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import CursosEditarComponent from '../editar/CursosEditarComponent';
+import ExcluiCursoComponent from '../excluir/ExcluirCursoComponent'
 import * as moment from 'moment';
 
 // Component para cursos
@@ -22,6 +23,7 @@ const CursosComponent = ({cursos}) => {
                                               <h6 className='data-fim fonte-corpo'>{c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6> 
                                             </article> 
                                             <CursosEditarComponent cursos={c}/>
+                                            <ExcluiCursoComponent/>
                                             <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
                                           </section>
                                         ]))

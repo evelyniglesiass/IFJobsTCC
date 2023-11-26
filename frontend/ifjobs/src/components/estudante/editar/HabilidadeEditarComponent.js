@@ -28,12 +28,12 @@ const HabilidadeEditarComponent = ({habilidade}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoHabilidade} = useEditarHabilidade();
+    const {editarHabilidade} = useEditarHabilidade();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoHabilidade(formInput.descricao);
+        await editarHabilidade(formInput.descricao);
         
     }
 
@@ -69,4 +69,4 @@ const HabilidadeEditarComponent = ({habilidade}) => {
     )
 }
 
-export default CadastrarCurriculoComponent
+export default HabilidadeEditarComponent

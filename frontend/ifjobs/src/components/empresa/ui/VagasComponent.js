@@ -30,6 +30,7 @@ const VagasComponent = ({vagas, acao}) => {
   return (
     <div className='container-geral-vagas'>
       {vagasTag}
+      
     </div>    
   )
 }

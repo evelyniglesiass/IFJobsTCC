@@ -35,12 +35,12 @@ const FormacaoEditarComponent = ({formacao}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoFormacao} = useEditarFormacao();
+    const {editarFormacao} = useEditarFormacao();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await editarFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

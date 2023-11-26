@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
+import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent'
 import { Link } from 'react-router-dom';
 
 // Component para detalhar vaga na visão da empresa
@@ -49,6 +50,7 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
   return (
     <section>
         {vagaTag}
+        <ExcluirVagaComponent/>
 
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Candidatos</h3>

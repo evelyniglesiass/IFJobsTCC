@@ -7,11 +7,14 @@ import VagasComponent from '../../components/empresa/ui/VagasComponent';
 import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import { useListarVagas } from '../../hook/vagas/listarVagas.hook';
 import { useListarVagaTitulo } from '../../hook/vagas/listarVagaTitulo.hook';
+import useGlobalUser from '../../context/usuario/user.context';
 
 // Feed com vagas publicadas
 const Feed = () => {
 
   const [vagas, setVagas] = useState([])
+
+  const [user] = useGlobalUser();
 
   const { listarVagas } = useListarVagas();
 
@@ -78,7 +81,7 @@ const Feed = () => {
 
         </article>
         
-        <AtalhoPerfilComponent />
+        {/* <AtalhoPerfilComponent user={user}/> */}
 
         <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
 

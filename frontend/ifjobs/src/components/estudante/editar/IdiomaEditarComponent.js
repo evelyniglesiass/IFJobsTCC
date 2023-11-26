@@ -28,12 +28,12 @@ const IdiomaEditarComponent = ({idioma}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoIdioma} = useEditarIdioma();
+    const {editarIdioma} = useEditarIdioma();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoIdioma(formInput.descricao);
+        await editarIdioma(formInput.descricao);
         
     }
 

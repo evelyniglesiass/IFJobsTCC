@@ -29,12 +29,12 @@ const EditarCurriculoComponent = ({curriculo}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoCurriculo} = useEditarCurriculo();
+    const {editarCurriculo} = useEditarCurriculo();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoCurriculo(formInput.resumo);
+        await editarCurriculo(formInput.resumo);
         
     }
 

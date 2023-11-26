@@ -35,12 +35,12 @@ const CadastrarCursoComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroCurso} = useCadastrarCurso();
+    const {cadastrarCurso} = useCadastrarCurso();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

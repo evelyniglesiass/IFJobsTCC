@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import HabilidadeEditarComponent from '../editar/HabilidadeEditarComponent'
 
 // Component para habilidades
 const HabilidadesComponent = ({habilidades}) => {
@@ -14,6 +15,7 @@ const HabilidadesComponent = ({habilidades}) => {
       setHabilidadesTag((oldHabilidadesTag) => ([...oldHabilidadesTag,
                                           <article className='cabecalho-cursos-exper'>
                                             <h6 className='fonte-corpo'>➜ {h.descricao}</h6>
+                                            <HabilidadeEditarComponent habilidade={h}/>
                                           </article>
                                         ]))
     });

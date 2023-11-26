@@ -28,12 +28,12 @@ const CadastrarHabilidadeComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroHabilidade} = useCadastrarHabilidade();
+    const {cadastrarHabilidade} = useCadastrarHabilidade();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroHabilidade(formInput.descricao);
+        await cadastrarHabilidade(formInput.descricao);
         
     }
 

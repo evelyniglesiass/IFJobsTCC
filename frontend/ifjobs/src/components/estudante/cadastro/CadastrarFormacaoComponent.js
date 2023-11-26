@@ -34,12 +34,12 @@ const CadastrarFormacaoComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroFormacao} = useCadastrarFormacao();
+    const {cadastrarFormacao} = useCadastrarFormacao();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

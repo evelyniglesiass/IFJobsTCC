@@ -33,12 +33,12 @@ const CadastrarExperienciaComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroExperiencia} = useCadastrarExperiencia();
+    const {cadastrarExperiencia} = useCadastrarExperiencia();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
         
     }
 

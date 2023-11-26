@@ -23,6 +23,8 @@ import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.h
 import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
 import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
 import HabilidadesComponent from './HabilidadesComponent';
+import CadastrarHabilidadeComponent from '../cadastro/CadastrarHabilidadeComponent'
+import ExcluirCurriculoComponent from '../excluir/ExcluirCurriculoComponent';
 
 
 // Component de perfil do estudante com botão de editar
@@ -129,6 +131,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           {curriculoTag}
           <CadastrarCurriculoComponent/>
           <CurriculoEditarComponent curriculo={curriculo}/>
+          <ExcluirCurriculoComponent curriculo={curriculo}/>
         </article>
 
         <article className='experiencia-curriculo'>
@@ -157,6 +160,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
+          <CadastrarHabilidadeComponent/>
           <article className='habilidades-component'>
             {curriculo != null ? <HabilidadesComponent habilidades={habilidade}/> : "" }
           </article>
