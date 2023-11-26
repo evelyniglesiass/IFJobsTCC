@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { criarCandidaturaApis } from "../../constants";
+import { criarCandidaturaApi } from "../../constants";
 import { toast } from "react-toastify";
 
 export function useCadastrarCandidatura(){
