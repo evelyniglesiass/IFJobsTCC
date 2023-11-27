@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 import * as moment from 'moment';
+import ExcluirFormacaoComponent from '../excluir/ExcluirFormacaoComponent';
 
 // Component para formação acadêmica
 const FormacaoComponent = ({formacoes}) => {
@@ -22,6 +23,7 @@ const FormacaoComponent = ({formacoes}) => {
                                       <h6 className='data-fim fonte-corpo'>{f.dataFinal != null ? moment(f.dataFinal).format("DD/MM/YYYY") : f.dataFinal}</h6>
                                     </article>
                                     <FormacaoEditarComponent formacao={f}/>
+                                    <ExcluirFormacaoComponent formacao={f}/>
                                     <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
                                   </section>
                                     ]))

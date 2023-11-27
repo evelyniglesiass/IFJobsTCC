@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
+import ExcluirIdiomaComponent from '../excluir/ExcluirIdiomaComponent';
+import IdiomaEditarComponent from '../editar/IdiomaEditarComponent';
 
 // Component para idiomas
 const IdiomasComponent = ({idioma}) => {
@@ -14,6 +16,8 @@ const IdiomasComponent = ({idioma}) => {
       setIdiomasTag((oldIdiomasTag) => ([...oldIdiomasTag,
                                           <article className='cabecalho-cursos-exper'>
                                             <h6 className='fonte-corpo'>➜ {i.descricao}</h6>
+                                            <IdiomaEditarComponent idioma={i}/>
+                                            <ExcluirIdiomaComponent idioma={i}/>
                                           </article>
                                         ]))
     });

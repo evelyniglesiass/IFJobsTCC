@@ -1,12 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useExcluirExperiencia } from '../../../hook/experiencia/excluirExperiencia.hook';
+import { useExcluirFormacao } from '../../../hook/formacao/excluirFormacao.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirExperienciaComponent = ({experiencia}) => {
+const ExcluirFormacaoComponent = ({formacao}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,12 +18,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
         setIsOpen(false);
     }
 
-    const {excluirExperiencia} = useExcluirExperiencia();
+    const {excluirFormacao} = useExcluirFormacao();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await excluirExperiencia(experiencia.id);
+        await excluirFormacao(formacao.id);
         
     }
 
@@ -38,12 +38,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua experiência?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua formação?</h2>                
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='experiencia' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary' name='formacao' id='botao-cadastro-modal'>Sim</button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 
@@ -55,4 +55,4 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
     )
 }
 
-export default ExcluirExperienciaComponent
+export default ExcluirFormacaoComponent

@@ -65,7 +65,7 @@ const EmpresasSemLogada = () => {
                 </section>
             </nav>  
           </article>
-          <AtalhoPerfilComponent/>
+          {/* <AtalhoPerfilComponent/> */}
           <article className='div-empresa'><EmpresasComponent empresas={empresas}/></article>
         </section>
     </div>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 import {Link} from "react-router-dom"
+import useGlobalUser from '../../context/usuario/user.context';
 
 // Component de atalho para o perfil logado
-const AtalhoPerfilComponent = ({user}) => {
+const AtalhoPerfilComponent = () => {
 
     const [userTag, setUserTag] = useState([]);
+    const [user] = useGlobalUser();
 
     useEffect(() =>{
 

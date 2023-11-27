@@ -18,18 +18,18 @@ const ExcluirVagaComponent = ({vaga}) => {
         setIsOpen(false);
     }
 
-    const {excluirCandidatura} = useExcluirVaga();
+    const {excluirVaga} = useExcluirVaga();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await excluirCandidatura(vaga.id);
+        await excluirVaga(vaga.id);
         
     }
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Candidatar-se</button>
+            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Deletar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

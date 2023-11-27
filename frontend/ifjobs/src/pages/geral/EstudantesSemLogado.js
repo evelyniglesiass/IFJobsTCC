@@ -67,7 +67,7 @@ const EstudantesSemLogado = () => {
                 </section>
             </nav>  
           </article>
-          <AtalhoPerfilComponent/>
+          {/* <AtalhoPerfilComponent/> */}
           <article className='div-empesa'><EstudantesComponent estudantes={estudantes}/></article>
         </section>
     </div>

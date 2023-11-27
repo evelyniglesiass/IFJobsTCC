@@ -43,7 +43,7 @@ const ExcluirCurriculoComponent = ({curriculo}) => {
                     <form onSubmit={onSubmit}>
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='curso' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary' name='curriculo' id='botao-cadastro-modal'>Sim</button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 

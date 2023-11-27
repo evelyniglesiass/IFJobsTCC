@@ -37,7 +37,7 @@ const ExperienciasEditarComponent = ({experiencia}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await editarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao, experiencia.id);
         
     }
 
@@ -75,7 +75,7 @@ const ExperienciasEditarComponent = ({experiencia}) => {
                             <textarea type="textarea" defaultValue={experiencia.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
                         </div>
                         
-                        <button type='submit' class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                        <button type='submit' className="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                     </form>
                 </div> 
             </Modal>

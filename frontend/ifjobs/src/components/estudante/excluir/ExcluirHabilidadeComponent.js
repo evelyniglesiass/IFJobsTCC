@@ -1,12 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useExcluirExperiencia } from '../../../hook/experiencia/excluirExperiencia.hook';
+import { useExcluirHabilidade } from '../../../hook/habilidade/excluirHabilidade.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirExperienciaComponent = ({experiencia}) => {
+const ExcluirHabilidadeComponent = ({habilidade}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,12 +18,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
         setIsOpen(false);
     }
 
-    const {excluirExperiencia} = useExcluirExperiencia();
+    const {excluirHabilidade} = useExcluirHabilidade();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await excluirExperiencia(experiencia.id);
+        await excluirHabilidade(habilidade.id);
         
     }
 
@@ -38,12 +38,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua experiência?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua habilidade?</h2>                
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='experiencia' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary' name='habilidade' id='botao-cadastro-modal'>Sim</button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 
@@ -55,4 +55,4 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
     )
 }
 
-export default ExcluirExperienciaComponent
+export default ExcluirHabilidadeComponent

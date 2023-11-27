@@ -40,7 +40,7 @@ const FormacaoEditarComponent = ({formacao}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await editarFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao, formacao.id);
         
     }
 

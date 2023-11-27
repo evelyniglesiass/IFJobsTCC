@@ -22,6 +22,7 @@ const EmpresasComponent = ({empresas}) => {
 
     }, [empresas])
 
+
   return (
     <section className='container-geral-empresas'> 
         {empresasTag}

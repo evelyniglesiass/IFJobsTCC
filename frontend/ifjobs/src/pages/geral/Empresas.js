@@ -57,15 +57,15 @@ const Empresas = () => {
         <section className='container-empresas'>
           <article className='pesquisa-empresas'>
               <nav class="navbar bg-body-tertiary">
-                  <section class="container-fluid">
-                      <form class="d-flex" role="search" onSubmit={onSubmit}>
-                        <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange}/>
-                        <button class="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
+                  <section className="container-fluid">
+                      <form className="d-flex" role="search" onSubmit={onSubmit}>
+                        <input nameName='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange}/>
+                        <button className="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
                       </form>
                   </section>
               </nav> 
           </article>
-          <AtalhoPerfilComponent/>
+          {/* <AtalhoPerfilComponent/> */}
           <article className='div-empresa'><EmpresasComponent empresas={empresas}/></article>
         </section>
     </div>

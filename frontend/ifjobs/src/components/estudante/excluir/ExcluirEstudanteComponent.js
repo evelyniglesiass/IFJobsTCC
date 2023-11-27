@@ -1,12 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useExcluirExperiencia } from '../../../hook/experiencia/excluirExperiencia.hook';
+import { useExcluirEstudante } from '../../../hook/estudante/excluirEstudante.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirExperienciaComponent = ({experiencia}) => {
+const ExcluirEstudanteComponent = ({estudante}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,12 +18,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
         setIsOpen(false);
     }
 
-    const {excluirExperiencia} = useExcluirExperiencia();
+    const {excluirEstudante} = useExcluirEstudante();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await excluirExperiencia(experiencia.id);
+        await excluirEstudante(estudante);
         
     }
 
@@ -38,12 +38,12 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua experiência?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>                
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='experiencia' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary' name='estudante' id='botao-cadastro-modal'>Sim</button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 
@@ -55,4 +55,4 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
     )
 }
 
-export default ExcluirExperienciaComponent
+export default ExcluirEstudanteComponent

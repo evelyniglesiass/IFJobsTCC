@@ -33,7 +33,7 @@ const HabilidadeEditarComponent = ({habilidade}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarHabilidade(formInput.descricao);
+        await editarHabilidade(formInput.descricao, habilidade.id);
         
     }
 
