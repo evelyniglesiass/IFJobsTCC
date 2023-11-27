@@ -14,8 +14,6 @@ import useGlobalUser from '../../../context/usuario/user.context';
 import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
 import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
 import CurriculoEditarComponent from '../editar/CurriculoEditarComponent';
-import CursosEditarComponent from '../editar/CursosEditarComponent';
-import FormacaoEditarComponent from '../editar/FormacaoEditarComponent';
 import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
@@ -34,15 +32,11 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
 
-  const [c, setC] = useState("");
-
   useEffect(() => {
 
     setEstudanteTag([]);
     setCurriculoTag([]);
     setSobreMimTag([]);
-
-    setC(curriculo.resumo)
     
     setEstudanteTag(() => ([
                             <section>
@@ -60,10 +54,10 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                             </section>
                           ]))
 
-    if (curriculo != null) {
+    if (curriculo.length != 0) {
       setCurriculoTag(() => ([
         <section>
-          <p className='fonte-corpo'>{curriculo != null ? curriculo.resumo : ""}</p> 
+          <p className='fonte-corpo'>{curriculo.length != 0 ? curriculo.resumo : ""}</p> 
         </section>
       ]))
     }
@@ -92,20 +86,17 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   useEffect(() => {
     async function listar() { 
 
-      if (curriculo != null) {
-        console.log(curriculo)
-        const response = await listarExperiencia(user.id);
-        setExperiencia(response);
+      const response = await listarExperiencia(user.id);
+      setExperiencia(response);
 
-        const curResp = await listarCurso(user.id);
-        setCurso(curResp);
+      const curResp = await listarCurso(user.id);
+      setCurso(curResp);
 
-        const forResp = await listarFormacao(user.id);
-        setFormacao(forResp);
+      const forResp = await listarFormacao(user.id);
+      setFormacao(forResp);
 
-        const habResp = await listarHabilidade(user.id);
-        setHabilidade(habResp);
-      }
+      const habResp = await listarHabilidade(user.id);
+      setHabilidade(habResp);
 
     }
 
@@ -117,8 +108,6 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='cabecalho-perfis'>
           {estudanteTag}
           <EstudanteEditarComponent estudante={estudante}/>
-          {/* <div className='btn-editar-estudante'> */}
-          {/* </div> */}
         </article>
 
         <article className='objetivo-curriculo'>
@@ -138,7 +127,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
           <CadastrarExperienciaComponent/>
           <div className='experiencia-component'>
-            {curriculo != null ? <ExperienciasComponent experiencias={experiencia}/> : "" }
+            <ExperienciasComponent experiencias={experiencia}/>
           </div>
         </article>
 
@@ -146,7 +135,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
           <CadastrarCursoComponent/>
           <article className='cursos-component'>
-            {curriculo != null ? <CursosComponent cursos={curso}/> : "" }
+            <CursosComponent cursos={curso}/>
           </article>
         </article>
 
@@ -154,7 +143,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <CadastrarFormacaoComponent/>
           <article className='formacao-component'>
-            {curriculo != null ? <FormacaoComponent formacoes={formacao}/> : "" }
+            <FormacaoComponent formacoes={formacao}/>
           </article>
         </article>
 
@@ -162,7 +151,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
           <CadastrarHabilidadeComponent/>
           <article className='habilidades-component'>
-            {curriculo != null ? <HabilidadesComponent habilidades={habilidade}/> : "" }
+            <HabilidadesComponent habilidades={habilidade}/>
           </article>
         </article>   
 

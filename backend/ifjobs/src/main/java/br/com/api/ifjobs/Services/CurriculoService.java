@@ -92,6 +92,11 @@ public class CurriculoService {
 
         Estudante e = estRep.findById(id).get();
 
+        if(!(curRep.existsByEstudante(e))){
+            r.setMensagem("Currículo não encontrado!");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
+        }
+
         Curriculo curriculo = curRep.findByEstudante(e);
 
         return CurriculoDTO
