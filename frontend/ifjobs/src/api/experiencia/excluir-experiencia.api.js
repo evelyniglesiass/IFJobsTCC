@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function excluirExperienciaApi(){
+export async function excluirExperienciaApi(experiencia){
 
     try{
-        const response = await axiosInstance.delete(`/experiencias`);
+        const response = await axiosInstance.delete(`/experiencias/${experiencia}`);
 
         toast.success(response.data.mensagem)
         return response.data;

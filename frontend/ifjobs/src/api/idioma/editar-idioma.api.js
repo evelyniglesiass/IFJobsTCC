@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function editarIdiomaApi(descricao){
+export async function editarIdiomaApi(descricao, idioma){
 
     try{
-        const response = await axiosInstance.put("/idiomas", {
+        const response = await axiosInstance.put(`/idiomas/${idioma}`, {
             descricao
         });
 

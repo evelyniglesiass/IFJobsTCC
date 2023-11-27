@@ -6,10 +6,10 @@ export function useExcluirIdioma(){
 
     const [error] = useState();
 
-    async function excluirIdioma(descricao){
+    async function excluirIdioma(idioma){
 
         try{
-            await excluirIdiomaApi(descricao);
+            await excluirIdiomaApi(idioma);
         }
         catch(errorApi){
             toast.error(errorApi);

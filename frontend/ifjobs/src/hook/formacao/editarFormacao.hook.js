@@ -6,10 +6,10 @@ export function useEditarFormacao(){
 
     const [error] = useState();
 
-    async function editarFormacao(descricao, cidade, instituicao, dataInicial, dataFinal, nivel){
+    async function editarFormacao(descricao, cidade, instituicao, dataInicial, dataFinal, nivel, formacao){
 
         try{
-            await editarFormacaoApi(descricao, cidade, instituicao, dataInicial, dataFinal, nivel);
+            await editarFormacaoApi(descricao, cidade, instituicao, dataInicial, dataFinal, nivel, formacao);
         }
         catch(errorApi){
             toast.error(errorApi);

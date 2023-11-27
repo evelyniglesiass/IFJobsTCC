@@ -6,10 +6,10 @@ export function useEditarExperiencia(){
 
     const [error] = useState();
 
-    async function editarExperiencia(descricao, empresa, cargo, dataInicial, dataFinal){
+    async function editarExperiencia(descricao, empresa, cargo, dataInicial, dataFinal, experiencia){
 
         try{
-            await editarExperenciaApi(descricao, empresa, cargo, dataInicial, dataFinal);
+            await editarExperenciaApi(descricao, empresa, cargo, dataInicial, dataFinal, experiencia);
         }
         catch(errorApi){
             toast.error(errorApi);

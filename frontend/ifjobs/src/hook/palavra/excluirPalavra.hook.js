@@ -6,10 +6,10 @@ export function useExcluirPalavraChave(){
 
     const [error] = useState();
 
-    async function excluirPalavraChave(){
+    async function excluirPalavraChave(palavraId){
 
         try{
-            await excluirPalavraChaveApi();
+            await excluirPalavraChaveApi(palavraId);
         }
         catch(errorApi){
             toast.error(errorApi);

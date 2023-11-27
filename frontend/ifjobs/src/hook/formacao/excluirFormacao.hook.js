@@ -6,10 +6,10 @@ export function useExcluirFormacao(){
 
     const [error] = useState();
 
-    async function excluirFormacao(){
+    async function excluirFormacao(formacao){
 
         try{
-            await excluirFormacaoApi();
+            await excluirFormacaoApi(formacao);
         }
         catch(errorApi){
             toast.error(errorApi);

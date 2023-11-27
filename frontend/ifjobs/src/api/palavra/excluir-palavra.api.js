@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function excluirPalavraChaveApi(){
+export async function excluirPalavraChaveApi(palavraId){
 
     try{
-        const response = await axiosInstance.delete("/palavrasChaves");
+        const response = await axiosInstance.delete(`/palavrasChaves/${palavraId}`);
 
         toast.success(response.data.mensagem)
         return response.data;

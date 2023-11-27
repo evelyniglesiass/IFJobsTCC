@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { editarCursoApi, excluirCursoApi } from "../../constants";
+import { excluirCursoApi } from "../../constants";
 
 export function useExcluirCurso(){
 
     const [error] = useState();
 
-    async function excluirCurso(){
+    async function excluirCurso(curso){
 
         try{
-            await excluirCursoApi();
+            await excluirCursoApi(curso);
         }
         catch(errorApi){
             toast.error(errorApi);

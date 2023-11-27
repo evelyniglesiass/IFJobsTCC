@@ -6,10 +6,10 @@ export function useExcluirVaga(){
 
     const [error] = useState();
 
-    async function excluirVaga(){
+    async function excluirVaga(vaga){
 
         try{
-            await excluirVagaApi();
+            await excluirVagaApi(vaga);
         }
         catch(errorApi){
             toast.error(errorApi);

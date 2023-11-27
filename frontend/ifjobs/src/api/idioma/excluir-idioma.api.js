@@ -1,10 +1,10 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function excluirIdiomaApi(){
+export async function excluirIdiomaApi(idioma){
 
     try{
-        const response = await axiosInstance.delete("/idiomas");
+        const response = await axiosInstance.delete(`/idiomas/${idioma}`);
 
         toast.success(response.data.mensagem)
         return response.data;

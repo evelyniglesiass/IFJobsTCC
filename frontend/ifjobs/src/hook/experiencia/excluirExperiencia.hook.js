@@ -6,10 +6,10 @@ export function useExcluirExperiencia(){
 
     const [error] = useState();
 
-    async function excluirExperiencia(){
+    async function excluirExperiencia(experiencia){
 
         try{
-            await excluirExperienciaApi();
+            await excluirExperienciaApi(experiencia);
         }
         catch(errorApi){
             toast.error(errorApi);

@@ -6,10 +6,10 @@ export function useExcluirHabilidade(){
 
     const [error] = useState();
 
-    async function excluirHabilidade(){
+    async function excluirHabilidade(habilidade){
 
         try{
-            await excluirHabilidadeApi();
+            await excluirHabilidadeApi(habilidade);
         }
         catch(errorApi){
             toast.error(errorApi);
