@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.ExperienciaProfissionalDTO;
-import br.com.api.ifjobs.models.ExperienciaProfissional;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.requests.ExperienciaProfissionalRequest;
 import br.com.api.ifjobs.services.ExperienciaProfissionalService;
 
 @RestController
@@ -34,7 +34,7 @@ public class ExperienciaProfissionalController {
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissional experiencia){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody ExperienciaProfissionalRequest experiencia){ 
         return expSer.cadastrar(experiencia);
     }
 
@@ -42,7 +42,7 @@ public class ExperienciaProfissionalController {
     @Secured("ROLE_ESTUDANTE")  
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissional experiencia){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody ExperienciaProfissionalRequest experiencia){ 
         return expSer.editar(experiencia); 
     }
 

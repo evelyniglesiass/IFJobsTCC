@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.CursoDTO;
-import br.com.api.ifjobs.models.Curso;
+//import br.com.api.ifjobs.models.Curso;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.requests.CursoRequest;
 import br.com.api.ifjobs.services.CursoService;
 
 @RestController
@@ -34,7 +35,7 @@ public class CursoController {
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curso curso){
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody CursoRequest curso){
         return curSer.cadastrar(curso);
     }
 
@@ -42,7 +43,7 @@ public class CursoController {
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Curso curso){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody CursoRequest curso){ 
         return curSer.editar(curso);
     }
 

@@ -1,5 +1,6 @@
 package br.com.api.ifjobs.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.FormacaoAcademicaRepository;
+import br.com.api.ifjobs.requests.FormacaoAcademicaRequest;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
@@ -39,9 +41,20 @@ public class FormacaoAcademicaService {
     
 
     //Método de cadastro de formações 
-    public ResponseEntity<?> cadastrar(FormacaoAcademica fa){
+    public ResponseEntity<?> cadastrar(FormacaoAcademicaRequest fa){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
+        FormacaoAcademica formacao = new FormacaoAcademica();
+        LocalDate dataInicial = LocalDate.parse(fa.getDataInicial());
+        LocalDate dataFinal = LocalDate.parse(fa.getDataFinal());
+        formacao.setCidade(fa.getCidade());
+        formacao.setCurriculo(fa.getCurriculo());
+        formacao.setDataFinal(dataFinal);
+        formacao.setDataInicial(dataInicial);
+        formacao.setDescricao(fa.getDescricao());
+        formacao.setInstituicao(fa.getInstituicao());
+        formacao.setNivel(fa.getNivel());
+        formacao.setId(fa.getId());
         
         if(!(curRep.existsById(estudante.getCurriculo().getId()))){
             r.setMensagem("Currículo não encontrado!");
@@ -53,18 +66,29 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         } 
 
-        fa.setCurriculo(estudante.getCurriculo());
-        forAcaRep.save(fa);
-        estudante.getCurriculo().getFormAcad().add(fa);
+        formacao.setCurriculo(estudante.getCurriculo());
+        forAcaRep.save(formacao);
+        estudante.getCurriculo().getFormAcad().add(formacao);
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 
     }
 
 
     //Método de edicão de formacões academicas
-    public ResponseEntity<?> editar(FormacaoAcademica fa){
+    public ResponseEntity<?> editar(FormacaoAcademicaRequest fa){
         
         Estudante estudante = usuarioAutenticadoService.getEstudante();
+        FormacaoAcademica formacao = new FormacaoAcademica();
+        LocalDate dataInicial = LocalDate.parse(fa.getDataInicial());
+        LocalDate dataFinal = LocalDate.parse(fa.getDataFinal());
+        formacao.setCidade(fa.getCidade());
+        formacao.setCurriculo(fa.getCurriculo());
+        formacao.setDataFinal(dataFinal);
+        formacao.setDataInicial(dataInicial);
+        formacao.setDescricao(fa.getDescricao());
+        formacao.setInstituicao(fa.getInstituicao());
+        formacao.setNivel(fa.getNivel());
+        formacao.setId(fa.getId());
         
         if(!(curRep.existsByEstudante(estudante))){
             r.setMensagem("Currículo não encontrado!");
@@ -76,8 +100,8 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
 
-        fa.setCurriculo(estudante.getCurriculo());
-        forAcaRep.save(fa);
+        formacao.setCurriculo(estudante.getCurriculo());
+        forAcaRep.save(formacao);
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

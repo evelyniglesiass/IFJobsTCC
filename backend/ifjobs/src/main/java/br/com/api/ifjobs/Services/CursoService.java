@@ -1,5 +1,6 @@
 package br.com.api.ifjobs.services;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.CursoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
+import br.com.api.ifjobs.requests.CursoRequest;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
@@ -38,33 +40,55 @@ public class CursoService {
 
 
     //Método para cadastrar cursos
-    public ResponseEntity<?> cadastrar(Curso c){
+    public ResponseEntity<?> cadastrar(CursoRequest c){
         
         Estudante e = usuarioAutenticadoService.getEstudante();
+        LocalDate dataInicial = LocalDate.parse(c.getDataInicial());
+        LocalDate dataFinal = LocalDate.parse(c.getDataFinal());
+        Curso curso = new Curso();
+        curso.setCargaHoraria(c.getCargaHoraria());
+        curso.setCidade(c.getCidade());
+        curso.setCurriculo(c.getCurriculo());
+        curso.setDescricao(c.getDescricao());
+        curso.setDataInicial(dataInicial);
+        curso.setDataFinal(dataFinal);
+        curso.setInstituicao(c.getInstituicao());
+        curso.setId(c.getId());
         
         if(!(curriculoRep.existsByEstudante(e))){
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
+        if(curso.getDataFinal().compareTo(curso.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
 
-        c.setCurriculo(e.getCurriculo());
-        e.getCurriculo().getCursos().add(c);
-        curRep.save(c);
+        curso.setCurriculo(e.getCurriculo());
+        e.getCurriculo().getCursos().add(curso);
+        curRep.save(curso);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 
     }
 
     //Método para editar cursos
-    public ResponseEntity<?> editar(Curso c){
+    public ResponseEntity<?> editar(CursoRequest c){
     
         Estudante e = usuarioAutenticadoService.getEstudante();
+        LocalDate dataInicial = LocalDate.parse(c.getDataInicial());
+        LocalDate dataFinal = LocalDate.parse(c.getDataFinal());
+        Curso curso = new Curso();
+        curso.setCargaHoraria(c.getCargaHoraria());
+        curso.setCidade(c.getCidade());
+        curso.setCurriculo(c.getCurriculo());
+        curso.setDescricao(c.getDescricao());
+        curso.setDataInicial(dataInicial);
+        curso.setDataFinal(dataFinal);
+        curso.setInstituicao(c.getInstituicao());
+        curso.setId(c.getId());
 
         if(!(curriculoRep.existsByEstudante(e))){
             r.setMensagem("Currículo não encontrado!");
@@ -72,14 +96,14 @@ public class CursoService {
 
         } 
         
-        if(c.getDataFinal().compareTo(c.getDataInicial()) < 0){
+        if(curso.getDataFinal().compareTo(curso.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         } 
 
-        c.setCurriculo(e.getCurriculo());
-        curRep.save(c);
+        curso.setCurriculo(e.getCurriculo());
+        curRep.save(curso);
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 

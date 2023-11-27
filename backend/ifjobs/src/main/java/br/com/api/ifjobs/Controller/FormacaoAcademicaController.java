@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
 import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
+import br.com.api.ifjobs.requests.FormacaoAcademicaRequest;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
 
 @RestController
@@ -34,7 +35,7 @@ public class FormacaoAcademicaController {
     @Secured("ROLE_ESTUDANTE")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademica formacaoAcademica){
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica){
         return formAcaSer.cadastrar(formacaoAcademica);
     }
 
@@ -42,7 +43,7 @@ public class FormacaoAcademicaController {
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademica formacaoAcademica){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica){ 
         return formAcaSer.editar(formacaoAcademica);
     }
 
