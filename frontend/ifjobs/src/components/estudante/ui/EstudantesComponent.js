@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import { Link } from 'react-router-dom';
 
-// Component para exibir empresas cadastradas no feed
+// Component para exibir estudantes cadastradas no feed
 const EstudantesComponent = ({estudantes}) => { 
 
     const [estudantesTag, setEstudantesTag] = useState([]);

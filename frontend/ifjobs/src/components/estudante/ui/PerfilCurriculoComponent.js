@@ -32,18 +32,21 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
+  const [mostrar, setMostrar] = useState();
   const [sobreMimTag, setSobreMimTag] = useState([]);
 
   const [experiencia, setExperiencia] = useState([]);
   const [curso, setCurso] = useState([]);
   const [formacao, setFormacao] = useState([]);
   const [habilidade, setHabilidade] = useState([]);
+  const [idioma, setIdioma] = useState([]);
   const [user] = useGlobalUser();
 
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
   const { listarHabilidade } = useListarHabilidade();
+  const { listarIdioma } = useListarIdioma();
 
   useEffect(() => {
 
@@ -73,30 +76,17 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <p className='fonte-corpo'>{curriculo.length != 0 ? curriculo.resumo : ""}</p> 
         </section>
       ]))
-    }
+    } 
 
     setSobreMimTag(() => ([
                             <section>
-                              <p className='fonte-corpo'>{estudante.email}</p>
+                              <p className='fonte-corpo'><a style={{color:'#146869'}} href='mailto:${estudante.email}'>{estudante.email}</a></p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
                             </section>
                           ]))
 
   }, [estudante, curriculo])
-
-  const [experiencia, setExperiencia] = useState([]);
-  const [curso, setCurso] = useState([]);
-  const [formacao, setFormacao] = useState([]);
-  const [habilidade, setHabilidade] = useState([]);
-  const [idioma, setIdioma] = useState([]);
-  const [user] = useGlobalUser();
-
-  const { listarExperiencia } = useListarExperiencia();
-  const { listarCurso } = useListarCurso();
-  const { listarFormacao } = useListarFormacao();
-  const { listarHabilidade } = useListarHabilidade();
-  const { listarIdioma } = useListarIdioma();
 
   useEffect(() => {
     async function listar() { 
@@ -136,7 +126,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
-          <CadastrarCurriculoComponent/>
+          <CadastrarCurriculoComponent mostrar={mostrar}/>
           <CurriculoEditarComponent curriculo={curriculo}/>
           <ExcluirCurriculoComponent curriculo={curriculo}/>
         </article>

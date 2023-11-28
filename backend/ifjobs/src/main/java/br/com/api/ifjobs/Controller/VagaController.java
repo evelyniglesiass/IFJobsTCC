@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.models.Vaga;
+// import br.com.api.ifjobs.models.Vaga;
+import br.com.api.ifjobs.requests.VagaRequest;
 import br.com.api.ifjobs.services.VagaService; 
  
 @RestController
@@ -34,7 +35,7 @@ public class VagaController {
     @Secured("ROLE_EMPRESA")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Vaga vaga){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody VagaRequest vaga){ 
         return vagSer.cadastrar(vaga);
     }
 
@@ -42,7 +43,7 @@ public class VagaController {
     @Secured("ROLE_EMPRESA")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Vaga vaga){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody VagaRequest vaga){ 
         return vagSer.editar(vaga);
     }
 

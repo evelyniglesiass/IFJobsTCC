@@ -61,7 +61,7 @@ public class FormacaoAcademicaService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
         
-        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+        if(formacao.getDataFinal().compareTo(formacao.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         } 

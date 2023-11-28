@@ -14,6 +14,7 @@ import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.VagaRepository;
+import br.com.api.ifjobs.requests.VagaRequest;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
@@ -29,26 +30,41 @@ public class VagaService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar vagas
-    public ResponseEntity<?> cadastrar(Vaga v){
+    public ResponseEntity<?> cadastrar(VagaRequest v){
         
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
+        Vaga vaga = new Vaga();
+        LocalDate dataPublicacao = LocalDate.parse(v.getDataPublicacao());
+        vaga.setCidade(v.getCidade());
+        vaga.setCurso(v.getCurso());
+        vaga.setDataPublicacao(dataPublicacao);
+        vaga.setDescricao(v.getDescricao());
+        vaga.setEmpresa(v.getEmpresa());
+        vaga.setEstudantes(v.getEstudantes());
+        vaga.setId(v.getId());
+        vaga.setIdadeMinima(v.getIdadeMinima());
+        vaga.setPalavrasChave(v.getPalavrasChave());
+        vaga.setSalario(v.getSalario());
+        vaga.setStatus(v.isStatus());
+        vaga.setTitulo(v.getTitulo());
+
         
-        if(v.getIdadeMinima() < 0){
+        if(vaga.getIdadeMinima() < 0){
             r.setMensagem("Insira uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
         
-        if(v.getSalario() < 0){
+        if(vaga.getSalario() < 0){
             r.setMensagem("Insira um valor válido para o salário!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
 
-        v.setStatus(true);
-        v.setEmpresa(empresa);
-        v.setDataPublicacao(LocalDate.now());
-        empresa.getVagasPublicadas().add(v);
-        vagRep.save(v);
+        vaga.setStatus(true);
+        vaga.setEmpresa(empresa);
+        vaga.setDataPublicacao(LocalDate.now());
+        empresa.getVagasPublicadas().add(vaga);
+        vagRep.save(vaga);
 
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
@@ -56,32 +72,46 @@ public class VagaService {
     }
 
     // método para editar vagas 
-    public ResponseEntity<?> editar(Vaga v){
+    public ResponseEntity<?> editar(VagaRequest v){
         
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
+        Vaga vaga = new Vaga();
+        LocalDate dataPublicacao = LocalDate.parse(v.getDataPublicacao());
+        vaga.setCidade(v.getCidade());
+        vaga.setCurso(v.getCurso());
+        vaga.setDataPublicacao(dataPublicacao);
+        vaga.setDescricao(v.getDescricao());
+        vaga.setEmpresa(v.getEmpresa());
+        vaga.setEstudantes(v.getEstudantes());
+        vaga.setId(v.getId());
+        vaga.setIdadeMinima(v.getIdadeMinima());
+        vaga.setPalavrasChave(v.getPalavrasChave());
+        vaga.setSalario(v.getSalario());
+        vaga.setStatus(v.isStatus());
+        vaga.setTitulo(v.getTitulo());
 
-        Vaga vagaAnt = vagRep.findById(v.getId()).get();
+        Vaga vagaAnt = vagRep.findById(vaga.getId()).get();
 
-        if(!(vagRep.existsById(v.getId()))){
+        if(!(vagRep.existsById(vaga.getId()))){
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
         
-        if(v.getSalario() < 0){
+        if(vaga.getSalario() < 0){
             r.setMensagem("Insira um valor válido para o salário!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
         
-        if(v.getIdadeMinima() < 0){
+        if(vaga.getIdadeMinima() < 0){
             r.setMensagem("Insira uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
 
-        v.setStatus(true);
-        v.setDataPublicacao(vagaAnt.getDataPublicacao());
-        v.setEmpresa(empresa);
-        vagRep.save(v);
+        vaga.setStatus(true);
+        vaga.setDataPublicacao(vagaAnt.getDataPublicacao());
+        vaga.setEmpresa(empresa);
+        vagRep.save(vaga);
 
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);

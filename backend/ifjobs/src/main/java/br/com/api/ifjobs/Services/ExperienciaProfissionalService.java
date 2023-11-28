@@ -60,7 +60,7 @@ public class ExperienciaProfissionalService {
 
         }
         
-        if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+        if(experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -94,7 +94,7 @@ public class ExperienciaProfissionalService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
         
-        if(e.getDataFinal().compareTo(e.getDataInicial()) < 0){
+        if(experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0){
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
