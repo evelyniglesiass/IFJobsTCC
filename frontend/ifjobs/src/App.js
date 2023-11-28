@@ -23,6 +23,7 @@ import { PrivateRoutePerfil } from './router/private-route-perfil.component';
 import { PrivateRouteEmpresas } from './router/private-route-empresas.component';
 import { PrivateRouteEstudantes } from './router/private-route-estudantes.compoent';
 import { PrivateRouteVagas } from './router/private-route-vagas.component';
+import Error from './pages/geral/Error';
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
       <GlobalUserProvider>
         <BrowserRouter>
           <Routes>
+
+          <Route path='*' element={<Error/>} /> 
 
             <Route path='/' element={<Home/>} /> 
             <Route path='/perfil' element={<PrivateRoutePerfil/>} />
@@ -46,25 +49,19 @@ function App() {
 
             {/* Login */}
             {/* <Route path='/' element={<Home/>} />  */}
-
             {/* Feed com vagas, empresas, estudantes e vagas salvas pelo estudante (falta pesquisar em todos) */}
             {/* <Route path='/feed' element={<Feed/>} /> feed com todas as vagas OK */}
             {/* <Route path='/salvos' element={<Salvos/>} /> feed com vagas salvas por um estudante OK */}
-
             {/* <Route path='/estudantes' element={<Estudantes/>} /> feed estudantes visão empresa OK */}
             {/* <Route path='/empresas' element={<Empresas/>} /> feed empresas visão estudante OK */}
-
             {/* <Route path='/estudantes/sem' element={<EstudantesSemLogado/>} /> feed estudantes visão estudante OK */}
             {/* <Route path='/empresas/sem' element={<EmpresasSemLogada/>} /> feed empresas visão empresa OK */}
-
             {/* Visualizar estudante, perfil logado e editar perfil logado de esudante */}
             {/* <Route path='/estudante/:id' element={<Estudante/>} /> OK */}
             {/* <Route path='/perfil/estudante' element={<PerfilEstudante/>} /> OK */}
-
             {/* Visualizar empresa, perfil logado e editar perfil logado de empresa */}
             {/* <Route path='/empresa/:id' element={<Empresa/>} /> perfil da empresa logada OK */}
             {/* <Route path='/perfil/empresa' element={<PerfilEmpresa/>} /> perfil da empresa logada OK */}
-
             {/* Visualizar vaga, editar vaga */}
             {/* <Route path='/detalhes/vaga/:id' element={<DetalhesVaga/>} /> detalhes vaga visão empresa OK */}
             {/* <Route path='/detalhes/vaga/estudante/:id' element={<DetalhesVagaEstudante/>} /> detalhes vaga visão estudante OK */}
