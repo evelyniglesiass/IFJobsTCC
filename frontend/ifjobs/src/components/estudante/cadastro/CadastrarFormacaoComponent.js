@@ -39,7 +39,7 @@ const CadastrarFormacaoComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastrarFormacao(formInput.nivel, formInput.instituicao, formInput.cidade, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarFormacao(formInput.descricao, formInput.cidade, formInput.instituicao, formInput.dataInicial, formInput.dataFinal, formInput.nivel);
         
     }
 
