@@ -62,13 +62,13 @@ const EstudanteEditarComponent = ({estudante}) => {
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
                     <div class="txt-form-group">
-                        <input type="text" defaultValue={estudante.nome} class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.nome} className="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" defaultValue={estudante.nomeUsuario} class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.nomeUsuario} className="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" defaultValue={estudante.idade} class="form-control" name="idade" placeholder="Idade" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.idade} className="form-control" name="idade" placeholder="Idade" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
                         <select defaultValue={estudante.curso} className='form-control' name='curso' onChange={handleChange}>
@@ -80,16 +80,16 @@ const EstudanteEditarComponent = ({estudante}) => {
                         </select>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" defaultValue={estudante.telefone} class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.telefone} className="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="email" defaultValue={estudante.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
+                        <input type="email" defaultValue={estudante.email} className="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="password" defaultValue={estudante.senha} class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                        <input type="password" defaultValue={estudante.senha} className="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" defaultValue={estudante.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.cidade} className="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
