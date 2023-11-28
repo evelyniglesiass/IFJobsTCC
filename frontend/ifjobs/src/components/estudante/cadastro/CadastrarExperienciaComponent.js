@@ -38,7 +38,7 @@ const CadastrarExperienciaComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastrarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarExperiencia(formInput.descricao, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal);
         
     }
 

@@ -36,8 +36,8 @@ const ExperienciasEditarComponent = ({experiencia}) => {
 
     async function onSubmit(event){
         event.preventDefault();
-
-        await editarExperiencia(formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, formInput.descricao, experiencia.id);
+        
+        await editarExperiencia(formInput.descricao, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, experiencia.id);
         
     }
 
