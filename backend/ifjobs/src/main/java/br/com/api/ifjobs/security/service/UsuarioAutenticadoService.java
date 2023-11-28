@@ -42,7 +42,7 @@ public class UsuarioAutenticadoService {
             return null;
         }
 
-        return empresaRepository.findById(user.getId()).get();//ver método
+        return empresaRepository.findById(user.getId()).get(); // ver método
     }
 
     public Estudante getEstudante(){

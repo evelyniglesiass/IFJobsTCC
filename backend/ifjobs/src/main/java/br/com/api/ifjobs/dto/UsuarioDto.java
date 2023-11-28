@@ -17,6 +17,7 @@ public class UsuarioDto {
             .cidade(empresa.getCidade())
             .email(empresa.getEmail())
             .telefone(empresa.getTelefone())
+            .permissao("Empresa")
             .build();
     }
 
@@ -31,6 +32,7 @@ public class UsuarioDto {
             .email(estudante.getEmail())
             .telefone(estudante.getTelefone())
             .idade(estudante.getIdade())
+            .permissao("Estudante")
             .build();
     }
 }

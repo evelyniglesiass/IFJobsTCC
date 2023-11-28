@@ -26,4 +26,6 @@ public class UsuarioResponse {
     private String telefone;
     
     private Integer idade;
+
+    private String permissao;
 }
