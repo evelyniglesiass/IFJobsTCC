@@ -19,7 +19,7 @@ const HabilidadeEditarComponent = ({habilidade}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        resumo: habilidade.descricao
+        descricao: habilidade.descricao
     })
 
     function handleChange(event){
@@ -52,7 +52,6 @@ const HabilidadeEditarComponent = ({habilidade}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Habilidade</h2>
-                <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 

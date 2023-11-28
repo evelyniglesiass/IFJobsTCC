@@ -19,7 +19,7 @@ const IdiomaEditarComponent = ({idioma}) => {
     }
 
     const [formInput, setFormInput] = useState({
-        descricao: ''
+        descricao: idioma.descricao
     })
 
     function handleChange(event){
@@ -33,7 +33,7 @@ const IdiomaEditarComponent = ({idioma}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarIdioma(formInput.descricao);
+        await editarIdioma(formInput.descricao, idioma.id);
         
     }
 
@@ -50,7 +50,6 @@ const IdiomaEditarComponent = ({idioma}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Idioma</h2>                
-                <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 

@@ -23,7 +23,7 @@ const CursosComponent = ({cursos}) => {
                                               <h6 className='data-fim fonte-corpo'>{c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6> 
                                             </article> 
                                             <CursosEditarComponent cursos={c}/>
-                                            <ExcluiCursoComponent/>
+                                            <ExcluiCursoComponent curso={c}/>
                                             <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
                                           </section>
                                         ]))

@@ -28,12 +28,12 @@ const CadastrarIdiomaComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroIdioma} = useCadastrarIdioma();
+    const {cadastrarIdioma} = useCadastrarIdioma();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroIdioma(formInput.descricao);
+        await cadastrarIdioma(formInput.descricao);
         
     }
 

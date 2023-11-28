@@ -18,12 +18,14 @@ import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
 import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.hook';
+import { useListarIdioma } from '../../../hook/idioma/listarIdioma.hook'
 import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
 import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
 import HabilidadesComponent from './HabilidadesComponent';
 import CadastrarHabilidadeComponent from '../cadastro/CadastrarHabilidadeComponent'
 import ExcluirCurriculoComponent from '../excluir/ExcluirCurriculoComponent';
-
+import CadastrarIdiomaComponent from '../cadastro/CadastrarIdiomaComponent';
+import IdiomasComponent from '../ui/IdiomasComponent';
 
 // Component de perfil do estudante com botão de editar
 const PerfilCurriculoComponent = ({estudante, curriculo}) => { 
@@ -76,12 +78,14 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [curso, setCurso] = useState([]);
   const [formacao, setFormacao] = useState([]);
   const [habilidade, setHabilidade] = useState([]);
+  const [idioma, setIdioma] = useState([]);
   const [user] = useGlobalUser();
 
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
   const { listarHabilidade } = useListarHabilidade();
+  const { listarIdioma } = useListarIdioma();
 
   useEffect(() => {
     async function listar() { 
@@ -97,6 +101,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
       const habResp = await listarHabilidade(user.id);
       setHabilidade(habResp);
+
+      const idiResp = await listarIdioma(user.id);
+      setIdioma(idiResp);
 
     }
 
@@ -157,7 +164,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Idiomas</h3>
+          <CadastrarIdiomaComponent/>
           <article className='habilidades-component'>
+            <IdiomasComponent idioma={idioma}/>
           </article>
         </article>  
     </section>

@@ -6,10 +6,10 @@ export function useEditarIdioma(){
 
     const [error] = useState();
 
-    async function editarIdioma(descricao, idioma){
+    async function editarIdioma(descricao, id){
 
         try{
-            await editarIdiomaApi(descricao, idioma);
+            await editarIdiomaApi(descricao, id);
         }
         catch(errorApi){
             toast.error(errorApi);
