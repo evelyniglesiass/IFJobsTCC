@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <section className='container-home' style={{ backgroundImage: `url(${Background})`, position: 'fixed'}}> 
-      <h1 className='fonte-titulo' id='logo-home'>IFJOBS</h1>
+      {/* <h1 className='fonte-titulo' id='logo-home'>IFJOBS</h1> */}
       <article className='info-component'><InfoComponent/></article>
       <article className='login-component'><LoginComponent/></article>
     </section>

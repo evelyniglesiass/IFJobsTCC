@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { criarCursoApi } from "../../constants";
 
-export function useCadastrarCurso(){
+export function useCadastrarCurso(){ 
 
     const [error] = useState();
 
