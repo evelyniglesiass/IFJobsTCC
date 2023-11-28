@@ -16,7 +16,7 @@ const IdiomasComponent = ({idioma}) => {
       setIdiomasTag((oldIdiomasTag) => ([...oldIdiomasTag,
                                           <article className='cabecalho-cursos-exper'>
                                             <h6 className='fonte-corpo'>➜ {i.descricao}</h6>
-                                            <IdiomaEditarComponent idioma={i.id}/>
+                                            <IdiomaEditarComponent idioma={i}/>
                                             <ExcluirIdiomaComponent idioma={i}/>
                                           </article>
                                         ]))

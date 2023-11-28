@@ -80,7 +80,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
     setSobreMimTag(() => ([
                             <section>
-                              <p className='fonte-corpo'><a style={{color:'#146869'}} href='mailto:${estudante.email}'>{estudante.email}</a></p>
+                              <p className='fonte-corpo'>{estudante.email}</p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
                             </section>

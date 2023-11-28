@@ -13,7 +13,6 @@ export function useListarHabilidade(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

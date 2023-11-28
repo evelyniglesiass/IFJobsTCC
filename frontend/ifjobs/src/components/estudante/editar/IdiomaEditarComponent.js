@@ -32,7 +32,7 @@ const IdiomaEditarComponent = ({idioma}) => {
 
     async function onSubmit(event){
         event.preventDefault();
-
+        console.log(idioma.id)
         await editarIdioma(formInput.descricao, idioma.id);
         
     }

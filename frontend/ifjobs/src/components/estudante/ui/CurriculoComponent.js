@@ -54,7 +54,7 @@ const CurriculoComponent = ({estudante, curriculo}) => {
     setSobreMimTag(() => ([
                             <section>
                               <h3 className='fonte-titulo fonte-sobre'>Sobre mim</h3>
-                              <p className='fonte-corpo'><a style={{color:'#146869'}} href='mailto:${estudante.email}'>{estudante.email}</a></p>
+                              <p className='fonte-corpo'><a style={{color:'#146869'}} href={`mailto:${estudante.email}`}>{estudante.email}</a></p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
                             </section>

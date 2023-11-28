@@ -13,7 +13,6 @@ export function useListarIdioma(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

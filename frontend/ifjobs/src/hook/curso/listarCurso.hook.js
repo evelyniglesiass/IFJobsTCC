@@ -13,7 +13,6 @@ export function useListarCurso(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

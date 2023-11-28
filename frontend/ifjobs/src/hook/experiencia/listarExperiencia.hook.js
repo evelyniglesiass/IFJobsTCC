@@ -13,7 +13,6 @@ export function useListarExperiencia(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

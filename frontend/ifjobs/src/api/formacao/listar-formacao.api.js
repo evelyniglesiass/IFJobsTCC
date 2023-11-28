@@ -8,7 +8,6 @@ export async function listarFormacaoApi(estudante){
         return response.data;
 
     } catch(error){
-        toast.error(error.response.data.message);
         throw new Error(error.response.data.message)
 
     }

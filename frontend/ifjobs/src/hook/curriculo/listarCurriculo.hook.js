@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { listarCurriculoApi } from "../../constants";
 
 export function useListarCurriculo(){
@@ -13,7 +12,6 @@ export function useListarCurriculo(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

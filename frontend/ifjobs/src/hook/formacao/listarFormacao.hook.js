@@ -13,7 +13,6 @@ export function useListarFormacao(){
             return response
         }
         catch(errorApi){
-            toast.error(errorApi);
         }
     }
 

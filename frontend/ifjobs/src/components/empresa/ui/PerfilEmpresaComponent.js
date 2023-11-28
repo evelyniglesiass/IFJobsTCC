@@ -33,7 +33,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
                                         <section className=''>
                                           <h3 className='fonte-titulo'>Sobre a empresa</h3>
                                           <p className='fonte-corpo'>{empresa.telefone}</p>
-                                          <p className='fonte-corpo'><a style={{color:'#146869'}} href='mailto:${empresa.email}'>{empresa.email}</a></p> 
+                                          <p className='fonte-corpo'>{empresa.email}</p> 
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
                                         </section>
                                         ]))

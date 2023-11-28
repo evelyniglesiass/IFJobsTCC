@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.FormacaoAcademicaDTO;
-import br.com.api.ifjobs.models.FormacaoAcademica;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.requests.FormacaoAcademicaRequest;
 import br.com.api.ifjobs.services.FormacaoAcademicaService;
