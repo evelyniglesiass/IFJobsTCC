@@ -6,10 +6,10 @@ export function useEditarHabilidade(){
 
     const [error] = useState();
 
-    async function editarHabilidade(descricao, habilidade){
+    async function editarHabilidade(descricao, id){
 
         try{
-            await editarHabilidadesApi(descricao, habilidade);
+            await editarHabilidadesApi(descricao, id);
         }
         catch(errorApi){
             toast.error(errorApi);
