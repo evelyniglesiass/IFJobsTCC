@@ -40,7 +40,7 @@ const CadastrarCursoComponent = () => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastrarCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao);
+        await cadastrarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal, formInput.instituicao);
         
     }
 

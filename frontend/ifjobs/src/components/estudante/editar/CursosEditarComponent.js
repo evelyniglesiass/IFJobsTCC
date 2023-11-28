@@ -39,7 +39,7 @@ const CursosEditarComponent = ({cursos}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarCurso(formInput.instituicao, formInput.cidade, formInput.cargaHoraria, formInput.dataInicial, formInput.dataFinal, formInput.descricao, cursos.id);
+        await editarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal,  formInput.instituicao, cursos.id);
         
     }
 
