@@ -12,15 +12,17 @@ const HabilidadesComponent = ({habilidades}) => {
 
     setHabilidadesTag([]);
     
-    habilidades.forEach(h => {
-      setHabilidadesTag((oldHabilidadesTag) => ([...oldHabilidadesTag,
-                                          <article className='cabecalho-cursos-exper'>
-                                            <h6 className='fonte-corpo'>➜ {h.descricao}</h6>
-                                            <HabilidadeEditarComponent habilidade={h}/>
-                                            <ExcluirHabilidadeComponent habilidade={h}/>
-                                          </article>
-                                        ]))
-    });
+    if(habilidades){
+      habilidades.forEach(h => {
+        setHabilidadesTag((oldHabilidadesTag) => ([...oldHabilidadesTag,
+                                            <article className='cabecalho-cursos-exper'>
+                                              <h6 className='fonte-corpo'>➜ {h.descricao}</h6>
+                                              <HabilidadeEditarComponent habilidade={h}/>
+                                              <ExcluirHabilidadeComponent habilidade={h}/>
+                                            </article>
+                                          ]))
+      });
+    }  
                           
   }, [habilidades])
 

@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function editarExperenciaApi(descricao, empresa, cargo, dataInicial, dataFinal, experiencia){
+export async function editarExperenciaApi(descricao, empresa, cargo, dataInicial, dataFinal, id){
 
     try{
-        const response = await axiosInstance.put(`/experiencias/${experiencia}`, {
-            descricao, empresa, cargo, dataInicial, dataFinal
+        const response = await axiosInstance.put(`/experiencias`, {
+            descricao, empresa, cargo, dataInicial, dataFinal, id
         });
 
         toast.success(response.data.mensagem)

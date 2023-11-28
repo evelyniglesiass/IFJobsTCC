@@ -34,6 +34,17 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
 
+  const [experiencia, setExperiencia] = useState([]);
+  const [curso, setCurso] = useState([]);
+  const [formacao, setFormacao] = useState([]);
+  const [habilidade, setHabilidade] = useState([]);
+  const [user] = useGlobalUser();
+
+  const { listarExperiencia } = useListarExperiencia();
+  const { listarCurso } = useListarCurso();
+  const { listarFormacao } = useListarFormacao();
+  const { listarHabilidade } = useListarHabilidade();
+
   useEffect(() => {
 
     setEstudanteTag([]);
@@ -56,7 +67,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                             </section>
                           ]))
 
-    if (curriculo.length != 0) {
+    if (curriculo) {
       setCurriculoTag(() => ([
         <section>
           <p className='fonte-corpo'>{curriculo.length != 0 ? curriculo.resumo : ""}</p> 
