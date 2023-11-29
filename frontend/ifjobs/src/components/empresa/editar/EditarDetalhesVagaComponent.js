@@ -62,23 +62,23 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
                     <div class="txt-form-group"> 
-                        <input type="text" defaultValue={vaga.titulo} class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
+                        <input type="text" defaultValue={vaga.titulo} className="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="text" defaultValue={vaga.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                        <input type="text" defaultValue={vaga.cidade} className="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <textarea type="text" defaultValue={vaga.descricao} class="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
+                        <textarea type="text" defaultValue={vaga.descricao} className="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="number" defaultValue={vaga.salario} class="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
+                        <input type="number" defaultValue={vaga.salario} className="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="number" defaultValue={vaga.idadeMinima} class="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
+                        <input type="number" defaultValue={vaga.idadeMinima} className="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group">

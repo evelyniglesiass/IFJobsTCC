@@ -30,7 +30,6 @@ const EstudanteEditarComponent = ({estudante}) => {
     })
 
     function handleChange(event){
-        console.log(formInput)
         const { name, value } = event.target;
 
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
@@ -86,7 +85,7 @@ const EstudanteEditarComponent = ({estudante}) => {
                         <input type="email" defaultValue={estudante.email} className="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="password" defaultValue={estudante.senha} className="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                        <input type="text" defaultValue={estudante.senha} className="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                     </div>
                     <div class="txt-form-group">
                         <input type="text" defaultValue={estudante.cidade} className="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>

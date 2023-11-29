@@ -9,10 +9,6 @@ Modal.setAppElement("#root");
 // Component de de dicas para objetivo
 const CadastrarCurriculoComponent = () => {
 
-    // if (mostrar==false) {
-    //     return null;
-    // }
-
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -33,12 +29,12 @@ const CadastrarCurriculoComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroCurriculo} = useCadastrarCurriculo();
+    const {cadastrarCurriculo} = useCadastrarCurriculo();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroCurriculo(formInput.resumo);
+        await cadastrarCurriculo(formInput.resumo);
         
     }
 

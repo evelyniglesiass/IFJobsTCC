@@ -12,15 +12,17 @@ const IdiomasComponent = ({idioma}) => {
 
     setIdiomasTag([]);
     
-    idioma.forEach(i => {
-      setIdiomasTag((oldIdiomasTag) => ([...oldIdiomasTag,
-                                          <article className='cabecalho-cursos-exper'>
-                                            <h6 className='fonte-corpo'>➜ {i.descricao}</h6>
-                                            <IdiomaEditarComponent idioma={i}/>
-                                            <ExcluirIdiomaComponent idioma={i}/>
-                                          </article>
-                                        ]))
-    });
+    if(idioma){
+      idioma.forEach(i => {
+        setIdiomasTag((oldIdiomasTag) => ([...oldIdiomasTag,
+                                            <article className='cabecalho-cursos-exper'>
+                                              <h6 className='fonte-corpo'>➜ {i.descricao}</h6>
+                                              <IdiomaEditarComponent idioma={i}/>
+                                              <ExcluirIdiomaComponent idioma={i}/>
+                                            </article>
+                                          ]))
+      });
+    }
                           
   }, [idioma])
 

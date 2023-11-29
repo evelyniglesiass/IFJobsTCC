@@ -32,7 +32,6 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
-  const [mostrar, setMostrar] = useState();
   const [sobreMimTag, setSobreMimTag] = useState([]);
 
   const [experiencia, setExperiencia] = useState([]);
@@ -126,9 +125,8 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
-          <CadastrarCurriculoComponent mostrar={mostrar}/>
-          <CurriculoEditarComponent curriculo={curriculo}/>
-          <ExcluirCurriculoComponent curriculo={curriculo}/>
+          {curriculo ? <CurriculoEditarComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent /> }
+          {curriculo ? <ExcluirCurriculoComponent curriculo={curriculo}/> : ""}
         </article>
 
         <article className='experiencia-curriculo'>

@@ -3,7 +3,6 @@ import '../../../App.scss';
 import Modal from 'react-modal';
 
 // Import de Components
-import { useListarVagas } from '../../../hook/vagas/listarVagas.hook';
 import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook';
 
 Modal.setAppElement("#root");
@@ -11,24 +10,7 @@ Modal.setAppElement("#root");
 // Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = ({empresa}) => {
 
-  // Listagem de vagas
-  const [vagas, setVagas] = useState([])
-
-  const { listarVagas } = useListarVagas();
-
-  useEffect(() => {
-    async function listar() {
-
-      const response = await listarVagas();
-      
-      setVagas(response) 
-
-    }
-
-    listar();
-  }, [])
-
-  // Modal
+  // Modal 
   const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -59,7 +41,7 @@ const EmpresaEditarComponent = ({empresa}) => {
 
     async function onSubmit(event){
         event.preventDefault();
-        console.log(formInput.usuario)
+        console.log(formInput)
 
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
         
@@ -84,27 +66,28 @@ const EmpresaEditarComponent = ({empresa}) => {
           <div className='container-cursos-exper'>
             <form onSubmit={onSubmit}>
                 <div class="txt-form-group"> 
-                    <input type="text" defaultValue={empresa.nome} class="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
+                    <input type="text" defaultValue={empresa.nome} className="form-control" name="nome" placeholder="Nome" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" defaultValue={empresa.nomeUsuario} class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
+                  <input type="text" defaultValue={empresa.nomeUsuario} className="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <textarea type="text" defaultValue={empresa.descricao} class="form-control" name="descricao" placeholder="Descrição" onChange={handleChange}/>
+                  <textarea type="text" defaultValue={empresa.descricao} className="form-control" name="descricao" placeholder="Descrição" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" defaultValue={empresa.telefone} class="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
+                  <input type="text" defaultValue={empresa.telefone} className="form-control" name="telefone" placeholder="Telefone" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="email" defaultValue={empresa.email} class="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
+                  <input type="email" defaultValue={empresa.email} className="form-control" name="email" placeholder="E-mail" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" class="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
+                  <input type="text" className="form-control" name="senha" placeholder="Senha" onChange={handleChange}/>
                 </div>
                 <div class="txt-form-group">
-                  <input type="text" defaultValue={empresa.cidade} class="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
+                  <input type="text" defaultValue={empresa.cidade} className="form-control" name="cidade" placeholder="Cidade" onChange={handleChange}/>
                 </div>
-                  <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                  
+                <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
             </form>
             </div>
 
