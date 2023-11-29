@@ -6,10 +6,10 @@ export function useCadastrarPalavraChave(){
 
     const [error] = useState();
 
-    async function cadastrarPalavraChave(palavra){
+    async function cadastrarPalavraChave(palavra, id){
 
         try{
-            await criarPalavraChaveApi(palavra);
+            await criarPalavraChaveApi(palavra, id);
         }
         catch(errorApi){
             toast.error(errorApi);

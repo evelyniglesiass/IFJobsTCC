@@ -1,12 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useCadastrarPalavra } from '../../../hook/palavra/cadastrarPalavra.hook';
+import { useCadastrarPalavraChave } from '../../../hook/palavra/cadastrarPalavra.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarPalavrasChaveComponent = () => {
+const CadastrarPalavrasChaveComponent = ({vaga}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -19,7 +19,7 @@ const CadastrarPalavrasChaveComponent = () => {
     }
 
     const [formInput, setFormInput] = useState({
-        palavra: ''
+        palavra: '',
     })
 
     function handleChange(event){
@@ -28,18 +28,18 @@ const CadastrarPalavrasChaveComponent = () => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {cadastroPalavra} = useCadastrarPalavra();
+    const {cadastrarPalavraChave} = useCadastrarPalavraChave();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await cadastroPalavra(formInput.palavra);
+        await cadastrarPalavraChave(formInput.palavra, vaga.id);
         
     }
 
     return (
         <div className='container-modal modal-cadastrar-cur'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✚</button>
+            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Adicionar palavras chave</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
