@@ -43,7 +43,7 @@ public class VagaService {
         vaga.setEstudantes(v.getEstudantes());
         vaga.setId(v.getId());
         vaga.setIdadeMinima(v.getIdadeMinima());
-        vaga.setPalavrasChave(v.getPalavrasChave());
+        //vaga.setPalavrasChave(v.getPalavrasChave());
         vaga.setSalario(v.getSalario());
         vaga.setStatus(v.isStatus());
         vaga.setTitulo(v.getTitulo());

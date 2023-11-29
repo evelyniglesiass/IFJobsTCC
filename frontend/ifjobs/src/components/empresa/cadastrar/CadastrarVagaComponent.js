@@ -22,8 +22,8 @@ const CadastrarVagaComponent = () => {
         titulo: '',
         cidade: '',
         descricao: '',
-        salario: '',
-        idadeMinima: '',
+        salario: 0.0,
+        idadeMinima: 0,
         curso: 0
     })
 
@@ -37,8 +37,8 @@ const CadastrarVagaComponent = () => {
 
     async function onSubmit(event){
         event.preventDefault();
-
-        await cadastrarVaga(formInput.titulo, formInput.cidade, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.curso);
+        console.log(formInput)
+        await cadastrarVaga(formInput.titulo, formInput.descricao, true, formInput.salario, formInput.idadeMinima, formInput.cidade, formInput.curso, "2023-01-01");
         
     }
 
@@ -59,23 +59,23 @@ const CadastrarVagaComponent = () => {
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
                     <div class="txt-form-group"> 
-                        <input type="text" class="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
+                        <input type="text" className="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                        <input type="text" className="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <textarea type="text" class="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
+                        <textarea type="text" className="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="number" class="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
+                        <input type="number" className="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group"> 
-                        <input type="number" class="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
+                        <input type="number" className="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
                     </div>
 
                     <div class="txt-form-group">
@@ -88,7 +88,7 @@ const CadastrarVagaComponent = () => {
                         </select>
                     </div>
                     
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" className="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
                 </form>
                 </div>
             </Modal>

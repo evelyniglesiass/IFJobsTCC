@@ -6,10 +6,10 @@ export function useCadastrarVaga(){
 
     const [error] = useState();
 
-    async function cadastrarVaga(titulo, descricao, status, salario, idadeMinima, cidade, curso){
+    async function cadastrarVaga(titulo, descricao, status, salario, idadeMinima, cidade, curso, dataPublicacao){
 
         try{
-            await criarVagaApi(titulo, descricao, status, salario, idadeMinima, cidade, curso);
+            await criarVagaApi(titulo, descricao, status, salario, idadeMinima, cidade, curso, dataPublicacao);
         }
         catch(errorApi){
             toast.error(errorApi);

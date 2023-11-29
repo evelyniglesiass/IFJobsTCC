@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function editarVagaApi(titulo, descricao, status, salario, idadeMinima, cidade, curso, vaga){
+export async function editarVagaApi(titulo, descricao, salario, idadeMinima, cidade, curso, status, dataPublicacao, id){
 
     try{
-        const response = await axiosInstance.put(`/vagas/${vaga}`, {
-            titulo, descricao, status, salario, idadeMinima, cidade, curso
+        const response = await axiosInstance.put(`/vagas`, {
+            titulo, descricao, salario, idadeMinima, cidade, curso, status, dataPublicacao, id
         });
 
         toast.success(response.data.mensagem)

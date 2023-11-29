@@ -41,7 +41,7 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
     async function onSubmit(event){
         event.preventDefault();
 
-        await editarVaga(formInput.titulo, formInput.cidade, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.curso);
+        await editarVaga(formInput.titulo, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.cidade, formInput.curso, true, "2023-01-01", vaga.id);
         
     }
 

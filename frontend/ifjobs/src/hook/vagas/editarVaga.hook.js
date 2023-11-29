@@ -6,10 +6,10 @@ export function useEditarVaga(){
 
     const [error] = useState();
 
-    async function editarVaga(titulo, descricao, status, salario, idadeMinima, cidade, curso, vaga){
+    async function editarVaga(titulo, descricao, salario, idadeMinima, cidade, curso, status, dataPublicacao, id){
 
         try{
-            await editarVagaApi(titulo, descricao, status, salario, idadeMinima, cidade, curso, vaga);
+            await editarVagaApi(titulo, descricao, salario, idadeMinima, cidade, curso, status, dataPublicacao, id);
         }
         catch(errorApi){
             toast.error(errorApi);

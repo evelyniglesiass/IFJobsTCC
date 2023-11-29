@@ -46,7 +46,6 @@ public class VagaRequest {
 	@Column(nullable = false)
 	private Integer id;
 
-    @Getter
 	@Column(nullable = false) 
 	private boolean status;
 	
