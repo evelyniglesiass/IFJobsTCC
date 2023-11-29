@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import CadastrarCandidaturaComponent from '../cadastro/CadastrarCandidaturaComponent';
+import ExcluirCandidaturaComponent from '../excluir/ExcluirCandidaturaComponent';
 
 // Component para detalhar vaga na visão do estudante
 const DetalhesVagaEstudanteComponent = ({vaga}) => {
@@ -40,6 +41,7 @@ const DetalhesVagaEstudanteComponent = ({vaga}) => {
     <section>
       {vagaTag}
       <CadastrarCandidaturaComponent vaga={vaga}/>
+      <ExcluirCandidaturaComponent candidatura={vaga}/>
     </section>
   )
 }
