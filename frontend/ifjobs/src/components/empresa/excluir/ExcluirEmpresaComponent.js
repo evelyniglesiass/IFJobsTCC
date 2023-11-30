@@ -29,7 +29,7 @@ const ExcluirEmpresaComponent = ({empresa}) => {
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Deletar</button>
+            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>⌫</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
