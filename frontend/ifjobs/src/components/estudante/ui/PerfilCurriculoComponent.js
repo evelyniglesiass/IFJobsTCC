@@ -59,13 +59,16 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                                 estudante.nome != null ? estudante.nome.slice(0, 2).toUpperCase() : "👤"
                               }</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
-                              <h5 className='curso fonte-titulo'>{estudante.nomeUsuario}</h5>
-                              <h5 className='curso fonte-titulo'>{
+                              <h5 className='curso fonte-corpo'>{estudante.nomeUsuario}</h5>
+                              <h5 className='curso fonte-corpo'>{
                               estudante.curso == 'INFORMATICA' ? "Informática" : 
                               estudante.curso == "EVENTOS" ? "Eventos" : 
                               estudante.curso == "PLÁSTICOS" ? "Plásticos" : 
                               "Mecânica"
                               }</h5>
+                              <div className='menu-button-open'>
+
+                              </div>
                             </section>
                           ]))
 

@@ -747,6 +747,7 @@ body{
     background-color: $verde-forte;
     border-color: $verde-forte;
     margin-top: 15px;
+    margin-right: 12px;
 }
 
 #botao-cadastro-modal:hover{
@@ -802,6 +803,17 @@ body{
 .modal-cadastrar-vaga {
     width: 20px;
     margin-left: 99%;
+}
+
+.button-menu{
+    font-weight: 700;
+    padding: 5px;
+}
+
+.menu-button-open{
+    position: relative;
+    top: 50px;
+    right: 70px;
 }
 
 // modal editar
