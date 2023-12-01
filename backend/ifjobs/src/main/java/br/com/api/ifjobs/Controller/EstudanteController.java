@@ -108,7 +108,7 @@ public class EstudanteController {
     }
 
     // listar estudantes candidatos
-    @Secured("ROLE_EMPRESA")
+    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
     @GetMapping("/listar/candidatura/estudantes/{vaga}")
     public List<EstudanteDTO> listarEstudantesCandidatura(@PathVariable int vaga) {
         return estSer.listarEstudantesCandidatura(vaga); 

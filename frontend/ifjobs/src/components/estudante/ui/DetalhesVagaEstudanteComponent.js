@@ -4,13 +4,17 @@ import CadastrarCandidaturaComponent from '../cadastro/CadastrarCandidaturaCompo
 import ExcluirCandidaturaComponent from '../excluir/ExcluirCandidaturaComponent';
 
 // Component para detalhar vaga na visão do estudante
-const DetalhesVagaEstudanteComponent = ({vaga}) => {
+const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
+
   let vagaLocal = vaga
   const [vagaTag, setVagaTag] = useState([]);
+  const [encontrouTag, setEncontrouTag] = useState([])
 
   useEffect(() => {
 
     setVagaTag([]);
+
+    setEncontrouTag(encontrou)
 
     setVagaTag((oldVagaTag) => ([...oldVagaTag, 
                                       <section>
@@ -35,13 +39,13 @@ const DetalhesVagaEstudanteComponent = ({vaga}) => {
                                       </section>
                                   ]))
 
-  }, [vagaLocal])
+  }, [vagaLocal, encontrou])
 
   return (
     <section>
       {vagaTag}
-      <CadastrarCandidaturaComponent vaga={vaga}/>
-      <ExcluirCandidaturaComponent candidatura={vaga}/>
+      {encontrouTag != true ? <CadastrarCandidaturaComponent vaga={vaga}/>  :  <ExcluirCandidaturaComponent candidatura={vaga}/>}
+      
     </section>
   )
 }

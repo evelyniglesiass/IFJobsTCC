@@ -4,8 +4,6 @@ import '../../App.scss';
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import VagasComponent from '../../components/empresa/ui/VagasComponent'
-import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
-import PesquisaComponent from '../../components/ui/PesquisaComponent';
 import { useListarSalvosEstudantes } from '../../hook/estudante/listarSalvosEstudantes.hook';
 import useGlobalUser from '../../context/usuario/user.context';
 import { useListarVagaTitulo } from '../../hook/vagas/listarVagaTitulo.hook';
@@ -21,9 +19,7 @@ const Salvos = () => {
   useEffect(() => {
     async function listar() {
 
-      console.log(user.id)
       const response = await listarSalvosEstudantes(user.id);
-      
       setVagas(response) 
 
     }
@@ -69,7 +65,7 @@ const Salvos = () => {
             </nav>  
           </article> */}
           {/* <AtalhoPerfilComponent/> */}
-          <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
+          <article className='div-vaga'><VagasComponent vagas={vagas} acao={" "}/></article>
         </section>
     </div>
   )

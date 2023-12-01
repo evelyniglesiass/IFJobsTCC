@@ -10,9 +10,6 @@ export function useListarVagaEspecifica(){
 
         try{
             const response = await listarVagaEspecificaApi(vaga);
-
-            // setVaga(response)
-            console.log("aqui 2", response);
             return response
         }
         catch(errorApi){
