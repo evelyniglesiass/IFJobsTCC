@@ -28,7 +28,7 @@ const ExcluirCurriculoComponent = ({curriculo}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='modal-editar-cur'>
             <button onClick={openModal} className='button-modal-open cadastro-estudante-modal' style={{fontWeight:"1000"}}>🗑</button>
             <Modal
                 isOpen={modalIsOpen}

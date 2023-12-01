@@ -48,6 +48,10 @@ body{
     color: $preto;
 }
 
+.datas{
+    width: 100%;
+}
+
 // Pages --------------------------------------------
 
 //botões de atalho
@@ -573,6 +577,11 @@ body{
     right: 0;
 }
 
+.botao-candidatura{
+    margin-left: 76%;
+    width: 200px;
+}
+
 // Empresas
 .container-geral-empresas{
     display: inline-block;
@@ -816,13 +825,12 @@ body{
 .modal-editar-cur {
     width: 20px;
     margin-left: 97%;
-    margin-top: -40px;
+    padding: 0px;
 }
 
 .modal-editar-exp {
     width: 20px;
     margin-left: 96%;
-    margin-top: -3%;
 }
 
 .modal-editar-curso {
@@ -883,19 +891,14 @@ body{
 }
 
 .conteudo-experiencias, .conteudo-cursos, .conteudo-formacao{
-    height: auto;
-    display: inline;
+    width: 100%;
+    margin: 0px;
 }
 
 .data-inicio, .data-fim{
     width: 200px;
-    float: left;
+    // float: left;
     //display: inline;
-}
-
-.data-fim{
-    position: relative;
-    left: 100px;
 }
 
 .data-inicio{
@@ -905,8 +908,7 @@ body{
 
 .data-fim{
     //width: 975px;
-    width: 80%;
-    padding-left: 3px;
+    width: 100%;
 }
 
 // Editar

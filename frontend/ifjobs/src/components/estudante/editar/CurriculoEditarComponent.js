@@ -39,7 +39,7 @@ const EditarCurriculoComponent = ({curriculo}) => {
     }
 
     return (
-        <div className='container-modal modal-editar-cur'>
+        <div className='modal-editar-cur'>
 
             <button onClick={openModal} className='button-modal-open'>✎</button>
 

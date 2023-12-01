@@ -44,8 +44,9 @@ const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
   return (
     <section>
       {vagaTag}
-      {encontrouTag != true ? <CadastrarCandidaturaComponent vaga={vaga}/>  :  <ExcluirCandidaturaComponent candidatura={vaga}/>}
-      
+      <article className='botao-candidatura'>
+        {encontrouTag != true ? <CadastrarCandidaturaComponent vaga={vaga}/> : <ExcluirCandidaturaComponent candidatura={vaga}/>}
+      </article>
     </section>
   )
 }

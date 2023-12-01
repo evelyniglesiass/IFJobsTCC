@@ -20,13 +20,10 @@ const ExperienciasComponent = ({experiencias}) => {
                                   <section className='cabecalho-cursos-exper'>
                                     <h4 className='titulos-cursos-exper fonte-titulo'>{e.cargo}</h4>
                                     <h6 className='titulos-cursos-exper fonte-corpo'>{e.empresa}</h6>
-                                    <article className='datas'>
-                                      <h6 className='data-inicio fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial}</h6>
-                                      <h6 className='data-fim fonte-corpo'>{e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
-                                    </article>
+                                    <h6 className='datas data-fim fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial} a {e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
+                                    <p className='conteudo-experiencias'>{e.descricao}</p>
                                     <ExperienciasEditarComponent experiencia={e}/>
                                     <ExcluirExperienciaComponent experiencia={e}/>
-                                    <p className='conteudo-experiencias'>{e.descricao}</p>
                                   </section>
                               ]))
       });

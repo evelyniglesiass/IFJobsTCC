@@ -38,7 +38,7 @@ const CadastrarIdiomaComponent = () => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='container-modal modal-cadastrar-for'>
             <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✚</button>
             <Modal
                 isOpen={modalIsOpen}

@@ -28,7 +28,7 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div className='modal-editar-exp'>
             <button onClick={openModal} className='button-modal-open cadastro-estudante-modal' style={{fontWeight:"1000"}}>🗑</button>
             <Modal
                 isOpen={modalIsOpen}
