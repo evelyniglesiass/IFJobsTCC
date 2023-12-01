@@ -11,7 +11,6 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
   const [empresaUm, setEmpresaUm] = useState([]);
   const [empresaDois, setEmpresaDois] = useState([]);
-  const [icone, setIcone] = useState("");
 
   useEffect(() => {
 

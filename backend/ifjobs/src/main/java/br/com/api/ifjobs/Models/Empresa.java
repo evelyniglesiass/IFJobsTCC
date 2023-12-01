@@ -63,8 +63,7 @@ public class Empresa {
 	@Column(nullable = false)
     private String telefone;
 
-	@NotBlank(message = "Insira sua senha!")
-	@Column(nullable = false, length = 250)
+	@Column(nullable = true, length = 250)
 	private String senha;
 
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.PERSIST)

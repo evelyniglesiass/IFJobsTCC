@@ -27,7 +27,7 @@ const EmpresaEditarComponent = ({empresa}) => {
         descricao: empresa.descricao,
         telefone: empresa.telefone,
         email: empresa.email,
-        senha: empresa.senha,
+        senha: "",
         cidade: empresa.cidade
     })
 
@@ -47,6 +47,18 @@ const EmpresaEditarComponent = ({empresa}) => {
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
         
     }
+
+    useEffect(() => {
+      setFormInput({
+        nome: empresa.nome,
+        usuario: empresa.nomeUsuario,
+        descricao: empresa.descricao,
+        telefone: empresa.telefone,
+        email: empresa.email,
+        senha: "",
+        cidade: empresa.cidade
+      })
+    }, [empresa]);
 
   return ( 
     <div >

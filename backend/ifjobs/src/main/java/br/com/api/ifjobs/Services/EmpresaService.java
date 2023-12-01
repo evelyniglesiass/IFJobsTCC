@@ -46,6 +46,12 @@ public class EmpresaService {
         //pegando senha para validação
         ss.setSenha(e.getSenha()); 
         
+        if(e.getSenha() == ""){ 
+            r.setMensagem("Você precisa inserir uma senha!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+
+        }
+
         if(empRep.existsByNomeUsuario(e.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())){
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
@@ -89,18 +95,23 @@ public class EmpresaService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         } 
         
-        if(!(ss.verificarSenha(ss.getSenha()))){
-            r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-        } 
-        
         if(empRep.existeEmail(e.getEmail(), empresa.getId()) != 0 || estRep.existeEmail(e.getEmail(), 0) != 0){
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
+        if(e.getSenha() != ""){
+            ss.setSenha(e.getSenha());
+            if(!ss.verificarSenha(ss.getSenha())){
+                r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            } 
+            e.setSenha(passwordEncoder.encode(e.getSenha()));
+        } else {
+            e.setSenha(empresa.getSenha());
+        }
+
         empresa.setPermissoes(List.of(Permissao.builder().funcao(Funcao.EMPRESA).empresa(e).build()));
-        e.setSenha(passwordEncoder.encode(e.getSenha()));
 
         empRep.save(e);
         r.setMensagem("Edição feita com sucesso!");
