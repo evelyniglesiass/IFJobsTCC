@@ -29,7 +29,7 @@ const ExcluirHabilidadeComponent = ({habilidade}) => {
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Deletar</button>
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal' style={{fontWeight:"1000"}}>🗑</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
