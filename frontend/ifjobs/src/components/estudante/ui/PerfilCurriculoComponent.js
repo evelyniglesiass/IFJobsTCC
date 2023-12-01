@@ -41,11 +41,31 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [idioma, setIdioma] = useState([]);
   const [user] = useGlobalUser();
 
+  let listarF
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
   const { listarHabilidade } = useListarHabilidade();
   const { listarIdioma } = useListarIdioma();
+
+  async function listar() { 
+
+    const response = await listarExperiencia(user.id);
+    setExperiencia(response);
+
+    const curResp = await listarCurso(user.id);
+    setCurso(curResp);
+
+    const forResp = await listarFormacao(user.id);
+    setFormacao(forResp);
+
+    const habResp = await listarHabilidade(user.id);
+    setHabilidade(habResp);
+
+    const idiResp = await listarIdioma(user.id);
+    setIdioma(idiResp);
+
+  }
 
   useEffect(() => {
 
@@ -91,25 +111,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   }, [estudante, curriculo])
 
   useEffect(() => {
-    async function listar() { 
-
-      const response = await listarExperiencia(user.id);
-      setExperiencia(response);
-
-      const curResp = await listarCurso(user.id);
-      setCurso(curResp);
-
-      const forResp = await listarFormacao(user.id);
-      setFormacao(forResp);
-
-      const habResp = await listarHabilidade(user.id);
-      setHabilidade(habResp);
-
-      const idiResp = await listarIdioma(user.id);
-      setIdioma(idiResp);
-
-    }
-
+  
     listar();
   }, [])
 
@@ -134,7 +136,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
-          <CadastrarExperienciaComponent/>
+          <CadastrarExperienciaComponent listar={listar}/>
           <div className='experiencia-component'>
             <ExperienciasComponent experiencias={experiencia}/>
           </div>
