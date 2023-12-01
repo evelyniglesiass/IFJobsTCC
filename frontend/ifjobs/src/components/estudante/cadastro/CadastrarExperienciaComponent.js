@@ -7,9 +7,10 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarExperienciaComponent = () => {
+const CadastrarExperienciaComponent = ({listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
+
 
     function openModal() {
         setIsOpen(true);
@@ -39,6 +40,8 @@ const CadastrarExperienciaComponent = () => {
         event.preventDefault();
 
         await cadastrarExperiencia(formInput.descricao, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal);
+
+        listar()
         
     }
 
