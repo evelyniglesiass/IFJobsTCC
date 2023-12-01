@@ -3,6 +3,7 @@ import '../../../App.scss';
 import CursosEditarComponent from '../editar/CursosEditarComponent';
 import ExcluiCursoComponent from '../excluir/ExcluirCursoComponent'
 import * as moment from 'moment';
+import MenuCursoComponent from './menus/MenuCursoComponent';
 
 // Component para cursos
 const CursosComponent = ({cursos}) => {
@@ -23,9 +24,10 @@ const CursosComponent = ({cursos}) => {
                                                 <h6 className='data-inicio fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial}</h6>
                                                 <h6 className='data-fim fonte-corpo'>{c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6> 
                                               </article> 
-                                              <CursosEditarComponent cursos={c}/>
-                                              <ExcluiCursoComponent curso={c}/>
                                               <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
+                                              <div className='menu-button-open'>
+                                                <MenuCursoComponent curso={c}/>
+                                              </div>
                                             </section>
                                           ]))
       });

@@ -4,7 +4,7 @@ import VagasComponent from './VagasComponent'
 import CadastrarVagaComponent from '../../empresa/cadastrar/CadastrarVagaComponent'
 import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
-import EmpresaEditarComponent from '../editar/EmpresaEditarComponent';
+import MenuEmpresaComponent from '../ui/MenuEmpresaComponent';
 
 // Component de perfil da empresa com botão editar
 const PerfilEmpresaComponent = ({empresa}) => {
@@ -24,8 +24,11 @@ const PerfilEmpresaComponent = ({empresa}) => {
                                           empresa.nome != null ? empresa.nome.slice(0, 2).toUpperCase() : "👤"
                                         }</h1>
                                         <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
-                                        <h5 className='curso fonte-titulo'>{empresa.nomeUsuario}</h5>
-                                        <h5 className='curso fonte-titulo'>{empresa.cidade}</h5>
+                                        <h5 className='curso fonte-corpo'>{empresa.nomeUsuario}</h5>
+                                        <h5 className='curso fonte-corpo'>{empresa.cidade}</h5>
+                                        <div className='menu-button-open'>
+                                          <MenuEmpresaComponent empresa={empresa}/>
+                                        </div>
                                       </section>
                                   ]))
                                   
@@ -62,8 +65,6 @@ const PerfilEmpresaComponent = ({empresa}) => {
     <>
         <section className='cabecalho-perfis'>
           {empresaUm}
-          <EmpresaEditarComponent empresa={empresa}/>
-          <CadastrarVagaComponent/>
         </section>
 
         <section className='sobre-perfis'>

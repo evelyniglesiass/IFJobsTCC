@@ -49,9 +49,9 @@ const EmpresaEditarComponent = ({empresa}) => {
     }
 
   return ( 
-    <div className='container-modal modal-editar-emp'>
+    <div >
 
-      <button onClick={openModal} className='button-modal-open'>✎</button>
+      <button onClick={openModal} className='button-modal-open button-menu'>✎ Editar meu perfil</button>
 
       <Modal
         isOpen={modalIsOpen}

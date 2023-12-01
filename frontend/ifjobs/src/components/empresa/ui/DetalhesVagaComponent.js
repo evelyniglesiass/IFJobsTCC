@@ -5,6 +5,7 @@ import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
 import useGlobalUser from '../../../context/usuario/user.context';
 import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook';
 import { Link } from 'react-router-dom';
+import MenuVagaComponent from './MenuVagaComponent';
 
 // Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = ({vaga, estudantes}) => {
@@ -32,6 +33,9 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                             vaga.curso == "PLÁSTICOS" ? "Plásticos" : 
                                             "Mecânica"
                                             }</h5>
+                                            <div className='menu-button-open'>
+                                              <MenuVagaComponent vaga={vaga}/>
+                                            </div>
                                           </article>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
@@ -69,7 +73,6 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
   return (
     <section>
         {vagaTag}
-        <ExcluirVagaComponent/>
 
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Candidatos</h3>

@@ -46,8 +46,8 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
     }
 
   return (
-    <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal modal-editar-vaga'>✎</button>
+    <div >
+            <button onClick={openModal} className='button-modal-open button-menu'>✎ Editar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -91,7 +91,7 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
                         </select>
                     </div>
                     
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
             </Modal>

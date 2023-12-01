@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
 import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
 import CadastrarPalavrasChaveComponent from '../../empresa/cadastrar/CadastrarPalavrasChaveComponent'
+import MenuVagaComponent from '../../empresa/ui/MenuVagaComponent'
 
 // Component de vagas
 const VagasComponent = ({vagas, acao}) => {
@@ -18,9 +19,6 @@ const VagasComponent = ({vagas, acao}) => {
       setVagasTag((oldVagasTag) => ([...oldVagasTag, 
                                         <section className='container-vaga'>
                                           <h2 className='titulo-vagas fonte-titulo'>{v.titulo}</h2>
-                                          {acao == "editar" ? <EditarDetalhesVagaComponent vaga={v}/> : ""}
-                                          {acao == "editar" ? <ExcluirVagaComponent vaga={v}/> : ""}
-                                          {acao == "editar" ? <CadastrarPalavrasChaveComponent vaga={v}/> : ""}
                                           <p className='corpo-vagas fonte-corpo'>{v.descricao}</p>
                                           <article className='botao-vagas'>
                                             <Link className='btn btn-dark' to={`/detalhes/vaga/${v.id}`}>Visualizar</Link>        
