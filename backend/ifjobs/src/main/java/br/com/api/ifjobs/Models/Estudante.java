@@ -65,8 +65,7 @@ public class Estudante{
     @Email(message = "Insira um email válido!")
     private String email;
 
-    @NotBlank(message = "Insira sua senha!")
-    @Column(nullable = false, length = 250)
+    @Column(nullable = true, length = 250)
     private String senha;
 
     @Length(max = 11, min = 11, message = "Insira um telefone válido!")

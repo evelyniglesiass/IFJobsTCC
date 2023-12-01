@@ -21,7 +21,7 @@ const EmpresaEditarComponent = ({empresa}) => {
         setIsOpen(false);
     }
 
-    const [formInput, setFormInputEmpresa] = useState({
+    const [formInput, setFormInput] = useState({
         nome: empresa.nome,
         usuario: empresa.nomeUsuario,
         descricao: empresa.descricao,
@@ -34,13 +34,14 @@ const EmpresaEditarComponent = ({empresa}) => {
     function handleChange(event){
         const { name, value } = event.target;
 
-        setFormInputEmpresa((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
     const {editarEmpresa} = useEditarEmpresa();
 
     async function onSubmit(event){
         event.preventDefault();
+        console.log(empresa)
         console.log(formInput)
 
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);

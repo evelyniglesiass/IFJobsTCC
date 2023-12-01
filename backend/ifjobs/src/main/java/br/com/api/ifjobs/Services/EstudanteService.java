@@ -49,6 +49,12 @@ public class EstudanteService {
     public ResponseEntity<?> cadastrar(Estudante e){ 
 
         ss.setSenha(e.getSenha());
+
+        if(e.getSenha() == ""){ 
+            r.setMensagem("Você precisa inserir uma senha!");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+
+        }
         
         if(e.getIdade() < 0){ 
             r.setMensagem("Informe uma idade válida!");
@@ -89,8 +95,6 @@ public class EstudanteService {
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
         e.setId(estudante.getId()); // acho q assim da
-
-        ss.setSenha(e.getSenha());
         
         if(e.getIdade() < 0){
             r.setMensagem("Informe uma idade válida!");
@@ -110,14 +114,18 @@ public class EstudanteService {
 
         }
         
-        if(!ss.verificarSenha(ss.getSenha())){
-            r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-
+        if(e.getSenha() != ""){
+            ss.setSenha(e.getSenha());
+            if(!ss.verificarSenha(ss.getSenha())){
+                r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
+            } 
+            e.setSenha(passwordEncoder.encode(e.getSenha()));
+        } else {
+            e.setSenha(estudante.getSenha());
         }
 
         estudante.setPermissoes(List.of(Permissao.builder().funcao(Funcao.ESTUDANTE).estudante(e).build()));
-        e.setSenha(passwordEncoder.encode(e.getSenha()));
 
         estRep.save(e);
         r.setMensagem("Edição feita com sucesso!");

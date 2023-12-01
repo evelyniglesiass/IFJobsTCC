@@ -29,7 +29,7 @@ import IdiomasComponent from '../ui/IdiomasComponent';
 
 // Component de perfil do estudante com botão de editar
 const PerfilCurriculoComponent = ({estudante, curriculo}) => { 
-
+  
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
