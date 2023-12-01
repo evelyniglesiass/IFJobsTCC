@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
-import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent'
+import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
+import useGlobalUser from '../../../context/usuario/user.context';
+import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook';
 import { Link } from 'react-router-dom';
 
 // Component para detalhar vaga na visão da empresa
@@ -9,6 +11,9 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
 
   const [vagaTag, setVagaTag] = useState([]);
   const [estudantesTag, setEstudantesTag] = useState([]);
+  // const [palavras, setPalavras] = useState([]);
+  // const [user] = useGlobalUser();
+
 
   useEffect(() => {
 
@@ -47,6 +52,20 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
 
   }, [vaga, estudantes])
 
+  // const { listarPalavrasChave } = useListarPalavraChave();
+
+  // useEffect(() => {
+  //   async function listar() {
+
+  //     const response = await listarPalavrasChave(user.id);
+      
+  //     setVagas(response) 
+
+  //   }
+
+  //   listar();
+  // }, [])
+
   return (
     <section>
         {vagaTag}
@@ -56,6 +75,11 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
           <h3 className='fonte-titulo'>Candidatos</h3>
           {estudantesTag}
         </article>
+
+        {/* <article className='palavras-vaga'>
+          <h3 className='fonte-titulo'>Palavras chave</h3>
+          {estudantesTag}
+        </article> */}
 
     </section>
   )

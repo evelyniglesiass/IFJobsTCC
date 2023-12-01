@@ -39,7 +39,7 @@ const CadastrarPalavrasChaveComponent = ({vaga}) => {
 
     return (
         <div className='container-modal modal-cadastrar-cur'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Adicionar palavras chave</button>
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal' style={{fontWeight:"700"}}>#</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
