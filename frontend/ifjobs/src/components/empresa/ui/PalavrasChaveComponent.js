@@ -19,13 +19,13 @@ const PalavrasChaveComponent = ({palavra, idVaga, encontrou}) => {
                                           <article className='cabecalho-cursos-exper'>
                                             <h6 className='fonte-corpo'>#️⃣ {p.palavra}</h6>
                                             <div className='menu-button-open'>
-                                              <MenuPalavrasComponent palavra={p} idVaga={idVaga}/>
+                                             {encontrou == true ? <MenuPalavrasComponent palavra={p} idVaga={idVaga}/> : "" }
                                             </div>
                                           </article>
                                         ]))
     });
                           
-  }, [palavra])
+  }, [palavra, encontrou])
 
   return (
     <div className='container-cursos-exper'>
