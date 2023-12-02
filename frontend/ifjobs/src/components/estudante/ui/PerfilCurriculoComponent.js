@@ -67,6 +67,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => {
 
   useEffect(() => {
 
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
+
     setEstudanteTag([]);
     setCurriculoTag([]);
     setSobreMimTag([]);
@@ -100,10 +107,10 @@ const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => {
 
     setSobreMimTag(() => ([
                             <section>
-                              <p className='fonte-corpo'>{estudante.email}</p>
-                              <p className='fonte-corpo'>{estudante.telefone}</p>
-                              <p className='fonte-corpo'>{estudante.cidade}</p> 
-                              <p className='fonte-corpo'>{estudante.idade} anos</p> 
+                              <p className='fonte-corpo'><strong>Email: </strong>{estudante.email}</p>
+                              <p className='fonte-corpo'><strong>Telefone: </strong>{estudante.telefone ? tel(estudante.telefone) : ""}</p>
+                              <p className='fonte-corpo'><strong>Cidade: </strong>{estudante.cidade}</p> 
+                              <p className='fonte-corpo'><strong>Idade: </strong>{estudante.idade} anos</p> 
                             </section>
                           ]))
 

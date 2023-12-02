@@ -24,7 +24,7 @@ const CursosComponent = ({cursos, acao, listar}) => {
                                               {acao == "editar" ?<MenuCursoComponent curso={c} listar={listar}/> : ""}
                                               </div>
                                               <h6 className='datas data-fim fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial} à {c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6>
-                                              <p className='conteudo-cursos fonte-corpo'>{c.cargaHoraria}</p>
+                                              <p className='conteudo-cursos fonte-corpo'><strong>Carga horária: </strong>{c.cargaHoraria}h</p>
                                             </section>
                                           ]))
       });

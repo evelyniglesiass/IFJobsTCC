@@ -14,6 +14,13 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
 
   useEffect(() => {
 
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
+
     setEmpresaTag([]);
 
     setEmpresaTag((oldEmpresaTag) => ([...oldEmpresaTag, 
@@ -28,9 +35,9 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
                                         </section>
                                         <section className='sobre-perfis'>
                                           <h3 className='fonte-titulo'>Sobre a empresa</h3>
-                                          <p className='fonte-corpo'>{empresa.telefone}</p>
-                                          <p className='fonte-corpo'><a style={{color:'#146869'}} href={`mailto:${empresa.email}`}>{empresa.email}</a></p> 
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
+                                          <p className='fonte-corpo'><strong>Telefone: </strong>{empresa.telefone ? tel(empresa.telefone) : ""}</p>
+                                          <p className='fonte-corpo'><strong>Email: </strong><a style={{color:'#146869'}} href={`mailto:${empresa.email}`}>{empresa.email}</a></p>
                                         </section>
                                       </section>
                                     ])) 

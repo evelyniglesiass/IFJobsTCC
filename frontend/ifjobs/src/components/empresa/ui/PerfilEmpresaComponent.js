@@ -14,6 +14,13 @@ const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
 
   useEffect(() => {
 
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
+
     setEmpresaUm([]);
     setEmpresaDois([]);
 
@@ -34,9 +41,9 @@ const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
     setEmpresaDois((oldEmpresaDois) => ([...oldEmpresaDois, 
                                         <section className=''>
                                           <h3 className='fonte-titulo'>Sobre a empresa</h3>
-                                          <p className='fonte-corpo'>{empresa.telefone}</p>
-                                          <p className='fonte-corpo'>{empresa.email}</p> 
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
+                                          <p className='fonte-corpo'><strong>Telefone: </strong>{empresa.telefone ? tel(empresa.telefone) : ""}</p>
+                                          <p className='fonte-corpo'><strong>Email: </strong>{empresa.email}</p> 
                                         </section>
                                         ]))
 
