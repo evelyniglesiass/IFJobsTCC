@@ -29,7 +29,7 @@ const ExcluirPalavraChaveComponent = ({palavra}) => {
 
     return (
         <div >
-            <button onClick={openModal} className='button-modal-open button-menu-li'>🗑️</button>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>🗑️ Excluir</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -38,7 +38,7 @@ const ExcluirPalavraChaveComponent = ({palavra}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua vaga?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua palavra chave?</h2>                
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

@@ -22,7 +22,7 @@ const ExperienciasComponent = ({experiencias, acao}) => {
                                     <div className='menu-button-open'>
                                       {acao == "editar" ? < MenuExperienciaComponent experiencia={e}/> : ""}
                                     </div>
-                                    <h6 className='datas data-fim fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial} a {e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
+                                    <h6 className='datas data-fim fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial} à {e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
                                     <p className='conteudo-experiencias'>{e.descricao}</p>
                                   </section>
                               ]))

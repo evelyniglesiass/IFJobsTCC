@@ -135,7 +135,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
-          {curriculo ? <MenuCurriculoComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent /> }
+          {curriculo ? <MenuCurriculoComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent/> }
         </article>
 
         <article className='experiencia-curriculo'>

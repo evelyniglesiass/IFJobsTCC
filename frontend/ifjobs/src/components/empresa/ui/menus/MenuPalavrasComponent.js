@@ -1,13 +1,13 @@
 import '../../../../App.scss';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import ExcluirEstudanteComponent from '../../excluir/ExcluirEstudanteComponent';
-import EstudanteEditarComponent from '../../editar/EstudanteEditarComponent';
+import ExcluirPalavraChaveComponent from '../../excluir/ExcluirPalavraChaveComponent';
+import PalavrasChaveEditarComponent from '../../editar/PalavrasChaveEditarComponent';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuEstudanteComponent = ({estudante}) => {
+const MenuPalavrasComponent = ({palavra, idVaga}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,8 +20,8 @@ const MenuEstudanteComponent = ({estudante}) => {
     }
 
     return (
-        <div> 
-            <button onClick={openModal} className='button-open-menu' >•••</button>
+        <div>
+            <button onClick={openModal} className='button-open-menu inline-type' >•••</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -30,8 +30,8 @@ const MenuEstudanteComponent = ({estudante}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirEstudanteComponent estudante={estudante}/>
-                    <EstudanteEditarComponent estudante={estudante}/>
+                    <ExcluirPalavraChaveComponent palavra={palavra}/>
+                    <PalavrasChaveEditarComponent palavra={palavra} idVaga={idVaga}/>
                 </div>
 
             </Modal>
@@ -39,4 +39,4 @@ const MenuEstudanteComponent = ({estudante}) => {
     )
 }
 
-export default MenuEstudanteComponent
+export default MenuPalavrasComponent

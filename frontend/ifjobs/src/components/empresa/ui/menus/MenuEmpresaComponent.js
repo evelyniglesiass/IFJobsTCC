@@ -1,8 +1,8 @@
-import '../../../App.scss';
+import '../../../../App.scss';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import ExcluirEmpresaComponent from '../excluir/ExcluirEmpresaComponent';
-import EditarEmpresaComponent from '../editar/EmpresaEditarComponent';
+import ExcluirEmpresaComponent from '../../excluir/ExcluirEmpresaComponent';
+import EditarEmpresaComponent from '../../editar/EmpresaEditarComponent';
 
 Modal.setAppElement("#root");
 
@@ -21,7 +21,7 @@ const MenuEmpresaComponent = ({empresa}) => {
 
     return (
         <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open'>•••</button>
+            <button onClick={openModal} className='button-modal-open' id='menu-empresa'>•••</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

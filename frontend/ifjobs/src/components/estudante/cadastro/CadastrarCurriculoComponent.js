@@ -40,7 +40,7 @@ const CadastrarCurriculoComponent = () => {
 
     return (
         <div className='container-modal modal-cadastrar-cur'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✚</button>
+            <button onClick={openModal} className='button-open-menu inline-type' id='cadastrar-curriculo'>✚</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

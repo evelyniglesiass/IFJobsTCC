@@ -1,9 +1,9 @@
-import '../../../App.scss';
+import '../../../../App.scss';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
-import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
-import CadastrarPalavrasChaveComponent from '../cadastrar/CadastrarPalavrasChaveComponent';
+import ExcluirVagaComponent from '../../excluir/ExcluirVagaComponent';
+import EditarDetalhesVagaComponent from '../../editar/EditarDetalhesVagaComponent';
+import CadastrarPalavrasChaveComponent from '../../cadastrar/CadastrarPalavrasChaveComponent';
 
 Modal.setAppElement("#root");
 
@@ -22,7 +22,7 @@ const MenuVagaComponent = ({vaga}) => {
 
     return (
         <div>
-            <button onClick={openModal} className='button-modal-open' >•••</button>
+            <button onClick={openModal} className='button-modal-open' id='menu-vaga'>•••</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

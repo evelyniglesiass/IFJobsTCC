@@ -24,7 +24,7 @@ const HeaderComponent = () => {
         <div className='link'><Link to={"/feed"}>Vagas</Link><br /></div>
         <div className='link'><Link to={"/empresas"}>Empresas</Link><br /></div>
         <div className='link'><Link to={"/estudantes"}>Estudantes</Link><br /></div>
-        <div className='link'> {user.permissao == "Estudante" ? <Link to={"/salvos"}>Salvos</Link> : "" }<br /></div>
+        <div className='link'> {user.permissao == "Estudante" ? <Link to={"/salvos"}>Candidaturas</Link> : "" }<br /></div>
 
         <button onClick={onClick} className='botao btn'><Link to={"/"}>Sair</Link><br/></button>
     </nav>

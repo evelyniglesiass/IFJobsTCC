@@ -28,8 +28,8 @@ const CadastrarCandidaturaComponent = ({vaga}) => {
     }
 
     return (
-        <div className='container-modal-candidatura'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Candidatar-se</button>
+        <div >
+            <button onClick={openModal} className='txt btn btn-primary btn-candidatura'>Candidatar-se</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

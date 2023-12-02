@@ -1,5 +1,6 @@
 $verde-forte: #189395;
 $verde-titulo: #146869;
+$verde-iniciais: #033c3d;
 $verde-borda: #14686940;
 $roxo-forte: #4c369b;
 $preto: #323434;
@@ -31,7 +32,9 @@ body{
     background-color: $branco;
 }
 
-
+.header{
+    box-shadow: -10px 1px 40px 10px rgba(123, 157, 160, 0.695);
+}
 
 .fonte-titulo{
     font-weight: bolder;
@@ -88,6 +91,7 @@ body{
 .button-editar:hover{
     background-color: $roxo-forte;
     border-color: $roxo-forte;
+    transition: 0.3s;
 }
 
 #botao-editar-vaga{
@@ -276,6 +280,7 @@ body{
     //height: 150px;
     height: 100%;
     font-size: 2.5cm;
+    color: $verde-iniciais;
 }
 
 .curso, .sociais {
@@ -345,6 +350,7 @@ body{
 }
 .container-login .link-cadastro:hover {
     color: $preto;
+    transition: 0.3s;
 }
 
 .link{
@@ -383,6 +389,7 @@ body{
     background-color: $verde-forte;
     // border-color: $branco;
     color: $branco;
+    transition: 0.3s;
 }
 
 .login .botao a:hover{
@@ -439,6 +446,7 @@ body{
 .button-salvar:hover{
     background-color: $roxo-forte;
     border-color: $roxo-forte;
+    transition: 0.3s;
 }
 
 #button-salvar-vaga{
@@ -454,10 +462,6 @@ body{
 
 // Header
 
-.container-links{
-    border-right: solid 3px $verde-borda;
-}
-
 .container-links a{ 
     color: $branco;
     font-weight: 600;
@@ -467,7 +471,10 @@ body{
 }
 
 .container-links a:hover{ 
-    color: $roxo-forte;
+    color: $preto;
+    transition: 0.4s;
+    font-weight: 700;
+    font-size: 22px;
 }
 
 .container-links .link{ 
@@ -496,12 +503,14 @@ body{
 }
 
 .container-links .botao:hover{ 
-    color: $branco;
-    background-color: $roxo-forte;
+    color: $preto;
+    background-color: $branco;
+    transition: 0.4s;
 }
 
 .container-links .botao a:hover{ 
-    color: $branco;
+    color: $preto;
+    transition: 0s;
 }
 
 // Pesquisa
@@ -562,6 +571,7 @@ body{
 .botao-vagas .btn:hover{
     background-color: $preto;
     color: $branco;
+    transition: 0.3s;
 }
 
 .candidatos a{
@@ -572,6 +582,7 @@ body{
 .candidatos a:hover{
     text-decoration: none;
     color: $verde-forte;
+    transition: 0.3s;
 }
 
 // candidatura
@@ -582,9 +593,25 @@ body{
     right: 0;
 }
 
-.botao-candidatura{
+.btn-candidatura{
+    background-color: $verde-titulo;
+    border: $verde-titulo;
+    margin-top: 20px;
     margin-left: 76%;
     width: 200px;
+    color: $branco;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    align-self: center;
+    float: center;
+    font-weight: 600;
+}
+
+.btn-candidatura:hover{
+    background-color: $preto;
+    transition: 0.3s;
 }
 
 // Empresas
@@ -696,7 +723,7 @@ body{
     border-radius: 15px;
     background-color: rgba(165, 42, 42, 0);
     border: none;
-    color: $preto;
+    color: $verde-titulo;
     font-weight: 500;
     padding: 2px;
     padding-left: 5px;
@@ -744,6 +771,11 @@ body{
     padding-top: 12px;
 }
 
+#botao-open-cadastro:hover{
+    color: $preto-modal;
+    transition: 0.3s;
+}
+
 #span-ou{
     padding-left: 5px;
 }
@@ -758,6 +790,7 @@ body{
 #botao-cadastro-modal:hover{
     background-color: $preto;
     border-color: $preto;
+    transition: 0.3s;
 }
 
 .button-fechar{
@@ -902,22 +935,39 @@ body{
 .menu-usuario{
     bottom: 35px;
     right: 50px;
+    color: $preto;
 }
 
 .menu-usuario-empresa{
     bottom: 5px;
     top: 40px;
     right: 60px;
+    color: $preto;
 }
 
 .menu-usuario-vaga{
     bottom: 45px;
+    color: $preto;
+}
+
+#menu-vaga{
+    color: $preto;
+}
+
+#menu-empresa{
+    color: $preto;
 }
 
 .inline-type{
     right: 0;
     left: 0;
     bottom: 33px;
+}
+
+#cadastrar-curriculo{
+    top: 45px;
+    left: 45px;
+    color: $verde-titulo;
 }
 
 // Experiencias, Cursos e Formação
@@ -1009,6 +1059,7 @@ body{
 .container-error .botao:hover {
     color: $branco;
     background-color: $verde-titulo;
+    transition: 0.3s;
 }
 
 .container-error .titulo-error h1{

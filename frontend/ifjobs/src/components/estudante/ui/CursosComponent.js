@@ -23,11 +23,7 @@ const CursosComponent = ({cursos, acao}) => {
                                               <div className='menu-button-open'>
                                               {acao == "editar" ?<MenuCursoComponent curso={c}/> : ""}
                                               </div>
-                                              <article>
-                                                <h6 className='data-inicio fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial}</h6>
-                                                <h6 className='data-fim fonte-corpo'>{c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6> 
-                                              </article> 
-                                              
+                                              <h6 className='datas data-fim fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial} à {c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6>
                                               <p className='conteudo-cursos fonte-corpo'>{c.cargaHoraria}</p>
                                             </section>
                                           ]))

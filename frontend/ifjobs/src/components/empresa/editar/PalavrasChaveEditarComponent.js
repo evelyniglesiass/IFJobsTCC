@@ -38,8 +38,8 @@ const PalavrasChaveEditarComponent = ({palavra, idVaga}) => {
     }
 
     return (
-        <div className='container-modal modal-cadastrar-cur'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✎</button>
+        <div>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

@@ -5,7 +5,7 @@ import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
 import useGlobalUser from '../../../context/usuario/user.context';
 import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook';
 import { Link, useParams } from 'react-router-dom';
-import MenuVagaComponent from './MenuVagaComponent';
+import MenuVagaComponent from './menus/MenuVagaComponent';
 import PalavrasChaveComponent from './PalavrasChaveComponent';
 
 // Component para detalhar vaga na visão da empresa
@@ -25,8 +25,8 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou}) => {
                                           <article className='cabecalho-perfis'>
                                             <h1 className='img-perfis'>⚐</h1>
                                             <h2 className='titulo-perfil fonte-titulo'>{vaga.titulo}</h2>
-                                            <h5 className='curso fonte-titulo'>{vaga.cidade}</h5>
-                                            <h5 className='curso fonte-titulo'>{
+                                            <h5 className='curso fonte-corpo'>{vaga.cidade}</h5>
+                                            <h5 className='curso fonte-corpo'>{
                                             vaga.curso == 'INFORMATICA' ? "Informática" : 
                                             vaga.curso == "EVENTOS" ? "Eventos" : 
                                             vaga.curso == "PLÁSTICOS" ? "Plásticos" : 

@@ -4,7 +4,7 @@ import VagasComponent from './VagasComponent'
 import CadastrarVagaComponent from '../../empresa/cadastrar/CadastrarVagaComponent'
 import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
-import MenuEmpresaComponent from '../ui/MenuEmpresaComponent';
+import MenuEmpresaComponent from '../ui/menus/MenuEmpresaComponent';
 
 // Component de perfil da empresa com botão editar
 const PerfilEmpresaComponent = ({empresa}) => {
