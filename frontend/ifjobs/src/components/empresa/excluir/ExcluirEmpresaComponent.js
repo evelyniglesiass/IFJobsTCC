@@ -1,6 +1,7 @@
 import '../../../App.scss';
 import { useState } from 'react';
 import { useExcluirEmpresa } from '../../../hook/empresa/excluirEmpresa.hook';
+import { useLogout } from '../../../hook/logout/logout.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
@@ -9,6 +10,7 @@ Modal.setAppElement("#root");
 const ExcluirEmpresaComponent = ({empresa}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
+    const {fazerLogout} = useLogout();
 
     function openModal() {
         setIsOpen(true);
@@ -24,7 +26,7 @@ const ExcluirEmpresaComponent = ({empresa}) => {
         event.preventDefault();
 
         await excluirEmpresa(empresa);
-        
+        await fazerLogout();
     }
 
     return (
