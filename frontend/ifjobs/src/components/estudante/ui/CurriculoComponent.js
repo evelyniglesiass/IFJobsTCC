@@ -12,6 +12,10 @@ import { useListarExperiencia } from '../../../hook/experiencia/listarExperienci
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useParams } from 'react-router-dom';
+import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.hook';
+import { useListarIdioma } from '../../../hook/idioma/listarIdioma.hook';
+import IdiomasComponent from './IdiomasComponent';
+import HabilidadesComponent from './HabilidadesComponent';
 
 // Component para visualizar perfis de estudantes
 const CurriculoComponent = ({estudante, curriculo}) => { 
@@ -66,11 +70,15 @@ const CurriculoComponent = ({estudante, curriculo}) => {
   const [experiencia, setExperiencia] = useState([]);
   const [curso, setCurso] = useState([]);
   const [formacao, setFormacao] = useState([]);
+  const [habilidade, setHabilidade] = useState([]);
+  const [idioma, setIdioma] = useState([]);
   const { id } = useParams();
 
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
+  const { listarHabilidade } = useListarHabilidade();
+  const { listarIdioma } = useListarIdioma();
 
   useEffect(() => {
     async function listar() { 
@@ -83,6 +91,12 @@ const CurriculoComponent = ({estudante, curriculo}) => {
 
       const forResp = await listarFormacao(id);
       setFormacao(forResp);
+
+      const habResp = await listarHabilidade(id);
+      setHabilidade(habResp);
+
+      const idiResp = await listarIdioma(id);
+      setIdioma(idiResp);
 
     }
 
@@ -117,6 +131,20 @@ const CurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <article className='formacao-component'><FormacaoComponent formacoes={formacao}/></article>
         </article>
+
+        <article className='habilidade-component'>
+          <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
+          <article className='habilidades-component'>
+            <HabilidadesComponent habilidades={habilidade}/>
+          </article>
+        </article>   
+
+        <article className='habilidade-component'>
+          <h3 className='titulos-perfis fonte-titulo'>Idiomas</h3>
+          <article className='habilidades-component'>
+            <IdiomasComponent idioma={idioma}/>
+          </article>
+        </article> 
     </section>
   )
 }

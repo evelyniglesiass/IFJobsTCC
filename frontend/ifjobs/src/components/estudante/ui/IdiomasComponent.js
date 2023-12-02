@@ -3,7 +3,7 @@ import '../../../App.scss';
 import MenuIdiomaComponent from './menus/MenuIdiomaComponent';
 
 // Component para idiomas
-const IdiomasComponent = ({idioma}) => {
+const IdiomasComponent = ({idioma, acao}) => {
 
   const [idiomasTag, setIdiomasTag] = useState([]);
 
@@ -17,7 +17,7 @@ const IdiomasComponent = ({idioma}) => {
                                             <article className='cabecalho-cursos-exper'>
                                               <h6 className='fonte-corpo'>📖 {i.descricao}</h6>
                                               <div className='menu-button-open'>
-                                                <MenuIdiomaComponent idioma={i}/>
+                                              {acao == "editar" ? <MenuIdiomaComponent idioma={i}/> : ""}
                                               </div>
                                             </article>
                                           ]))

@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import MenuFormacaoComponent from './menus/MenuFormacaoComponent';
 
 // Component para formação acadêmica
-const FormacaoComponent = ({formacoes}) => {
+const FormacaoComponent = ({formacoes, acao}) => {
 
   const [formacaoTag, setFormacaoTag] = useState([]);
 
@@ -19,7 +19,7 @@ const FormacaoComponent = ({formacoes}) => {
                                       <h4 className='titulos-cursos-exper fonte-titulo'>{f.descricao}</h4>
                                       <h6 className='titulos-cursos-exper fonte-corpo'>{f.instituicao}</h6>
                                       <div className='menu-button-open'>
-                                        <MenuFormacaoComponent formacao={f}/>
+                                      {acao == "editar" ? <MenuFormacaoComponent formacao={f}/> : ""}
                                       </div>
                                       <article>
                                         <h6 className='data-inicio fonte-corpo'>{f.dataInicial != null ? moment(f.dataInicial).format("DD/MM/YYYY") : f.dataInicial}</h6>

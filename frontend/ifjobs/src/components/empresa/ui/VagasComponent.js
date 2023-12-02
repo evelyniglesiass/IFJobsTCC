@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import { Link } from 'react-router-dom';
-import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
-import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
-import CadastrarPalavrasChaveComponent from '../../empresa/cadastrar/CadastrarPalavrasChaveComponent'
-import MenuVagaComponent from '../../empresa/ui/MenuVagaComponent'
 
 // Component de vagas
-const VagasComponent = ({vagas, acao}) => {
+const VagasComponent = ({vagas}) => {
 
   const [vagasTag, setVagasTag] = useState([]);
 

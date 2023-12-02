@@ -142,7 +142,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
           <CadastrarExperienciaComponent listar={listar}/>
           <div className='experiencia-component'>
-            <ExperienciasComponent experiencias={experiencia}/>
+            <ExperienciasComponent experiencias={experiencia} acao={"editar"}/>
           </div>
         </article>
 
@@ -150,7 +150,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
           <CadastrarCursoComponent/>
           <article className='cursos-component'>
-            <CursosComponent cursos={curso}/>
+            <CursosComponent cursos={curso} acao={"editar"}/>
           </article>
         </article>
 
@@ -158,7 +158,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
           <CadastrarFormacaoComponent/>
           <article className='formacao-component'>
-            <FormacaoComponent formacoes={formacao}/>
+            <FormacaoComponent formacoes={formacao} acao={"editar"}/>
           </article>
         </article>
 
@@ -166,7 +166,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
           <CadastrarHabilidadeComponent/>
           <article className='habilidades-component'>
-            <HabilidadesComponent habilidades={habilidade}/>
+            <HabilidadesComponent habilidades={habilidade} acao={"editar"}/>
           </article>
         </article>   
 
@@ -174,7 +174,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
           <h3 className='titulos-perfis fonte-titulo'>Idiomas</h3>
           <CadastrarIdiomaComponent/>
           <article className='habilidades-component'>
-            <IdiomasComponent idioma={idioma}/>
+            <IdiomasComponent idioma={idioma} acao={"editar"}/>
           </article>
         </article>  
     </section>

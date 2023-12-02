@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import MenuCursoComponent from './menus/MenuCursoComponent';
 
 // Component para cursos
-const CursosComponent = ({cursos}) => {
+const CursosComponent = ({cursos, acao}) => {
 
   const [cursoTag, setCursoTag] = useState([]);
 
@@ -21,7 +21,7 @@ const CursosComponent = ({cursos}) => {
                                               <h4 className='titulos-cursos-exper fonte-titulo'>{c.descricao}</h4>
                                               <h6 className='titulos-cursos-exper fonte-corpo'>{c.instituicao}</h6>
                                               <div className='menu-button-open'>
-                                                <MenuCursoComponent curso={c}/>
+                                              {acao == "editar" ?<MenuCursoComponent curso={c}/> : ""}
                                               </div>
                                               <article>
                                                 <h6 className='data-inicio fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial}</h6>

@@ -3,7 +3,7 @@ import '../../../App.scss';
 import MenuHabilidadeComponent from './menus/MenuHabilidadeComponent';
 
 // Component para habilidades
-const HabilidadesComponent = ({habilidades}) => {
+const HabilidadesComponent = ({habilidades, acao}) => {
 
   const [habilidadesTag, setHabilidadesTag] = useState([]);
 
@@ -17,7 +17,7 @@ const HabilidadesComponent = ({habilidades}) => {
                                             <article className='cabecalho-cursos-exper'>
                                               <h6 className='fonte-corpo'>⭐ {h.descricao}</h6>
                                               <div className='menu-button-open'>
-                                                <MenuHabilidadeComponent habilidade={h}/>
+                                              {acao == "editar" ? <MenuHabilidadeComponent habilidade={h}/> : ""}
                                               </div>
                                             </article>
                                           ]))
