@@ -6,10 +6,10 @@ export function useEditarPalavraChave(){
 
     const [error] = useState();
 
-    async function editarPalavraChave(palavra, palavraId){
+    async function editarPalavraChave(palavra, id, idVaga){
 
         try{
-            await editarPalavraChaveApi(palavra, palavraId);
+            await editarPalavraChaveApi(palavra, id, idVaga);
         }
         catch(errorApi){
             toast.error(errorApi);

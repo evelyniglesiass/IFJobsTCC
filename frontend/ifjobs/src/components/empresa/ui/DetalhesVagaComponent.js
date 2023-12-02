@@ -4,16 +4,16 @@ import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
 import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
 import useGlobalUser from '../../../context/usuario/user.context';
 import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import MenuVagaComponent from './MenuVagaComponent';
+import PalavrasChaveComponent from './PalavrasChaveComponent';
 
 // Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = ({vaga, estudantes, encontrou}) => {
 
   const [vagaTag, setVagaTag] = useState([]);
   const [estudantesTag, setEstudantesTag] = useState([]);
-  // const [palavras, setPalavras] = useState([]);
-  // const [user] = useGlobalUser();
+  const { id } = useParams();
 
   useEffect(() => {
 
@@ -56,33 +56,35 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou}) => {
 
   }, [vaga, estudantes, encontrou])
 
-  // const { listarPalavrasChave } = useListarPalavraChave();
+  const [palavras, setPalavras] = useState([]);
+  const { listarPalavraChave } = useListarPalavraChave();
 
-  // useEffect(() => {
-  //   async function listar() {
+  useEffect(() => {
+    async function listar() {
 
-  //     const response = await listarPalavrasChave(user.id);
-      
-  //     setVagas(response) 
+      const response = await listarPalavraChave(id);
+      setPalavras(response) 
 
-  //   }
+    }
 
-  //   listar();
-  // }, [])
+    listar();
+  }, [])
 
   return (
     <section>
         {vagaTag}
 
+        <article className='habilidade-component'>
+          <h3 className='fonte-titulo'>Palavras chave</h3>
+          <article className='habilidades-component'>
+            <PalavrasChaveComponent palavra={palavras} idVaga={id} encontrou={encontrou}/>
+          </article>
+        </article>
+
         <article className='sobre-perfis'>
           <h3 className='fonte-titulo'>Candidatos</h3>
           {estudantesTag}
         </article>
-
-        {/* <article className='palavras-vaga'>
-          <h3 className='fonte-titulo'>Palavras chave</h3>
-          {estudantesTag}
-        </article> */}
 
     </section>
   )

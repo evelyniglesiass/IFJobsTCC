@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import ExperienciasEditarComponent from '../editar/ExperienciasEditarComponent';
-import ExcluirExperienciaComponent from '../excluir/ExcluirExperienciaComponent';
 import MenuExperienciaComponent from './menus/MenuExperienciaComponent';
 import * as moment from 'moment';
 

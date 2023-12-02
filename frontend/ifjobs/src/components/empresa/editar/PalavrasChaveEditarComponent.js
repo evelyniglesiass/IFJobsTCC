@@ -1,12 +1,12 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useEditarPalavra } from '../../../hook/palavra/editarPalavra.hook';
+import { useEditarPalavra, useEditarPalavraChave } from '../../../hook/palavra/editarPalavra.hook';
 import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const PalavrasChaveEditarComponent = ({palavra}) => {
+const PalavrasChaveEditarComponent = ({palavra, idVaga}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -28,12 +28,12 @@ const PalavrasChaveEditarComponent = ({palavra}) => {
         setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
     }
 
-    const {edicaoPalavra} = useEditarPalavra();
+    const {editarPalavraChave} = useEditarPalavraChave();
 
     async function onSubmit(event){
         event.preventDefault();
 
-        await edicaoPalavra(formInput.palavra);
+        await editarPalavraChave(formInput.palavra, palavra.id, idVaga);
         
     }
 
