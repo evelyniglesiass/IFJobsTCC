@@ -13,8 +13,6 @@ import useGlobalUser from '../../../context/usuario/user.context';
 
 import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
 import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
-import CurriculoEditarComponent from '../editar/CurriculoEditarComponent';
-import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
 import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.hook';
@@ -23,7 +21,6 @@ import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
 import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
 import HabilidadesComponent from './HabilidadesComponent';
 import CadastrarHabilidadeComponent from '../cadastro/CadastrarHabilidadeComponent'
-import ExcluirCurriculoComponent from '../excluir/ExcluirCurriculoComponent';
 import CadastrarIdiomaComponent from '../cadastro/CadastrarIdiomaComponent';
 import IdiomasComponent from '../ui/IdiomasComponent';
 import MenuCurriculoComponent from './menus/MenuCurriculoComponent';

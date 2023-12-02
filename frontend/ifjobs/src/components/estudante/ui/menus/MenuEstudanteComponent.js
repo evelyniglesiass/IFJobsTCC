@@ -30,7 +30,7 @@ const MenuEstudanteComponent = ({estudante}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirEstudanteComponent estudante={estudante}/>
+                    <ExcluirEstudanteComponent />
                     <EstudanteEditarComponent estudante={estudante}/>
                 </div>
 

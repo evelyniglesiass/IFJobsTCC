@@ -30,7 +30,7 @@ const MenuEmpresaComponent = ({empresa}) => {
                 className="modal-content">
 
                 <div >
-                    <ExcluirEmpresaComponent empresa={empresa}/>
+                    <ExcluirEmpresaComponent />
                     <EditarEmpresaComponent empresa={empresa}/>
                 </div>
 

@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { useExcluirEmpresa } from '../../../hook/empresa/excluirEmpresa.hook';
 import { useLogout } from '../../../hook/logout/logout.hook';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirEmpresaComponent = ({empresa}) => {
+const ExcluirEmpresaComponent = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const {fazerLogout} = useLogout();
@@ -22,10 +23,10 @@ const ExcluirEmpresaComponent = ({empresa}) => {
 
     const {excluirEmpresa} = useExcluirEmpresa();
 
-    async function onSubmit(event){
+    async function onClick(event){
         event.preventDefault();
 
-        await excluirEmpresa(empresa);
+        await excluirEmpresa();
         await fazerLogout();
     }
 
@@ -42,10 +43,10 @@ const ExcluirEmpresaComponent = ({empresa}) => {
 
                 <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>                
                 <div className='container-cursos-exper'>
-                    <form onSubmit={onSubmit}>
+                    <form >
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='empresa' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary btn-excluir-perfil' name='empresa' id='botao-cadastro-modal' onClick={onClick}><Link to={"/"}>Sim </Link></button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 
