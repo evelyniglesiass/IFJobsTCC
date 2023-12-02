@@ -7,7 +7,7 @@ import HabilidadeEditarComponent from '../../editar/HabilidadeEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuHabilidadeComponent = ({habilidade}) => {
+const MenuHabilidadeComponent = ({habilidade, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuHabilidadeComponent = ({habilidade}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirHabilidadeComponent habilidade={habilidade}/>
-                    <HabilidadeEditarComponent habilidade={habilidade}/>
+                    <ExcluirHabilidadeComponent habilidade={habilidade} listar={listar}/>
+                    <HabilidadeEditarComponent habilidade={habilidade} listar={listar}/>
                 </div>
 
             </Modal>

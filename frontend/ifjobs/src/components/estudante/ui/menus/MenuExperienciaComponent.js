@@ -7,7 +7,7 @@ import ExperienciasEditarComponent from '../../editar/ExperienciasEditarComponen
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuExperienciaComponent = ({experiencia}) => {
+const MenuExperienciaComponent = ({experiencia, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuExperienciaComponent = ({experiencia}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirExperienciaComponent experiencia={experiencia}/>
-                    <ExperienciasEditarComponent experiencia={experiencia}/>
+                    <ExcluirExperienciaComponent experiencia={experiencia} listar={listar}/>
+                    <ExperienciasEditarComponent experiencia={experiencia} listar={listar}/>
                 </div>
 
             </Modal>

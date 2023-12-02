@@ -1,5 +1,5 @@
 import '../../../../App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import ExcluirEstudanteComponent from '../../excluir/ExcluirEstudanteComponent';
 import EstudanteEditarComponent from '../../editar/EstudanteEditarComponent';
@@ -7,7 +7,7 @@ import EstudanteEditarComponent from '../../editar/EstudanteEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuEstudanteComponent = ({estudante}) => {
+const MenuEstudanteComponent = ({estudante, listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const MenuEstudanteComponent = ({estudante}) => {
 
                 <div className='button-menu-li'>
                     <ExcluirEstudanteComponent />
-                    <EstudanteEditarComponent estudante={estudante}/>
+                    <EstudanteEditarComponent estudante={estudante} listarCur={listarCur}/>
                 </div>
 
             </Modal>

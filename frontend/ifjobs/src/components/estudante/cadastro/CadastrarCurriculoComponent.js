@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarCurriculoComponent = () => {
+const CadastrarCurriculoComponent = ({listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -35,7 +35,7 @@ const CadastrarCurriculoComponent = () => {
         event.preventDefault();
 
         await cadastrarCurriculo(formInput.resumo);
-        
+        listarCur()
     }
 
     return (

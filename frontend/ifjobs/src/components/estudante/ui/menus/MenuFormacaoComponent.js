@@ -7,7 +7,7 @@ import FormacaoEditarComponent from '../../editar/FormacaoEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuFormacaoComponent = ({formacao}) => {
+const MenuFormacaoComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuFormacaoComponent = ({formacao}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirFormacaoComponent formacao={formacao}/>
-                    <FormacaoEditarComponent formacao={formacao}/>
+                    <ExcluirFormacaoComponent formacao={formacao} listar={listar}/>
+                    <FormacaoEditarComponent formacao={formacao} listar={listar}/>
                 </div>
 
             </Modal>

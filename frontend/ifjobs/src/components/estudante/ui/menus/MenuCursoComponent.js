@@ -7,7 +7,7 @@ import CursosEditarComponent from '../../editar/CursosEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuCursoComponent = ({curso}) => {
+const MenuCursoComponent = ({curso, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuCursoComponent = ({curso}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirCursoComponent curso={curso}/>
-                    <CursosEditarComponent cursos={curso}/>
+                    <ExcluirCursoComponent curso={curso} listar={listar}/>
+                    <CursosEditarComponent cursos={curso} listar={listar}/>
                 </div>
 
             </Modal>

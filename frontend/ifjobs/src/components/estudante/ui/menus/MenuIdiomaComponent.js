@@ -7,7 +7,7 @@ import IdiomaEditarComponent from '../../editar/IdiomaEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuIdiomaComponent = ({idioma}) => {
+const MenuIdiomaComponent = ({idioma, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuIdiomaComponent = ({idioma}) => {
                 className="modal-content modal-menus">
 
                 <div className='button-menu-li'>
-                    <ExcluirIdiomaComponent idioma={idioma}/>
-                    <IdiomaEditarComponent idioma={idioma}/>
+                    <ExcluirIdiomaComponent idioma={idioma} listar={listar}/>
+                    <IdiomaEditarComponent idioma={idioma} listar={listar}/>
                 </div>
 
             </Modal>

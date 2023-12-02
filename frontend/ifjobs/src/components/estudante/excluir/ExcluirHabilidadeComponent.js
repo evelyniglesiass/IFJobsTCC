@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirHabilidadeComponent = ({habilidade}) => {
+const ExcluirHabilidadeComponent = ({habilidade, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirHabilidadeComponent = ({habilidade}) => {
         event.preventDefault();
 
         await excluirHabilidade(habilidade.id);
-        
+        listar()
     }
 
     return (

@@ -8,7 +8,7 @@ import DicasFormacoesComponent from '../../dicas/DicasFormacoesComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const FormacaoEditarComponent = ({formacao}) => {
+const FormacaoEditarComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -41,7 +41,7 @@ const FormacaoEditarComponent = ({formacao}) => {
         event.preventDefault();
 
         await editarFormacao(formInput.descricao, formInput.cidade, formInput.instituicao, formInput.dataInicial, formInput.dataFinal, formInput.nivel, formacao.id);
-        
+        listar()
     }
 
     return (

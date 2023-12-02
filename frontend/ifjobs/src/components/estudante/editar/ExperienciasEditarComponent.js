@@ -7,7 +7,7 @@ import DicasExperienciaComponent from '../../dicas/DicasExperienciaComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExperienciasEditarComponent = ({experiencia}) => {
+const ExperienciasEditarComponent = ({experiencia, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -38,7 +38,7 @@ const ExperienciasEditarComponent = ({experiencia}) => {
         event.preventDefault();
         
         await editarExperiencia(formInput.descricao, formInput.empresa, formInput.cargo, formInput.dataInicial, formInput.dataFinal, experiencia.id);
-        
+        listar()
     }
 
     return (

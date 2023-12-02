@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const IdiomaEditarComponent = ({idioma}) => {
+const IdiomaEditarComponent = ({idioma, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -32,9 +32,9 @@ const IdiomaEditarComponent = ({idioma}) => {
 
     async function onSubmit(event){
         event.preventDefault();
-        console.log(idioma.id)
+
         await editarIdioma(formInput.descricao, idioma.id);
-        
+        listar()
     }
 
     return (
