@@ -20,8 +20,8 @@ const MenuCursoComponent = ({curso}) => {
     }
 
     return (
-        <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open' >•••</button>
+        <div>
+            <button onClick={openModal} className='button-open-menu' >•••</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
@@ -29,9 +29,7 @@ const MenuCursoComponent = ({curso}) => {
                 overlayClassName="modal-overlay"
                 className="modal-content">
 
-                <button onClick={closeModal} className='button-fechar'>X</button>
-
-                <div >
+                <div className='button-menu-li'>
                     <ExcluirCursoComponent curso={curso}/>
                     <CursosEditarComponent cursos={curso}/>
                 </div>

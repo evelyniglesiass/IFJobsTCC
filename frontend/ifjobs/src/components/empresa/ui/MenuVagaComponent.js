@@ -21,7 +21,7 @@ const MenuVagaComponent = ({vaga}) => {
     }
 
     return (
-        <div className='container-modal'>
+        <div>
             <button onClick={openModal} className='button-modal-open' >•••</button>
             <Modal
                 isOpen={modalIsOpen}
@@ -30,7 +30,6 @@ const MenuVagaComponent = ({vaga}) => {
                 overlayClassName="modal-overlay"
                 className="modal-content">
 
-                <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <div >
                     <ExcluirVagaComponent vaga={vaga}/>

@@ -38,8 +38,8 @@ const IdiomaEditarComponent = ({idioma}) => {
     }
 
     return (
-        <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✎</button>
+        <div>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

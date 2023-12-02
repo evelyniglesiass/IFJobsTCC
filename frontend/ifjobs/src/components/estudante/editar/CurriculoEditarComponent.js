@@ -39,9 +39,9 @@ const EditarCurriculoComponent = ({curriculo}) => {
     }
 
     return (
-        <div className='modal-editar-cur'>
+        <div>
 
-            <button onClick={openModal} className='button-modal-open'>✎</button>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
 
             <Modal
                 isOpen={modalIsOpen}

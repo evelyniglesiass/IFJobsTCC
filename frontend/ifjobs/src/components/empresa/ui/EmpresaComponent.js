@@ -23,7 +23,7 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
                                             empresa.nome != null ? empresa.nome.slice(0, 2).toUpperCase() : "👤"
                                           }</h1>
                                           <h2 className='titulo-perfil fonte-titulo'>{empresa.nome}</h2>
-                                          <h5 className='curso fonte-corpo'>{empresa.nomeUsuario}</h5>
+                                          <h5 className='curso fonte-corpo'>@{empresa.nomeUsuario}</h5>
                                           <h5 className='curso fonte-corpo'>{empresa.cidade}</h5>
                                         </section>
                                         <section className='sobre-perfis'>

@@ -34,7 +34,7 @@ const CurriculoComponent = ({estudante, curriculo}) => {
                               }</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='fonte-titulo'>{estudante.usuario}</h5>
-                              <h5 className='curso fonte-corpo'>{estudante.nomeUsuario}</h5>
+                              <h5 className='curso fonte-corpo'>@{estudante.nomeUsuario}</h5>
                               <h5 className='curso fonte-corpo'>{
                               estudante.curso == 'INFORMATICA' ? "Informática" : 
                               estudante.curso == "EVENTOS" ? "Eventos" : 
@@ -57,6 +57,7 @@ const CurriculoComponent = ({estudante, curriculo}) => {
                               <p className='fonte-corpo'><a style={{color:'#146869'}} href={`mailto:${estudante.email}`}>{estudante.email}</a></p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
+                              <p className='fonte-corpo'>{estudante.idade} anos</p> 
                             </section>
                           ]))
 

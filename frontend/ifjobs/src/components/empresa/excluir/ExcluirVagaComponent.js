@@ -29,7 +29,7 @@ const ExcluirVagaComponent = ({vaga}) => {
 
     return (
         <div >
-            <button onClick={openModal} className='button-modal-open button-menu' >🗑 Deletar</button>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>🗑️ Excluir</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

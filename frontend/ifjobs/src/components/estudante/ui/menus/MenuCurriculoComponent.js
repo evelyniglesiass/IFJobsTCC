@@ -1,13 +1,13 @@
 import '../../../../App.scss';
 import { useState } from 'react';
 import Modal from 'react-modal';
-import ExcluirExperienciaComponent from '../../excluir/ExcluirExperienciaComponent';
-import ExperienciasEditarComponent from '../../editar/ExperienciasEditarComponent';
+import ExcluirCurriculoComponent from '../../excluir/ExcluirCurriculoComponent';
+import CurriculoEditarComponent from '../../editar/CurriculoEditarComponent';
 
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuExperienciaComponent = ({experiencia}) => {
+const MenuCurriculoComponent = ({curriculo}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuExperienciaComponent = ({experiencia}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirExperienciaComponent experiencia={experiencia}/>
-                    <ExperienciasEditarComponent experiencia={experiencia}/>
+                    <ExcluirCurriculoComponent curriculo={curriculo}/>
+                    <CurriculoEditarComponent curriculo={curriculo}/>
                 </div>
 
             </Modal>
@@ -39,4 +39,4 @@ const MenuExperienciaComponent = ({experiencia}) => {
     )
 }
 
-export default MenuExperienciaComponent
+export default MenuCurriculoComponent

@@ -28,8 +28,8 @@ const ExcluirEstudanteComponent = ({estudante}) => {
     }
 
     return (
-        <div className='container-modal'>
-            <button onClick={openModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Deletar</button>
+        <div>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>🗑️ Excluir</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

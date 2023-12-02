@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import ExcluirIdiomaComponent from '../excluir/ExcluirIdiomaComponent';
-import IdiomaEditarComponent from '../editar/IdiomaEditarComponent';
+import MenuIdiomaComponent from './menus/MenuIdiomaComponent';
 
 // Component para idiomas
 const IdiomasComponent = ({idioma}) => {
@@ -16,9 +15,10 @@ const IdiomasComponent = ({idioma}) => {
       idioma.forEach(i => {
         setIdiomasTag((oldIdiomasTag) => ([...oldIdiomasTag,
                                             <article className='cabecalho-cursos-exper'>
-                                              <h6 className='fonte-corpo'>➜ {i.descricao}</h6>
-                                              <IdiomaEditarComponent idioma={i}/>
-                                              <ExcluirIdiomaComponent idioma={i}/>
+                                              <h6 className='fonte-corpo'>📖 {i.descricao}</h6>
+                                              <div className='menu-button-open'>
+                                                <MenuIdiomaComponent idioma={i}/>
+                                              </div>
                                             </article>
                                           ]))
       });

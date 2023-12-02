@@ -21,7 +21,7 @@ const VagasComponent = ({vagas, acao}) => {
                                           <h2 className='titulo-vagas fonte-titulo'>{v.titulo}</h2>
                                           <p className='corpo-vagas fonte-corpo'>{v.descricao}</p>
                                           <article className='botao-vagas'>
-                                            <Link className='btn btn-dark' to={`/detalhes/vaga/${v.id}`}>Visualizar</Link>        
+                                            <Link className='btn btn-dark btn-visualizar' to={`/detalhes/vaga/${v.id}`}>Visualizar</Link>        
                                           </article>
                                         </section>
                                     ]))

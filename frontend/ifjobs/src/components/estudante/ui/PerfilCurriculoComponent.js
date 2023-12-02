@@ -26,6 +26,8 @@ import CadastrarHabilidadeComponent from '../cadastro/CadastrarHabilidadeCompone
 import ExcluirCurriculoComponent from '../excluir/ExcluirCurriculoComponent';
 import CadastrarIdiomaComponent from '../cadastro/CadastrarIdiomaComponent';
 import IdiomasComponent from '../ui/IdiomasComponent';
+import MenuCurriculoComponent from './menus/MenuCurriculoComponent';
+import MenuEstudanteComponent from './menus/MenuEstudanteComponent';
 
 // Component de perfil do estudante com botão de editar
 const PerfilCurriculoComponent = ({estudante, curriculo}) => { 
@@ -79,7 +81,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                                 estudante.nome != null ? estudante.nome.slice(0, 2).toUpperCase() : "👤"
                               }</h1>
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
-                              <h5 className='curso fonte-corpo'>{estudante.nomeUsuario}</h5>
+                              <h5 className='curso fonte-corpo'>@{estudante.nomeUsuario}</h5>
                               <h5 className='curso fonte-corpo'>{
                               estudante.curso == 'INFORMATICA' ? "Informática" : 
                               estudante.curso == "EVENTOS" ? "Eventos" : 
@@ -105,6 +107,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
                               <p className='fonte-corpo'>{estudante.email}</p>
                               <p className='fonte-corpo'>{estudante.telefone}</p>
                               <p className='fonte-corpo'>{estudante.cidade}</p> 
+                              <p className='fonte-corpo'>{estudante.idade} anos</p> 
                             </section>
                           ]))
 
@@ -119,7 +122,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
     <section>
         <article className='cabecalho-perfis'>
           {estudanteTag}
-          <EstudanteEditarComponent estudante={estudante}/>
+          <div className='menu-button-open menu-usuario'>
+            <MenuEstudanteComponent estudante={estudante}/>
+          </div>
         </article>
 
         <article className='objetivo-curriculo'>
@@ -130,8 +135,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
-          {curriculo ? <CurriculoEditarComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent /> }
-          {curriculo ? <ExcluirCurriculoComponent curriculo={curriculo}/> : ""}
+          {curriculo ? <MenuCurriculoComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent /> }
         </article>
 
         <article className='experiencia-curriculo'>

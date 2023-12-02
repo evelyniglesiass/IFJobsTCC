@@ -33,12 +33,13 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                             vaga.curso == "PLÁSTICOS" ? "Plásticos" : 
                                             "Mecânica"
                                             }</h5>
-                                            <div className='menu-button-open'>
-                                              <MenuVagaComponent vaga={vaga}/>
-                                            </div>
+                                            
                                           </article>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
+                                            <div className='button-open-menu menu-usuario-vaga'>
+                                              <MenuVagaComponent vaga={vaga}/>
+                                            </div>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
                                             <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
                                             <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>

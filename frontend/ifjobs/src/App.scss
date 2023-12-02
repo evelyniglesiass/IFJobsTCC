@@ -126,6 +126,7 @@ body{
 }
 
 // - Container - Vagas e Empresas
+
 .container-vagas, .container-empresas{
     width: 85%;
     min-height: 100vh;
@@ -139,6 +140,10 @@ body{
 //.div-vaga, .div-empresa{
     //padding-top: 5vh;
 //}
+
+.div-vaga{
+    margin-top: 30px;
+}
 
 // Home
 .container-home{
@@ -549,7 +554,7 @@ body{
     background-color: $branco;
     font-family: $fonte-um;
     font-weight: bolder;
-    color: $preto;
+    color: $branco;
     background-color: $verde-forte;
     border: 0px;
 }
@@ -805,17 +810,6 @@ body{
     margin-left: 99%;
 }
 
-.button-menu{
-    font-weight: 700;
-    padding: 5px;
-}
-
-.menu-button-open{
-    position: relative;
-    top: 50px;
-    right: 70px;
-}
-
 // modal editar
 
 .modal-editar-emp {
@@ -855,6 +849,75 @@ body{
     width: 20px;
     margin-left: 96%;
     margin-top: -4%;
+}
+
+// Menus ------------------------------------------------------------------------------------------------------
+.button-menu{
+    font-weight: 700;
+    padding: 5px;
+}
+
+.menu-button-open{
+    position: relative;
+    // top: 50px;
+    // right: 70px;
+}
+
+.dropDownMenu{
+    position: absolute;
+    display: grid;
+    // top: 4.5rem;
+    // right: 1.5rem;
+    width: 120px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: $branco;
+    border: 1px solid $preto-borda;
+    justify-content: flex-start;
+}
+
+.button-open-menu{
+    cursor: pointer;
+    position: relative;
+    border-radius: 15px;
+    background-color: rgba(165, 42, 42, 0);
+    border: none;
+    color: $preto;
+    font-weight: 500;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: x-large;
+    float: inline-end;
+    bottom: 70px;
+}
+
+.button-menu-li{
+    font-weight: 600;
+    font-size: medium;
+    list-style-type: none;
+    text-align: left;
+}
+
+.menu-usuario{
+    bottom: 35px;
+    right: 50px;
+}
+
+.menu-usuario-empresa{
+    bottom: 5px;
+    top: 40px;
+    right: 60px;
+}
+
+.menu-usuario-vaga{
+    bottom: 45px;
+}
+
+.inline-type{
+    right: 0;
+    left: 0;
+    bottom: 33px;
 }
 
 // Experiencias, Cursos e Formação

@@ -20,14 +20,15 @@ const CursosComponent = ({cursos}) => {
                                             <section className='cabecalho-cursos-exper'>
                                               <h4 className='titulos-cursos-exper fonte-titulo'>{c.descricao}</h4>
                                               <h6 className='titulos-cursos-exper fonte-corpo'>{c.instituicao}</h6>
+                                              <div className='menu-button-open'>
+                                                <MenuCursoComponent curso={c}/>
+                                              </div>
                                               <article>
                                                 <h6 className='data-inicio fonte-corpo'>{c.dataInicial != null ? moment(c.dataInicial).format("DD/MM/YYYY") : c.dataInicial}</h6>
                                                 <h6 className='data-fim fonte-corpo'>{c.dataFinal != null ? moment(c.dataFinal).format("DD/MM/YYYY") : c.dataFinal}</h6> 
                                               </article> 
-                                              <p className='conteudo-cursos fonte-corpo'>{c.descricao}</p>
-                                              <div className='menu-button-open'>
-                                                <MenuCursoComponent curso={c}/>
-                                              </div>
+                                              
+                                              <p className='conteudo-cursos fonte-corpo'>{c.cargaHoraria}</p>
                                             </section>
                                           ]))
       });

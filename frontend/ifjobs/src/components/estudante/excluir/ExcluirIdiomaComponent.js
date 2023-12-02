@@ -28,8 +28,8 @@ const ExcluirIdiomaComponent = ({idioma}) => {
     }
 
     return (
-        <div className='container-modal'>
-            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal' style={{fontWeight:"1000"}}>🗑</button>
+        <div>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>🗑️ Excluir</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

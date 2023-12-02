@@ -42,8 +42,8 @@ const ExperienciasEditarComponent = ({experiencia}) => {
     }
 
     return (
-        <div className='modal-editar-exp'>
-            <button onClick={openModal} className='button-modal-open'>✎</button>
+        <div>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

@@ -63,7 +63,7 @@ const EmpresaEditarComponent = ({empresa}) => {
   return ( 
     <div >
 
-      <button onClick={openModal} className='button-modal-open button-menu'>✎ Editar meu perfil</button>
+      <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar meus dados</button>
 
       <Modal
         isOpen={modalIsOpen}

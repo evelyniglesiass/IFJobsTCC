@@ -47,7 +47,7 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
 
   return (
     <div >
-            <button onClick={openModal} className='button-modal-open button-menu'>✎ Editar</button>
+            <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

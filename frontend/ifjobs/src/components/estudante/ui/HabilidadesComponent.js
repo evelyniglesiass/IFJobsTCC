@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import HabilidadeEditarComponent from '../editar/HabilidadeEditarComponent'
-import ExcluirHabilidadeComponent from '../excluir/ExcluirHabilidadeComponent';
+import MenuHabilidadeComponent from './menus/MenuHabilidadeComponent';
 
 // Component para habilidades
 const HabilidadesComponent = ({habilidades}) => {
@@ -16,9 +15,10 @@ const HabilidadesComponent = ({habilidades}) => {
       habilidades.forEach(h => {
         setHabilidadesTag((oldHabilidadesTag) => ([...oldHabilidadesTag,
                                             <article className='cabecalho-cursos-exper'>
-                                              <h6 className='fonte-corpo'>➜ {h.descricao}</h6>
-                                              <HabilidadeEditarComponent habilidade={h}/>
-                                              <ExcluirHabilidadeComponent habilidade={h}/>
+                                              <h6 className='fonte-corpo'>⭐ {h.descricao}</h6>
+                                              <div className='menu-button-open'>
+                                                <MenuHabilidadeComponent habilidade={h}/>
+                                              </div>
                                             </article>
                                           ]))
       });
