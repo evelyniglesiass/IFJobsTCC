@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import PalavrasChaveEditarComponent from '../editar/PalavrasChaveEditarComponent';
-import ExcluirPalavraChaveComponent from '../excluir/ExcluirPalavraChaveComponent';
 import MenuPalavrasComponent from '../ui/menus/MenuPalavrasComponent';
 
 // Component para cursos
-const PalavrasChaveComponent = ({palavra, idVaga, encontrou, listaPa}) => {
+const PalavrasChaveComponent = ({palavra, idVaga, encontrou, listaPa, acao}) => {
 
   const [palavrasChaveTag, setPalavrasChaveTag] = useState([]);
 
   useEffect(() => { 
 
     setPalavrasChaveTag([]);
-    console.log(encontrou)
+
+    console.log(palavra)
     
     palavra.forEach(p => {
       setPalavrasChaveTag((oldPalavrasChaveTag) => ([...oldPalavrasChaveTag,

@@ -2,6 +2,7 @@ import '../../../App.scss';
 import { useState } from 'react';
 import { useExcluirVaga } from '../../../hook/vagas/excluirVaga.hook';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
@@ -20,7 +21,7 @@ const ExcluirVagaComponent = ({vaga}) => {
 
     const {excluirVaga} = useExcluirVaga();
 
-    async function onSubmit(event){
+    async function onClick(event){
         event.preventDefault();
 
         await excluirVaga(vaga.id);
@@ -40,10 +41,10 @@ const ExcluirVagaComponent = ({vaga}) => {
 
                 <h2 className='titulo-modal'>Deseja excluir sua vaga?</h2>                
                 <div className='container-cursos-exper'>
-                    <form onSubmit={onSubmit}>
+                    <form >
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='vaga' id='botao-cadastro-modal'>Sim</button>
+                            <button type='submit' className='txt btn btn-primary btn-excluir-perfil' name='vaga' id='botao-cadastro-modal' onClick={onClick}><Link to={"/perfil"}>Sim</Link></button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 

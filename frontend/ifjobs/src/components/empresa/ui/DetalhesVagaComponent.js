@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import EditarDetalhesVagaComponent from '../editar/EditarDetalhesVagaComponent';
-import ExcluirVagaComponent from '../excluir/ExcluirVagaComponent';
-import useGlobalUser from '../../../context/usuario/user.context';
 import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook';
 import { Link, useParams } from 'react-router-dom';
 import MenuVagaComponent from './menus/MenuVagaComponent';
