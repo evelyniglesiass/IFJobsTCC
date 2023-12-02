@@ -5,7 +5,7 @@ import ExcluirPalavraChaveComponent from '../excluir/ExcluirPalavraChaveComponen
 import MenuPalavrasComponent from '../ui/menus/MenuPalavrasComponent';
 
 // Component para cursos
-const PalavrasChaveComponent = ({palavra, idVaga, encontrou}) => {
+const PalavrasChaveComponent = ({palavra, idVaga, encontrou, listaPa}) => {
 
   const [palavrasChaveTag, setPalavrasChaveTag] = useState([]);
 
@@ -19,7 +19,7 @@ const PalavrasChaveComponent = ({palavra, idVaga, encontrou}) => {
                                           <article className='cabecalho-cursos-exper'>
                                             <h6 className='fonte-corpo'>#️⃣ {p.palavra}</h6>
                                             <div className='menu-button-open'>
-                                             {encontrou == true ? <MenuPalavrasComponent palavra={p} idVaga={idVaga}/> : "" }
+                                             {encontrou == true ? <MenuPalavrasComponent palavra={p} idVaga={idVaga} listaPa={listaPa}/> : "" }
                                             </div>
                                           </article>
                                         ]))

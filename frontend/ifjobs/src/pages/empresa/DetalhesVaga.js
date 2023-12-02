@@ -25,20 +25,21 @@ const DetalhesVaga = () => {
   const { listarCandidatosVaga } = useListarCandidatosVaga();
   const { listarVagasEmpresa } = useListarVagasEmpresa();
 
+  async function listar() {
+
+    const vagResp = await listarVagaEspecifica(id);
+    setVaga(vagResp) 
+
+    const estResp = await listarCandidatosVaga(id);
+    setEstudantes(estResp)
+
+    const Resp = await listarVagasEmpresa(user.id);
+    setTodasVagas(Resp)
+
+  }
+
   useEffect(() => {
-    async function listar() {
-
-      const vagResp = await listarVagaEspecifica(id);
-      setVaga(vagResp) 
-
-      const estResp = await listarCandidatosVaga(id);
-      setEstudantes(estResp)
-
-      const Resp = await listarVagasEmpresa(user.id);
-      setTodasVagas(Resp)
-
-    }
-
+  
     listar();
   }, [])
 
@@ -66,7 +67,7 @@ const DetalhesVaga = () => {
     <>
       <nav className='header'><HeaderComponent /></nav>
       <section className='container-perfis'>
-        <article><DetalhesVagaComponent vaga={vaga} estudantes={estudantes} encontrou={encontrou}/></article>
+        <article><DetalhesVagaComponent vaga={vaga} estudantes={estudantes} encontrou={encontrou} listarVag={listar}/></article>
       </section>
     </>
   )

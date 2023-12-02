@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const PalavrasChaveEditarComponent = ({palavra, idVaga}) => {
+const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -34,7 +34,7 @@ const PalavrasChaveEditarComponent = ({palavra, idVaga}) => {
         event.preventDefault();
 
         await editarPalavraChave(formInput.palavra, palavra.id, idVaga);
-        
+        listaPa()
     }
 
     return (

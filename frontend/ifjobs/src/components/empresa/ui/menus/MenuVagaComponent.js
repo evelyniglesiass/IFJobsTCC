@@ -8,7 +8,7 @@ import CadastrarPalavrasChaveComponent from '../../cadastrar/CadastrarPalavrasCh
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuVagaComponent = ({vaga}) => {
+const MenuVagaComponent = ({vaga, listarVag, listarPal}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -33,8 +33,8 @@ const MenuVagaComponent = ({vaga}) => {
 
                 <div >
                     <ExcluirVagaComponent vaga={vaga}/>
-                    <EditarDetalhesVagaComponent vaga={vaga}/>
-                    <CadastrarPalavrasChaveComponent vaga={vaga}/>
+                    <EditarDetalhesVagaComponent vaga={vaga} listarVag={listarVag}/>
+                    <CadastrarPalavrasChaveComponent vaga={vaga} listarPal={listarPal}/>
                 </div>
 
             </Modal>

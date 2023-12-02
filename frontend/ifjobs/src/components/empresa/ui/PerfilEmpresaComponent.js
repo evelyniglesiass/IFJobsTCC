@@ -7,7 +7,7 @@ import useGlobalUser from '../../../context/usuario/user.context';
 import MenuEmpresaComponent from '../ui/menus/MenuEmpresaComponent';
 
 // Component de perfil da empresa com botão editar
-const PerfilEmpresaComponent = ({empresa}) => {
+const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
 
   const [empresaUm, setEmpresaUm] = useState([]);
   const [empresaDois, setEmpresaDois] = useState([]);
@@ -26,7 +26,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
                                         <h5 className='curso fonte-corpo'>@{empresa.nomeUsuario}</h5>
                                         <h5 className='curso fonte-corpo'>{empresa.cidade}</h5>
                                         <div className='menu-button-open menu-usuario-empresa'>
-                                          <MenuEmpresaComponent empresa={empresa}/>
+                                          <MenuEmpresaComponent empresa={empresa} listarEmp={listarEmp}/>
                                         </div>
                                       </section>
                                   ]))
@@ -47,14 +47,15 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
   const { listarVagasEmpresa } = useListarVagasEmpresa();
 
+  async function listar() {
+
+    const response = await listarVagasEmpresa(user.id);
+    
+    setVagas(response) 
+
+  }
+
   useEffect(() => {
-    async function listar() {
-
-      const response = await listarVagasEmpresa(user.id);
-      
-      setVagas(response) 
-
-    }
 
     listar();
   }, [])
@@ -71,7 +72,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
         </section>
 
         <div className='perfil-empresa-vaga'>
-          <VagasComponent vagas={vagas} acao={"editar"}/>
+          <VagasComponent vagas={vagas} acao={"editar"} />
         </div>
     </>
   )
