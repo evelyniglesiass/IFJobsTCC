@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarIdiomaComponent = () => {
+const CadastrarIdiomaComponent = ({listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -34,7 +34,7 @@ const CadastrarIdiomaComponent = () => {
         event.preventDefault();
 
         await cadastrarIdioma(formInput.descricao);
-        
+        listar()
     }
 
     return (

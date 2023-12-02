@@ -40,7 +40,6 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [idioma, setIdioma] = useState([]);
   const [user] = useGlobalUser();
 
-  let listarF
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
@@ -145,7 +144,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
-          <CadastrarCursoComponent/>
+          <CadastrarCursoComponent listar={listar}/>
           <article className='cursos-component'>
             <CursosComponent cursos={curso} acao={"editar"}/>
           </article>
@@ -153,7 +152,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
-          <CadastrarFormacaoComponent/>
+          <CadastrarFormacaoComponent listar={listar}/>
           <article className='formacao-component'>
             <FormacaoComponent formacoes={formacao} acao={"editar"}/>
           </article>
@@ -161,7 +160,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
-          <CadastrarHabilidadeComponent/>
+          <CadastrarHabilidadeComponent listar={listar}/>
           <article className='habilidades-component'>
             <HabilidadesComponent habilidades={habilidade} acao={"editar"}/>
           </article>
@@ -169,7 +168,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Idiomas</h3>
-          <CadastrarIdiomaComponent/>
+          <CadastrarIdiomaComponent listar={listar}/>
           <article className='habilidades-component'>
             <IdiomasComponent idioma={idioma} acao={"editar"}/>
           </article>
