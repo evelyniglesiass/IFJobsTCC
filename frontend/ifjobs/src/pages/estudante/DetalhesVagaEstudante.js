@@ -45,9 +45,6 @@ const DetalhesVagaEstudante = () => {
 
   useEffect(() => {
 
-    console.log(candidatos)
-    console.log(estudante)
-
     async function cand() {
       candidatos.forEach(c => {
 
@@ -56,14 +53,11 @@ const DetalhesVagaEstudante = () => {
         if (estudante && obj) {
           if(obj.id === estudante.id){
             setEncontrou(true);
-            console.log("Aqui")
           }
         }
     
       });
     }
-
-      console.log(encontrou)
 
       cand()
 

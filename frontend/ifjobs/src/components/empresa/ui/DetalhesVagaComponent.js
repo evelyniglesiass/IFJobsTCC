@@ -8,13 +8,12 @@ import { Link } from 'react-router-dom';
 import MenuVagaComponent from './MenuVagaComponent';
 
 // Component para detalhar vaga na visão da empresa
-const DetalhesVagaComponent = ({vaga, estudantes}) => {
+const DetalhesVagaComponent = ({vaga, estudantes, encontrou}) => {
 
   const [vagaTag, setVagaTag] = useState([]);
   const [estudantesTag, setEstudantesTag] = useState([]);
   // const [palavras, setPalavras] = useState([]);
   // const [user] = useGlobalUser();
-
 
   useEffect(() => {
 
@@ -37,9 +36,9 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                           </article>
                                           <article className='sobre-perfis'>
                                             <h3 className='fonte-titulo'>Detalhes</h3>
-                                            <div className='button-open-menu menu-usuario-vaga'>
-                                              <MenuVagaComponent vaga={vaga}/>
-                                            </div>
+                                            {encontrou == true ? <div className='button-open-menu menu-usuario-vaga'>
+                                              <MenuVagaComponent vaga={vaga}/> 
+                                            </div> : ""}
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
                                             <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
                                             <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
@@ -55,7 +54,7 @@ const DetalhesVagaComponent = ({vaga, estudantes}) => {
                                 ]))
     });
 
-  }, [vaga, estudantes])
+  }, [vaga, estudantes, encontrou])
 
   // const { listarPalavrasChave } = useListarPalavraChave();
 
