@@ -34,7 +34,6 @@ const MenuVagaComponent = ({vaga, listarVag, listarPal}) => {
                 <div >
                     <ExcluirVagaComponent vaga={vaga}/>
                     <EditarDetalhesVagaComponent vaga={vaga} listarVag={listarVag}/>
-                    <CadastrarPalavrasChaveComponent vaga={vaga} listarPal={listarPal}/>
                 </div>
 
             </Modal>

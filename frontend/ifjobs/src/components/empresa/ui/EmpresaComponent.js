@@ -64,7 +64,11 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
   return ( 
     <>
       {empresaTag}
-      <div className='perfil-empresa-vaga'><VagasComponent vagas={vagas}/></div>
+      <div className='habilidade-component'>
+        <h3 className='titulos-perfis fonte-titulo'>Vagas</h3>
+        <hr />
+        <VagasComponent vagas={vagas}/>
+      </div>
     </>
   )
 }

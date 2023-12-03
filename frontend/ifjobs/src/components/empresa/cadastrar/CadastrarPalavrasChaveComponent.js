@@ -38,8 +38,8 @@ const CadastrarPalavrasChaveComponent = ({vaga, listarPal}) => {
     }
 
     return (
-        <div >
-            <button onClick={openModal} className='button-modal-open button-menu-li'>#️⃣ Cadastrar palavras-chave</button>
+        <div className='container-modal modal-cadastrar-for' >
+            <button onClick={openModal} className='button-modal-open cadastro-estudante-modal'>✚</button>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}

@@ -78,7 +78,10 @@ const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
           {empresaDois}
         </section>
 
-        <div className='perfil-empresa-vaga'>
+        <div className='habilidade-component'>
+          <h3 className='titulos-perfis fonte-titulo'>Vagas</h3>
+          <CadastrarVagaComponent/>
+          <hr className='hr-vagas'/>
           <VagasComponent vagas={vagas} acao={"editar"} />
         </div>
     </>

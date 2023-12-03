@@ -4,6 +4,7 @@ import { useListarPalavraChave } from '../../../hook/palavra/listarPalavra.hook'
 import { Link, useParams } from 'react-router-dom';
 import MenuVagaComponent from './menus/MenuVagaComponent';
 import PalavrasChaveComponent from './PalavrasChaveComponent';
+import CadastrarPalavrasChaveComponent from '../cadastrar/CadastrarPalavrasChaveComponent';
 
 // Component para detalhar vaga na visão da empresa
 const DetalhesVagaComponent = ({vaga, estudantes, encontrou, listarVag}) => {
@@ -75,6 +76,7 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou, listarVag}) => {
         <article className='habilidade-component'>
           <h3 className='fonte-titulo'>Palavras chave</h3>
           <article className='habilidades-component'>
+            <CadastrarPalavrasChaveComponent vaga={vaga} listarPal={listar}/>
             <PalavrasChaveComponent palavra={palavras} idVaga={id} encontrou={encontrou} listaPa={listar}/>
           </article>
         </article>
