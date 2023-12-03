@@ -48,7 +48,7 @@ const CurriculoComponent = ({estudante, curriculo}) => {
                               <h5 className='curso fonte-corpo'>{
                               estudante.curso == 'INFORMATICA' ? "Informática" : 
                               estudante.curso == "EVENTOS" ? "Eventos" : 
-                              estudante.curso == "PLÁSTICOS" ? "Plásticos" : 
+                              estudante.curso == "PLASTICOS" ? "Plásticos" : 
                               "Mecânica"
                               }</h5>
                             </section>

@@ -34,7 +34,7 @@ const EditarPerfilEmpresaComponent = ({empresa}) => {
                                           <h5 className='curso fonte-corpo'>{empresa.cidade}</h5>
                                         </section>
                                         <section className='sobre-perfis'>
-                                          <h3 className='fonte-titulo'>Sobre a empresa</h3>
+                                          <h3 className='fonte-titulo titulo-pe'>Sobre a empresa</h3>
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
                                           <p className='fonte-corpo'><strong>Telefone: </strong>{empresa.telefone ? tel(empresa.telefone) : ""}</p>
                                           <p className='fonte-corpo'><strong>Email: </strong><a style={{color:'#146869'}} href={`mailto:${empresa.email}`}>{empresa.email}</a></p>

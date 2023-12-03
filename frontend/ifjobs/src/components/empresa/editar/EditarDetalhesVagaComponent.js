@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../../App.scss';
 import { useState } from 'react';
 import { useEditarVaga } from '../../../hook/vagas/editarVaga.hook';
@@ -12,6 +12,7 @@ Modal.setAppElement("#root");
 const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [curso, setCurso] = useState(0);
 
     function openModal() {
         setIsOpen(true);
@@ -21,13 +22,26 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        if (vaga.curso === 'INFORMATICA') {
+            setCurso(0)
+        } else if(vaga.curso === "EVENTOS") {
+            setCurso(1)
+        } else if(vaga.curso === "MECANICA") {
+            setCurso(2)
+        }else if(vaga.curso === "PLASTICOS") {
+            setCurso(3)
+        }
+
+      }, [vaga])
+
     const [formInput, setFormInput] = useState({
         titulo: vaga.titulo,
         cidade: vaga.cidade,
         descricao: vaga.descricao,
         salario: vaga.salario,
         idadeMinima: vaga.idadeMinima,
-        curso: vaga.curso
+        curso: curso
     })
 
     function handleChange(event){
@@ -82,7 +96,7 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
                     </div>
 
                     <div class="txt-form-group">
-                        <select defaultValue={vaga.curso} className='form-control' name='curso' onChange={handleChange}>
+                        <select defaultValue={curso} className='form-control' name='curso' onChange={handleChange}>
                             <option value="" disabled selected>Curso</option>
                             <option value="0">Informática</option>
                             <option value="1">Eventos</option>

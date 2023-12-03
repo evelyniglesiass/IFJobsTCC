@@ -1,6 +1,5 @@
 import '../../App.scss';
 import Background from "../../imagens/home.png";
-import Logo from '../../imagens/logoBrancoLegenda.png'
 
 // Import de Components
 import LoginComponent from '../../components/ui/LoginComponent';

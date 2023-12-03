@@ -6,7 +6,7 @@ import { useCadastrarVaga } from '../../../hook/vagas/cadastrarVaga.hook';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarVagaComponent = () => {
+const CadastrarVagaComponent = ({listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -37,9 +37,9 @@ const CadastrarVagaComponent = () => {
 
     async function onSubmit(event){
         event.preventDefault();
-        console.log(formInput)
+
         await cadastrarVaga(formInput.titulo, formInput.descricao, true, formInput.salario, formInput.idadeMinima, formInput.cidade, formInput.curso, "2023-01-01");
-        
+        listar()
     }
 
     return (

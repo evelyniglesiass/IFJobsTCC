@@ -37,13 +37,13 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou, listarVag}) => {
                                             <h5 className='curso fonte-corpo'>{
                                             vaga.curso == 'INFORMATICA' ? "Informática" : 
                                             vaga.curso == "EVENTOS" ? "Eventos" : 
-                                            vaga.curso == "PLÁSTICOS" ? "Plásticos" : 
+                                            vaga.curso == "PLASTICOS" ? "Plásticos" : 
                                             "Mecânica"
                                             }</h5>
                                             
                                           </article>
                                           <article className='sobre-perfis'>
-                                            <h3 className='fonte-titulo'>Detalhes</h3>
+                                            <h3 className='fonte-titulo titulo-pe'>Detalhes</h3>
                                             {encontrou == true ? <div className='button-open-menu menu-usuario-vaga'>
                                               <MenuVagaComponent vaga={vaga} listarVag={listarVag} listarPal={listar}/> 
                                             </div> : ""}
@@ -74,15 +74,15 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou, listarVag}) => {
         {vagaTag}
 
         <article className='habilidade-component'>
-          <h3 className='fonte-titulo'>Palavras chave</h3>
+          <h3 className='fonte-titulo titulo-pe'>Palavras chave</h3>
           <article className='habilidades-component'>
-            <CadastrarPalavrasChaveComponent vaga={vaga} listarPal={listar}/>
+            {encontrou == true ? <CadastrarPalavrasChaveComponent vaga={vaga} listarPal={listar}/> : ""}
             <PalavrasChaveComponent palavra={palavras} idVaga={id} encontrou={encontrou} listaPa={listar}/>
           </article>
         </article>
 
         <article className='sobre-perfis'>
-          <h3 className='fonte-titulo'>Candidatos</h3>
+          <h3 className='fonte-titulo titulo-pe'>Candidatos</h3>
           {estudantesTag}
         </article>
 

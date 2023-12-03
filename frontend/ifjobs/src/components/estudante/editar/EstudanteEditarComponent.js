@@ -9,6 +9,7 @@ Modal.setAppElement("#root");
 const EstudanteEditarComponent = ({estudante, listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [curso, setCurso] = useState(0);
 
     function openModal() {
         setIsOpen(true);
@@ -18,21 +19,36 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
         setIsOpen(false);
     }
 
+    useEffect(() => {
+        if (estudante.curso === 'INFORMATICA') {
+            setCurso(0)
+        } else if(estudante.curso === "EVENTOS") {
+            setCurso(1)
+        } else if(estudante.curso === "MECANICA") {
+            setCurso(2)
+        }else if(estudante.curso === "PLASTICOS") {
+            setCurso(3)
+        }
+
+      }, [estudante])
+
     const [formInput, setFormInput] = useState({
         nome: estudante.nome,
         usuario: estudante.nomeUsuario,
         idade: estudante.idade,
-        curso: estudante.curso,
+        curso: curso,
         telefone: estudante.telefone,
         email: estudante.email,
         senha: "",
         cidade: estudante.cidade
     })
-    console.log(estudante)
+    
     function handleChange(event) {
         const { name, value } = event.target;
 
         setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
+
+        console.log(formInput)
     }
 
     const { editarEstudante } = useEditarEstudante();
@@ -84,7 +100,7 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
                             <input type="text" defaultValue={estudante.idade} className="form-control" name="idade" placeholder="Idade" onChange={handleChange} />
                         </div>
                         <div class="txt-form-group">
-                            <select defaultValue={estudante.curso} className='form-control' name='curso' onChange={handleChange}>
+                            <select defaultValue={curso} className='form-control' name='curso' onChange={handleChange}>
                                 <option value="" disabled selected>Curso</option>
                                 <option value="0">Informática</option>
                                 <option value="1">Eventos</option>

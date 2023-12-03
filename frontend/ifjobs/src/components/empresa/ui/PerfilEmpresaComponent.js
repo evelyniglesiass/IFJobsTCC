@@ -40,7 +40,7 @@ const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
                                   
     setEmpresaDois((oldEmpresaDois) => ([...oldEmpresaDois, 
                                         <section className=''>
-                                          <h3 className='fonte-titulo'>Sobre a empresa</h3>
+                                          <h3 className='fonte-titulo titulo-pe'>Sobre a empresa</h3>
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
                                           <p className='fonte-corpo'><strong>Telefone: </strong>{empresa.telefone ? tel(empresa.telefone) : ""}</p>
                                           <p className='fonte-corpo'><strong>Email: </strong>{empresa.email}</p> 
@@ -80,7 +80,7 @@ const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
 
         <div className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Vagas</h3>
-          <CadastrarVagaComponent/>
+          <CadastrarVagaComponent listar={listar}/>
           <hr className='hr-vagas'/>
           <VagasComponent vagas={vagas} acao={"editar"} />
         </div>

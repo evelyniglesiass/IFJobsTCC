@@ -29,7 +29,7 @@ const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
                                             <h5 className='curso fonte-corpo'> {
                                             vaga.curso == 'INFORMATICA' ? "Informática" : 
                                             vaga.curso == "EVENTOS" ? "Eventos" : 
-                                            vaga.curso == "PLÁSTICOS" ? "Plásticos" : 
+                                            vaga.curso == "PLASTICOS" ? "Plásticos" : 
                                             "Mecânica"
                                             }
                                             </h5>
@@ -37,7 +37,7 @@ const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
                                           
                                           <article className='sobre-perfis'>
 
-                                            <h3 className='fonte-titulo'>Detalhes</h3>
+                                            <h3 className='fonte-titulo titulo-pe'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
                                             <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
                                             <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
@@ -67,7 +67,7 @@ const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
     <section>
       {vagaTag}
       <article className='habilidade-component'>
-          <h3 className='fonte-titulo'>Palavras chave</h3>
+          <h3 className='fonte-titulo titulo-pe'>Palavras chave</h3>
           <article className='habilidades-component'>
             <PalavrasChaveComponent palavra={palavras} encontrou={false}/>
           </article>

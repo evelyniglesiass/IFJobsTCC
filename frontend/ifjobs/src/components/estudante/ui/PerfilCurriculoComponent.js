@@ -86,9 +86,9 @@ const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => {
                               <h2 className='titulo-perfil fonte-titulo'>{estudante.nome}</h2>
                               <h5 className='curso fonte-corpo'>@{estudante.nomeUsuario}</h5>
                               <h5 className='curso fonte-corpo'>{
-                              estudante.curso == 'INFORMATICA' ? "Informática" : 
-                              estudante.curso == "EVENTOS" ? "Eventos" : 
-                              estudante.curso == "PLÁSTICOS" ? "Plásticos" : 
+                              estudante.curso === 'INFORMATICA' ? "Informática" : 
+                              estudante.curso === "EVENTOS" ? "Eventos" : 
+                              estudante.curso === "PLASTICOS" ? "Plásticos" : 
                               "Mecânica"
                               }</h5>
                               <div className='menu-button-open'>
