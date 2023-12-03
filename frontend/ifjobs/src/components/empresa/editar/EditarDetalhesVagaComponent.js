@@ -41,7 +41,7 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
         descricao: vaga.descricao,
         salario: vaga.salario,
         idadeMinima: vaga.idadeMinima,
-        curso: curso
+        curso: vaga.curso
     })
 
     function handleChange(event){

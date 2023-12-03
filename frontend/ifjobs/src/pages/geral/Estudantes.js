@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
 
-// Import de Components 
-import PesquisaComponent from '../../components/ui/PesquisaComponent';
-import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
+// Import de Components
 import EstudantesComponent from '../../components/estudante/ui/EstudantesComponent';
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import { useListarEstudantesEmp } from '../../hook/estudante/listarEstudantesEmp.hook';

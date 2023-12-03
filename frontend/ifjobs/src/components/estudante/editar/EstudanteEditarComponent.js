@@ -30,13 +30,13 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
             setCurso(3)
         }
 
-      }, [estudante])
+    }, [estudante])
 
     const [formInput, setFormInput] = useState({
         nome: estudante.nome,
         usuario: estudante.nomeUsuario,
         idade: estudante.idade,
-        curso: curso,
+        curso: estudante.curso,
         telefone: estudante.telefone,
         email: estudante.email,
         senha: "",

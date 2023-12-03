@@ -1,5 +1,5 @@
 import '../../../App.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useEditarFormacao } from '../../../hook/formacao/editarFormacao.hook';
 import Modal from 'react-modal';
 import DicasFormacoesComponent from '../../dicas/DicasFormacoesComponent';
@@ -11,6 +11,7 @@ Modal.setAppElement("#root");
 const FormacaoEditarComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [nivel, setNivel] = useState(0);
 
     function openModal() {
         setIsOpen(true);
@@ -19,6 +20,24 @@ const FormacaoEditarComponent = ({formacao, listar}) => {
     function closeModal() {
         setIsOpen(false);
     }
+
+    useEffect(() => {
+        if (formacao.nivel === 'FUNDAMENTAL') {
+            setNivel(0)
+        } else if(formacao.nivel === "MEDIO") {
+            setNivel(1)
+        } else if(formacao.nivel === "TECNICO") {
+            setNivel(2)
+        } else if(formacao.nivel === "MEDIO_TECNICO") {
+            setNivel(3)
+        } else if(formacao.nivel === "SUPERIOR") {
+            setNivel(4)
+        } 
+
+        console.log("f" + formacao.nivel)
+        console.log(formInput)
+
+    }, [formacao])
 
     const [formInput, setFormInput] = useState({
         nivel: formacao.nivel,
@@ -39,7 +58,7 @@ const FormacaoEditarComponent = ({formacao, listar}) => {
 
     async function onSubmit(event){
         event.preventDefault();
-
+        
         await editarFormacao(formInput.descricao, formInput.cidade, formInput.instituicao, formInput.dataInicial, formInput.dataFinal, formInput.nivel, formacao.id);
         listar()
     }
@@ -63,7 +82,7 @@ const FormacaoEditarComponent = ({formacao, listar}) => {
 
                     <form onSubmit={onSubmit}>
                         <div class="txt-form-group">
-                            <select defaultValue={formacao.nivel} className='form-control' name='nivel' onChange={handleChange}>
+                            <select defaultValue={nivel} className='form-control' name='nivel' onChange={handleChange}>
                                 <option value="" disabled selected>Nível</option>
                                 <option value="0">Fundamental</option>
                                 <option value="1">Médio</option>
