@@ -38,7 +38,7 @@ const ExcluirCursoComponent = ({curso, listar}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir seu curso?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir seu curso ou certificado?</h2>                
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

@@ -49,7 +49,8 @@ const IdiomaEditarComponent = ({idioma, listar}) => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Idioma</h2>                
+                <h2 className='titulo-modal'>Idioma</h2>  
+                <hr />              
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 
@@ -57,7 +58,7 @@ const IdiomaEditarComponent = ({idioma, listar}) => {
                         <input type="text" defaultValue={idioma.descricao} class="form-control" name='descricao' placeholder="Idioma" onChange={handleChange}/>
                     </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
 

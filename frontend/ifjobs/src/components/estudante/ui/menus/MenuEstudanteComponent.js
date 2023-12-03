@@ -1,5 +1,5 @@
 import '../../../../App.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Modal from 'react-modal';
 import ExcluirEstudanteComponent from '../../excluir/ExcluirEstudanteComponent';
 import EstudanteEditarComponent from '../../editar/EstudanteEditarComponent';
@@ -31,7 +31,7 @@ const MenuEstudanteComponent = ({estudante, listarCur}) => {
 
                 <div className='button-menu-li'>
                     <ExcluirEstudanteComponent />
-                    <EstudanteEditarComponent estudante={estudante} listarCur={listarCur}/>
+                    <EstudanteEditarComponent estudante={estudante} listarCur={listarCur} close={closeModal}/>
                 </div>
 
             </Modal>

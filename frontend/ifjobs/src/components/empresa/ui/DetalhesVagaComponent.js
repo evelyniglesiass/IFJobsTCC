@@ -48,7 +48,7 @@ const DetalhesVagaComponent = ({vaga, estudantes, encontrou, listarVag}) => {
                                               <MenuVagaComponent vaga={vaga} listarVag={listarVag} listarPal={listar}/> 
                                             </div> : ""}
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
-                                            <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
+                                            <p className='fonte-corpo'><strong>Salário: </strong>R${vaga.salario}</p>
                                             <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
                                           </article>
                                       </section>

@@ -39,7 +39,7 @@ const DetalhesVagaEstudanteComponent = ({vaga, encontrou}) => {
 
                                             <h3 className='fonte-titulo titulo-pe'>Detalhes</h3>
                                             <p className='fonte-corpo'>{vaga.descricao}</p>
-                                            <p className='fonte-corpo'><strong>Salário:</strong> {vaga.salario}</p>
+                                            <p className='fonte-corpo'><strong>Salário: </strong>R${vaga.salario}</p>
                                             <p className='fonte-corpo'><strong>Idade mínima:</strong> {vaga.idadeMinima}</p>
 
                                           </article>

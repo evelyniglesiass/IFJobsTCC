@@ -58,7 +58,7 @@ const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
                         <input type="text" defaultValue={palavra.palavra} class="form-control" name='palavra' placeholder="Palavra" onChange={handleChange}/>
                     </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
 

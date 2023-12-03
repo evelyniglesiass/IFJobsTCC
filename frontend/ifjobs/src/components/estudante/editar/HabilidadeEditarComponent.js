@@ -52,6 +52,7 @@ const HabilidadeEditarComponent = ({habilidade, listar}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Habilidade</h2>
+                <hr/>
                 <div className='container-cursos-exper'>
                 <form onSubmit={onSubmit}>
 
@@ -59,7 +60,7 @@ const HabilidadeEditarComponent = ({habilidade, listar}) => {
                         <input type="text" defaultValue={habilidade.descricao} class="form-control" name='descricao' placeholder="Habilidade" onChange={handleChange}/>
                     </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
                 </form>
                 </div>
 
