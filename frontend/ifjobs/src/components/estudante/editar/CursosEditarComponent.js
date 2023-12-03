@@ -67,7 +67,7 @@ const CursosEditarComponent = ({cursos, listar}) => {
                         <input type="text" defaultValue={cursos.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="text" defaultValue={cursos.cargaHoraria} class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
+                        <input type="number" defaultValue={cursos.cargaHoraria} class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
                     <input type="date" defaultValue={cursos.dataInicial} class="form-control" name='dataInicial' onChange={handleChange}/>

@@ -109,7 +109,7 @@ const CadastrarUsuarioComponent = () => {
                         <input type="text" class="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChangeEstudante}/>
                     </div>
                     <div class="txt-form-group">
-                        <input type="text" class="form-control" name="idade" placeholder="Idade" onChange={handleChangeEstudante}/>
+                        <input type="number" class="form-control" name="idade" placeholder="Idade" onChange={handleChangeEstudante}/>
                     </div>
                     <div class="txt-form-group">
                         <select className='form-control' name='curso' onChange={handleChangeEstudante}>

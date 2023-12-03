@@ -97,7 +97,7 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
                             <input type="text" defaultValue={estudante.nomeUsuario} className="form-control" name="usuario" placeholder="Nome de usuário" onChange={handleChange} />
                         </div>
                         <div class="txt-form-group">
-                            <input type="text" defaultValue={estudante.idade} className="form-control" name="idade" placeholder="Idade" onChange={handleChange} />
+                            <input type="number" defaultValue={estudante.idade} className="form-control" name="idade" placeholder="Idade" onChange={handleChange} />
                         </div>
                         <div class="txt-form-group">
                             <select defaultValue={curso} className='form-control' name='curso' onChange={handleChange}>

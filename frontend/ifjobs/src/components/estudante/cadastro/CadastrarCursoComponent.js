@@ -70,7 +70,7 @@ const CadastrarCursoComponent = ({listar}) => {
                         <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
+                        <input type="number" class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
                     </div>
                     <div className='txt-form-group'>
                     <input type="date" class="form-control" name='dataInicial' onChange={handleChange}/>
