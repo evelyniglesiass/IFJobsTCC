@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EstudanteEditarComponent = ({ estudante }) => {
+const EstudanteEditarComponent = ({estudante, listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -39,11 +39,10 @@ const EstudanteEditarComponent = ({ estudante }) => {
 
     async function onSubmit(event) {
         event.preventDefault();
-        console.log(estudante)
-        console.log(formInput)
 
         await editarEstudante(formInput.nome, formInput.usuario, formInput.idade, formInput.curso, formInput.telefone, formInput.email, formInput.cidade, formInput.senha);
-
+        
+        listarCur()
     }
 
     useEffect(() => {

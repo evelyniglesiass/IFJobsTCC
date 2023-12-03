@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CadastrarPalavrasChaveComponent = ({vaga}) => {
+const CadastrarPalavrasChaveComponent = ({vaga, listarPal}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -34,7 +34,7 @@ const CadastrarPalavrasChaveComponent = ({vaga}) => {
         event.preventDefault();
 
         await cadastrarPalavraChave(formInput.palavra, vaga.id);
-        
+        listarPal()
     }
 
     return (

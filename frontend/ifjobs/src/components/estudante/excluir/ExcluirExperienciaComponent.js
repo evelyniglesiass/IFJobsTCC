@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirExperienciaComponent = ({experiencia}) => {
+const ExcluirExperienciaComponent = ({experiencia, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirExperienciaComponent = ({experiencia}) => {
         event.preventDefault();
 
         await excluirExperiencia(experiencia.id);
-        
+        listar()
     }
 
     return (

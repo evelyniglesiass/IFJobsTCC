@@ -23,9 +23,15 @@ const CurriculoComponent = ({estudante, curriculo}) => {
   const [estudanteTag, setEstudanteTag] = useState([]); 
   const [curriculoTag, setCurriculoTag] = useState([]);
   const [sobreMimTag, setSobreMimTag] = useState([]);
-  const [icone, setIcone] = useState("");
 
   useEffect(() => {
+
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
 
     setEstudanteTag([]);
     setCurriculoTag([]);
@@ -58,10 +64,10 @@ const CurriculoComponent = ({estudante, curriculo}) => {
     setSobreMimTag(() => ([
                             <section>
                               <h3 className='fonte-titulo fonte-sobre'>Sobre mim</h3>
-                              <p className='fonte-corpo'><a style={{color:'#146869'}} href={`mailto:${estudante.email}`}>{estudante.email}</a></p>
-                              <p className='fonte-corpo'>{estudante.telefone}</p>
-                              <p className='fonte-corpo'>{estudante.cidade}</p> 
-                              <p className='fonte-corpo'>{estudante.idade} anos</p> 
+                              <p className='fonte-corpo'><strong>Email: </strong><a style={{color:'#146869'}} href={`mailto:${estudante.email}`}>{estudante.email}</a></p>
+                              <p className='fonte-corpo'><strong>Telefone: </strong>{estudante.telefone ? tel(estudante.telefone) : ""}</p>
+                              <p className='fonte-corpo'><strong>Cidade: </strong>{estudante.cidade}</p> 
+                              <p className='fonte-corpo'><strong>Idade: </strong>{estudante.idade} anos</p> 
                             </section>
                           ]))
 

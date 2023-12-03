@@ -7,7 +7,7 @@ import EditarEmpresaComponent from '../../editar/EmpresaEditarComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const MenuEmpresaComponent = ({empresa}) => {
+const MenuEmpresaComponent = ({empresa, listarEmp}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuEmpresaComponent = ({empresa}) => {
                 className="modal-content">
 
                 <div >
-                    <ExcluirEmpresaComponent empresa={empresa}/>
-                    <EditarEmpresaComponent empresa={empresa}/>
+                    <ExcluirEmpresaComponent />
+                    <EditarEmpresaComponent empresa={empresa} listarEmp={listarEmp}/>
                 </div>
 
             </Modal>

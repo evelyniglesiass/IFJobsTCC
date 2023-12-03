@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirCurriculoComponent = ({curriculo}) => {
+const ExcluirCurriculoComponent = ({curriculo, listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirCurriculoComponent = ({curriculo}) => {
         event.preventDefault();
 
         await excluirCurriculo(curriculo.id);
-        
+        listarCur()
     }
 
     return (
@@ -38,7 +38,8 @@ const ExcluirCurriculoComponent = ({curriculo}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir seu curriculo?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir seu currículo?</h2>   
+                <p className='titulo-modal'>Ao excluir seu currículo você irá excluir todos os itens ligados à ele!</p>               
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

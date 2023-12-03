@@ -9,7 +9,7 @@ Modal.setAppElement("#root");
 // Import de Components
 
 // Component com inputs para editar vaga
-const EditarDetalhesVagaComponent = ({vaga}) => {
+const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
 
   const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -42,7 +42,7 @@ const EditarDetalhesVagaComponent = ({vaga}) => {
         event.preventDefault();
 
         await editarVaga(formInput.titulo, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.cidade, formInput.curso, true, "2023-01-01", vaga.id);
-        
+        listarVag()
     }
 
   return (

@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirIdiomaComponent = ({idioma}) => {
+const ExcluirIdiomaComponent = ({idioma, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirIdiomaComponent = ({idioma}) => {
         event.preventDefault();
 
         await excluirIdioma(idioma.id);
-        
+        listar()
     }
 
     return (

@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirEstudanteComponent = ({estudante}) => {
+const ExcluirEstudanteComponent = () => {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -25,14 +25,13 @@ const ExcluirEstudanteComponent = ({estudante}) => {
     const {excluirEstudante} = useExcluirEstudante();
 
     async function onSubmit(event){
-        event.preventDefault();
-
-        await excluirEstudante(estudante);
+        event.preventDefault(); 
     }
 
     async function onClick(event){
         event.preventDefault();
     
+        await excluirEstudante();
         await fazerLogout();
     }
 
@@ -52,7 +51,7 @@ const ExcluirEstudanteComponent = ({estudante}) => {
                     <form onSubmit={onSubmit}>
 
                         <div className='txt-form-group'>
-                            <button type='submit' className='txt btn btn-primary' name='estudante' id='botao-cadastro-modal' onClick={onClick}><Link to={"/"}>Sim</Link></button>
+                            <button type='submit' className='txt btn btn-primary btn-excluir-perfil' name='estudante' id='botao-cadastro-modal' onClick={onClick}><Link to={"/"}>Sim</Link></button>
                             <button onClick={closeModal} className='txt btn btn-primary' id='botao-cadastro-modal'>Cancelar</button>
                         </div>
 

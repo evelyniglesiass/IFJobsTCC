@@ -7,12 +7,19 @@ import useGlobalUser from '../../../context/usuario/user.context';
 import MenuEmpresaComponent from '../ui/menus/MenuEmpresaComponent';
 
 // Component de perfil da empresa com botão editar
-const PerfilEmpresaComponent = ({empresa}) => {
+const PerfilEmpresaComponent = ({empresa, listarEmp}) => {
 
   const [empresaUm, setEmpresaUm] = useState([]);
   const [empresaDois, setEmpresaDois] = useState([]);
 
   useEffect(() => {
+
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
 
     setEmpresaUm([]);
     setEmpresaDois([]);
@@ -26,7 +33,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
                                         <h5 className='curso fonte-corpo'>@{empresa.nomeUsuario}</h5>
                                         <h5 className='curso fonte-corpo'>{empresa.cidade}</h5>
                                         <div className='menu-button-open menu-usuario-empresa'>
-                                          <MenuEmpresaComponent empresa={empresa}/>
+                                          <MenuEmpresaComponent empresa={empresa} listarEmp={listarEmp}/>
                                         </div>
                                       </section>
                                   ]))
@@ -34,9 +41,9 @@ const PerfilEmpresaComponent = ({empresa}) => {
     setEmpresaDois((oldEmpresaDois) => ([...oldEmpresaDois, 
                                         <section className=''>
                                           <h3 className='fonte-titulo'>Sobre a empresa</h3>
-                                          <p className='fonte-corpo'>{empresa.telefone}</p>
-                                          <p className='fonte-corpo'>{empresa.email}</p> 
                                           <p className='fonte-corpo'>{empresa.descricao}</p>
+                                          <p className='fonte-corpo'><strong>Telefone: </strong>{empresa.telefone ? tel(empresa.telefone) : ""}</p>
+                                          <p className='fonte-corpo'><strong>Email: </strong>{empresa.email}</p> 
                                         </section>
                                         ]))
 
@@ -47,14 +54,15 @@ const PerfilEmpresaComponent = ({empresa}) => {
 
   const { listarVagasEmpresa } = useListarVagasEmpresa();
 
+  async function listar() {
+
+    const response = await listarVagasEmpresa(user.id);
+    
+    setVagas(response) 
+
+  }
+
   useEffect(() => {
-    async function listar() {
-
-      const response = await listarVagasEmpresa(user.id);
-      
-      setVagas(response) 
-
-    }
 
     listar();
   }, [])
@@ -71,7 +79,7 @@ const PerfilEmpresaComponent = ({empresa}) => {
         </section>
 
         <div className='perfil-empresa-vaga'>
-          <VagasComponent vagas={vagas} acao={"editar"}/>
+          <VagasComponent vagas={vagas} acao={"editar"} />
         </div>
     </>
   )

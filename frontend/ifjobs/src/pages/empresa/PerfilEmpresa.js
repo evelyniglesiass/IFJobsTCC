@@ -15,13 +15,14 @@ const PerfilEmpresa = () => {
 
   const { listarEmpresaEspecifica } = useListarEmpresaEspecifica();
 
+  async function listar() {
+
+    const response = await listarEmpresaEspecifica(user.id); 
+    setEmpresa(response);
+
+  }
+
   useEffect(() => {
-    async function listar() {
-
-      const response = await listarEmpresaEspecifica(user.id); 
-      setEmpresa(response);
-
-    }
 
     listar();
   }, [])
@@ -30,7 +31,7 @@ const PerfilEmpresa = () => {
     <>
         <nav className='header'><HeaderComponent/></nav>
         <section className='container-perfis'>
-          <article><PerfilEmpresaComponent empresa={empresa}/></article>
+          <article><PerfilEmpresaComponent empresa={empresa} listarEmp={listar}/></article>
         </section>
     </> 
   )

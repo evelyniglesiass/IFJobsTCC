@@ -13,8 +13,6 @@ import useGlobalUser from '../../../context/usuario/user.context';
 
 import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
 import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
-import CurriculoEditarComponent from '../editar/CurriculoEditarComponent';
-import EstudanteEditarComponent from '../editar/EstudanteEditarComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
 import { useListarHabilidade } from '../../../hook/habilidade/listarHabilidade.hook';
@@ -23,14 +21,13 @@ import CadastrarCursoComponent from '../cadastro/CadastrarCursoComponent';
 import CadastrarFormacaoComponent from '../cadastro/CadastrarFormacaoComponent';
 import HabilidadesComponent from './HabilidadesComponent';
 import CadastrarHabilidadeComponent from '../cadastro/CadastrarHabilidadeComponent'
-import ExcluirCurriculoComponent from '../excluir/ExcluirCurriculoComponent';
 import CadastrarIdiomaComponent from '../cadastro/CadastrarIdiomaComponent';
 import IdiomasComponent from '../ui/IdiomasComponent';
 import MenuCurriculoComponent from './menus/MenuCurriculoComponent';
 import MenuEstudanteComponent from './menus/MenuEstudanteComponent';
 
 // Component de perfil do estudante com botão de editar
-const PerfilCurriculoComponent = ({estudante, curriculo}) => { 
+const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => { 
   
   const [estudanteTag, setEstudanteTag] = useState([]);
   const [curriculoTag, setCurriculoTag] = useState([]);
@@ -43,7 +40,6 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   const [idioma, setIdioma] = useState([]);
   const [user] = useGlobalUser();
 
-  let listarF
   const { listarExperiencia } = useListarExperiencia();
   const { listarCurso } = useListarCurso();
   const { listarFormacao } = useListarFormacao();
@@ -70,6 +66,13 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
   }
 
   useEffect(() => {
+
+    function tel(v){
+      v=v.replace(/\D/g,"");            
+      v=v.replace(/^(\d{2})(\d)/g,"($1) $2");
+      v=v.replace(/(\d)(\d{4})$/,"$1-$2"); 
+      return v;
+    }
 
     setEstudanteTag([]);
     setCurriculoTag([]);
@@ -104,17 +107,16 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
 
     setSobreMimTag(() => ([
                             <section>
-                              <p className='fonte-corpo'>{estudante.email}</p>
-                              <p className='fonte-corpo'>{estudante.telefone}</p>
-                              <p className='fonte-corpo'>{estudante.cidade}</p> 
-                              <p className='fonte-corpo'>{estudante.idade} anos</p> 
+                              <p className='fonte-corpo'><strong>Email: </strong>{estudante.email}</p>
+                              <p className='fonte-corpo'><strong>Telefone: </strong>{estudante.telefone ? tel(estudante.telefone) : ""}</p>
+                              <p className='fonte-corpo'><strong>Cidade: </strong>{estudante.cidade}</p> 
+                              <p className='fonte-corpo'><strong>Idade: </strong>{estudante.idade} anos</p> 
                             </section>
                           ]))
 
   }, [estudante, curriculo])
 
   useEffect(() => {
-  
     listar();
   }, [])
 
@@ -123,7 +125,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='cabecalho-perfis'>
           {estudanteTag}
           <div className='menu-button-open menu-usuario'>
-            <MenuEstudanteComponent estudante={estudante}/>
+            <MenuEstudanteComponent estudante={estudante} listarCur={listarCur}/>
           </div>
         </article>
 
@@ -135,46 +137,46 @@ const PerfilCurriculoComponent = ({estudante, curriculo}) => {
         <article className='objetivo-curriculo'>
           <h3 className='fonte-titulo fonte-sobre'>Objetivo</h3>
           {curriculoTag}
-          {curriculo ? <MenuCurriculoComponent curriculo={curriculo}/> : <CadastrarCurriculoComponent/> }
+          {curriculo ? <MenuCurriculoComponent curriculo={curriculo} listarCur={listarCur}/> : <CadastrarCurriculoComponent listarCur={listarCur}/> }
         </article>
 
         <article className='experiencia-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Experiência Profissional</h3>
           <CadastrarExperienciaComponent listar={listar}/>
           <div className='experiencia-component'>
-            <ExperienciasComponent experiencias={experiencia} acao={"editar"}/>
+            <ExperienciasComponent experiencias={experiencia} acao={"editar"} listar={listar}/>
           </div>
         </article>
 
         <article className='curso-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Cursos e Certificados</h3>
-          <CadastrarCursoComponent/>
+          <CadastrarCursoComponent listar={listar}/>
           <article className='cursos-component'>
-            <CursosComponent cursos={curso} acao={"editar"}/>
+            <CursosComponent cursos={curso} acao={"editar"} listar={listar}/>
           </article>
         </article>
 
         <article className='formacao-curriculo'>
           <h3 className='titulos-perfis fonte-titulo'>Formação Acadêmica</h3>
-          <CadastrarFormacaoComponent/>
+          <CadastrarFormacaoComponent listar={listar}/>
           <article className='formacao-component'>
-            <FormacaoComponent formacoes={formacao} acao={"editar"}/>
+            <FormacaoComponent formacoes={formacao} acao={"editar"} listar={listar}/>
           </article>
         </article>
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
-          <CadastrarHabilidadeComponent/>
+          <CadastrarHabilidadeComponent listar={listar}/>
           <article className='habilidades-component'>
-            <HabilidadesComponent habilidades={habilidade} acao={"editar"}/>
+            <HabilidadesComponent habilidades={habilidade} acao={"editar"} listar={listar}/>
           </article>
         </article>   
 
         <article className='habilidade-component'>
           <h3 className='titulos-perfis fonte-titulo'>Idiomas</h3>
-          <CadastrarIdiomaComponent/>
+          <CadastrarIdiomaComponent listar={listar}/>
           <article className='habilidades-component'>
-            <IdiomasComponent idioma={idioma} acao={"editar"}/>
+            <IdiomasComponent idioma={idioma} acao={"editar"} listar={listar}/>
           </article>
         </article>  
     </section>

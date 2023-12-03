@@ -19,16 +19,17 @@ const PerfilEstudante = () => {
   const { listarEstudanteEspecifico } = useListarEstudanteEspecifico();
   const { listarCurriculo } = useListarCurriculo();
 
+  async function listar() { 
+
+    const response = await listarEstudanteEspecifico(user.id);
+    setEstudante(response);
+
+    const curResp = await listarCurriculo(user.id);
+    setCurriculo(curResp);
+
+  }
+
   useEffect(() => {
-    async function listar() { 
-
-      const response = await listarEstudanteEspecifico(user.id);
-      setEstudante(response);
-
-      const curResp = await listarCurriculo(user.id);
-      setCurriculo(curResp);
-
-    }
 
     listar();
   }, [])
@@ -37,7 +38,7 @@ const PerfilEstudante = () => {
     <>
       <nav className='header'><HeaderComponent/></nav>
       <section className='container-perfis'>
-        <PerfilCurriculoComponent estudante={estudante} curriculo={curriculo}/>
+        <PerfilCurriculoComponent estudante={estudante} curriculo={curriculo} listarCur={listar}/>
       </section>
     </>
   )

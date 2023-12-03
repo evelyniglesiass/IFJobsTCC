@@ -6,7 +6,7 @@ import { useExcluirPalavraChave } from '../../../hook/palavra/excluirPalavra.hoo
 
 Modal.setAppElement("#root");
 
-const ExcluirPalavraChaveComponent = ({palavra}) => {
+const ExcluirPalavraChaveComponent = ({palavra, listaPa}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirPalavraChaveComponent = ({palavra}) => {
         event.preventDefault();
 
         await excluirPalavraChave(palavra.id);
-        
+        listaPa()
     }
 
     return (

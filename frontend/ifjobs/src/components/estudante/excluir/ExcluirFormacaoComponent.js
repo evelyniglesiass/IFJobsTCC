@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirFormacaoComponent = ({formacao}) => {
+const ExcluirFormacaoComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const ExcluirFormacaoComponent = ({formacao}) => {
         event.preventDefault();
 
         await excluirFormacao(formacao.id);
-        
+        listar()
     }
 
     return (

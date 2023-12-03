@@ -7,7 +7,7 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const CursosEditarComponent = ({cursos}) => {
+const CursosEditarComponent = ({cursos, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -40,7 +40,7 @@ const CursosEditarComponent = ({cursos}) => {
         event.preventDefault();
 
         await editarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal,  formInput.instituicao, cursos.id);
-        
+        listar()
     }
 
     return (

@@ -7,7 +7,7 @@ import DicasObjetivoComponent from '../../dicas/DicasObjetivoComponent';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const EditarCurriculoComponent = ({curriculo}) => {
+const EditarCurriculoComponent = ({curriculo, listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -35,7 +35,7 @@ const EditarCurriculoComponent = ({curriculo}) => {
         event.preventDefault();
 
         await editarCurriculo(formInput.resumo);
-        
+        listarCur()
     }
 
     return (

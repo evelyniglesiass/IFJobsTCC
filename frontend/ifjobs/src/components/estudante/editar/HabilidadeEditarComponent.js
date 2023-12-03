@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const HabilidadeEditarComponent = ({habilidade}) => {
+const HabilidadeEditarComponent = ({habilidade, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -34,7 +34,7 @@ const HabilidadeEditarComponent = ({habilidade}) => {
         event.preventDefault();
 
         await editarHabilidade(formInput.descricao, habilidade.id);
-        
+        listar()
     }
 
     return (

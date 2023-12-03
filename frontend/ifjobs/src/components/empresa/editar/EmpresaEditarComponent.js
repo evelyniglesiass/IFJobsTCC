@@ -8,7 +8,7 @@ import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook';
 Modal.setAppElement("#root");
 
 // Component com inputs para editar perfil da empresa
-const EmpresaEditarComponent = ({empresa}) => {
+const EmpresaEditarComponent = ({empresa, listarEmp}) => {
 
   // Modal 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ const EmpresaEditarComponent = ({empresa}) => {
         console.log(formInput)
 
         await editarEmpresa(formInput.nome, formInput.usuario, formInput.descricao, formInput.telefone, formInput.email, formInput.senha, formInput.cidade);
-        
+        listarEmp()
     }
 
     useEffect(() => {
