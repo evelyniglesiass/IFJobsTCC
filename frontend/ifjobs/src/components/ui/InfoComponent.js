@@ -26,7 +26,7 @@ const InfoComponent = () => {
         <section class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordionDois" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                    Sobre o IFSul
+                    Sobre o IFSul Sapucaia
                 </button>
             </h2>
             <article id="accordionDois" class="accordion-collapse collapse">
