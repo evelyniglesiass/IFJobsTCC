@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de de dicas para objetivo
-const ExcluirCurriculoComponent = ({curriculo, listarCur}) => {
+const ExcluirCurriculoComponent = ({curriculo, listarCur, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -25,6 +25,7 @@ const ExcluirCurriculoComponent = ({curriculo, listarCur}) => {
 
         await excluirCurriculo(curriculo.id);
         listarCur()
+        listar()
     }
 
     return (
