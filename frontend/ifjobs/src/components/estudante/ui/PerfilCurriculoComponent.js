@@ -165,7 +165,7 @@ const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => {
         </article>
 
         <article className='habilidade-component'>
-          <h3 className='titulos-perfis fonte-titulo'>Habilidades e conhecimentos</h3>
+          <h3 className='titulos-perfis fonte-titulo'>Habilidades e Conhecimentos</h3>
           <CadastrarHabilidadeComponent listar={listar}/>
           <article className='habilidades-component'>
             <HabilidadesComponent habilidades={habilidade} acao={"editar"} listar={listar}/>

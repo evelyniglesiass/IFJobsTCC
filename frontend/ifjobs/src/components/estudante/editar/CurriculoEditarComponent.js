@@ -59,7 +59,7 @@ const EditarCurriculoComponent = ({curriculo, listarCur}) => {
                 <form onSubmit={onSubmit}>
 
                     <div className='txt-form-group'>
-                        <textarea type="textarea" defaultValue={curriculo?.resumo} class="form-control" name='resumo' placeholder="Resumo" maxLength={250} onChange={handleChange}/>
+                        <textarea type="textarea" defaultValue={curriculo?.resumo} class="form-control" name='resumo' placeholder="Objetivo" maxLength={250} onChange={handleChange}/>
                     </div>
 
                     <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
