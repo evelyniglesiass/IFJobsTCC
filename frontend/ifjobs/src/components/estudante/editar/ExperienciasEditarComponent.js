@@ -6,7 +6,7 @@ import DicasExperienciaComponent from '../../dicas/DicasExperienciaComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component com inputs para edição de experiencias com dicas
 const ExperienciasEditarComponent = ({experiencia, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

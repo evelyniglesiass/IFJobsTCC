@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components 
-import PesquisaComponent from '../../components/ui/PesquisaComponent';
-import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import EstudantesComponent from '../../components/estudante/ui/EstudantesComponent';
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import { useListarEstudantesEst } from '../../hook/estudante/listarEstudantesEst.hook';
@@ -67,8 +63,11 @@ const EstudantesSemLogado = () => {
                 </section>
             </nav>  
           </article>
-          {/* <AtalhoPerfilComponent/> */}
-          <article className='div-empesa'><EstudantesComponent estudantes={estudantes}/></article>
+
+          <article className='div-empesa'>
+            <EstudantesComponent estudantes={estudantes}/>
+          </article>
+
         </section>
     </div>
   )

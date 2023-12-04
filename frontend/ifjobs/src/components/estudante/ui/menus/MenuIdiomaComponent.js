@@ -6,7 +6,7 @@ import IdiomaEditarComponent from '../../editar/IdiomaEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados do idioma
 const MenuIdiomaComponent = ({idioma, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

@@ -1,15 +1,8 @@
 import '../../App.scss';
 import { Link, redirect } from 'react-router-dom';
-import { useState } from 'react';
-import { useLogin } from '../../hook/login/login.hook';
-import CadastrarUsuarioComponent from './CadastrarUsuarioComponent';
-import CadastrarExperienciaComponent from '../estudante/cadastro/CadastrarExperienciaComponent';
-import CadastrarFormacaoComponent from '../estudante/cadastro/CadastrarFormacaoComponent';
-import CadastrarCursoComponent from '../estudante/cadastro/CadastrarCursoComponent';
-import EmpresaEditarComponent from '../empresa/editar/EmpresaEditarComponent';
 
 
-// Component de login
+// Component de erro de pagina não econtrada
 const ErrorComponent = () => {
 
   return (

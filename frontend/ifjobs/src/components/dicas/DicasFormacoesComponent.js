@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component de de dicas para formações
 const DicasFormacoesComponent = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

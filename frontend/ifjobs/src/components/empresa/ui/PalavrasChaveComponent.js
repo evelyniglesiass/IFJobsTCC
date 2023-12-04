@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import MenuPalavrasComponent from '../ui/menus/MenuPalavrasComponent';
-import CadastrarPalavrasChaveComponent from '../cadastrar/CadastrarPalavrasChaveComponent';
 
-// Component para cursos
+// Component para exibir as palavras chaves cadastradas
 const PalavrasChaveComponent = ({palavra, idVaga, encontrou, listaPa, acao}) => {
 
   const [palavrasChaveTag, setPalavrasChaveTag] = useState([]);

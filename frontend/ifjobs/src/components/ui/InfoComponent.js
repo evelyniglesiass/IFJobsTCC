@@ -1,6 +1,6 @@
 import '../../App.scss';
 
-// Component com informações na tela de login
+// Component com informações da tela de login
 const InfoComponent = () => {
  
   return (

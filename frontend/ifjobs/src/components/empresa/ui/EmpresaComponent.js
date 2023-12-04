@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-
-// Import de Components
 import VagasComponent from './VagasComponent'
 import { useListarVagasEmpresa } from '../../../hook/vagas/listarVagasEmpresa.hook';
 import { useParams } from 'react-router-dom';

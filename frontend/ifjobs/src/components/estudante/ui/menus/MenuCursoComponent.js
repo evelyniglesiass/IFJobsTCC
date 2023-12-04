@@ -6,7 +6,7 @@ import CursosEditarComponent from '../../editar/CursosEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados do curso
 const MenuCursoComponent = ({curso, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

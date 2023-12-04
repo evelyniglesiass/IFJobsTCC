@@ -6,7 +6,7 @@ import ExperienciasEditarComponent from '../../editar/ExperienciasEditarComponen
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados da experência
 const MenuExperienciaComponent = ({experiencia, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

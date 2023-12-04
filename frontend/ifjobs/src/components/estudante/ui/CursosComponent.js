@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-import CursosEditarComponent from '../editar/CursosEditarComponent';
-import ExcluiCursoComponent from '../excluir/ExcluirCursoComponent'
 import * as moment from 'moment';
 import MenuCursoComponent from './menus/MenuCursoComponent';
 
-// Component para cursos
+// Component para mostrar cursos
 const CursosComponent = ({cursos, acao, listar}) => {
 
   const [cursoTag, setCursoTag] = useState([]);

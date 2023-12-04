@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import Modal from 'react-modal';
 
-// Import de Components
 import {useEditarEmpresa} from '../../../hook/empresa/editarEmpresa.hook';
 
 Modal.setAppElement("#root");
@@ -10,7 +9,6 @@ Modal.setAppElement("#root");
 // Component com inputs para editar perfil da empresa
 const EmpresaEditarComponent = ({empresa, listarEmp}) => {
 
-  // Modal 
   const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {

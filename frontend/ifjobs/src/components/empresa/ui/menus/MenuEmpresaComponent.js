@@ -6,7 +6,7 @@ import EditarEmpresaComponent from '../../editar/EmpresaEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados da empresa
 const MenuEmpresaComponent = ({empresa, listarEmp}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

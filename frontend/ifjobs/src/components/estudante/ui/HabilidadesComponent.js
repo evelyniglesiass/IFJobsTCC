@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import MenuHabilidadeComponent from './menus/MenuHabilidadeComponent';
 
-// Component para habilidades
+// Component para visualizar habilidades
 const HabilidadesComponent = ({habilidades, acao, listar}) => {
 
   const [habilidadesTag, setHabilidadesTag] = useState([]);

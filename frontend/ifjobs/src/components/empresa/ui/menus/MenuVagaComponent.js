@@ -3,11 +3,10 @@ import { useState } from 'react';
 import Modal from 'react-modal';
 import ExcluirVagaComponent from '../../excluir/ExcluirVagaComponent';
 import EditarDetalhesVagaComponent from '../../editar/EditarDetalhesVagaComponent';
-import CadastrarPalavrasChaveComponent from '../../cadastrar/CadastrarPalavrasChaveComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados da vaga
 const MenuVagaComponent = ({vaga, listarVag, listarPal}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

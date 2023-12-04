@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component com inputs para edição de palavras chave
 const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

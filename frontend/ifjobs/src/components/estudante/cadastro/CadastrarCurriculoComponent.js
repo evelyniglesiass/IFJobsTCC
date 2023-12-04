@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component de cadastro de currículo com dicas
 const CadastrarCurriculoComponent = ({listarCur}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

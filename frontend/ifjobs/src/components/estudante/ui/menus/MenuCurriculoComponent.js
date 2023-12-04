@@ -6,7 +6,7 @@ import CurriculoEditarComponent from '../../editar/CurriculoEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados do currículo
 const MenuCurriculoComponent = ({curriculo, listarCur, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

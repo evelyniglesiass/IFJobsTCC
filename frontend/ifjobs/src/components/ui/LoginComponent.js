@@ -1,5 +1,4 @@
 import '../../App.scss';
-import { Link, redirect } from 'react-router-dom';
 import { useState } from 'react';
 import { useLogin } from '../../hook/login/login.hook';
 import CadastrarUsuarioComponent from './CadastrarUsuarioComponent';

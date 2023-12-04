@@ -1,11 +1,11 @@
 import '../../../App.scss';
 import { useState } from 'react';
-import { useExcluirVaga } from '../../../hook/vagas/excluirVaga.hook';
 import Modal from 'react-modal';
 import { useExcluirPalavraChave } from '../../../hook/palavra/excluirPalavra.hook';
 
 Modal.setAppElement("#root");
 
+// Componente para excluir palavra chave
 const ExcluirPalavraChaveComponent = ({palavra, listaPa}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

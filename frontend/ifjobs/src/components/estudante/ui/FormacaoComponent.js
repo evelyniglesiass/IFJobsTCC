@@ -3,7 +3,7 @@ import '../../../App.scss';
 import * as moment from 'moment';
 import MenuFormacaoComponent from './menus/MenuFormacaoComponent';
 
-// Component para formação acadêmica
+// Component para visualizar formação acadêmica
 const FormacaoComponent = ({formacoes, acao, listar}) => {
 
   const [formacaoTag, setFormacaoTag] = useState([]);

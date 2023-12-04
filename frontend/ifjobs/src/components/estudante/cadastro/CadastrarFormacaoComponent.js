@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component de cadastro de formações com dicas
 const CadastrarFormacaoComponent = ({listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

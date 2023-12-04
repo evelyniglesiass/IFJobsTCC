@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import { Link } from 'react-router-dom';
 
-// Component de vagas
+// Component para exibir vagas cadastradas no feed
 const VagasComponent = ({vagas}) => {
 
   const [vagasTag, setVagasTag] = useState([]);

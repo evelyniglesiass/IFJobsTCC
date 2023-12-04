@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component de exclusão de empresa
 const ExcluirEmpresaComponent = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

@@ -5,7 +5,7 @@ import { useCadastrarVaga } from '../../../hook/vagas/cadastrarVaga.hook';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component de cadastro de vagas
 const CadastrarVagaComponent = ({listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

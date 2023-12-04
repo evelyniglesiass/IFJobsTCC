@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component com inputs para edição de habilidades
 const HabilidadeEditarComponent = ({habilidade, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

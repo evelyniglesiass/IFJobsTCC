@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component para excluir vagas
 const ExcluirVagaComponent = ({vaga}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

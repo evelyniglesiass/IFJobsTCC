@@ -6,7 +6,7 @@ import HabilidadeEditarComponent from '../../editar/HabilidadeEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados da habilidade
 const MenuHabilidadeComponent = ({habilidade, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

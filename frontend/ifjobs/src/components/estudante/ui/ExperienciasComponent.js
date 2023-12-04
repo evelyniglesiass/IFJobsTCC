@@ -3,7 +3,7 @@ import '../../../App.scss';
 import MenuExperienciaComponent from './menus/MenuExperienciaComponent';
 import * as moment from 'moment';
 
-// Component para experiência profissional
+// Component para visualizar experiência profissional
 const ExperienciasComponent = ({experiencias, acao, listar}) => { 
 
   const [experienciaTag, setExperienciaTag] = useState([]);

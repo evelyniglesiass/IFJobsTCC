@@ -4,7 +4,6 @@ import '../../App.scss';
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import EmpresasComponent from '../../components/empresa/ui/EmpresasComponent';
-import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import { useListarEmpresasEst } from '../../hook/empresa/listarEmpresasEst.hook';
 import { useListarEmpresaNome } from '../../hook/empresa/listarEmpresaNome.hook';
 
@@ -65,8 +64,11 @@ const Empresas = () => {
                   </section>
               </nav> 
           </article>
-          {/* <AtalhoPerfilComponent/> */}
-          <article className='div-empresa'><EmpresasComponent empresas={empresas}/></article>
+
+          <article className='div-empresa'>
+            <EmpresasComponent empresas={empresas}/>
+          </article>
+          
         </section>
     </div>
   )

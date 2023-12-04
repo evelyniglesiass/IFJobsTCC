@@ -6,7 +6,7 @@ import FormacaoEditarComponent from '../../editar/FormacaoEditarComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component menu com ações referentes aos dados da formação
 const MenuFormacaoComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

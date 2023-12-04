@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
 import MenuIdiomaComponent from './menus/MenuIdiomaComponent';
 
-// Component para idiomas
+// Component para visualizar idiomas
 const IdiomasComponent = ({idioma, acao, listar}) => {
 
   const [idiomasTag, setIdiomasTag] = useState([]);

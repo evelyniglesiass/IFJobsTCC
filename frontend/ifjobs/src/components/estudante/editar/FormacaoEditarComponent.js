@@ -7,7 +7,7 @@ import DicasFormacoesComponent from '../../dicas/DicasFormacoesComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component com inputs para edição de formações com dicas
 const FormacaoEditarComponent = ({formacao, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

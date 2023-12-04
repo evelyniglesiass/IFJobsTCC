@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-
-// Import de Components
 import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
-
-// Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import { useListarExperiencia } from '../../../hook/experiencia/listarExperiencia.hook';
 import { useListarCurso } from '../../../hook/curso/listarCurso.hook';
@@ -17,7 +13,7 @@ import { useListarIdioma } from '../../../hook/idioma/listarIdioma.hook';
 import IdiomasComponent from './IdiomasComponent';
 import HabilidadesComponent from './HabilidadesComponent';
 
-// Component para visualizar perfis de estudantes
+// Component para mostrar curriculos
 const CurriculoComponent = ({estudante, curriculo}) => { 
 
   const [estudanteTag, setEstudanteTag] = useState([]); 

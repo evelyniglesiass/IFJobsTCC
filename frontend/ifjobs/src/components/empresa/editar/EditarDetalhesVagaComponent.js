@@ -6,8 +6,6 @@ import Modal from 'react-modal';
 
 Modal.setAppElement("#root");
 
-// Import de Components
-
 // Component com inputs para editar vaga
 const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
 

@@ -6,7 +6,7 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 
 Modal.setAppElement("#root");
 
-// Component de de dicas para objetivo
+// Component com inputs para edição de cursos com dicas
 const CursosEditarComponent = ({cursos, listar}) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);

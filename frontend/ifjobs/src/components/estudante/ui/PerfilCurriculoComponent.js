@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import '../../../App.scss';
-
-// Import de Components
 import ExperienciasComponent from './ExperienciasComponent';
 import CursosComponent from './CursosComponent';
 import FormacaoComponent from './FormacaoComponent';
-
-// Import toastify
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import { useListarExperiencia } from '../../../hook/experiencia/listarExperiencia.hook';
 import useGlobalUser from '../../../context/usuario/user.context';
-
 import CadastrarExperienciaComponent from '../cadastro/CadastrarExperienciaComponent';
 import CadastrarCurriculoComponent from '../cadastro/CadastrarCurriculoComponent';
 import { useListarFormacao } from '../../../hook/formacao/listarFormacao.hook';
@@ -26,7 +21,7 @@ import IdiomasComponent from '../ui/IdiomasComponent';
 import MenuCurriculoComponent from './menus/MenuCurriculoComponent';
 import MenuEstudanteComponent from './menus/MenuEstudanteComponent';
 
-// Component de perfil do estudante com botão de editar
+// Component de perfil do estudante com botões de editar
 const PerfilCurriculoComponent = ({estudante, curriculo, listarCur}) => { 
   
   const [estudanteTag, setEstudanteTag] = useState([]);

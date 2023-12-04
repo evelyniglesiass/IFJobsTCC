@@ -4,7 +4,6 @@ import '../../App.scss';
 // Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import VagasComponent from '../../components/empresa/ui/VagasComponent';
-import AtalhoPerfilComponent from '../../components/ui/AtalhoPerfilComponent';
 import { useListarVagas } from '../../hook/vagas/listarVagas.hook';
 import { useListarVagaTitulo } from '../../hook/vagas/listarVagaTitulo.hook';
 import useGlobalUser from '../../context/usuario/user.context';
@@ -81,9 +80,9 @@ const Feed = () => {
 
         </article>
         
-        {/* <AtalhoPerfilComponent user={user}/> */}
-
-        <article className='div-vaga'><VagasComponent vagas={vagas}/></article>
+        <article className='div-vaga'>
+          <VagasComponent vagas={vagas}/>
+        </article>
 
       </section>
 
