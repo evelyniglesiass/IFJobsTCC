@@ -2,22 +2,22 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { listarEstudanteNomeApi } from "../../constants";
 
-export function useListarEstudanteNome(){
+export function useListarEstudanteNome() {
 
     const [error] = useState();
 
-    async function listarEstudanteNome(nomeEstudante){
+    async function listarEstudanteNome(nomeEstudante) {
 
-        try{
+        try {
             const response = await listarEstudanteNomeApi(nomeEstudante);
 
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {listarEstudanteNome, error};
+    return { listarEstudanteNome, error };
 
 }

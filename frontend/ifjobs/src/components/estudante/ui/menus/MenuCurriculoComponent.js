@@ -7,7 +7,7 @@ import CurriculoEditarComponent from '../../editar/CurriculoEditarComponent';
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados do currículo
-const MenuCurriculoComponent = ({curriculo, listarCur, listar}) => {
+const MenuCurriculoComponent = ({ curriculo, listarCur, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuCurriculoComponent = ({curriculo, listarCur, listar}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirCurriculoComponent curriculo={curriculo} listarCur={listarCur} listar={listar}/>
-                    <CurriculoEditarComponent curriculo={curriculo} listarCur={listarCur}/>
+                    <ExcluirCurriculoComponent curriculo={curriculo} listarCur={listarCur} listar={listar} />
+                    <CurriculoEditarComponent curriculo={curriculo} listarCur={listarCur} />
                 </div>
 
             </Modal>

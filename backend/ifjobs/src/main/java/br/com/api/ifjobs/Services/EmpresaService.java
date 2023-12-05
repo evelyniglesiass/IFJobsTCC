@@ -20,7 +20,7 @@ import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
 public class EmpresaService {
-    
+
     @Autowired
     private EmpresaRepository empRep;
 
@@ -29,7 +29,7 @@ public class EmpresaService {
 
     @Autowired
     private Resposta r;
-    
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -38,31 +38,31 @@ public class EmpresaService {
 
     @Autowired
     private SenhaService ss;
-    
 
-    //Método para cadastrar empresas 
-    public ResponseEntity<?> cadastrar(Empresa e){
+    // Método para cadastrar empresas
+    public ResponseEntity<?> cadastrar(Empresa e) {
 
-        //pegando senha para validação
-        ss.setSenha(e.getSenha()); 
-        
-        if(e.getSenha() == ""){ 
+        // pegando senha para validação
+        ss.setSenha(e.getSenha());
+
+        if (e.getSenha() == "") {
             r.setMensagem("Você precisa inserir uma senha!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
 
-        if(empRep.existsByNomeUsuario(e.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())){
+        if (empRep.existsByNomeUsuario(e.getNomeUsuario()) || estRep.existsByNomeUsuario(e.getNomeUsuario())) {
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
-        
-        if(!(ss.verificarSenha(ss.getSenha()))){
-            r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+
+        if (!(ss.verificarSenha(ss.getSenha()))) {
+            r.setMensagem(
+                    "Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
-        
-        if(empRep.existsByEmail(e.getEmail()) || estRep.existsByNomeUsuario(e.getEmail())){
+
+        if (empRep.existsByEmail(e.getEmail()) || estRep.existsByNomeUsuario(e.getEmail())) {
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
@@ -72,40 +72,42 @@ public class EmpresaService {
         empRep.save(e);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
-        
+
     }
 
-    //Método para editar empresas
-    public ResponseEntity<?> editar(Empresa e){
+    // Método para editar empresas
+    public ResponseEntity<?> editar(Empresa e) {
 
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
 
-        e.setId(empresa.getId()); // acho q assim da
+        e.setId(empresa.getId()); 
 
-        //pegando senha para validação
-        ss.setSenha(e.getSenha()); 
-        
-        if(!(empRep.existsById(e.getId()))){
+        // pegando senha para validação
+        ss.setSenha(e.getSenha());
+
+        if (!(empRep.existsById(e.getId()))) {
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(empRep.existeUsuario(e.getNomeUsuario(), empresa.getId()) != 0 || estRep.existeUsuario(e.getNomeUsuario(), 0) != 0){
+
+        if (empRep.existeUsuario(e.getNomeUsuario(), empresa.getId()) != 0
+                || estRep.existeUsuario(e.getNomeUsuario(), 0) != 0) {
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
-        } 
-        
-        if(empRep.existeEmail(e.getEmail(), empresa.getId()) != 0 || estRep.existeEmail(e.getEmail(), 0) != 0){
+        }
+
+        if (empRep.existeEmail(e.getEmail(), empresa.getId()) != 0 || estRep.existeEmail(e.getEmail(), 0) != 0) {
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
 
-        if(e.getSenha() != ""){
+        if (e.getSenha() != "") {
             ss.setSenha(e.getSenha());
-            if(!ss.verificarSenha(ss.getSenha())){
-                r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            if (!ss.verificarSenha(ss.getSenha())) {
+                r.setMensagem(
+                        "Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-            } 
+            }
             e.setSenha(passwordEncoder.encode(e.getSenha()));
         } else {
             e.setSenha(empresa.getSenha());
@@ -119,9 +121,9 @@ public class EmpresaService {
 
     }
 
-    //Método para remover empresa
+    // Método para remover empresa
     public ResponseEntity<Resposta> remover() {
-        
+
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
         empRep.delete(empresa);
         r.setMensagem("Empresa removida com sucesso!");
@@ -129,44 +131,44 @@ public class EmpresaService {
 
     }
 
-    //pesquisa por nome
-    public List<EmpresaDTO> listarPorNome(String nome){
-        return EmpresaDTO.converterLista(empRep.findByNomeContainsIgnoreCase(nome)); 
+    // pesquisa por nome
+    public List<EmpresaDTO> listarPorNome(String nome) {
+        return EmpresaDTO.converterLista(empRep.findByNomeContainsIgnoreCase(nome));
     }
 
-    public List<EmpresaDTO> listarPorNomeSemLogada(String nome){
+    public List<EmpresaDTO> listarPorNomeSemLogada(String nome) {
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
 
-        return EmpresaDTO.converterLista(empRep.findAllByNomeContainingAndIdNot(nome, empresa.getId())); 
+        return EmpresaDTO.converterLista(empRep.findAllByNomeContainingAndIdNot(nome, empresa.getId()));
     }
 
-    //listar todos visão empresa
-    public List<EmpresaDTO> listarTodosEmpresa(){
+    // listar todos visão empresa
+    public List<EmpresaDTO> listarTodosEmpresa() {
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
         return EmpresaDTO.converterLista(empRep.listarEmpresas(empresa.getId()));
     }
 
-    //listar todos visao estudante
-    public List<EmpresaDTO> listarTodosEstudante(){
+    // listar todos visao estudante
+    public List<EmpresaDTO> listarTodosEstudante() {
         return EmpresaDTO.converterLista(empRep.findAll());
     }
 
-    //listar empresa especifica por id
-    public EmpresaDTO listarPorId(int id){
+    // listar empresa especifica por id
+    public EmpresaDTO listarPorId(int id) {
 
         Empresa e = empRep.findById(id).get();
- 
+
         return EmpresaDTO
-            .builder()
-            .id(e.getId())
-            .nome(e.getNome())
-            .nomeUsuario(e.getNomeUsuario())
-            .descricao(e.getDescricao())
-            .cidade(e.getCidade())
-            .email(e.getEmail())
-            .telefone(e.getTelefone())
-            .senha(e.getSenha())
-            .build();
+                .builder()
+                .id(e.getId())
+                .nome(e.getNome())
+                .nomeUsuario(e.getNomeUsuario())
+                .descricao(e.getDescricao())
+                .cidade(e.getCidade())
+                .email(e.getEmail())
+                .telefone(e.getTelefone())
+                .senha(e.getSenha())
+                .build();
 
     }
 

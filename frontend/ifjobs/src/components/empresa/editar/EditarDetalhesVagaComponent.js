@@ -7,10 +7,10 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component com inputs para editar vaga
-const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
+const EditarDetalhesVagaComponent = ({ vaga, listarVag }) => {
 
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [curso, setCurso] = useState(0);
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [curso, setCurso] = useState(0);
 
     function openModal() {
         setIsOpen(true);
@@ -23,15 +23,15 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
     useEffect(() => {
         if (vaga.curso === 'INFORMATICA') {
             setCurso(0)
-        } else if(vaga.curso === "EVENTOS") {
+        } else if (vaga.curso === "EVENTOS") {
             setCurso(1)
-        } else if(vaga.curso === "MECANICA") {
+        } else if (vaga.curso === "MECANICA") {
             setCurso(2)
-        }else if(vaga.curso === "PLASTICOS") {
+        } else if (vaga.curso === "PLASTICOS") {
             setCurso(3)
         }
 
-      }, [vaga])
+    }, [vaga])
 
     const [formInput, setFormInput] = useState({
         titulo: vaga.titulo,
@@ -42,23 +42,23 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
         curso: vaga.curso
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {editarVaga} = useEditarVaga();
+    const { editarVaga } = useEditarVaga();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await editarVaga(formInput.titulo, formInput.descricao, formInput.salario, formInput.idadeMinima, formInput.cidade, formInput.curso, true, "2023-01-01", vaga.id);
         listarVag()
     }
 
-  return (
-    <div >
+    return (
+        <div >
             <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar</button>
             <Modal
                 isOpen={modalIsOpen}
@@ -70,45 +70,45 @@ const EditarDetalhesVagaComponent = ({vaga, listarVag}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Edite sua vaga!</h2>
-                <hr/>
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
-                    <div class="txt-form-group"> 
-                        <input type="text" defaultValue={vaga.titulo} className="form-control" name='titulo' placeholder="Título" onChange={handleChange}/>
-                    </div>
+                    <form onSubmit={onSubmit}>
+                        <div class="txt-form-group">
+                            <input type="text" defaultValue={vaga.titulo} className="form-control" name='titulo' placeholder="Título" onChange={handleChange} />
+                        </div>
 
-                    <div class="txt-form-group"> 
-                        <input type="text" defaultValue={vaga.cidade} className="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
-                    </div>
+                        <div class="txt-form-group">
+                            <input type="text" defaultValue={vaga.cidade} className="form-control" name='cidade' placeholder="Cidade" onChange={handleChange} />
+                        </div>
 
-                    <div class="txt-form-group"> 
-                        <textarea type="text" defaultValue={vaga.descricao} className="form-control" name='descricao' placeholder="Descrição" onChange={handleChange}/>
-                    </div>
+                        <div class="txt-form-group">
+                            <textarea type="text" defaultValue={vaga.descricao} className="form-control" name='descricao' placeholder="Descrição" onChange={handleChange} />
+                        </div>
 
-                    <div class="txt-form-group"> 
-                        <input type="number" defaultValue={vaga.salario} className="form-control" name='salario' placeholder="Salário" onChange={handleChange}/>
-                    </div>
+                        <div class="txt-form-group">
+                            <input type="number" defaultValue={vaga.salario} className="form-control" name='salario' placeholder="Salário" onChange={handleChange} />
+                        </div>
 
-                    <div class="txt-form-group"> 
-                        <input type="number" defaultValue={vaga.idadeMinima} className="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange}/>
-                    </div>
+                        <div class="txt-form-group">
+                            <input type="number" defaultValue={vaga.idadeMinima} className="form-control" name='idadeMinima' placeholder="Idade mínima" onChange={handleChange} />
+                        </div>
 
-                    <div class="txt-form-group">
-                        <select defaultValue={curso} className='form-control' name='curso' onChange={handleChange}>
-                            <option value="" disabled selected>Curso</option>
-                            <option value="0">Informática</option>
-                            <option value="1">Eventos</option>
-                            <option value="2">Mecânica</option>
-                            <option value="3">Plásticos</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
-                </form>
+                        <div class="txt-form-group">
+                            <select defaultValue={curso} className='form-control' name='curso' onChange={handleChange}>
+                                <option value="" disabled selected>Curso</option>
+                                <option value="0">Informática</option>
+                                <option value="1">Eventos</option>
+                                <option value="2">Mecânica</option>
+                                <option value="3">Plásticos</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                    </form>
                 </div>
             </Modal>
         </div>
-  )
+    )
 }
 
 export default EditarDetalhesVagaComponent

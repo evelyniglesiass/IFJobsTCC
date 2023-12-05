@@ -20,13 +20,12 @@ import br.com.api.ifjobs.repository.ExperienciaProfissionalRepository;
 import br.com.api.ifjobs.requests.ExperienciaProfissionalRequest;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
-
 @Service
 public class ExperienciaProfissionalService {
 
     @Autowired
     private ExperienciaProfissionalRepository expRep;
-    
+
     @Autowired
     private CurriculoRepository curRep;
 
@@ -40,8 +39,8 @@ public class ExperienciaProfissionalService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar experiencia profissional
-    public ResponseEntity<?> cadastrar(ExperienciaProfissionalRequest e){
-        
+    public ResponseEntity<?> cadastrar(ExperienciaProfissionalRequest e) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         ExperienciaProfissional experiencia = new ExperienciaProfissional();
         LocalDate dataInicial = LocalDate.parse(e.getDataInicial());
@@ -54,13 +53,13 @@ public class ExperienciaProfissionalService {
         experiencia.setEmpresa(e.getEmpresa());
         experiencia.setId(e.getId());
 
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+        if (!(curRep.existsById(estudante.getCurriculo().getId()))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         }
-        
-        if(experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0){
+
+        if (experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -75,8 +74,8 @@ public class ExperienciaProfissionalService {
     }
 
     // método para editar experiencia profissional
-    public ResponseEntity<?> editar(ExperienciaProfissionalRequest e){
-        
+    public ResponseEntity<?> editar(ExperienciaProfissionalRequest e) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         ExperienciaProfissional experiencia = new ExperienciaProfissional();
         LocalDate dataInicial = LocalDate.parse(e.getDataInicial());
@@ -88,13 +87,13 @@ public class ExperienciaProfissionalService {
         experiencia.setDescricao(e.getDescricao());
         experiencia.setEmpresa(e.getEmpresa());
         experiencia.setId(e.getId());
-        
-        if(!(curRep.existsByEstudante(estudante))){
+
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0){
+
+        if (experiencia.getDataFinal().compareTo(experiencia.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
@@ -108,8 +107,8 @@ public class ExperienciaProfissionalService {
 
     // método para remover experiencia
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(expRep.existsById(id))){
+
+        if (!(expRep.existsById(id))) {
             r.setMensagem("Experiência profissional não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -121,12 +120,12 @@ public class ExperienciaProfissionalService {
 
     }
 
-    public List<ExperienciaProfissionalDTO> listarExperiencia(int id){
+    public List<ExperienciaProfissionalDTO> listarExperiencia(int id) {
 
         Estudante est = estRep.findById(id).get();
         Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();
         return ExperienciaProfissionalDTO.converterLista(expRep.listarExperiencia(cur.getId()));
 
     }
-    
+
 }

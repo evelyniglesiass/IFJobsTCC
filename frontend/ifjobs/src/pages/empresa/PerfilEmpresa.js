@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Imports de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import PerfilEmpresaComponent from '../../components/empresa/ui/PerfilEmpresaComponent';
 import { useListarEmpresaEspecifica } from '../../hook/empresa/listarEmpresaEspecifica.hook';
@@ -17,7 +15,7 @@ const PerfilEmpresa = () => {
 
   async function listar() {
 
-    const response = await listarEmpresaEspecifica(user.id); 
+    const response = await listarEmpresaEspecifica(user.id);
     setEmpresa(response);
 
   }
@@ -29,11 +27,11 @@ const PerfilEmpresa = () => {
 
   return (
     <>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-perfis'>
-          <article><PerfilEmpresaComponent empresa={empresa} listarEmp={listar}/></article>
-        </section>
-    </> 
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-perfis'>
+        <article><PerfilEmpresaComponent empresa={empresa} listarEmp={listar} /></article>
+      </section>
+    </>
   )
 }
 

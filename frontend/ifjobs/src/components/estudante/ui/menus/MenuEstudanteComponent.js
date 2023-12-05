@@ -7,7 +7,7 @@ import EstudanteEditarComponent from '../../editar/EstudanteEditarComponent';
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados do estudante
-const MenuEstudanteComponent = ({estudante, listarCur}) => {
+const MenuEstudanteComponent = ({ estudante, listarCur }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -20,7 +20,7 @@ const MenuEstudanteComponent = ({estudante, listarCur}) => {
     }
 
     return (
-        <div> 
+        <div>
             <button onClick={openModal} className='button-open-menu' >•••</button>
             <Modal
                 isOpen={modalIsOpen}
@@ -31,7 +31,7 @@ const MenuEstudanteComponent = ({estudante, listarCur}) => {
 
                 <div className='button-menu-li'>
                     <ExcluirEstudanteComponent />
-                    <EstudanteEditarComponent estudante={estudante} listarCur={listarCur} close={closeModal}/>
+                    <EstudanteEditarComponent estudante={estudante} listarCur={listarCur} close={closeModal} />
                 </div>
 
             </Modal>

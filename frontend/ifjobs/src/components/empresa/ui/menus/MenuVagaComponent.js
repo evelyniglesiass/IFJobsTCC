@@ -7,7 +7,7 @@ import EditarDetalhesVagaComponent from '../../editar/EditarDetalhesVagaComponen
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados da vaga
-const MenuVagaComponent = ({vaga, listarVag, listarPal}) => {
+const MenuVagaComponent = ({ vaga, listarVag, listarPal }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -31,8 +31,8 @@ const MenuVagaComponent = ({vaga, listarVag, listarPal}) => {
 
 
                 <div >
-                    <ExcluirVagaComponent vaga={vaga}/>
-                    <EditarDetalhesVagaComponent vaga={vaga} listarVag={listarVag}/>
+                    <ExcluirVagaComponent vaga={vaga} />
+                    <EditarDetalhesVagaComponent vaga={vaga} listarVag={listarVag} />
                 </div>
 
             </Modal>

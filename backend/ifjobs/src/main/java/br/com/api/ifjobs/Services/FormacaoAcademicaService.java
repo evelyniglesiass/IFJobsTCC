@@ -22,7 +22,7 @@ import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
 public class FormacaoAcademicaService {
-    
+
     @Autowired
     private FormacaoAcademicaRepository forAcaRep;
 
@@ -38,11 +38,9 @@ public class FormacaoAcademicaService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
-    
+    // Método de cadastro de formações
+    public ResponseEntity<?> cadastrar(FormacaoAcademicaRequest fa) {
 
-    //Método de cadastro de formações 
-    public ResponseEntity<?> cadastrar(FormacaoAcademicaRequest fa){
-        
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         FormacaoAcademica formacao = new FormacaoAcademica();
         LocalDate dataInicial = LocalDate.parse(fa.getDataInicial());
@@ -55,28 +53,28 @@ public class FormacaoAcademicaService {
         formacao.setInstituicao(fa.getInstituicao());
         formacao.setNivel(fa.getNivel());
         formacao.setId(fa.getId());
-        
-        if(!(curRep.existsById(estudante.getCurriculo().getId()))){
+
+        if (!(curRep.existsById(estudante.getCurriculo().getId()))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(formacao.getDataFinal().compareTo(formacao.getDataInicial()) < 0){
+
+        if (formacao.getDataFinal().compareTo(formacao.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-        } 
+        }
 
         formacao.setCurriculo(estudante.getCurriculo());
         forAcaRep.save(formacao);
         estudante.getCurriculo().getFormAcad().add(formacao);
+        r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
 
     }
 
+    // Método de edicão de formacões academicas
+    public ResponseEntity<?> editar(FormacaoAcademicaRequest fa) {
 
-    //Método de edicão de formacões academicas
-    public ResponseEntity<?> editar(FormacaoAcademicaRequest fa){
-        
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         FormacaoAcademica formacao = new FormacaoAcademica();
         LocalDate dataInicial = LocalDate.parse(fa.getDataInicial());
@@ -89,13 +87,13 @@ public class FormacaoAcademicaService {
         formacao.setInstituicao(fa.getInstituicao());
         formacao.setNivel(fa.getNivel());
         formacao.setId(fa.getId());
-        
-        if(!(curRep.existsByEstudante(estudante))){
+
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem()); 
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(fa.getDataFinal().compareTo(fa.getDataInicial()) < 0){
+
+        if (fa.getDataFinal().compareTo(fa.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
@@ -107,22 +105,22 @@ public class FormacaoAcademicaService {
 
     }
 
-    //Método para remover formacão
+    // Método para remover formacão
     public ResponseEntity<Resposta> remover(int id) {
-                
-        if(!(forAcaRep.existsById(id))){
+
+        if (!(forAcaRep.existsById(id))) {
             r.setMensagem("Formação acadêmica não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
         FormacaoAcademica f = forAcaRep.findById(id).get();
         forAcaRep.delete(f);
-        r.setMensagem("Formação removido com sucesso!");
+        r.setMensagem("Formação removida com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
     }
 
-    public List<FormacaoAcademicaDTO> listarFormacao(int id){
+    public List<FormacaoAcademicaDTO> listarFormacao(int id) {
 
         Estudante est = estRep.findById(id).get();
         Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();

@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { listarExperienciaApi } from "../../constants";
 
-export function useListarExperiencia(){
+export function useListarExperiencia() {
 
     const [error] = useState();
 
-    async function listarExperiencia(estudante){
+    async function listarExperiencia(estudante) {
 
-        try{
+        try {
             const response = await listarExperienciaApi(estudante);
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
         }
     }
 
-    return {listarExperiencia, error};
+    return { listarExperiencia, error };
 
 }

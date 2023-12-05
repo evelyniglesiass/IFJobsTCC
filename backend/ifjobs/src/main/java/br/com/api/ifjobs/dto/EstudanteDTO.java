@@ -8,7 +8,7 @@ import br.com.api.ifjobs.models.Estudante;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -18,13 +18,13 @@ import lombok.Setter;
 @Builder
 public class EstudanteDTO {
 
-    private Integer id; 
+    private Integer id;
     private String nome;
     private Integer idade;
     private Cursos curso;
     private String nomeUsuario;
     private String email;
-    private String telefone; 
+    private String telefone;
     private String cidade;
 
     public EstudanteDTO(Estudante estudante) {
@@ -41,5 +41,5 @@ public class EstudanteDTO {
     public static List<EstudanteDTO> converterLista(List<Estudante> listaEstudante) {
         return listaEstudante.stream().map(EstudanteDTO::new).collect(Collectors.toList());
     }
-   
+
 }

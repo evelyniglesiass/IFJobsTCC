@@ -2,19 +2,19 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { logoutApi } from '../../constants';
 
-export function useLogout(){
+export function useLogout() {
 
-    const [error] = useState(); // tirei o setError pq não estava sendo usado
+    const [error] = useState();
 
-    async function fazerLogout(){
+    async function fazerLogout() {
 
-        try{
+        try {
             await logoutApi();
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {fazerLogout, error};
+    return { fazerLogout, error };
 }

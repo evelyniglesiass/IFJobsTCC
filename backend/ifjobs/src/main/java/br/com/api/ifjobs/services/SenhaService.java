@@ -16,11 +16,11 @@ public class SenhaService {
 
     private String senha;
 
-    public boolean verificarSenha(String s){
-        if(s.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9a-zA-Z]).{8,}$")){
+    public boolean verificarSenha(String s) {
+        if (s.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9a-zA-Z]).{8,}$")) {
             return true;
 
-        } else{
+        } else {
             return false;
 
         }

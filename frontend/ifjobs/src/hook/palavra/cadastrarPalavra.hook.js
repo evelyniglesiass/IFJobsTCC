@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { criarPalavraChaveApi } from "../../constants";
 
-export function useCadastrarPalavraChave(){
+export function useCadastrarPalavraChave() {
 
     const [error] = useState();
 
-    async function cadastrarPalavraChave(palavra, id){
+    async function cadastrarPalavraChave(palavra, id) {
 
-        try{
+        try {
             await criarPalavraChaveApi(palavra, id);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {cadastrarPalavraChave, error};
+    return { cadastrarPalavraChave, error };
 
 }

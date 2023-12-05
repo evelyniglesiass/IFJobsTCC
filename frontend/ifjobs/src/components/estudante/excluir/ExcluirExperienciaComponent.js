@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de exclusão de experiência
-const ExcluirExperienciaComponent = ({experiencia, listar}) => {
+const ExcluirExperienciaComponent = ({ experiencia, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ const ExcluirExperienciaComponent = ({experiencia, listar}) => {
         setIsOpen(false);
     }
 
-    const {excluirExperiencia} = useExcluirExperiencia();
+    const { excluirExperiencia } = useExcluirExperiencia();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await excluirExperiencia(experiencia.id);
@@ -38,7 +38,7 @@ const ExcluirExperienciaComponent = ({experiencia, listar}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua experiência?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua experiência?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

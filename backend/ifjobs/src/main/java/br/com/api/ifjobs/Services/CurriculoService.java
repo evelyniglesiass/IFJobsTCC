@@ -13,15 +13,15 @@ import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.repository.CurriculoRepository;
 import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
- 
+
 @Service
 public class CurriculoService {
 
     @Autowired
-    private CurriculoRepository curRep; 
+    private CurriculoRepository curRep;
 
     @Autowired
-    private EstudanteRepository estRep; 
+    private EstudanteRepository estRep;
 
     @Autowired
     private Resposta r;
@@ -30,50 +30,48 @@ public class CurriculoService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar curriculos
-    public ResponseEntity<?> cadastrar(Curriculo c){
+    public ResponseEntity<?> cadastrar(Curriculo c) {
 
         Estudante e = usuarioAutenticadoService.getEstudante();
-        
-        if(curRep.existsByEstudante(e)){
+
+        if (curRep.existsByEstudante(e)) {
             r.setMensagem("Esse usuário já possui um currículo!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
         }
-        
+
         c.setEstudante(e);
         curRep.save(c);
         e.setCurriculo(c);
         r.setMensagem("Cadastro feito com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.CREATED);
-        
+
     }
 
-    // método para editar curriculos 
-    public ResponseEntity<?> editar(Curriculo c){
+    // método para editar curriculos
+    public ResponseEntity<?> editar(Curriculo c) {
 
-        Estudante e = usuarioAutenticadoService.getEstudante(); // ver se precisa find by id
+        Estudante e = usuarioAutenticadoService.getEstudante();
 
         c.setId(e.getCurriculo().getId());
-        
-        if(!(curRep.existsById(e.getCurriculo().getId()))){
+
+        if (!(curRep.existsById(e.getCurriculo().getId()))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        // e.setCurriculo(c); necessário? dá erro com ele
-        // e.setCurriculo(c);
         c.setEstudante(e);
         curRep.save(c);
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
-        
+
     }
 
     // método para remover curriculo
     public ResponseEntity<Resposta> remover() {
-        
+
         Estudante e = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsByEstudante(e))){
+        if (!(curRep.existsByEstudante(e))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -85,14 +83,13 @@ public class CurriculoService {
         return new ResponseEntity<>(r, HttpStatus.OK);
 
     }
-    
 
     // listar
-    public CurriculoDTO listar(int id){
+    public CurriculoDTO listar(int id) {
 
         Estudante e = estRep.findById(id).get();
 
-        if(!(curRep.existsByEstudante(e))){
+        if (!(curRep.existsByEstudante(e))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -100,12 +97,10 @@ public class CurriculoService {
         Curriculo curriculo = curRep.findByEstudante(e);
 
         return CurriculoDTO
-            .builder()
-            .id(curriculo.getId())
-            //.idiomas(curriculo.getIdiomas())
-            .resumo(curriculo.getResumo())
-            //.habilidades(curriculo.getHabilidades())    
-            .build();
+                .builder()
+                .id(curriculo.getId())
+                .resumo(curriculo.getResumo())
+                .build();
 
     }
 }

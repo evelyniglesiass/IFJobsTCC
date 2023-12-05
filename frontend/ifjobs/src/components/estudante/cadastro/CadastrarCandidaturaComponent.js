@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de cadastro de candidatura
-const CadastrarCandidaturaComponent = ({vaga}) => {
+const CadastrarCandidaturaComponent = ({ vaga }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,13 +18,13 @@ const CadastrarCandidaturaComponent = ({vaga}) => {
         setIsOpen(false);
     }
 
-    const {cadastrarCandidatura} = useCadastrarCandidatura();
+    const { cadastrarCandidatura } = useCadastrarCandidatura();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await cadastrarCandidatura(vaga.id);
-        
+
     }
 
     return (
@@ -38,7 +38,7 @@ const CadastrarCandidaturaComponent = ({vaga}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja confirmar sua candidatura?</h2>                
+                <h2 className='titulo-modal'>Deseja confirmar sua candidatura?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

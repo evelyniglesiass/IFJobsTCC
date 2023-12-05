@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { editarEmpresaApi } from "../../constants";
 
-export function useEditarEmpresa(){
+export function useEditarEmpresa() {
 
     const [error] = useState();
 
-    async function editarEmpresa(nome, nomeUsuario, descricao, telefone, email, senha, cidade){
+    async function editarEmpresa(nome, nomeUsuario, descricao, telefone, email, senha, cidade) {
 
-        try{
+        try {
             await editarEmpresaApi(nome, nomeUsuario, descricao, telefone, email, senha, cidade);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {editarEmpresa, error};
+    return { editarEmpresa, error };
 
 }

@@ -5,10 +5,10 @@ import ErrorComponent from '../../components/ui/ErrorComponent';
 const Error = () => {
 
   return (
-    <section> 
-      <article className=''><ErrorComponent/></article>
+    <section>
+      <article className=''><ErrorComponent /></article>
     </section>
   )
 }
- 
+
 export default Error

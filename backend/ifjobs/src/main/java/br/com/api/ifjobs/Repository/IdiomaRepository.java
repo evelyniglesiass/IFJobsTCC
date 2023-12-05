@@ -7,13 +7,13 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.api.ifjobs.models.Idioma;
 
-public interface IdiomaRepository extends CrudRepository<Idioma, Integer>{
-    
+public interface IdiomaRepository extends CrudRepository<Idioma, Integer> {
+
     // verifica se entidade existe
-    boolean existsById (Integer id);
- 
+    boolean existsById(Integer id);
+
     // listar
-    @Query(value = "SELECT * FROM idioma WHERE curriculo_id = :curriculo", nativeQuery = true) 
+    @Query(value = "SELECT * FROM idioma WHERE curriculo_id = :curriculo", nativeQuery = true)
     List<Idioma> listarIdioma(int curriculo); // listar Idioma de um determinado estudante
-    
+
 }

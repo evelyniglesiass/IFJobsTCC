@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { listarCurriculoApi } from "../../constants";
 
-export function useListarCurriculo(){
+export function useListarCurriculo() {
 
     const [error] = useState();
 
-    async function listarCurriculo(estudante){
+    async function listarCurriculo(estudante) {
 
-        try{
+        try {
             const response = await listarCurriculoApi(estudante);
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
         }
     }
 
-    return {listarCurriculo, error};
+    return { listarCurriculo, error };
 
 }

@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de exclusão de candidatura
-const ExcluirCandidaturaComponent = ({candidatura}) => {
+const ExcluirCandidaturaComponent = ({ candidatura }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,13 +18,13 @@ const ExcluirCandidaturaComponent = ({candidatura}) => {
         setIsOpen(false);
     }
 
-    const {removerCandidatura} = useRemoverCandidatura();
+    const { removerCandidatura } = useRemoverCandidatura();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await removerCandidatura(candidatura.id);
-        
+
     }
 
     return (
@@ -38,7 +38,7 @@ const ExcluirCandidaturaComponent = ({candidatura}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja remover sua candidatura?</h2>                
+                <h2 className='titulo-modal'>Deseja remover sua candidatura?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

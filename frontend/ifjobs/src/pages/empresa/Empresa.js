@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import EmpresaComponent from '../../components/empresa/ui/EmpresaComponent';
 import { useParams } from 'react-router-dom';
@@ -21,7 +19,7 @@ const Empresa = () => {
     async function listar() {
 
       const response = await listarEmpresaEspecifica(id);
-      setEmpresa(response) 
+      setEmpresa(response)
 
     }
 
@@ -30,11 +28,11 @@ const Empresa = () => {
 
   return (
     <>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-perfis'>
-          <article><EmpresaComponent empresa={empresa} /></article>
-        </section>
-    </> 
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-perfis'>
+        <article><EmpresaComponent empresa={empresa} /></article>
+      </section>
+    </>
   )
 }
 

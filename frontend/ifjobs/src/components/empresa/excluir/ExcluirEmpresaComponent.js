@@ -11,7 +11,7 @@ Modal.setAppElement("#root");
 const ExcluirEmpresaComponent = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
-    const {fazerLogout} = useLogout();
+    const { fazerLogout } = useLogout();
 
     function openModal() {
         setIsOpen(true);
@@ -21,9 +21,9 @@ const ExcluirEmpresaComponent = () => {
         setIsOpen(false);
     }
 
-    const {excluirEmpresa} = useExcluirEmpresa();
+    const { excluirEmpresa } = useExcluirEmpresa();
 
-    async function onClick(event){
+    async function onClick(event) {
         event.preventDefault();
 
         await excluirEmpresa();
@@ -41,7 +41,7 @@ const ExcluirEmpresaComponent = () => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>
                 <div className='container-cursos-exper'>
                     <form >
 

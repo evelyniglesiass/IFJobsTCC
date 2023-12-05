@@ -14,9 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HabilidadeDTO {
-    
+
     private Integer id;
-	private String descricao;
+    private String descricao;
 
     public HabilidadeDTO(Habilidade habilidade) {
         this.id = habilidade.getId();

@@ -10,21 +10,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Getter
 public class UsuarioResponse {
-    
+
     private Integer id;
 
     private String nome;
 
     private String nomeUsuario;
-	
-	private String descricao;
-	
-	private String cidade;
-	
-	private String email;
+
+    private String descricao;
+
+    private String cidade;
+
+    private String email;
 
     private String telefone;
-    
+
     private Integer idade;
 
     private String permissao;

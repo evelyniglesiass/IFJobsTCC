@@ -10,7 +10,7 @@ import br.com.api.ifjobs.models.Empresa;
 import br.com.api.ifjobs.models.Estudante;
 
 public class UsuarioSecurity implements UserDetails {
-    
+
     private Integer id;
     private String email;
     private String senha;

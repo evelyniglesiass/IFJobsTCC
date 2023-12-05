@@ -6,13 +6,14 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Funcao {
-    
-    EMPRESA(Nomes.EMPRESA), 
+
+    EMPRESA(Nomes.EMPRESA),
     ESTUDANTE(Nomes.ESTUDANTE);
 
-    public static class Nomes{
+    public static class Nomes {
 
-        public Nomes(){}
+        public Nomes() {
+        }
 
         public static final String EMPRESA = "ROLE_EMPRESA";
 

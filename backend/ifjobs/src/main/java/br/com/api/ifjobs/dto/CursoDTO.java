@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CursoDTO {
-    
+
     private Integer id;
     private String descricao;
     private String cidade;
@@ -24,7 +24,7 @@ public class CursoDTO {
     private LocalDate dataInicial;
     private LocalDate dataFinal;
 
-    public CursoDTO(Curso curso){
+    public CursoDTO(Curso curso) {
         this.id = curso.getId();
         this.descricao = curso.getDescricao();
         this.cidade = curso.getCidade();
@@ -34,7 +34,7 @@ public class CursoDTO {
         this.dataFinal = curso.getDataFinal();
     }
 
-    public static List<CursoDTO> converterLista(List<Curso> listaCurso){
+    public static List<CursoDTO> converterLista(List<Curso> listaCurso) {
         return listaCurso.stream().map(CursoDTO::new).collect(Collectors.toList());
     }
 

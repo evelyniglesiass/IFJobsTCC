@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import CurriculoComponent from '../../components/estudante/ui/CurriculoComponent';
 import { useParams } from 'react-router-dom';
@@ -18,8 +16,8 @@ const Estudante = () => {
   const { listarEstudanteEspecifico } = useListarEstudanteEspecifico();
   const { listarCurriculo } = useListarCurriculo();
 
-  useEffect(() => { 
-    async function listar() { 
+  useEffect(() => {
+    async function listar() {
 
       const response = await listarEstudanteEspecifico(id);
       setEstudante(response);
@@ -34,10 +32,10 @@ const Estudante = () => {
 
   return (
     <>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-perfis'>
-          <article><CurriculoComponent estudante={estudante} curriculo={curriculo}/></article>
-        </section>
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-perfis'>
+        <article><CurriculoComponent estudante={estudante} curriculo={curriculo} /></article>
+      </section>
     </>
   )
 }

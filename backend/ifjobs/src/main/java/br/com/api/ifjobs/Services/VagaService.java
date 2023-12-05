@@ -21,7 +21,7 @@ import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 public class VagaService {
 
     @Autowired
-    private VagaRepository vagRep; 
+    private VagaRepository vagRep;
 
     @Autowired
     private Resposta r;
@@ -30,8 +30,8 @@ public class VagaService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar vagas
-    public ResponseEntity<?> cadastrar(VagaRequest v){
-        
+    public ResponseEntity<?> cadastrar(VagaRequest v) {
+
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
         Vaga vaga = new Vaga();
         LocalDate dataPublicacao = LocalDate.parse(v.getDataPublicacao());
@@ -43,18 +43,16 @@ public class VagaService {
         vaga.setEstudantes(v.getEstudantes());
         vaga.setId(v.getId());
         vaga.setIdadeMinima(v.getIdadeMinima());
-        //vaga.setPalavrasChave(v.getPalavrasChave());
         vaga.setSalario(v.getSalario());
         vaga.setStatus(v.isStatus());
         vaga.setTitulo(v.getTitulo());
 
-        
-        if(vaga.getIdadeMinima() < 0){
+        if (vaga.getIdadeMinima() < 0) {
             r.setMensagem("Insira uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
-        
-        if(vaga.getSalario() < 0){
+
+        if (vaga.getSalario() < 0) {
             r.setMensagem("Insira um valor válido para o salário!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -71,9 +69,9 @@ public class VagaService {
 
     }
 
-    // método para editar vagas 
-    public ResponseEntity<?> editar(VagaRequest v){
-        
+    // método para editar vagas
+    public ResponseEntity<?> editar(VagaRequest v) {
+
         Empresa empresa = usuarioAutenticadoService.getEmpresa();
         Vaga vaga = new Vaga();
         LocalDate dataPublicacao = LocalDate.parse(v.getDataPublicacao());
@@ -92,17 +90,17 @@ public class VagaService {
 
         Vaga vagaAnt = vagRep.findById(vaga.getId()).get();
 
-        if(!(vagRep.existsById(vaga.getId()))){
+        if (!(vagRep.existsById(vaga.getId()))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(vaga.getSalario() < 0){
+
+        if (vaga.getSalario() < 0) {
             r.setMensagem("Insira um valor válido para o salário!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
         }
-        
-        if(vaga.getIdadeMinima() < 0){
+
+        if (vaga.getIdadeMinima() < 0) {
             r.setMensagem("Insira uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -115,13 +113,13 @@ public class VagaService {
 
         r.setMensagem("Edição feita com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
-        
+
     }
 
     // método para remover vaga
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(vagRep.existsById(id))){
+
+        if (!(vagRep.existsById(id))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
@@ -136,24 +134,24 @@ public class VagaService {
     }
 
     // listar todas as vagas disponiveis
-    public List<VagaDTO> listarTodas(){
-        return VagaDTO.converterLista(vagRep.listarVagas()); 
+    public List<VagaDTO> listarTodas() {
+        return VagaDTO.converterLista(vagRep.listarVagas());
     }
 
     // listar vags de uma empresa
-    public List<VagaDTO> listarPorEmpresa(int id){
+    public List<VagaDTO> listarPorEmpresa(int id) {
         return VagaDTO.converterLista(vagRep.listarVagasEmpresa(id));
     }
 
     // pesquisar por titulo da vaga
-    public List<VagaDTO> listarPorTitulo(String titulo){
+    public List<VagaDTO> listarPorTitulo(String titulo) {
         return VagaDTO.converterLista(vagRep.findByTituloContainsIgnoreCase(titulo));
     }
 
     // pesquisar vaga especifica
-    public VagaDTO listarVaga(int id){
+    public VagaDTO listarVaga(int id) {
 
-        if(!vagRep.existsById(id)){
+        if (!vagRep.existsById(id)) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
@@ -162,16 +160,16 @@ public class VagaService {
         Vaga v = vagRep.findById(id).get();
 
         return VagaDTO
-            .builder()
-            .id(v.getId())
-            .status(v.isStatus())
-            .titulo(v.getTitulo())
-            .descricao(v.getDescricao())
-            .curso(v.getCurso())
-            .salario(v.getSalario())
-            .idadeMinima(v.getIdadeMinima())
-            .cidade(v.getCidade())
-            .build();
+                .builder()
+                .id(v.getId())
+                .status(v.isStatus())
+                .titulo(v.getTitulo())
+                .descricao(v.getDescricao())
+                .curso(v.getCurso())
+                .salario(v.getSalario())
+                .idadeMinima(v.getIdadeMinima())
+                .cidade(v.getCidade())
+                .build();
     }
-    
+
 }

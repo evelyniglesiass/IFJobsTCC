@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.api.ifjobs.dto.CurriculoDTO; 
+import br.com.api.ifjobs.dto.CurriculoDTO;
 import br.com.api.ifjobs.models.Curriculo;
 import br.com.api.ifjobs.models.Resposta;
 import br.com.api.ifjobs.services.CurriculoService;
@@ -26,13 +26,13 @@ import br.com.api.ifjobs.services.CurriculoService;
 public class CurriculoController {
 
     @Autowired
-    private CurriculoService curSer; 
+    private CurriculoService curSer;
 
     // cadastrar currículo
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Curriculo c) {
         return curSer.cadastrar(c);
     }
 
@@ -40,23 +40,23 @@ public class CurriculoController {
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody Curriculo c) {
         return curSer.editar(c);
     }
 
     // excluir currículo
     @Secured("ROLE_ESTUDANTE")
-    @DeleteMapping() 
+    @DeleteMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(){ 
+    public ResponseEntity<Resposta> remover() {
         return curSer.remover();
     }
- 
+
     // listar currículo de um estudante
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/{id}") // id do estudante
     public CurriculoDTO consultarCurriculo(@PathVariable int id) {
         return curSer.listar(id);
     }
-    
+
 }

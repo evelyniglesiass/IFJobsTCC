@@ -21,17 +21,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Idioma {
-    
+
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Integer id;
-    
-    // @Size(min = 1, message = "Insira pelo menos um idioma!")
+
     @Column(nullable = false, length = 250)
     private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "curriculo_id", nullable = false)    
+    @JoinColumn(name = "curriculo_id", nullable = false)
     private Curriculo curriculo;
 }

@@ -6,7 +6,7 @@ import { useExcluirPalavraChave } from '../../../hook/palavra/excluirPalavra.hoo
 Modal.setAppElement("#root");
 
 // Componente para excluir palavra chave
-const ExcluirPalavraChaveComponent = ({palavra, listaPa}) => {
+const ExcluirPalavraChaveComponent = ({ palavra, listaPa }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ const ExcluirPalavraChaveComponent = ({palavra, listaPa}) => {
         setIsOpen(false);
     }
 
-    const {excluirPalavraChave} = useExcluirPalavraChave();
+    const { excluirPalavraChave } = useExcluirPalavraChave();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await excluirPalavraChave(palavra.id);
@@ -38,7 +38,7 @@ const ExcluirPalavraChaveComponent = ({palavra, listaPa}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua palavra chave?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua palavra chave?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

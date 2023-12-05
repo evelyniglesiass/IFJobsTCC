@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de cadastro de formações com dicas
-const CadastrarFormacaoComponent = ({listar}) => {
+const CadastrarFormacaoComponent = ({ listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -28,19 +28,19 @@ const CadastrarFormacaoComponent = ({listar}) => {
         descricao: ''
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {cadastrarFormacao} = useCadastrarFormacao();
+    const { cadastrarFormacao } = useCadastrarFormacao();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await cadastrarFormacao(formInput.descricao, formInput.cidade, formInput.instituicao, formInput.dataInicial, formInput.dataFinal, formInput.nivel);
-        
+
         listar()
     }
 
@@ -57,9 +57,9 @@ const CadastrarFormacaoComponent = ({listar}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Formação acadêmica</h2>
-                <DicasFormacoesComponent/>
+                <DicasFormacoesComponent />
 
-                <hr/>
+                <hr />
                 <div className='container-cursos-exper'>
 
                     <form onSubmit={onSubmit}>
@@ -74,24 +74,24 @@ const CadastrarFormacaoComponent = ({listar}) => {
                             </select>
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange}/>
+                            <input type="text" class="form-control" name='instituicao' placeholder="Nome da Instituição" onChange={handleChange} />
                         </div>
                         <div className='txt-form-group'>
-                            <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
+                            <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange} />
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" class="form-control" name='dataInicial'onChange={handleChange}/>
+                            <input type="date" class="form-control" name='dataInicial' onChange={handleChange} />
                         </div>
                         <div className='txt-form-group'>
-                            <input type="date" class="form-control" name='dataFinal'onChange={handleChange}/>
+                            <input type="date" class="form-control" name='dataFinal' onChange={handleChange} />
                         </div>
                         <div className='txt-form-group'>
-                            <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
+                            <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange} />
                         </div>
-                        
+
                         <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
                     </form>
-                </div> 
+                </div>
             </Modal>
         </div>
     )

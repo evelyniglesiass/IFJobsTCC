@@ -7,7 +7,7 @@ import CursosEditarComponent from '../../editar/CursosEditarComponent';
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados do curso
-const MenuCursoComponent = ({curso, listar}) => {
+const MenuCursoComponent = ({ curso, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuCursoComponent = ({curso, listar}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirCursoComponent curso={curso} listar={listar}/>
-                    <CursosEditarComponent cursos={curso} listar={listar}/>
+                    <ExcluirCursoComponent curso={curso} listar={listar} />
+                    <CursosEditarComponent cursos={curso} listar={listar} />
                 </div>
 
             </Modal>

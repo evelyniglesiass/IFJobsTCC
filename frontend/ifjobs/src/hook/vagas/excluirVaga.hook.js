@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import {excluirVagaApi } from "../../constants";
+import { excluirVagaApi } from "../../constants";
 
-export function useExcluirVaga(){
+export function useExcluirVaga() {
 
     const [error] = useState();
 
-    async function excluirVaga(vaga){
+    async function excluirVaga(vaga) {
 
-        try{
+        try {
             await excluirVagaApi(vaga);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {excluirVaga, error};
+    return { excluirVaga, error };
 
 }

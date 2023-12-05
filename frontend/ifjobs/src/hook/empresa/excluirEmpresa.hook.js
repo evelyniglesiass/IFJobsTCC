@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { excluirEmpresaApi } from "../../constants";
 
-export function useExcluirEmpresa(){
+export function useExcluirEmpresa() {
 
     const [error] = useState();
 
-    async function excluirEmpresa(){
+    async function excluirEmpresa() {
 
-        try{
+        try {
             await excluirEmpresaApi();
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {excluirEmpresa, error};
+    return { excluirEmpresa, error };
 
 }

@@ -21,11 +21,11 @@ import lombok.Builder.Default;
 @Builder
 public class CurriculoDTO {
 
-    private Integer id; 
+    private Integer id;
     private String resumo;
     @Default
     private List<Habilidade> habilidades = new ArrayList<>();
-    @Default 
+    @Default
     private List<Idioma> idiomas = new ArrayList<>();
 
     public CurriculoDTO(Curriculo curriculo) {
@@ -38,5 +38,5 @@ public class CurriculoDTO {
     public static List<CurriculoDTO> converterLista(List<Curriculo> listaCurriculo) {
         return listaCurriculo.stream().map(CurriculoDTO::new).collect(Collectors.toList());
     }
-    
+
 }

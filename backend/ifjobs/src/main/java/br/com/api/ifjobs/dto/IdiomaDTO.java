@@ -14,9 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IdiomaDTO {
-    
+
     private Integer id;
-	private String descricao;
+    private String descricao;
 
     public IdiomaDTO(Idioma idioma) {
         this.id = idioma.getId();

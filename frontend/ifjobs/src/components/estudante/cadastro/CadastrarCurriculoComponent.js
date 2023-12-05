@@ -7,7 +7,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de cadastro de currículo com dicas
-const CadastrarCurriculoComponent = ({listarCur}) => {
+const CadastrarCurriculoComponent = ({ listarCur }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -23,15 +23,15 @@ const CadastrarCurriculoComponent = ({listarCur}) => {
         resumo: ''
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {cadastrarCurriculo} = useCadastrarCurriculo();
+    const { cadastrarCurriculo } = useCadastrarCurriculo();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await cadastrarCurriculo(formInput.resumo);
@@ -51,18 +51,18 @@ const CadastrarCurriculoComponent = ({listarCur}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Currículo</h2>
-                <DicasObjetivoComponent/>
-                
-                <hr/>
+                <DicasObjetivoComponent />
+
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit}>
 
-                    <div className='txt-form-group'>
-                        <textarea type="textarea" class="form-control" name='resumo' placeholder="Objetivo" maxLength={250} onChange={handleChange}/>
-                    </div>
+                        <div className='txt-form-group'>
+                            <textarea type="textarea" class="form-control" name='resumo' placeholder="Objetivo" maxLength={250} onChange={handleChange} />
+                        </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
-                </form>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    </form>
                 </div>
 
             </Modal>

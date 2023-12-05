@@ -15,28 +15,27 @@ import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.repository.PalavraChaveRepository;
 import br.com.api.ifjobs.repository.VagaRepository;
 
-
 @Service
 public class PalavraChaveService {
 
     @Autowired
     private PalavraChaveRepository palChaRep;
-    
+
     @Autowired
     private VagaRepository vagRep;
 
     @Autowired
     private Resposta r;
 
-    // método para cadastrar palavra chave 
-    public ResponseEntity<?> cadastrar(PalavraChave pc, int idVaga){
-        
-        if(!(vagRep.existsById(idVaga))){
+    // método para cadastrar palavra chave
+    public ResponseEntity<?> cadastrar(PalavraChave pc, int idVaga) {
+
+        if (!(vagRep.existsById(idVaga))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         }
-        
+
         Vaga v = vagRep.findById(idVaga).get();
 
         pc.setVaga(v);
@@ -48,15 +47,15 @@ public class PalavraChaveService {
 
     }
 
-    // método para editar palavra chave 
-    public ResponseEntity<?> editar(PalavraChave pc, int idVaga){
-        
-        if(!(palChaRep.existsById(pc.getId()))){
+    // método para editar palavra chave
+    public ResponseEntity<?> editar(PalavraChave pc, int idVaga) {
+
+        if (!(palChaRep.existsById(pc.getId()))) {
             r.setMensagem("Palavra Chave não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        if(!(vagRep.existsById(idVaga))){
+        if (!(vagRep.existsById(idVaga))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -71,8 +70,8 @@ public class PalavraChaveService {
 
     // método para remover palavra chave
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(palChaRep.existsById(id))){
+
+        if (!(palChaRep.existsById(id))) {
             r.setMensagem("Palavra chave não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -85,11 +84,11 @@ public class PalavraChaveService {
 
     }
 
-    public List<PalavraChaveDTO> listarPalavraChave(int idVaga){
+    public List<PalavraChaveDTO> listarPalavraChave(int idVaga) {
 
         Vaga vaga = vagRep.findById(idVaga).get();
         return PalavraChaveDTO.converterLista(palChaRep.listarPalavraChave(vaga.getId()));
 
     }
-    
+
 }

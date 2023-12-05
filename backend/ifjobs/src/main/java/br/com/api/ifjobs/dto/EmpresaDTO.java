@@ -16,17 +16,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class EmpresaDTO {
-    
-    private Integer id;
-	private String nome;
-    private String nomeUsuario;
-	private String descricao;
-	private String cidade;
-	private String email;
-    private String telefone;
-	private String senha;
 
-    public EmpresaDTO(Empresa empresa){
+    private Integer id;
+    private String nome;
+    private String nomeUsuario;
+    private String descricao;
+    private String cidade;
+    private String email;
+    private String telefone;
+    private String senha;
+
+    public EmpresaDTO(Empresa empresa) {
 
         this.id = empresa.getId();
         this.nome = empresa.getNome();
@@ -38,7 +38,7 @@ public class EmpresaDTO {
         this.senha = empresa.getSenha();
     }
 
-    public static List<EmpresaDTO> converterLista(List<Empresa> listaEmpresa){
+    public static List<EmpresaDTO> converterLista(List<Empresa> listaEmpresa) {
         return listaEmpresa.stream().map(EmpresaDTO::new).collect(Collectors.toList());
     }
 }

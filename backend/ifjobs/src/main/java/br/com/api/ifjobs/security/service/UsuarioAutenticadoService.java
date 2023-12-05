@@ -18,14 +18,14 @@ import static java.util.Objects.isNull;
 
 @Service
 public class UsuarioAutenticadoService {
-    
+
     @Autowired
     private EmpresaRepository empresaRepository;
 
     @Autowired
     private EstudanteRepository estudanteRepository;
 
-    private UsuarioSecurity getUser(){
+    private UsuarioSecurity getUser() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -34,41 +34,40 @@ public class UsuarioAutenticadoService {
         return usuarioSecurity;
     }
 
-    public Empresa getEmpresa(){
+    public Empresa getEmpresa() {
 
         UsuarioSecurity user = getUser();
 
-        if(isNull(user)){
+        if (isNull(user)) {
             return null;
         }
 
         return empresaRepository.findById(user.getId()).get(); // ver método
     }
 
-    public Estudante getEstudante(){
+    public Estudante getEstudante() {
 
         UsuarioSecurity user = getUser();
 
-        if(isNull(user)){
+        if (isNull(user)) {
             return null;
         }
 
         return estudanteRepository.findById(user.getId()).get();
     }
 
-    public UsuarioResponse getResponse(){
+    public UsuarioResponse getResponse() {
 
         UsuarioSecurity user = getUser();
         System.out.println("LISTA:");
         System.out.println(user.getAuthorities().size());
 
-        if(user.getAuthorities().get(0).toString().equals(Funcao.EMPRESA.getRole())){
+        if (user.getAuthorities().get(0).toString().equals(Funcao.EMPRESA.getRole())) {
 
             Empresa empresa = getEmpresa();
 
             return UsuarioDto.toResponseFromEmpresa(empresa);
-        }
-        else{
+        } else {
 
             Estudante estudante = getEstudante();
 

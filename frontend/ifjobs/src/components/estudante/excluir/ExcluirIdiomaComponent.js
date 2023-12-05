@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de exclusão de idioma
-const ExcluirIdiomaComponent = ({idioma, listar}) => {
+const ExcluirIdiomaComponent = ({ idioma, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ const ExcluirIdiomaComponent = ({idioma, listar}) => {
         setIsOpen(false);
     }
 
-    const {excluirIdioma} = useExcluirIdioma();
+    const { excluirIdioma } = useExcluirIdioma();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await excluirIdioma(idioma.id);
@@ -38,7 +38,7 @@ const ExcluirIdiomaComponent = ({idioma, listar}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir seu idioma?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir seu idioma?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

@@ -19,17 +19,16 @@ public class BuscarUsuarioSecurityService implements UserDetailsService {
 
     @Autowired
     private EstudanteRepository estudanteRepository;
-    
-    @Override
-    public UserDetails loadUserByUsername(String email){
 
-        if(empresaRepository.existsByEmail(email)){
+    @Override
+    public UserDetails loadUserByUsername(String email) {
+
+        if (empresaRepository.existsByEmail(email)) {
 
             Empresa empresa = empresaRepository.findByEmail(email);
 
             return new UsuarioSecurity(empresa);
-        }
-        else{
+        } else {
 
             Estudante estudante = estudanteRepository.findByEmail(email);
 

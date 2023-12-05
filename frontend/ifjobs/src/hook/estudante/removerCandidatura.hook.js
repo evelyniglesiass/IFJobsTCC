@@ -2,20 +2,20 @@ import { useState } from "react";
 import { removerCandidaturaApi } from "../../constants";
 import { toast } from "react-toastify";
 
-export function useRemoverCandidatura(){
+export function useRemoverCandidatura() {
 
     const [error] = useState();
 
-    async function removerCandidatura(vaga){
+    async function removerCandidatura(vaga) {
 
-        try{
+        try {
             await removerCandidaturaApi(vaga);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {removerCandidatura, error};
+    return { removerCandidatura, error };
 
 }

@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component com inputs para edição de estudantes
-const EstudanteEditarComponent = ({estudante, listarCur}) => {
+const EstudanteEditarComponent = ({ estudante, listarCur }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [curso, setCurso] = useState(0);
@@ -22,11 +22,11 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
     useEffect(() => {
         if (estudante.curso === 'INFORMATICA') {
             setCurso(0)
-        } else if(estudante.curso === "EVENTOS") {
+        } else if (estudante.curso === "EVENTOS") {
             setCurso(1)
-        } else if(estudante.curso === "MECANICA") {
+        } else if (estudante.curso === "MECANICA") {
             setCurso(2)
-        }else if(estudante.curso === "PLASTICOS") {
+        } else if (estudante.curso === "PLASTICOS") {
             setCurso(3)
         }
 
@@ -42,7 +42,7 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
         senha: "",
         cidade: estudante.cidade
     })
-    
+
     function handleChange(event) {
         const { name, value } = event.target;
 
@@ -57,7 +57,7 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
         event.preventDefault();
 
         await editarEstudante(formInput.nome, formInput.usuario, formInput.idade, formInput.curso, formInput.telefone, formInput.email, formInput.cidade, formInput.senha);
-        
+
         listarCur()
     }
 
@@ -73,7 +73,7 @@ const EstudanteEditarComponent = ({estudante, listarCur}) => {
             cidade: estudante.cidade
         })
     }, [estudante]);
-    
+
     return (
         <div>
             <button onClick={openModal} className='button-modal-open button-menu-li'>📝 Editar meus dados</button>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 Modal.setAppElement("#root");
 
 // Component para excluir vagas
-const ExcluirVagaComponent = ({vaga}) => {
+const ExcluirVagaComponent = ({ vaga }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -19,13 +19,13 @@ const ExcluirVagaComponent = ({vaga}) => {
         setIsOpen(false);
     }
 
-    const {excluirVaga} = useExcluirVaga();
+    const { excluirVaga } = useExcluirVaga();
 
-    async function onClick(event){
+    async function onClick(event) {
         event.preventDefault();
 
         await excluirVaga(vaga.id);
-        
+
     }
 
     return (
@@ -39,7 +39,7 @@ const ExcluirVagaComponent = ({vaga}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua vaga?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua vaga?</h2>
                 <div className='container-cursos-exper'>
                     <form >
 

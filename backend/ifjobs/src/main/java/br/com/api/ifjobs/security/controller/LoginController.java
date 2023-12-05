@@ -14,9 +14,9 @@ public class LoginController {
 
     @Autowired
     private BuscarUsuarioService buscarUsuarioService;
-    
+
     @PostMapping
-    public UsuarioResponse login(){
+    public UsuarioResponse login() {
         return buscarUsuarioService.buscar();
     }
 }

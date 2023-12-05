@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { excluirPalavraChaveApi } from "../../constants";
 
-export function useExcluirPalavraChave(){
+export function useExcluirPalavraChave() {
 
     const [error] = useState();
 
-    async function excluirPalavraChave(palavraId){
+    async function excluirPalavraChave(palavraId) {
 
-        try{
+        try {
             await excluirPalavraChaveApi(palavraId);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {excluirPalavraChave, error};
+    return { excluirPalavraChave, error };
 
 }

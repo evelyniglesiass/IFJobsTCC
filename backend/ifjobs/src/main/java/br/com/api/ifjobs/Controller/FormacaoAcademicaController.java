@@ -2,7 +2,7 @@ package br.com.api.ifjobs.controller;
 
 import java.util.List;
 
-import javax.validation.Valid; 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,38 +26,38 @@ import br.com.api.ifjobs.services.FormacaoAcademicaService;
 @RestController
 @RequestMapping("/formacoes")
 public class FormacaoAcademicaController {
-    
+
     @Autowired
     private FormacaoAcademicaService formAcaSer;
-    
-    //cadastro de formacões academicas
+
+    // cadastro de formacões academicas
     @Secured("ROLE_ESTUDANTE")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica){
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica) {
         return formAcaSer.cadastrar(formacaoAcademica);
     }
 
-    //edicao de formacões academicas
+    // edicao de formacões academicas
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody FormacaoAcademicaRequest formacaoAcademica) {
         return formAcaSer.editar(formacaoAcademica);
     }
 
-    //exclusão de formacões academicas
+    // exclusão de formacões academicas
     @Secured("ROLE_ESTUDANTE")
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK) 
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Resposta> remover(@PathVariable int id) {
         return formAcaSer.remover(id);
     }
 
-    //Listagem de formacões academicas de um determinado currículo
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    // listagem de formacões academicas de um determinado currículo
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/{id}") // id do estudante
-    public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable Integer id){
+    public List<FormacaoAcademicaDTO> listarFormacao(@PathVariable Integer id) {
         return formAcaSer.listarFormacao(id);
     }
 }

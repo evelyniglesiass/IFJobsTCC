@@ -4,45 +4,45 @@ import * as moment from 'moment';
 import MenuFormacaoComponent from './menus/MenuFormacaoComponent';
 
 // Component para visualizar formação acadêmica
-const FormacaoComponent = ({formacoes, acao, listar}) => {
+const FormacaoComponent = ({ formacoes, acao, listar }) => {
 
   const [formacaoTag, setFormacaoTag] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
 
     setFormacaoTag([]);
-    
-    if(formacoes){
+
+    if (formacoes) {
       formacoes.forEach(f => {
         setFormacaoTag((oldForTag) => ([...oldForTag,
-                                    <section className='cabecalho-cursos-exper'>
-                                      <h4 className='titulos-cursos-exper fonte-titulo'>
-                                      {
-                                        f.nivel == 'FUNDAMENTAL' ? "Ensino Fundamental" : 
-                                        f.nivel == "MEDIO" ? "Ensino Médio" : 
-                                        f.nivel == "TECNICO" ? "Ensino Técnico" :
-                                        f.nivel == "MEDIO_TECNICO" ? "Ensino Médio Técnico" : 
-                                        "Ensino Superior"
-                                      }
-                                      </h4>
-                                      <h6 className='titulos-cursos-exper fonte-corpo'>{f.instituicao}</h6>
-                                      <div className='menu-button-open'>
-                                      {acao == "editar" ? <MenuFormacaoComponent formacao={f} listar={listar}/> : ""}
-                                      </div>
-                                      <h6 className='datas data-fim fonte-corpo'>{f.dataInicial != null ? moment(f.dataInicial).format("DD/MM/YYYY") : f.dataInicial} à {f.dataFinal != null ? moment(f.dataFinal).format("DD/MM/YYYY") : f.dataFinal}</h6>
-                                      <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
-                                      <p className='conteudo-formacao fonte-corpo'>{f.descricao}</p>
-                                    </section>
-                                      ]))
+        <section className='cabecalho-cursos-exper'>
+          <h4 className='titulos-cursos-exper fonte-titulo'>
+            {
+              f.nivel == 'FUNDAMENTAL' ? "Ensino Fundamental" :
+                f.nivel == "MEDIO" ? "Ensino Médio" :
+                  f.nivel == "TECNICO" ? "Ensino Técnico" :
+                    f.nivel == "MEDIO_TECNICO" ? "Ensino Médio Técnico" :
+                      "Ensino Superior"
+            }
+          </h4>
+          <h6 className='titulos-cursos-exper fonte-corpo'>{f.instituicao}</h6>
+          <div className='menu-button-open'>
+            {acao == "editar" ? <MenuFormacaoComponent formacao={f} listar={listar} /> : ""}
+          </div>
+          <h6 className='datas data-fim fonte-corpo'>{f.dataInicial != null ? moment(f.dataInicial).format("DD/MM/YYYY") : f.dataInicial} à {f.dataFinal != null ? moment(f.dataFinal).format("DD/MM/YYYY") : f.dataFinal}</h6>
+          <p className='conteudo-formacao fonte-corpo'>{f.cidade}</p>
+          <p className='conteudo-formacao fonte-corpo'>{f.descricao}</p>
+        </section>
+        ]))
       });
-    } 
-                          
+    }
+
   }, [formacoes])
 
   return (
     <div className='container-cursos-exper'>
       {formacaoTag}
-    </div> 
+    </div>
   )
 }
 

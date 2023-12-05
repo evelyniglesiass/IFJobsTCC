@@ -2,22 +2,22 @@ import { useState } from "react";
 import { listarEmpresasEmpApi } from "../../constants";
 import { toast } from "react-toastify";
 
-export function useListarEmpresasEmp(){
+export function useListarEmpresasEmp() {
 
     const [error] = useState();
 
-    async function listarEmpresasEmp(){
+    async function listarEmpresasEmp() {
 
-        try{
+        try {
             const response = await listarEmpresasEmpApi();
 
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {listarEmpresasEmp, error};
+    return { listarEmpresasEmp, error };
 
 }

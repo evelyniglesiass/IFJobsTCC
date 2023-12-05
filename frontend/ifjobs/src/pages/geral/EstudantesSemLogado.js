@@ -5,7 +5,7 @@ import HeaderComponent from '../../components/ui/HeaderComponent';
 import { useListarEstudantesEst } from '../../hook/estudante/listarEstudantesEst.hook';
 import { useListarEstudanteNomeSem } from '../../hook/estudante/listarEstudanteNomeSem.hook';
 
-// Feed com empresas cadastradas
+// Feed com estudantes cadastrados
 const EstudantesSemLogado = () => {
 
   const [estudantes, setEstudantes] = useState([])
@@ -16,8 +16,8 @@ const EstudantesSemLogado = () => {
     async function listar() {
 
       const response = await listarEstudantesEst();
-      
-      setEstudantes(response) 
+
+      setEstudantes(response)
 
     }
 
@@ -28,47 +28,47 @@ const EstudantesSemLogado = () => {
     pesquisa: ' '
   })
 
-  function handleChange(event){
+  function handleChange(event) {
     const { name, value } = event.target;
 
-    setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
   }
 
   const { listarEstudanteNomeSem } = useListarEstudanteNomeSem();
 
-  async function onSubmit(event){
+  async function onSubmit(event) {
     event.preventDefault();
 
     if (formInput.pesquisa != " " && formInput.pesquisa != "") {
       const estResp = await listarEstudanteNomeSem(formInput.pesquisa);
-      setEstudantes(estResp) 
+      setEstudantes(estResp)
     } else {
       const response = await listarEstudantesEst();
-      setEstudantes(response) 
+      setEstudantes(response)
     }
 
   }
 
   return (
     <div className='container-pages'>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-empresas'>
-          <article className='pesquisa-empresas'>
-            <nav class="navbar bg-body-tertiary">
-                <section class="container-fluid">
-                    <form class="d-flex" role="search" onSubmit={onSubmit}>
-                      <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange}/>
-                      <button class="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
-                    </form>
-                </section>
-            </nav>  
-          </article>
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-empresas'>
+        <article className='pesquisa-empresas'>
+          <nav class="navbar bg-body-tertiary">
+            <section class="container-fluid">
+              <form class="d-flex" role="search" onSubmit={onSubmit}>
+                <input name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange} />
+                <button class="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
+              </form>
+            </section>
+          </nav>
+        </article>
 
-          <article className='div-empesa'>
-            <EstudantesComponent estudantes={estudantes}/>
-          </article>
+        <article className='div-empesa'>
+          <EstudantesComponent estudantes={estudantes} />
+        </article>
 
-        </section>
+      </section>
     </div>
   )
 }

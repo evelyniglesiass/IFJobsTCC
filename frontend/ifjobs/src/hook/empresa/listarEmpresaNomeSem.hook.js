@@ -3,21 +3,21 @@ import { toast } from "react-toastify";
 import { listarEmpresaNomeSemApi } from "../../constants";
 
 
-export function useListarEmpresaNomeSem(){
+export function useListarEmpresaNomeSem() {
 
     const [error] = useState();
 
-    async function listarEmpresaNomeSem(nomeEmpresa){
+    async function listarEmpresaNomeSem(nomeEmpresa) {
 
-        try{
+        try {
             const response = await listarEmpresaNomeSemApi(nomeEmpresa);
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {listarEmpresaNomeSem, error};
+    return { listarEmpresaNomeSem, error };
 
 }

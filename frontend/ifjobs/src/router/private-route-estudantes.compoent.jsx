@@ -6,7 +6,7 @@ import EstudantesSemLogado from "../pages/geral/EstudantesSemLogado";
 export function PrivateRouteEstudantes() {
   const [user] = useGlobalUser()
 
-  if(user.permissao == "Estudante") {
+  if (user.permissao == "Estudante") {
     return <EstudantesSemLogado />
   } else if (user.permissao == "Empresa") {
     return <Estudantes />

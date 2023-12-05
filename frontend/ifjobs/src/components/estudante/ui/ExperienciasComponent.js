@@ -4,38 +4,38 @@ import MenuExperienciaComponent from './menus/MenuExperienciaComponent';
 import * as moment from 'moment';
 
 // Component para visualizar experiência profissional
-const ExperienciasComponent = ({experiencias, acao, listar}) => { 
+const ExperienciasComponent = ({ experiencias, acao, listar }) => {
 
   const [experienciaTag, setExperienciaTag] = useState([]);
 
-  useEffect(() => { 
+  useEffect(() => {
 
     setExperienciaTag([]);
-    
-    if(experiencias){
-      
+
+    if (experiencias) {
+
       experiencias.forEach(e => {
         setExperienciaTag((oldExpTag) => ([...oldExpTag,
-                                  <section className='cabecalho-cursos-exper'>
-                                    <h4 className='titulos-cursos-exper fonte-titulo'>{e.cargo}</h4>
-                                    <h6 className='titulos-cursos-exper fonte-corpo'>{e.empresa}</h6>
-                                    <div className='menu-button-open'>
-                                      {acao == "editar" ? < MenuExperienciaComponent experiencia={e} listar={listar}/> : ""}
-                                    </div>
-                                    <h6 className='datas data-fim fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial} à {e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
-                                    <p className='conteudo-experiencias'>{e.descricao}</p>
-                                  </section>
-                              ]))
+        <section className='cabecalho-cursos-exper'>
+          <h4 className='titulos-cursos-exper fonte-titulo'>{e.cargo}</h4>
+          <h6 className='titulos-cursos-exper fonte-corpo'>{e.empresa}</h6>
+          <div className='menu-button-open'>
+            {acao == "editar" ? < MenuExperienciaComponent experiencia={e} listar={listar} /> : ""}
+          </div>
+          <h6 className='datas data-fim fonte-corpo'>{e.dataInicial != null ? moment(e.dataInicial).format("DD/MM/YYYY") : e.dataInicial} à {e.dataFinal != null ? moment(e.dataFinal).format("DD/MM/YYYY") : e.dataFinal}</h6>
+          <p className='conteudo-experiencias'>{e.descricao}</p>
+        </section>
+        ]))
       });
 
     }
-                          
+
   }, [experiencias])
 
   return (
     <div className='container-cursos-exper'>
       {experienciaTag}
-    </div> 
+    </div>
   )
 }
 

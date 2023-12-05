@@ -1,12 +1,12 @@
-import {axiosInstance} from '../../constants';
+import { axiosInstance } from '../../constants';
 
-export async function logoutApi(){
+export async function logoutApi() {
 
-    try{
+    try {
         await axiosInstance.post("/logout");
         localStorage.clear();
     }
-    catch(error){
+    catch (error) {
         throw error.response.data.message;
     }
 }

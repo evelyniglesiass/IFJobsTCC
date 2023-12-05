@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { editarFormacaoApi } from "../../constants";
 
-export function useEditarFormacao(){
+export function useEditarFormacao() {
 
     const [error] = useState();
 
-    async function editarFormacao(descricao, cidade, instituicao, dataInicial, dataFinal, nivel, id){
+    async function editarFormacao(descricao, cidade, instituicao, dataInicial, dataFinal, nivel, id) {
 
-        try{
+        try {
             await editarFormacaoApi(descricao, cidade, instituicao, dataInicial, dataFinal, nivel, id);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {editarFormacao, error};
+    return { editarFormacao, error };
 
 }

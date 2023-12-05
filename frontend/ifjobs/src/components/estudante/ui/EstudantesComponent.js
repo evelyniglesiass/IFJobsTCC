@@ -3,28 +3,28 @@ import '../../../App.scss';
 import { Link } from 'react-router-dom';
 
 // Component para exibir estudantes cadastradas no feed
-const EstudantesComponent = ({estudantes}) => { 
+const EstudantesComponent = ({ estudantes }) => {
 
-    const [estudantesTag, setEstudantesTag] = useState([]);
+  const [estudantesTag, setEstudantesTag] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
 
-        setEstudantesTag([]);
-        
-        estudantes.forEach(e => {
-            setEstudantesTag((oldEstudantesTag) => ([...oldEstudantesTag, 
-                                                    <article className='container-empresa'>
-                                                        <h4 className='titulo-empresas fonte-titulo'><Link to={`/estudante/${e.id}`}>{e.nome}</Link>   </h4>
-                                                        <p className='corpo-empresas fonte-corpo'>{e.email}</p>
-                                                    </article>
-                                                    ]))
-        });
+    setEstudantesTag([]);
 
-    }, [estudantes])
+    estudantes.forEach(e => {
+      setEstudantesTag((oldEstudantesTag) => ([...oldEstudantesTag,
+      <article className='container-empresa'>
+        <h4 className='titulo-empresas fonte-titulo'><Link to={`/estudante/${e.id}`}>{e.nome}</Link>   </h4>
+        <p className='corpo-empresas fonte-corpo'>{e.email}</p>
+      </article>
+      ]))
+    });
+
+  }, [estudantes])
 
   return (
     <section className='container-geral-empresas'>
-        {estudantesTag}
+      {estudantesTag}
     </section>
   )
 }

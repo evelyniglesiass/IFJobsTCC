@@ -19,15 +19,15 @@ import lombok.Setter;
 @Builder
 public class VagaDTO {
 
-	private Integer id;
-	private boolean status;
-	private String titulo;
-	private String descricao;
-	private Cursos curso;
-	private Double salario;
+    private Integer id;
+    private boolean status;
+    private String titulo;
+    private String descricao;
+    private Cursos curso;
+    private Double salario;
     private Integer idadeMinima;
     private String cidade;
-	private LocalDate dataPublicacao; 
+    private LocalDate dataPublicacao;
 
     public VagaDTO(Vaga vaga) {
         this.id = vaga.getId();
@@ -44,5 +44,5 @@ public class VagaDTO {
     public static List<VagaDTO> converterLista(List<Vaga> listaVaga) {
         return listaVaga.stream().map(VagaDTO::new).collect(Collectors.toList());
     }
-    
+
 }

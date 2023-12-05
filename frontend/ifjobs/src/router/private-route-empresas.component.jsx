@@ -6,7 +6,7 @@ import EmpresasSemLogada from "../pages/geral/EmpresasSemLogada";
 export function PrivateRouteEmpresas() {
   const [user] = useGlobalUser()
 
-  if(user.permissao == "Estudante") {
+  if (user.permissao == "Estudante") {
     return <Empresas />
   } else if (user.permissao == "Empresa") {
     return <EmpresasSemLogada />

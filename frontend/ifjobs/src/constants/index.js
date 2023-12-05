@@ -1,12 +1,12 @@
 // base
-export {axiosInstance} from '../api/_base/axiosInstance.js';
+export { axiosInstance } from '../api/_base/axiosInstance.js';
 
 // login e logout
-export {logarApi} from  '../api/login/login.api.js';
-export {logoutApi} from  '../api/logout/logout.api.js';
+export { logarApi } from '../api/login/login.api.js';
+export { logoutApi } from '../api/logout/logout.api.js';
 
 // empresas
-export {criarEmpresaApi} from '../api/empresa/cadastrar-empresa.api.js'
+export { criarEmpresaApi } from '../api/empresa/cadastrar-empresa.api.js'
 export { editarEmpresaApi } from '../api/empresa/editar-empresa.api.js';
 export { excluirEmpresaApi } from '../api/empresa/excluir-empresa.api.js';
 export { listarEmpresasEmpApi } from '../api/empresa/listar-empresa-emp.api.js';
@@ -16,7 +16,7 @@ export { listarEmpresasEstApi } from '../api/empresa/listar-empresa-est.api.js';
 export { listarEmpresaNomeSemApi } from '../api/empresa/listar-empresa-nome-sem.api.js';
 
 // estudantes
-export {criarEstudanteApi} from '../api/estudante/cadastrar-estudante.api.js';
+export { criarEstudanteApi } from '../api/estudante/cadastrar-estudante.api.js';
 export { editarEstudanteApi } from '../api/estudante/editar-estudante.api.js';
 export { excluirEstudanteApi } from '../api/estudante/excluir-estudante.api.js';
 export { listarEstudantesEmpApi } from '../api/estudante/listar-estudantes-emp.api.js';

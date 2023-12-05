@@ -6,7 +6,7 @@ import useGlobalUser from "../context/usuario/user.context";
 export function PrivateRoutePerfil() {
   const [user] = useGlobalUser()
 
-  if(user.permissao == "Estudante") {
+  if (user.permissao == "Estudante") {
     return <PerfilEstudante />
   } else if (user.permissao == "Empresa") {
     return <PerfilEmpresa />

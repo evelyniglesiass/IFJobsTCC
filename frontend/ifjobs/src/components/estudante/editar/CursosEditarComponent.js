@@ -7,7 +7,7 @@ import DicasCursosComponent from '../../dicas/DicasCursosComponent';
 Modal.setAppElement("#root");
 
 // Component com inputs para edição de cursos com dicas
-const CursosEditarComponent = ({cursos, listar}) => {
+const CursosEditarComponent = ({ cursos, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -28,18 +28,18 @@ const CursosEditarComponent = ({cursos, listar}) => {
         descricao: cursos.descricao
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {editarCurso} = useEditarCurso();
+    const { editarCurso } = useEditarCurso();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
-        await editarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal,  formInput.instituicao, cursos.id);
+        await editarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal, formInput.instituicao, cursos.id);
         listar()
     }
 
@@ -56,31 +56,31 @@ const CursosEditarComponent = ({cursos, listar}) => {
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
                 <h2 className='titulo-modal'>Cursos e certificados</h2>
-                <DicasCursosComponent/>
-                <hr/>
+                <DicasCursosComponent />
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
-                    <div className='txt-form-group'>
-                        <input type="text" defaultValue={cursos.instituicao} class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="text" defaultValue={cursos.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="number" defaultValue={cursos.cargaHoraria} class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                    <input type="date" defaultValue={cursos.dataInicial} class="form-control" name='dataInicial' onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="date" defaultValue={cursos.dataFinal} class="form-control" name='dataFinal' onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <textarea type="textarea" defaultValue={cursos.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
-                    </div>
+                    <form onSubmit={onSubmit}>
+                        <div className='txt-form-group'>
+                            <input type="text" defaultValue={cursos.instituicao} class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" defaultValue={cursos.cidade} class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="number" defaultValue={cursos.cargaHoraria} class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" defaultValue={cursos.dataInicial} class="form-control" name='dataInicial' onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" defaultValue={cursos.dataFinal} class="form-control" name='dataFinal' onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <textarea type="textarea" defaultValue={cursos.descricao} class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange} />
+                        </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
-                </form>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                    </form>
                 </div>
 
             </Modal>

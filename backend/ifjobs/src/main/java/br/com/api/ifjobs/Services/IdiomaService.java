@@ -18,13 +18,12 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.IdiomaRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
-
 @Service
 public class IdiomaService {
 
     @Autowired
     private IdiomaRepository idiRep;
-    
+
     @Autowired
     private CurriculoRepository curRep;
 
@@ -38,16 +37,16 @@ public class IdiomaService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar idioma
-    public ResponseEntity<?> cadastrar(Idioma i){
-        
+    public ResponseEntity<?> cadastrar(Idioma i) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsByEstudante(estudante))){
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
         }
-        
+
         i.setCurriculo(estudante.getCurriculo());
         estudante.getCurriculo().getIdiomas().add(i);
         idiRep.save(i);
@@ -57,16 +56,16 @@ public class IdiomaService {
     }
 
     // método para editar idioma
-    public ResponseEntity<?> editar(Idioma i){
-        
+    public ResponseEntity<?> editar(Idioma i) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(idiRep.existsById(i.getId()))){
+        if (!(idiRep.existsById(i.getId()))) {
             r.setMensagem("Idioma não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(!(curRep.existsByEstudante(estudante))){
+
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -80,8 +79,8 @@ public class IdiomaService {
 
     // método para remover experiencia
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(idiRep.existsById(id))){
+
+        if (!(idiRep.existsById(id))) {
             r.setMensagem("Idioma não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -93,12 +92,12 @@ public class IdiomaService {
 
     }
 
-    public List<IdiomaDTO> listarIdioma(int id){
+    public List<IdiomaDTO> listarIdioma(int id) {
 
         Estudante est = estRep.findById(id).get();
         Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();
         return IdiomaDTO.converterLista(idiRep.listarIdioma(cur.getId()));
 
     }
-    
+
 }

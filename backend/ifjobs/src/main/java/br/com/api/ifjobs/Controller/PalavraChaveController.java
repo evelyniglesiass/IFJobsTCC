@@ -1,6 +1,6 @@
 package br.com.api.ifjobs.controller;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -34,7 +34,7 @@ public class PalavraChaveController {
     @Secured("ROLE_EMPRESA")
     @PostMapping("/{idVaga}")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga) {
         return palChaSer.cadastrar(palavra, idVaga);
     }
 
@@ -42,21 +42,21 @@ public class PalavraChaveController {
     @Secured("ROLE_EMPRESA")
     @PutMapping("/{idVaga}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga){ 
-        return palChaSer.editar(palavra, idVaga); 
+    public ResponseEntity<?> editar(@Valid @RequestBody PalavraChave palavra, @PathVariable int idVaga) {
+        return palChaSer.editar(palavra, idVaga);
     }
 
     // remover palavra chave
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping("/{id}") 
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
+    public ResponseEntity<Resposta> remover(@PathVariable int id) {
         return palChaSer.remover(id);
     }
 
     // listar palavra chaves de uma determinada vaga
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-    @GetMapping("/listar/{idVaga}") 
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
+    @GetMapping("/listar/{idVaga}")
     public List<PalavraChaveDTO> listarPalavraChave(@PathVariable int idVaga) {
         return palChaSer.listarPalavraChave(idVaga);
     }

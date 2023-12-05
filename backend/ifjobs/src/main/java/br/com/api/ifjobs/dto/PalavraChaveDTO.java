@@ -14,9 +14,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PalavraChaveDTO {
-    
+
     private Integer id;
-	private String palavra;
+    private String palavra;
 
     public PalavraChaveDTO(PalavraChave palavraChave) {
         this.id = palavraChave.getId();

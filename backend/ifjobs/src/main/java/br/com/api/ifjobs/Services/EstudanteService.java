@@ -21,17 +21,17 @@ import br.com.api.ifjobs.security.domain.enums.Funcao;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 import br.com.api.ifjobs.repository.VagaRepository;
 
-@Service 
-public class EstudanteService { 
+@Service
+public class EstudanteService {
 
     @Autowired
-    private EstudanteRepository estRep;  
-    
-    @Autowired
-    private EmpresaRepository empRep; 
+    private EstudanteRepository estRep;
 
     @Autowired
-    private VagaRepository vagRep; 
+    private EmpresaRepository empRep;
+
+    @Autowired
+    private VagaRepository vagRep;
 
     @Autowired
     private Resposta r;
@@ -41,41 +41,42 @@ public class EstudanteService {
 
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
-    
+
     @Autowired
     private SenhaService ss;
 
     // método para cadastrar estudantes
-    public ResponseEntity<?> cadastrar(Estudante e){ 
+    public ResponseEntity<?> cadastrar(Estudante e) {
 
         ss.setSenha(e.getSenha());
 
-        if(e.getSenha() == ""){ 
+        if (e.getSenha() == "") {
             r.setMensagem("Você precisa inserir uma senha!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
-        
-        if(e.getIdade() < 0){ 
+
+        if (e.getIdade() < 0) {
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
-        
-        if(estRep.existsByNomeUsuario(e.getNomeUsuario()) || empRep.existsByNomeUsuario(e.getNomeUsuario())){
+
+        if (estRep.existsByNomeUsuario(e.getNomeUsuario()) || empRep.existsByNomeUsuario(e.getNomeUsuario())) {
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }
-        
-        if(estRep.existsByEmail(e.getEmail()) || empRep.existsByEmail(e.getEmail())){
+
+        if (estRep.existsByEmail(e.getEmail()) || empRep.existsByEmail(e.getEmail())) {
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }
-        
-        if(!ss.verificarSenha(ss.getSenha())){
-            r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+
+        if (!ss.verificarSenha(ss.getSenha())) {
+            r.setMensagem(
+                    "Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
@@ -90,36 +91,38 @@ public class EstudanteService {
     }
 
     // método para editar estudantes
-    public ResponseEntity<?> editar(Estudante e){
+    public ResponseEntity<?> editar(Estudante e) {
 
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        e.setId(estudante.getId()); // acho q assim da
-        
-        if(e.getIdade() < 0){
+        e.setId(estudante.getId()); 
+
+        if (e.getIdade() < 0) {
             r.setMensagem("Informe uma idade válida!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
         }
-        
-        if(estRep.existeUsuario(e.getNomeUsuario(), estudante.getId()) != 0 || empRep.existeUsuario(e.getNomeUsuario(), 0) != 0){
+
+        if (estRep.existeUsuario(e.getNomeUsuario(), estudante.getId()) != 0
+                || empRep.existeUsuario(e.getNomeUsuario(), 0) != 0) {
             r.setMensagem("O nome de usuário já existe!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }
-        
-        if(estRep.existeEmail(e.getEmail(), estudante.getId()) != 0 || empRep.existeEmail(e.getEmail(), 0) != 0){
+
+        if (estRep.existeEmail(e.getEmail(), estudante.getId()) != 0 || empRep.existeEmail(e.getEmail(), 0) != 0) {
             r.setMensagem("Esse email já foi cadastrado!");
             throw new ResponseStatusException(HttpStatus.CONFLICT, r.getMensagem());
 
         }
-        
-        if(e.getSenha() != ""){
+
+        if (e.getSenha() != "") {
             ss.setSenha(e.getSenha());
-            if(!ss.verificarSenha(ss.getSenha())){
-                r.setMensagem("Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
+            if (!ss.verificarSenha(ss.getSenha())) {
+                r.setMensagem(
+                        "Sua senha precisa ter pelo menos 8 caracteres, uma letra minúscula, uma letra maiúscula e um número!");
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
-            } 
+            }
             e.setSenha(passwordEncoder.encode(e.getSenha()));
         } else {
             e.setSenha(estudante.getSenha());
@@ -144,28 +147,28 @@ public class EstudanteService {
 
     }
 
-    public List<EstudanteDTO> listarTodosEmpresa(){
+    public List<EstudanteDTO> listarTodosEmpresa() {
         return EstudanteDTO.converterLista(estRep.findAll());
     }
 
-    public List<EstudanteDTO> listarTodosEstudante(){
+    public List<EstudanteDTO> listarTodosEstudante() {
         Estudante estudante = usuarioAutenticadoService.getEstudante();
         return EstudanteDTO.converterLista(estRep.listarEstudantes(estudante.getId()));
     }
 
-    public List<EstudanteDTO> listarPorNome(String nome){
+    public List<EstudanteDTO> listarPorNome(String nome) {
         return EstudanteDTO.converterLista(estRep.findByNomeContainsIgnoreCase(nome));
     }
 
-    public List<EstudanteDTO> listarPorNomeSemLogado(String nome){
+    public List<EstudanteDTO> listarPorNomeSemLogado(String nome) {
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
         return EstudanteDTO.converterLista(estRep.findAllByNomeContainingAndIdNot(nome, estudante.getId()));
     }
 
-    public EstudanteDTO listarPorId(int id){
+    public EstudanteDTO listarPorId(int id) {
 
-        if(!estRep.existsById(id)){
+        if (!estRep.existsById(id)) {
             r.setMensagem("Usuário não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
@@ -174,33 +177,33 @@ public class EstudanteService {
         Estudante e = estRep.findById(id).get();
 
         return EstudanteDTO
-            .builder()
-            .id(e.getId())
-            .nome(e.getNome())
-            .idade(e.getIdade())
-            .curso(e.getCurso())
-            .nomeUsuario(e.getNomeUsuario())
-            .email(e.getEmail())
-            .telefone(e.getTelefone())
-            .cidade(e.getCidade())
-            .build();
+                .builder()
+                .id(e.getId())
+                .nome(e.getNome())
+                .idade(e.getIdade())
+                .curso(e.getCurso())
+                .nomeUsuario(e.getNomeUsuario())
+                .email(e.getEmail())
+                .telefone(e.getTelefone())
+                .cidade(e.getCidade())
+                .build();
 
     }
 
     // método para candidatura
     public ResponseEntity<Resposta> candidatura(int v) {
-        
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(vagRep.existsById(v))){
+        if (!(vagRep.existsById(v))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
-        } 
+
+        }
 
         Vaga vaga = vagRep.findById(v).get();
 
-        if(estudante.getIdade() < vaga.getIdadeMinima()){
+        if (estudante.getIdade() < vaga.getIdadeMinima()) {
             r.setMensagem("Você não possui a idade mínima para esta vaga!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
@@ -210,7 +213,7 @@ public class EstudanteService {
         vaga.getEstudantes().add(estudante);
         vagRep.save(vaga);
         estRep.save(estudante);
-        
+
         r.setMensagem("Candidatura realizada com sucesso!");
         return new ResponseEntity<>(r, HttpStatus.OK);
 
@@ -218,13 +221,13 @@ public class EstudanteService {
 
     // método para remover candidatura
     public ResponseEntity<Resposta> removerCandidatura(int v) {
-        
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(vagRep.existsById(v))){
+        if (!(vagRep.existsById(v))) {
             r.setMensagem("Vaga não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
-            
+
         }
 
         Vaga vaga = vagRep.findById(v).get();
@@ -239,11 +242,11 @@ public class EstudanteService {
 
     }
 
-    public List<EstudanteDTO> listarEstudantesCandidatura(int id){
+    public List<EstudanteDTO> listarEstudantesCandidatura(int id) {
         return EstudanteDTO.converterLista(estRep.listarEstudantesCandidatura(id));
     }
 
-    public List<VagaDTO> listarVagasCandidatura(int id){
+    public List<VagaDTO> listarVagasCandidatura(int id) {
         return VagaDTO.converterLista(vagRep.listarVagasCandidatura(id));
     }
 

@@ -18,13 +18,12 @@ import br.com.api.ifjobs.repository.EstudanteRepository;
 import br.com.api.ifjobs.repository.HabilidadeRepository;
 import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
-
 @Service
 public class HabilidadeService {
 
     @Autowired
     private HabilidadeRepository habRep;
-    
+
     @Autowired
     private CurriculoRepository curRep;
 
@@ -38,16 +37,16 @@ public class HabilidadeService {
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
     // método para cadastrar habilidade
-    public ResponseEntity<?> cadastrar(Habilidade h){
-        
+    public ResponseEntity<?> cadastrar(Habilidade h) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(curRep.existsByEstudante(estudante))){
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } 
-        
+        }
+
         h.setCurriculo(estudante.getCurriculo());
         estudante.getCurriculo().getHabilidades().add(h);
         habRep.save(h);
@@ -57,16 +56,16 @@ public class HabilidadeService {
     }
 
     // método para editar habilidade
-    public ResponseEntity<?> editar(Habilidade h){
-        
+    public ResponseEntity<?> editar(Habilidade h) {
+
         Estudante estudante = usuarioAutenticadoService.getEstudante();
 
-        if(!(habRep.existsById(h.getId()))){
+        if (!(habRep.existsById(h.getId()))) {
             r.setMensagem("Habilidade não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
-        
-        if(!(curRep.existsByEstudante(estudante))){
+
+        if (!(curRep.existsByEstudante(estudante))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -80,8 +79,8 @@ public class HabilidadeService {
 
     // método para remover habilidade
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(habRep.existsById(id))){
+
+        if (!(habRep.existsById(id))) {
             r.setMensagem("Habilidade não encontrada!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -93,12 +92,12 @@ public class HabilidadeService {
 
     }
 
-    public List<HabilidadeDTO> listarHabilidade(int id){
+    public List<HabilidadeDTO> listarHabilidade(int id) {
 
         Estudante est = estRep.findById(id).get();
         Curriculo cur = curRep.findById(est.getCurriculo().getId()).get();
         return HabilidadeDTO.converterLista(habRep.listarHabilidade(cur.getId()));
 
     }
-    
+
 }

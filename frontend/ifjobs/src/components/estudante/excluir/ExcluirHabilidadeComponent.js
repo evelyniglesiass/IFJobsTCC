@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de exclusão de habilidade
-const ExcluirHabilidadeComponent = ({habilidade, listar}) => {
+const ExcluirHabilidadeComponent = ({ habilidade, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ const ExcluirHabilidadeComponent = ({habilidade, listar}) => {
         setIsOpen(false);
     }
 
-    const {excluirHabilidade} = useExcluirHabilidade();
+    const { excluirHabilidade } = useExcluirHabilidade();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await excluirHabilidade(habilidade.id);
@@ -38,7 +38,7 @@ const ExcluirHabilidadeComponent = ({habilidade, listar}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua habilidade?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua habilidade?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

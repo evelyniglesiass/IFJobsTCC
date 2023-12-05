@@ -20,8 +20,9 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 public class ApiExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, Object>> handlerMethodArgumentNotValidException(MethodArgumentNotValidException ex,
-                                                                                      HttpServletRequest request){
+    public ResponseEntity<Map<String, Object>> handlerMethodArgumentNotValidException(
+            MethodArgumentNotValidException ex,
+            HttpServletRequest request) {
 
         HttpStatus status = BAD_REQUEST;
         String message = extrairErro(ex);
@@ -44,11 +45,10 @@ public class ApiExceptionHandler {
 
         FieldError erro;
 
-        if(erroOpt.isPresent()){
+        if (erroOpt.isPresent()) {
 
             erro = (FieldError) erroOpt.get();
-        }
-        else{
+        } else {
             return "Erro de validação.";
         }
 

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent';
 import EmpresasComponent from '../../components/empresa/ui/EmpresasComponent';
 import { useListarEmpresasEst } from '../../hook/empresa/listarEmpresasEst.hook';
@@ -18,8 +16,8 @@ const Empresas = () => {
     async function listar() {
 
       const response = await listarEmpresasEst();
-      
-      setEmpresas(response) 
+
+      setEmpresas(response)
 
     }
 
@@ -30,46 +28,48 @@ const Empresas = () => {
     pesquisa: ' '
   })
 
-  function handleChange(event){
+  function handleChange(event) {
     const { name, value } = event.target;
 
-    setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+    setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
   }
 
   const { listarEmpresaNome } = useListarEmpresaNome();
 
-  async function onSubmit(event){
+  async function onSubmit(event) {
     event.preventDefault();
+
+    console.log(formInput.pesquisa)
 
     if (formInput.pesquisa != " " && formInput.pesquisa != "") {
       const response = await listarEmpresaNome(formInput.pesquisa);
-      setEmpresas(response) 
+      setEmpresas(response)
     } else {
       const response = await listarEmpresasEst();
-      setEmpresas(response) 
+      setEmpresas(response)
     }
   }
 
   return (
     <div className='container-pages'>
-        <nav className='header'><HeaderComponent/></nav>
-        <section className='container-empresas'>
-          <article className='pesquisa-empresas'>
-              <nav class="navbar bg-body-tertiary">
-                  <section className="container-fluid">
-                      <form className="d-flex" role="search" onSubmit={onSubmit}>
-                        <input nameName='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange}/>
-                        <button className="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
-                      </form>
-                  </section>
-              </nav> 
-          </article>
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-empresas'>
+        <article className='pesquisa-empresas'>
+          <nav class="navbar bg-body-tertiary">
+            <section className="container-fluid">
+              <form className="d-flex" role="search" onSubmit={onSubmit}>
+                <input Name='pesquisa' class="form-control me-2 caixa-pesquisa" type="search" placeholder="Pesquisar..." aria-label="Search" onChange={handleChange} />
+                <button className="btn btn-outline-dark botao-pesquisa" type="submit">Pesquisar</button>
+              </form>
+            </section>
+          </nav>
+        </article>
 
-          <article className='div-empresa'>
-            <EmpresasComponent empresas={empresas}/>
-          </article>
-          
-        </section>
+        <article className='div-empresa'>
+          <EmpresasComponent empresas={empresas} />
+        </article>
+
+      </section>
     </div>
   )
 }

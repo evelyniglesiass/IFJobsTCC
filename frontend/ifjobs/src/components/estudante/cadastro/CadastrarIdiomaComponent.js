@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de cadastro de idiomas
-const CadastrarIdiomaComponent = ({listar}) => {
+const CadastrarIdiomaComponent = ({ listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -22,15 +22,15 @@ const CadastrarIdiomaComponent = ({listar}) => {
         descricao: ''
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {cadastrarIdioma} = useCadastrarIdioma();
+    const { cadastrarIdioma } = useCadastrarIdioma();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await cadastrarIdioma(formInput.descricao);
@@ -49,17 +49,17 @@ const CadastrarIdiomaComponent = ({listar}) => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Idioma</h2>                
-                <hr/>
+                <h2 className='titulo-modal'>Idioma</h2>
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit}>
 
-                    <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='descricao' placeholder="Idioma" onChange={handleChange}/>
-                    </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-control" name='descricao' placeholder="Idioma" onChange={handleChange} />
+                        </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
-                </form>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    </form>
                 </div>
 
             </Modal>

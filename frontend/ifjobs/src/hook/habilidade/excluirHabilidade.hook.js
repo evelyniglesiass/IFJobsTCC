@@ -1,21 +1,21 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { editarHabilidadesApi, excluirHabilidadeApi } from "../../constants";
+import { excluirHabilidadeApi } from "../../constants";
 
-export function useExcluirHabilidade(){
+export function useExcluirHabilidade() {
 
     const [error] = useState();
 
-    async function excluirHabilidade(habilidade){
+    async function excluirHabilidade(habilidade) {
 
-        try{
+        try {
             await excluirHabilidadeApi(habilidade);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {excluirHabilidade, error};
+    return { excluirHabilidade, error };
 
 }

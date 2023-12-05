@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import DetalhesVagaEstudanteComponent from '../../components/estudante/ui/DetalhesVagaEstudanteComponent';
 import { useListarVagaEspecifica } from '../../hook/vagas/listarVagaEspecifica.hook';
@@ -29,10 +27,10 @@ const DetalhesVagaEstudante = () => {
     async function listar() {
 
       const vagResp = await listarVagaEspecifica(id, setVaga);
-      setVaga(vagResp) 
+      setVaga(vagResp)
 
       const canResp = await listarCandidatosVaga(id);
-      setCandidatos(canResp) 
+      setCandidatos(canResp)
 
       const response = await listarEstudanteEspecifico(user.id);
       setEstudante(response);
@@ -49,27 +47,27 @@ const DetalhesVagaEstudante = () => {
       candidatos.forEach(c => {
 
         var obj = c;
-    
+
         if (estudante && obj) {
-          if(obj.id === estudante.id){
+          if (obj.id === estudante.id) {
             setEncontrou(true);
           }
         }
-    
+
       });
     }
 
-      cand()
+    cand()
 
   }, [estudante, candidatos])
 
   return (
     <>
-    <nav className='header'><HeaderComponent/></nav>
-    <section className='container-perfis'>
-      <article><DetalhesVagaEstudanteComponent vaga={vaga} encontrou={encontrou}/></article>
-    </section>
-</>
+      <nav className='header'><HeaderComponent /></nav>
+      <section className='container-perfis'>
+        <article><DetalhesVagaEstudanteComponent vaga={vaga} encontrou={encontrou} /></article>
+      </section>
+    </>
   )
 }
 

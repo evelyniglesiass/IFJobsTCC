@@ -29,32 +29,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
- 
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Estudante{
+public class Estudante {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-    private Integer id; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Integer id;
 
     @NotBlank(message = "Insira seu nome!")
-    @Column(nullable = false, length = 50) 
+    @Column(nullable = false, length = 50)
     private String nome;
 
     @NotNull(message = "Insira sua idade!")
-    @Column(nullable = false) 
+    @Column(nullable = false)
     private Integer idade;
 
     @NotNull(message = "Insira seu curso!")
-	@Column(nullable = false) 
-	@Enumerated(EnumType.STRING)
-	private Cursos curso;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Cursos curso;
 
     @NotBlank(message = "Insira seu nome de usuário!")
     @Column(nullable = false, length = 50)
@@ -69,22 +69,21 @@ public class Estudante{
     private String senha;
 
     @Length(max = 11, min = 11, message = "Insira um telefone válido!")
-    @Column(nullable = true, length = 11) 
-    private String telefone; 
+    @Column(nullable = true, length = 11)
+    private String telefone;
 
     @Column(nullable = true, length = 50)
     private String cidade;
 
-	@OneToOne(mappedBy = "estudante", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "estudante", cascade = CascadeType.ALL)
     private Curriculo curriculo;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "candidatura", 
-        joinColumns = {@JoinColumn(name = "estudante_id")}, 
-        inverseJoinColumns = {@JoinColumn(name = "vaga_id")})
+    @JoinTable(name = "candidatura", joinColumns = { @JoinColumn(name = "estudante_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "vaga_id") })
     private List<Vaga> vagas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, fetch = FetchType.EAGER) // mudei p all aq pq se n da erro p deletar estudante
+    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Column(nullable = false)
     private List<Permissao> permissoes;
 }

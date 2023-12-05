@@ -1,13 +1,13 @@
 import { toast } from "react-toastify";
 import { axiosInstance } from "../_base/axiosInstance";
 
-export async function listarEstudanteEspecificoApi(estudante){
+export async function listarEstudanteEspecificoApi(estudante) {
 
-    try{
+    try {
         const response = await axiosInstance.get(`/estudantes/listar/id/${estudante}`);
         return response.data;
 
-    } catch(error){
+    } catch (error) {
         toast.error(error.response.data.message);
         throw new Error(error.response.data.message)
 

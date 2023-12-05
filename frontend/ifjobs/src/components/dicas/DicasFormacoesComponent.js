@@ -27,7 +27,7 @@ const DicasFormacoesComponent = () => {
                 className="modal-content"
             >
                 <h2>Dicas para suas formações</h2>
-                <hr/>
+                <hr />
                 <p>- Seja sincero, porém cuide para não ser narcisista ou meritocrático</p>
                 <p>- Escreva sobre suas formações tendo o tipo de vaga que você quer em mente</p>
                 <p>- Se venda com equilíbrio, não exagere e não se diminua</p>

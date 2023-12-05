@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Past;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,43 +29,38 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class ExperienciaProfissionalRequest {
-    
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
-    private Integer id;
 
-    // @NotBlank(message = "Insira um título para sua experiência!")
-    // @Column(nullable = false, length = 50)
-	// private String titulo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Integer id;
 
     @NotBlank(message = "Insira a empresa na qual você trabalhou!")
     @Column(nullable = false, length = 50)
-	private String empresa;
+    private String empresa;
 
     @NotBlank(message = "Insira seu cargo!")
     @Column(nullable = false, length = 50)
-	private String cargo;
+    private String cargo;
 
     @NotNull(message = "Insira a data inicial de sua experiência profissional!")
-    //@Past(message = "A data inicial da sua experiência profissional deve ser igual ou anterior a data atual!")
-	@Column(nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
-	private String dataInicial;
+    private String dataInicial;
 
     @NotNull(message = "Insira a data final da sua experiência profissional!")
-	@Column(nullable = false)
+    @Column(nullable = false)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @JsonFormat(pattern = "dd-MM-yyyy")
-	private String dataFinal;
+    private String dataFinal;
 
     @NotBlank(message = "Insira detalhes sobre a sua experiência profissional na descrição!")
-    @Column(nullable = false, length = 500) 
-	private String descricao;
-    
+    @Column(nullable = false, length = 500)
+    private String descricao;
+
     @ManyToOne
-    @JoinColumn(name="curriculo_id", nullable = false)    
+    @JoinColumn(name = "curriculo_id", nullable = false)
     private Curriculo curriculo;
-    
+
 }

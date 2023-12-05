@@ -11,73 +11,72 @@ $preto-modal: #32343496;
 $fonte-um: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 // Imagens
-.logo-navbar{
+.logo-navbar {
     height: 140px;
     margin-top: 5px;
 }
 
 // App ----------------------------------------------
 
-.logo-home{
+.logo-home {
     font-size: 20000px;
 }
 
-.app{
+.app {
     font-family: $fonte-um;
     font-size: 16px;
     color: $branco;
 }
 
-body{
+body {
     background-color: $branco;
 }
 
-.header{
+.header {
     box-shadow: -10px 1px 40px 10px rgba(123, 157, 160, 0.695);
 }
 
-.fonte-titulo{
+.fonte-titulo {
     font-weight: bolder;
     font-family: $fonte-um;
-    
+
 }
 
-.fonte-corpo{
+.fonte-corpo {
     font-family: $fonte-um;
-    //color: $preto;
 }
 
-.conteudo-experiencias, .datas{
+.conteudo-experiencias,
+.datas {
     color: $preto;
 }
 
-.datas{
+.datas {
     width: 100%;
 }
 
 // Pages --------------------------------------------
 
 //botões de atalho
-.button-atalho-perfil{
+.button-atalho-perfil {
     border-radius: 100%;
     border-color: $verde-forte;
     background-color: $verde-forte;
     height: 80px;
-    //width: 80px; 
     width: 6.5%;
     position: relative;
     top: -95px;
     left: 550px;
 }
 
-.link-atalho-perfil{
+.link-atalho-perfil {
     color: $branco;
     font-weight: bolder;
     font-size: 25px;
     text-decoration: none;
 }
 
-.button-editar{
+.button-editar {
     border-radius: 25px;
     border-color: $verde-forte;
     background-color: $verde-forte;
@@ -88,18 +87,18 @@ body{
     left: 30%;
 }
 
-.button-editar:hover{
+.button-editar:hover {
     background-color: $roxo-forte;
     border-color: $roxo-forte;
     transition: 0.3s;
 }
 
-#botao-editar-vaga{
+#botao-editar-vaga {
     top: -45%;
     left: 35%;
 }
 
-.link-editar{
+.link-editar {
     color: $branco;
     font-weight: 300;
     font-size: 15px;
@@ -107,7 +106,7 @@ body{
 }
 
 // Header - USO GERAL
-.header{
+.header {
     width: 15%;
     min-width: 150px;
     height: 100vh;
@@ -118,20 +117,21 @@ body{
 }
 
 // Pesquisa - USO GERAL
-.pesquisa-empresas, .pesquisa-vagas{
+.pesquisa-empresas,
+.pesquisa-vagas {
     padding-top: 3%;
 }
 
 // Feed, Salvos e Empresas - USO COMUM
 // - Container
-.container-pages{
+.container-pages {
     width: 100%;
     height: 100vh;
 }
 
 // - Container - Vagas e Empresas
-
-.container-vagas, .container-empresas{
+.container-vagas,
+.container-empresas {
     width: 85%;
     min-height: 100vh;
     padding-top: 5vh;
@@ -140,17 +140,12 @@ body{
     background-color: $branco;
 }
 
-// - Div - Vaga e Empresa
-//.div-vaga, .div-empresa{
-    //padding-top: 5vh;
-//}
-
-.div-vaga{
+.div-vaga {
     margin-top: 30px;
 }
 
 // Home
-.container-home{
+.container-home {
     display: inline-block;
     width: 100%;
     min-height: 100vh;
@@ -160,15 +155,15 @@ body{
     background-attachment: scroll;
 }
 
-.info-component{
+.info-component {
     width: 55%;
     height: 100%;
     padding-top: 290px;
     padding-left: 8%;
     float: left;
 }
- 
-.login-component{
+
+.login-component {
     width: 22%;
     height: 100vh;
     padding-top: 240px;
@@ -177,7 +172,7 @@ body{
     color: $preto;
 }
 
-.cadastrar-component{
+.cadastrar-component {
     width: 50vw;
     height: 100vh;
     padding-top: 60px;
@@ -187,22 +182,22 @@ body{
 }
 
 // Feed e Salvos
-.pesquisa-vagas{
+.pesquisa-vagas {
     margin-left: 275px;
 }
 
 // Empresas
-.container-empresas{
+.container-empresas {
     padding-left: 50px;
     padding-bottom: 10px;
 }
 
-.pesquisa-empresas{
+.pesquisa-empresas {
     margin-left: 240px;
 }
 
 // Perfil Estudante e Perfil Empresa
-.container-perfis{
+.container-perfis {
     width: 80%;
     min-height: 100vh;
     padding-top: 5vh;
@@ -216,13 +211,13 @@ body{
 // Components ---------------------------------------
 
 // UI
-
-#button-excluir{
+#button-excluir {
     background-color: $preto;
 }
 
 // Empresas e Vagas - USO COMUM
-.container-empresa, .container-vaga{
+.container-empresa,
+.container-vaga {
     display: inline-block;
     padding: 15px;
     margin-top: 30px;
@@ -231,24 +226,22 @@ body{
     color: $preto;
     border-color: $preto;
     border: solid 2px $preto-borda;
-    // margin-bottom: 20%;
 }
 
-.container-empresa .titulo-empresas{
+.container-empresa .titulo-empresas {
     color: $preto;
 }
 
 // Perfil Empresa e Curriculo - USO COMUM
-.cabecalho-perfis{
+.cabecalho-perfis {
     width: 95%;
     height: 150px;
     color: #323434;
 }
 
-.titulos-perfis{
+.titulos-perfis {
     margin-top: 20px;
     margin-left: 5px;
-    //width: 1100px;
     width: 100%;
     text-align: left;
     color: $verde-titulo;
@@ -265,48 +258,46 @@ body{
 .titulo-perfil {
     float: left;
     text-align: left;
-    //width: 900px;
     width: 83%;
-    //height: 40px;
     height: auto;
-    //margin-left: 20px;
     margin-left: 2%;
 }
 
-.titulo-perfis-empresa{
+.titulo-perfis-empresa {
     color: $preto;
 }
 
-.img-perfis{
+.img-perfis {
     float: left;
-    //width: 150px;
     width: 15%;
-    //height: 150px;
     height: 100%;
     font-size: 2.5cm;
     color: $verde-iniciais;
 }
 
-.curso, .sociais {
+.curso,
+.sociais {
     float: left;
     text-align: left;
-    //width: 900px;
     width: 83%;
-    //margin-left: 20px;
     margin-left: 2%;
 }
 
 .curso {
-    //height: 30px;
     height: auto;
 }
 
 .sociais {
-    //height: 80px;
     height: auto;
 }
 
-.sobre-perfis, .objetivo-curriculo, .experiencia-curriculo, .curso-curriculo, .formacao-curriculo, .habilidade-component, .palavras-vaga{
+.sobre-perfis,
+.objetivo-curriculo,
+.experiencia-curriculo,
+.curso-curriculo,
+.formacao-curriculo,
+.habilidade-component,
+.palavras-vaga {
     width: 92%;
     margin-top: 20px;
     padding: 20px;
@@ -319,8 +310,7 @@ body{
 }
 
 // Cadastro
-
-.container-cadastro{
+.container-cadastro {
     padding: 30px;
     padding-top: 20px;
     border-radius: 25px;
@@ -330,17 +320,17 @@ body{
     width: 100%;
 }
 
-.container-cadastro .txt{
+.container-cadastro .txt {
     margin: 15px auto 0px auto;
 }
 
-.container-cadastro h3{
+.container-cadastro h3 {
     text-align: left;
     font-weight: 700;
     padding: 1%;
 }
 
-.txt-form-group{
+.txt-form-group {
     padding-bottom: 3%;
 }
 
@@ -352,36 +342,21 @@ body{
 .container-login .link-cadastro {
     color: $verde-forte;
 }
+
 .container-login .link-cadastro:hover {
     color: $preto;
     transition: 0.3s;
 }
 
-.link{
+.link {
     padding-top: 6%;
 }
 
-// .cabecalho-login{ // tirar
-//     margin: 0px auto 10px auto;
-//     width: 150px;
-// }
-
-// .container-login .botao {
-//     text-decoration: none;
-//     color: $preto;
-// }
-
-// .container-login .botao:hover{
-//     background-color: $verde-forte;
-//     border-color: $branco;
-//     color: $branco;
-// }
-
-.login .txt{
+.login .txt {
     width: 80%;
 }
 
-.login .botao{
+.login .botao {
     width: 100px;
     margin-top: 15px;
     background-color: $preto;
@@ -389,16 +364,13 @@ body{
     color: $branco;
 }
 
-.login .btn:hover{
+.login .btn:hover {
     background-color: $verde-forte;
-    // border-color: $branco;
     color: $branco;
     transition: 0.3s;
 }
 
-.login .botao a:hover{
-    // background-color: $verde-forte;
-    // border-color: $branco;
+.login .botao a:hover {
     color: $branco;
 }
 
@@ -414,28 +386,12 @@ body{
     color: $branco;
 }
 
-.login input{ 
+.login input {
     margin: 15px auto 0px auto;
 }
 
-// .radio{ // tirar
-//     width: 100px;
-//     text-align: left;
-//     margin-left: 180px;
-// }
-
-// .radio input{  // tirar
-//     height: 13px;
-//     width: 13px;
-// }
-
-// .radio label{ // tirar
-//     margin-top: 5px;
-// }
-
-
 //Editar--------------------------------------------------------------------------------------------
-.button-salvar{
+.button-salvar {
     border-radius: 25px;
     border-color: $verde-forte;
     background-color: $verde-forte;
@@ -447,26 +403,25 @@ body{
     color: $branco;
 }
 
-.button-salvar:hover{
+.button-salvar:hover {
     background-color: $roxo-forte;
     border-color: $roxo-forte;
     transition: 0.3s;
 }
 
-#button-salvar-vaga{
+#button-salvar-vaga {
     left: 0%;
 }
 
 //---------------------------------------------------------------------------------------------------
 
 // Info
-.container-info{
+.container-info {
     width: 80%;
 }
 
 // Header
-
-.container-links a{ 
+.container-links a {
     color: $branco;
     font-weight: 600;
     font-size: 19px;
@@ -474,23 +429,23 @@ body{
     width: 80%;
 }
 
-.container-links a:hover{ 
+.container-links a:hover {
     color: $preto;
     transition: 0.4s;
     font-weight: 700;
     font-size: 22px;
 }
 
-.container-links .link{ 
+.container-links .link {
     padding-top: 25px;
 }
 
-.container-links img{ 
+.container-links img {
     margin-bottom: 90px;
     width: 61%;
 }
 
-.container-links .botao{ 
+.container-links .botao {
     margin-top: 90px;
     background-color: $preto;
     width: 50px;
@@ -502,74 +457,70 @@ body{
     color: $branco;
 }
 
-.container-links .botao a{
+.container-links .botao a {
     font-size: 15px;
 }
 
-.container-links .botao:hover{ 
+.container-links .botao:hover {
     color: $preto;
     background-color: $branco;
     transition: 0.4s;
 }
 
-.container-links .botao a:hover{ 
+.container-links .botao a:hover {
     color: $preto;
     transition: 0s;
 }
 
 // Pesquisa
-.caixa-pesquisa{
+.caixa-pesquisa {
     width: 500px;
 }
 
-.botao-pesquisa{
+.botao-pesquisa {
     width: 125px;
 }
 
 // Vagas
-
-.hr-vagas{
+.hr-vagas {
     margin-top: 0px;
     padding-top: 0px;
     position: relative;
     top: -15px;
 }
 
-.container-geral-vagas{
-    //display: inline-block;
+.container-geral-vagas {
     width: 100%;
     padding-bottom: 10px;
     text-align: center;
 }
 
-.container-vaga{
+.container-vaga {
     width: 80%;
     padding-left: 15px;
     margin: 0px;
     margin-bottom: 10px;
-    //display: inline-block;
 }
 
-.titulo-vagas, .corpo-vagas{
+.titulo-vagas,
+.corpo-vagas {
     width: 75%;
-    //width: 650px;
     text-align: left;
     float: left;
     padding-left: 15px;
     padding-top: 10px;
 }
 
-.botao-vagas{
-    //width: 230px;
+.botao-vagas {
     width: 25%;
     position: relative;
     top: -20px;
-    bottom: -20px; // ver isso
+    bottom: -20px; 
     text-align: center;
     float: right;
 }
 
-.botao-vagas .btn{
+.botao-vagas .btn {
     width: 100%;
     margin-left: 7px;
     background-color: $branco;
@@ -580,32 +531,32 @@ body{
     border: 0px;
 }
 
-.botao-vagas .btn:hover{
+.botao-vagas .btn:hover {
     background-color: $preto;
     color: $branco;
     transition: 0.3s;
 }
 
-.candidatos a{
+.candidatos a {
     text-decoration: none;
     color: $preto;
 }
 
-.candidatos a:hover{
+.candidatos a:hover {
     text-decoration: none;
     color: $verde-forte;
     transition: 0.3s;
 }
 
 // candidatura
-.btn-candidatura{
+.btn-candidatura {
     margin: 0%;
     position: relative;
     left: -500px;
     right: 0;
 }
 
-.btn-candidatura{
+.btn-candidatura {
     background-color: $verde-titulo;
     border: $verde-titulo;
     margin-top: 20px;
@@ -621,43 +572,39 @@ body{
     font-weight: 600;
 }
 
-.btn-candidatura:hover{
+.btn-candidatura:hover {
     background-color: $preto;
     transition: 0.3s;
 }
 
 // Empresas
-.container-geral-empresas{
+.container-geral-empresas {
     display: inline-block;
-    //width: 1000px;
     width: 100%;
     text-align: left;
 }
 
-.container-empresa{
+.container-empresa {
     width: 25%;
-    //width: 220px;
     margin-left: 65px;
 }
 
-.titulo-empresas{
-    //width: 200px;
+.titulo-empresas {
     width: 100%;
     margin-top: 10px;
     text-align: center;
 }
 
-.titulo-empresas a{
+.titulo-empresas a {
     text-decoration: none;
     color: $verde-titulo;
 }
 
-.titulo-empresas a:hover{
+.titulo-empresas a:hover {
     color: $preto;
 }
 
-.corpo-empresas{
-    //width: 200px;
+.corpo-empresas {
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -666,29 +613,28 @@ body{
 }
 
 // Perfil Empresa
-.perfil-empresa-vaga{
-    //width: 1000px;
+.perfil-empresa-vaga {
     width: 100%;
     padding-bottom: 10px;
     margin-top: 2.5%;
 }
 
 // Curriculo
-.cursos-component, .experiencia-component, .formacao-component{
-    //width: 1100px;
+.cursos-component,
+.experiencia-component,
+.formacao-component {
     width: 100%;
     margin-top: 15px;
 }
 
-.habilidades-component{
-    //width: 1100px;
+.habilidades-component {
     width: 100%;
     margin-top: 25px;
     margin-bottom: 0px;
 }
 
 // Modal dicas
-.container-modal{
+.container-modal {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -698,7 +644,7 @@ body{
     margin-bottom: 0px;
 }
 
-.modal-overlay{
+.modal-overlay {
     background: $preto-modal;
     position: fixed;
     top: 0;
@@ -710,7 +656,7 @@ body{
     justify-content: center;
 }
 
-.modal-content{
+.modal-content {
     width: 90%;
     max-width: 500px;
     background-color: $branco;
@@ -718,7 +664,7 @@ body{
     border-radius: 15px;
 }
 
-.button-modal{
+.button-modal {
     padding: 5px;
     font-size: large;
     float: right;
@@ -730,7 +676,7 @@ body{
     margin: 15px;
 }
 
-.button-modal-open{
+.button-modal-open {
     cursor: pointer;
     border-radius: 15px;
     background-color: rgba(165, 42, 42, 0);
@@ -774,8 +720,7 @@ body{
 }
 
 // Modal cadastros
-
-#botao-open-cadastro{
+#botao-open-cadastro {
     color: $verde-forte;
     font-size: 16px;
     font-weight: 600;
@@ -783,29 +728,29 @@ body{
     padding-top: 12px;
 }
 
-#botao-open-cadastro:hover{
+#botao-open-cadastro:hover {
     color: $preto-modal;
     transition: 0.3s;
 }
 
-#span-ou{
+#span-ou {
     padding-left: 5px;
 }
 
-#botao-cadastro-modal{
+#botao-cadastro-modal {
     background-color: $verde-forte;
     border-color: $verde-forte;
     margin-top: 15px;
     margin-right: 12px;
 }
 
-#botao-cadastro-modal:hover{
+#botao-cadastro-modal:hover {
     background-color: $preto;
     border-color: $preto;
     transition: 0.3s;
 }
 
-.button-fechar{
+.button-fechar {
     background-color: #14686900;
     border: none;
     width: fit-content;
@@ -816,13 +761,13 @@ body{
     display: inline-block;
 }
 
-.titulo-modal{
+.titulo-modal {
     position: relative;
     top: -100%;
     display: inline-block;
 }
 
-.cadastros-curriculo{
+.cadastros-curriculo {
     padding: 8px;
 }
 
@@ -856,7 +801,6 @@ body{
 }
 
 // modal editar
-
 .modal-editar-emp {
     width: 20px;
     margin-left: 99%;
@@ -897,22 +841,18 @@ body{
 }
 
 // Menus ------------------------------------------------------------------------------------------------------
-.button-menu{
+.button-menu {
     font-weight: 700;
     padding: 5px;
 }
 
-.menu-button-open{
+.menu-button-open {
     position: relative;
-    // top: 50px;
-    // right: 70px;
 }
 
-.dropDownMenu{
+.dropDownMenu {
     position: absolute;
     display: grid;
-    // top: 4.5rem;
-    // right: 1.5rem;
     width: 120px;
     padding: 15px;
     border-radius: 8px;
@@ -921,7 +861,7 @@ body{
     justify-content: flex-start;
 }
 
-.button-open-menu{
+.button-open-menu {
     cursor: pointer;
     position: relative;
     border-radius: 15px;
@@ -937,53 +877,53 @@ body{
     bottom: 70px;
 }
 
-.button-menu-li{
+.button-menu-li {
     font-weight: 600;
     font-size: medium;
     list-style-type: none;
     text-align: left;
 }
 
-.menu-usuario{
+.menu-usuario {
     bottom: 35px;
     right: 50px;
     color: $preto;
 }
 
-.menu-usuario-empresa{
+.menu-usuario-empresa {
     bottom: 5px;
     top: 40px;
     right: 60px;
     color: $preto;
 }
 
-.menu-usuario-vaga{
+.menu-usuario-vaga {
     bottom: 45px;
     color: $preto;
 }
 
-#menu-vaga{
+#menu-vaga {
     color: $preto;
 }
 
-#menu-empresa{
+#menu-empresa {
     color: $preto;
 }
 
-.inline-type{
+.inline-type {
     right: 0;
     left: 0;
     bottom: 33px;
 }
 
-#cadastrar-curriculo{
+#cadastrar-curriculo {
     top: 45px;
     left: 45px;
     color: $verde-titulo;
 }
 
 // Experiencias, Cursos e Formação
-.container-cursos-exper{
+.container-cursos-exper {
     padding: 15px;
     padding-top: 0px;
     border-radius: 25px;
@@ -994,23 +934,18 @@ body{
     background-color: #FAFAFA;
 }
 
-.form-control{
+.form-control {
     -webkit-appearance: default-button;
     appearance: auto;
 }
 
-#label-form{
+#label-form {
     margin-left: 5px;
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
 
-// .experiencia-component, .cursos-component, .formacao-component {
-//     // border: solid $preto-borda 2px;
-//     // border-radius: 20px;
-// }
-
-.cabecalho-cursos-exper{
+.cabecalho-cursos-exper {
     width: 100%;
     height: 100%;
     text-align: left;
@@ -1020,36 +955,34 @@ body{
     border-radius: 20px;
 }
 
-.titulos-cursos-exper{
-    //width: 1100px;
+.titulos-cursos-exper {
     width: 100%;
     float: left;
     color: $preto;
 }
 
-.conteudo-experiencias, .conteudo-cursos, .conteudo-formacao{
+.conteudo-experiencias,
+.conteudo-cursos,
+.conteudo-formacao {
     width: 100%;
     margin: 0px;
 }
 
-.data-inicio, .data-fim{
+.data-inicio,
+.data-fim {
     width: 200px;
-    // float: left;
-    //display: inline;
 }
 
-.data-inicio{
-    //width: 90px;
+.data-inicio {
     width: 15%;
 }
 
-.data-fim{
-    //width: 975px;
+.data-fim {
     width: 100%;
 }
 
 // Editar
-.cabecalho-perfis .input-cadastrar{
+.cabecalho-perfis .input-cadastrar {
     width: 70%;
 }
 
@@ -1074,12 +1007,12 @@ body{
     transition: 0.3s;
 }
 
-.container-error .titulo-error h1{
+.container-error .titulo-error h1 {
     color: $verde-titulo;
     font-size: 200px;
 }
 
-.container-error .sub-error{
+.container-error .sub-error {
     color: $preto;
 }
 
@@ -1089,7 +1022,6 @@ body{
 }
 
 // botão excluir perfil
-
 .btn-excluir-perfil a {
     color: $branco;
     text-decoration: none;

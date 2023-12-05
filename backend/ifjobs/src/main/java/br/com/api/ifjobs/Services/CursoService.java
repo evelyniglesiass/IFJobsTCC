@@ -22,7 +22,7 @@ import br.com.api.ifjobs.security.service.UsuarioAutenticadoService;
 
 @Service
 public class CursoService {
-    
+
     @Autowired
     private CursoRepository curRep;
 
@@ -38,10 +38,9 @@ public class CursoService {
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
 
+    // Método para cadastrar cursos
+    public ResponseEntity<?> cadastrar(CursoRequest c) {
 
-    //Método para cadastrar cursos
-    public ResponseEntity<?> cadastrar(CursoRequest c){
-        
         Estudante e = usuarioAutenticadoService.getEstudante();
         LocalDate dataInicial = LocalDate.parse(c.getDataInicial());
         LocalDate dataFinal = LocalDate.parse(c.getDataFinal());
@@ -54,13 +53,13 @@ public class CursoService {
         curso.setDataFinal(dataFinal);
         curso.setInstituicao(c.getInstituicao());
         curso.setId(c.getId());
-        
-        if(!(curriculoRep.existsByEstudante(e))){
+
+        if (!(curriculoRep.existsByEstudante(e))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
 
-        if(curso.getDataFinal().compareTo(curso.getDataInicial()) < 0){
+        if (curso.getDataFinal().compareTo(curso.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
@@ -74,9 +73,9 @@ public class CursoService {
 
     }
 
-    //Método para editar cursos
-    public ResponseEntity<?> editar(CursoRequest c){
-    
+    // Método para editar cursos
+    public ResponseEntity<?> editar(CursoRequest c) {
+
         Estudante e = usuarioAutenticadoService.getEstudante();
         LocalDate dataInicial = LocalDate.parse(c.getDataInicial());
         LocalDate dataFinal = LocalDate.parse(c.getDataFinal());
@@ -90,17 +89,17 @@ public class CursoService {
         curso.setInstituicao(c.getInstituicao());
         curso.setId(c.getId());
 
-        if(!(curriculoRep.existsByEstudante(e))){
+        if (!(curriculoRep.existsByEstudante(e))) {
             r.setMensagem("Currículo não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
 
-        } 
-        
-        if(curso.getDataFinal().compareTo(curso.getDataInicial()) < 0){
+        }
+
+        if (curso.getDataFinal().compareTo(curso.getDataInicial()) < 0) {
             r.setMensagem("A data inicial precisa ser anterior a data final!");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, r.getMensagem());
 
-        } 
+        }
 
         curso.setCurriculo(e.getCurriculo());
         curRep.save(curso);
@@ -109,10 +108,10 @@ public class CursoService {
 
     }
 
-    //Método para remover curso
+    // Método para remover curso
     public ResponseEntity<Resposta> remover(int id) {
-        
-        if(!(curRep.existsById(id))){
+
+        if (!(curRep.existsById(id))) {
             r.setMensagem("Curso não encontrado!");
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, r.getMensagem());
         }
@@ -124,7 +123,7 @@ public class CursoService {
 
     }
 
-    public List<CursoDTO> listar(int id){
+    public List<CursoDTO> listar(int id) {
 
         Estudante est = estRep.findById(id).get();
         Curriculo cur = curriculoRep.findById(est.getCurriculo().getId()).get();

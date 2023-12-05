@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de exclusão de formação
-const ExcluirFormacaoComponent = ({formacao, listar}) => {
+const ExcluirFormacaoComponent = ({ formacao, listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -18,9 +18,9 @@ const ExcluirFormacaoComponent = ({formacao, listar}) => {
         setIsOpen(false);
     }
 
-    const {excluirFormacao} = useExcluirFormacao();
+    const { excluirFormacao } = useExcluirFormacao();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await excluirFormacao(formacao.id);
@@ -38,7 +38,7 @@ const ExcluirFormacaoComponent = ({formacao, listar}) => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua formação?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua formação?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

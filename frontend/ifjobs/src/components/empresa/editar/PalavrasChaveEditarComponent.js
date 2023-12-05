@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component com inputs para edição de palavras chave
-const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
+const PalavrasChaveEditarComponent = ({ palavra, idVaga, listaPa }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -22,15 +22,15 @@ const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
         palavra: palavra.palavra
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {editarPalavraChave} = useEditarPalavraChave();
+    const { editarPalavraChave } = useEditarPalavraChave();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await editarPalavraChave(formInput.palavra, palavra.id, idVaga);
@@ -49,17 +49,17 @@ const PalavrasChaveEditarComponent = ({palavra, idVaga, listaPa}) => {
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
 
-                <h2 className='titulo-modal'>Palavra chave</h2>                
-                <hr/>
+                <h2 className='titulo-modal'>Palavra chave</h2>
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit}>
 
-                    <div className='txt-form-group'>
-                        <input type="text" defaultValue={palavra.palavra} class="form-control" name='palavra' placeholder="Palavra" onChange={handleChange}/>
-                    </div>
+                        <div className='txt-form-group'>
+                            <input type="text" defaultValue={palavra.palavra} class="form-control" name='palavra' placeholder="Palavra" onChange={handleChange} />
+                        </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
-                </form>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Salvar</button>
+                    </form>
                 </div>
 
             </Modal>

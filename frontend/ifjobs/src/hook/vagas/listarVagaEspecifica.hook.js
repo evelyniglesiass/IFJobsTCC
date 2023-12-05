@@ -2,21 +2,21 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { listarVagaEspecificaApi } from "../../constants";
 
-export function useListarVagaEspecifica(){
+export function useListarVagaEspecifica() {
 
     const [error] = useState();
 
-    async function listarVagaEspecifica(vaga){
+    async function listarVagaEspecifica(vaga) {
 
-        try{
+        try {
             const response = await listarVagaEspecificaApi(vaga);
             return response
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {listarVagaEspecifica, error};
+    return { listarVagaEspecifica, error };
 
 }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../../App.scss';
-
-// Import de Components
 import HeaderComponent from '../../components/ui/HeaderComponent'
 import DetalhesVagaComponent from '../../components/empresa/ui/DetalhesVagaComponent';
 import { useParams } from 'react-router-dom';
@@ -12,7 +10,7 @@ import useGlobalUser from '../../context/usuario/user.context';
 
 // Detalhes de vagas na visão da empresa
 const DetalhesVaga = () => {
-  
+
   const { id } = useParams();
   const [user] = useGlobalUser();
 
@@ -28,7 +26,7 @@ const DetalhesVaga = () => {
   async function listar() {
 
     const vagResp = await listarVagaEspecifica(id);
-    setVaga(vagResp) 
+    setVaga(vagResp)
 
     const estResp = await listarCandidatosVaga(id);
     setEstudantes(estResp)
@@ -39,7 +37,7 @@ const DetalhesVaga = () => {
   }
 
   useEffect(() => {
-  
+
     listar();
   }, [])
 
@@ -51,7 +49,7 @@ const DetalhesVaga = () => {
         var obj = v;
 
         if (vaga && obj) {
-          if(obj.id === vaga.id){
+          if (obj.id === vaga.id) {
             setEncontrou(true);
           }
         }
@@ -59,7 +57,7 @@ const DetalhesVaga = () => {
       });
     }
 
-      enc()
+    enc()
 
   }, [todasVagas, vaga])
 
@@ -67,7 +65,7 @@ const DetalhesVaga = () => {
     <>
       <nav className='header'><HeaderComponent /></nav>
       <section className='container-perfis'>
-        <article><DetalhesVagaComponent vaga={vaga} estudantes={estudantes} encontrou={encontrou} listarVag={listar}/></article>
+        <article><DetalhesVagaComponent vaga={vaga} estudantes={estudantes} encontrou={encontrou} listarVag={listar} /></article>
       </section>
     </>
   )

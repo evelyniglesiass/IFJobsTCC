@@ -7,7 +7,7 @@ import EditarEmpresaComponent from '../../editar/EmpresaEditarComponent';
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados da empresa
-const MenuEmpresaComponent = ({empresa, listarEmp}) => {
+const MenuEmpresaComponent = ({ empresa, listarEmp }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -31,7 +31,7 @@ const MenuEmpresaComponent = ({empresa, listarEmp}) => {
 
                 <div >
                     <ExcluirEmpresaComponent />
-                    <EditarEmpresaComponent empresa={empresa} listarEmp={listarEmp}/>
+                    <EditarEmpresaComponent empresa={empresa} listarEmp={listarEmp} />
                 </div>
 
             </Modal>

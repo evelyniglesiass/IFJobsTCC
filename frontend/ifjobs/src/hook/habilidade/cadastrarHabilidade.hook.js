@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { criarHabilidadeApi } from "../../constants";
 
-export function useCadastrarHabilidade(){
+export function useCadastrarHabilidade() {
 
     const [error] = useState();
 
-    async function cadastrarHabilidade(descricao){
+    async function cadastrarHabilidade(descricao) {
 
-        try{
+        try {
             await criarHabilidadeApi(descricao);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {cadastrarHabilidade, error};
+    return { cadastrarHabilidade, error };
 
 }

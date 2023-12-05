@@ -24,16 +24,16 @@ import lombok.ToString;
 public class PalavraChave {
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private Integer id;
-    
+
     @NotBlank(message = "Insira sua palavra chave!")
-	@Column(nullable = false, length = 250)
+    @Column(nullable = false, length = 250)
     private String palavra;
 
     @ManyToOne
-    @JoinColumn(name="vaga_id", nullable=false)    
+    @JoinColumn(name = "vaga_id", nullable = false)
     private Vaga vaga;
 
 }

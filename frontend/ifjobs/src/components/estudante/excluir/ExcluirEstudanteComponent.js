@@ -12,7 +12,7 @@ const ExcluirEstudanteComponent = () => {
 
 
     const [modalIsOpen, setIsOpen] = useState(false);
-    const {fazerLogout} = useLogout();
+    const { fazerLogout } = useLogout();
 
     function openModal() {
         setIsOpen(true);
@@ -22,15 +22,15 @@ const ExcluirEstudanteComponent = () => {
         setIsOpen(false);
     }
 
-    const {excluirEstudante} = useExcluirEstudante();
+    const { excluirEstudante } = useExcluirEstudante();
 
-    async function onSubmit(event){
-        event.preventDefault(); 
+    async function onSubmit(event) {
+        event.preventDefault();
     }
 
-    async function onClick(event){
+    async function onClick(event) {
         event.preventDefault();
-    
+
         await excluirEstudante();
         await fazerLogout();
     }
@@ -46,7 +46,7 @@ const ExcluirEstudanteComponent = () => {
                 className="modal-content">
 
 
-                <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>                
+                <h2 className='titulo-modal'>Deseja excluir sua conta?</h2>
                 <div className='container-cursos-exper'>
                     <form onSubmit={onSubmit}>
 

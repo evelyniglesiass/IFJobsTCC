@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { excluirIdiomaApi } from "../../constants";
 
-export function useExcluirIdioma(){
+export function useExcluirIdioma() {
 
     const [error] = useState();
 
-    async function excluirIdioma(idioma){
+    async function excluirIdioma(idioma) {
 
-        try{
+        try {
             await excluirIdiomaApi(idioma);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {excluirIdioma, error};
+    return { excluirIdioma, error };
 
 }

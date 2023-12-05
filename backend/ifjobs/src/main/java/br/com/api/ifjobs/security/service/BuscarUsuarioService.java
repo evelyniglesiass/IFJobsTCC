@@ -10,9 +10,9 @@ public class BuscarUsuarioService {
 
     @Autowired
     private UsuarioAutenticadoService usuarioAutenticadoService;
-    
-    public UsuarioResponse buscar(){
-        
+
+    public UsuarioResponse buscar() {
+
         return usuarioAutenticadoService.getResponse();
     }
 }

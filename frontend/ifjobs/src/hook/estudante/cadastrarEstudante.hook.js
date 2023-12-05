@@ -2,20 +2,20 @@ import { useState } from "react";
 import { criarEstudanteApi } from "../../constants";
 import { toast } from "react-toastify";
 
-export function useCadastroEstudante(){
+export function useCadastroEstudante() {
 
     const [error] = useState();
 
-    async function cadastroEstudante(nome, nomeUsuario, idade, curso, telefone, email, senha, cidade){
+    async function cadastroEstudante(nome, nomeUsuario, idade, curso, telefone, email, senha, cidade) {
 
-        try{
+        try {
             await criarEstudanteApi(nome, nomeUsuario, idade, curso, telefone, email, senha, cidade);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {cadastroEstudante, error};
+    return { cadastroEstudante, error };
 
 }

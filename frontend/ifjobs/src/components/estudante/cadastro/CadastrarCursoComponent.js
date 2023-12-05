@@ -8,7 +8,7 @@ import Modal from 'react-modal';
 Modal.setAppElement("#root");
 
 // Component de cadastro de curso com dicas
-const CadastrarCursoComponent = ({listar}) => {
+const CadastrarCursoComponent = ({ listar }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -29,19 +29,19 @@ const CadastrarCursoComponent = ({listar}) => {
         descricao: ''
     })
 
-    function handleChange(event){
+    function handleChange(event) {
         const { name, value } = event.target;
 
-        setFormInput((oldFormInput) => ({...oldFormInput, [name]:value}));
+        setFormInput((oldFormInput) => ({ ...oldFormInput, [name]: value }));
     }
 
-    const {cadastrarCurso} = useCadastrarCurso();
+    const { cadastrarCurso } = useCadastrarCurso();
 
-    async function onSubmit(event){
+    async function onSubmit(event) {
         event.preventDefault();
 
         await cadastrarCurso(formInput.cargaHoraria, formInput.cidade, formInput.descricao, formInput.dataInicial, formInput.dataFinal, formInput.instituicao);
-        
+
         listar()
     }
 
@@ -56,34 +56,34 @@ const CadastrarCursoComponent = ({listar}) => {
                 className="modal-content">
 
                 <button onClick={closeModal} className='button-fechar'>X</button>
-                
+
                 <h2 className='titulo-modal'>Cursos e certificados</h2>
-                <DicasCursosComponent/>
+                <DicasCursosComponent />
 
-                <hr/>
+                <hr />
                 <div className='container-cursos-exper'>
-                <form onSubmit={onSubmit}>
-                    <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="number" class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                    <input type="date" class="form-control" name='dataInicial' onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <input type="date" class="form-control" name='dataFinal' onChange={handleChange}/>
-                    </div>
-                    <div className='txt-form-group'>
-                        <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange}/>
-                    </div>
+                    <form onSubmit={onSubmit}>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-control" name='instituicao' placeholder="Instituição" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="text" class="form-control" name='cidade' placeholder="Cidade" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="number" class="form-control" name='cargaHoraria' placeholder="Carga horária" onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-control" name='dataInicial' onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <input type="date" class="form-control" name='dataFinal' onChange={handleChange} />
+                        </div>
+                        <div className='txt-form-group'>
+                            <textarea type="textarea" class="form-control" name='descricao' placeholder="Descrição" maxLength={250} onChange={handleChange} />
+                        </div>
 
-                    <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
-                </form>
+                        <button type="submit" class="txt btn btn-primary" id='botao-cadastro-modal'>Cadastrar</button>
+                    </form>
                 </div>
 
             </Modal>

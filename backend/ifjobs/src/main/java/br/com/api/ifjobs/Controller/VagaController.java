@@ -20,22 +20,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.ifjobs.dto.VagaDTO;
 import br.com.api.ifjobs.models.Resposta;
-// import br.com.api.ifjobs.models.Vaga;
 import br.com.api.ifjobs.requests.VagaRequest;
-import br.com.api.ifjobs.services.VagaService; 
- 
+import br.com.api.ifjobs.services.VagaService;
+
 @RestController
 @RequestMapping("/vagas")
 public class VagaController {
 
-    @Autowired 
-    private VagaService vagSer; 
+    @Autowired
+    private VagaService vagSer;
 
     // cadastrar vaga
     @Secured("ROLE_EMPRESA")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody VagaRequest vaga){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody VagaRequest vaga) {
         return vagSer.cadastrar(vaga);
     }
 
@@ -43,41 +42,41 @@ public class VagaController {
     @Secured("ROLE_EMPRESA")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody VagaRequest vaga){ 
+    public ResponseEntity<?> editar(@Valid @RequestBody VagaRequest vaga) {
         return vagSer.editar(vaga);
     }
 
     // excluir vaga
     @Secured("ROLE_EMPRESA")
-    @DeleteMapping("/{id}") 
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
+    public ResponseEntity<Resposta> remover(@PathVariable int id) {
         return vagSer.remover(id);
     }
 
     // listar todas as vagas
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
-     @GetMapping("/listar")
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
+    @GetMapping("/listar")
     public List<VagaDTO> listarTodas() {
-        return vagSer.listarTodas(); 
+        return vagSer.listarTodas();
     }
 
     // listar vagas de uma empresa
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/{id}")
     public List<VagaDTO> listarPorEmpresa(@PathVariable int id) {
         return vagSer.listarPorEmpresa(id);
     }
 
     // pesquisa por titulo
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/pesquisa/{titulo}")
     public List<VagaDTO> listarPorTitulo(@PathVariable String titulo) {
         return vagSer.listarPorTitulo(titulo);
     }
 
     // listar vaga especifica
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/id/{id}")
     public VagaDTO listarVaga(@PathVariable int id) {
         return vagSer.listarVaga(id);

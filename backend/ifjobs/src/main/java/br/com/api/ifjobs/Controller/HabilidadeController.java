@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.ifjobs.dto.HabilidadeDTO;
 import br.com.api.ifjobs.models.Habilidade;
 import br.com.api.ifjobs.models.Resposta;
-import br.com.api.ifjobs.services.HabilidadeService; 
+import br.com.api.ifjobs.services.HabilidadeService;
 
 @RestController
 @RequestMapping("/habilidades")
 public class HabilidadeController {
-    
+
     @Autowired
     private HabilidadeService habSer;
 
@@ -34,7 +34,7 @@ public class HabilidadeController {
     @Secured("ROLE_ESTUDANTE")
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> cadastrar(@Valid @RequestBody Habilidade habilidade){ 
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Habilidade habilidade) {
         return habSer.cadastrar(habilidade);
     }
 
@@ -42,20 +42,20 @@ public class HabilidadeController {
     @Secured("ROLE_ESTUDANTE")
     @PutMapping()
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> editar(@Valid @RequestBody Habilidade habilidade){ 
-        return habSer.editar(habilidade); 
+    public ResponseEntity<?> editar(@Valid @RequestBody Habilidade habilidade) {
+        return habSer.editar(habilidade);
     }
 
     // remover habilidades
     @Secured("ROLE_ESTUDANTE")
-    @DeleteMapping("/{id}") 
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Resposta> remover(@PathVariable int id){ 
+    public ResponseEntity<Resposta> remover(@PathVariable int id) {
         return habSer.remover(id);
     }
 
     // listar habilidades de um determinado currículo
-    @Secured({"ROLE_ESTUDANTE", "ROLE_EMPRESA"})
+    @Secured({ "ROLE_ESTUDANTE", "ROLE_EMPRESA" })
     @GetMapping("/listar/{id}") // id do estudante
     public List<HabilidadeDTO> listarHabilidade(@PathVariable int id) {
         return habSer.listarHabilidade(id);

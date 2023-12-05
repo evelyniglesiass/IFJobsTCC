@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import br.com.api.ifjobs.models.ExperienciaProfissional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -17,10 +17,10 @@ import lombok.Setter;
 public class ExperienciaProfissionalDTO {
 
     private Integer id;
-	private String descricao;
-	private String empresa;
-	private String cargo;
-	private LocalDate dataInicial;
+    private String descricao;
+    private String empresa;
+    private String cargo;
+    private LocalDate dataInicial;
     private LocalDate dataFinal;
 
     public ExperienciaProfissionalDTO(ExperienciaProfissional experiencia) {
@@ -35,5 +35,5 @@ public class ExperienciaProfissionalDTO {
     public static List<ExperienciaProfissionalDTO> converterLista(List<ExperienciaProfissional> listaExperiencia) {
         return listaExperiencia.stream().map(ExperienciaProfissionalDTO::new).collect(Collectors.toList());
     }
-    
+
 }

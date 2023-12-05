@@ -26,15 +26,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permissao {
-    
-    @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	@Column(nullable = false)
-	private Integer id;
 
-    @Column(nullable = false) 
-	@Enumerated(EnumType.STRING)
-	private Funcao funcao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Integer id;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Funcao funcao;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa")

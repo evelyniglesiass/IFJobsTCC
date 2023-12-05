@@ -7,7 +7,7 @@ import PalavrasChaveEditarComponent from '../../editar/PalavrasChaveEditarCompon
 Modal.setAppElement("#root");
 
 // Component menu com ações referentes aos dados da palavra chave
-const MenuPalavrasComponent = ({palavra, idVaga, listaPa}) => {
+const MenuPalavrasComponent = ({ palavra, idVaga, listaPa }) => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
@@ -30,8 +30,8 @@ const MenuPalavrasComponent = ({palavra, idVaga, listaPa}) => {
                 className="modal-content">
 
                 <div className='button-menu-li'>
-                    <ExcluirPalavraChaveComponent palavra={palavra} listaPa={listaPa}/>
-                    <PalavrasChaveEditarComponent palavra={palavra} idVaga={idVaga} listaPa={listaPa}/>
+                    <ExcluirPalavraChaveComponent palavra={palavra} listaPa={listaPa} />
+                    <PalavrasChaveEditarComponent palavra={palavra} idVaga={idVaga} listaPa={listaPa} />
                 </div>
 
             </Modal>

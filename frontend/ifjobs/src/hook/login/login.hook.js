@@ -5,24 +5,24 @@ import { useState } from 'react';
 
 import { toast } from 'react-toastify';
 
-export function useLogin(){
+export function useLogin() {
 
     const [user, setUser] = useGlobalUsuario();
     const [error] = useState();
     const navigate = useNavigate();
 
-    async function fazerLogin(email, senha){
+    async function fazerLogin(email, senha) {
 
-        try{
+        try {
             const response = await logarApi(email, senha);
             setUser(response);
             navigate("/feed")
         }
-        catch(errorApi){
+        catch (errorApi) {
             console.log(errorApi)
             toast.error(errorApi);
         }
     }
 
-    return {fazerLogin, error};
+    return { fazerLogin, error };
 }

@@ -2,20 +2,20 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { criarIdiomaApi } from "../../constants";
 
-export function useCadastrarIdioma(){
+export function useCadastrarIdioma() {
 
     const [error] = useState();
 
-    async function cadastrarIdioma(descricao){
+    async function cadastrarIdioma(descricao) {
 
-        try{
+        try {
             await criarIdiomaApi(descricao);
         }
-        catch(errorApi){
+        catch (errorApi) {
             toast.error(errorApi);
         }
     }
 
-    return {cadastrarIdioma, error};
+    return { cadastrarIdioma, error };
 
 }
