@@ -1,4 +1,6 @@
-# TCC IFJobs
+# IFJobs: Auxílio aos Estudantes no âmbito de estágios
+
+Projeto desenvolvido por [@evelyniglesiass](https://github.com/evelyniglesiass) e [@hetielle](https://github.com/hetielle) como Trabalho de Conclusão de Curso para o Técnico em Informática/Desenvolvimento de Sistemas no Instituto Federal de Educação, Ciência e Tecnologia Sul-rio-grandense (IFSul).
 
 Esse projeto busca auxiliar os estudantes do IFSul Campus Sapucaia do Sul a ingressar em estágios de uma maneira menos complicada. Com dois tipos de usuário, empresa e estudante, 
 o IFJobs é uma plataforma de divulgação e candidatura a vagas de estágio. Ao criarem seus perfis, uma empresa pode cadastras vagas e visualizar seus candidatos e um estudante pode 
@@ -10,9 +12,9 @@ Além disso, ambos usuários podem visualizar feeds de empresas, estudantes e va
 ### Comuns
 - Cadastrar-se no sistema como Estudante ou Empresa
 - Realizar login
-- Realizar Logout
+- Realizar logout
 - Visualizar empresas, vagas, estudantes e seus respectivos feeds
-- Entrar em contato com empresas e estudantes por email
+- Entrar em contato com empresas e estudantes via email
 
 ### Empresa
 - Cadastrar Vagas
