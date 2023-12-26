@@ -13,26 +13,27 @@ Além disso, ambos usuários podem visualizar feeds de empresas, estudantes e va
 </div>
 <br>
 
-# Funcionalidades:
+## 📋 Funcionalidades:
 
-### Comuns
+#### Comuns
 - Cadastrar-se no sistema como Estudante ou Empresa
 - Realizar login
 - Realizar logout
 - Visualizar empresas, vagas, estudantes e seus respectivos feeds
 - Entrar em contato com empresas e estudantes via email
 
-### Empresa
+#### Empresa
 - Cadastrar Vagas
 - Cadastrar palavras chaves para suas vagas
 
-### Estudante
+#### Estudante
 - Cadastrar objetivo, formações acadêmicas, experiêcias profissionais, cursos e certificados, habilidades e idiomas
 - Visualizar dicas ao cadastrar ou editar os itens de seu currículo
 - Candidatar-se a vagas
-- Visualizar vagas para as quais está candidatado 
+- Visualizar vagas para as quais está candidatado
 
-## Tecnologias utilizadas:
+
+## 🛠️ Tecnologias utilizadas:
 
 * Java
 * Spring Boot
