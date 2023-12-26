@@ -7,6 +7,12 @@ o IFJobs é uma plataforma de divulgação e candidatura a vagas de estágio. Ao
 visualizar as vagas para as quais está candidatado, adicionar campos análogos a um currículo em seu perfil (facilitando a análise das empresas) e receber dicas durante o processo!
 Além disso, ambos usuários podem visualizar feeds de empresas, estudantes e vagas, podendo pesquisar por esses e visualizá-los com mais detalhes.
 
+<br>
+<div align="center">
+  <img src="https://github.com/evelyniglesiass/IFJobsTCC/assets/106272631/368efcf7-a7d6-4b3c-9b28-6c8063e8d4d9" width="700px" />
+</div>
+<br>
+
 # Funcionalidades:
 
 ### Comuns
