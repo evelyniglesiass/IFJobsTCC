@@ -47,4 +47,11 @@ Além disso, ambos usuários podem visualizar feeds de empresas, estudantes e va
 * Bootstrap
 
 
-# Feito com ❤️ com Java, JS e ReactJS
+
+***
+
+Por Hetielle Matos e Evelyn Iglesias
+
+Contribuições são bem-vindas <3
+
+Feito com ❤️ com Java, JS e ReactJS
