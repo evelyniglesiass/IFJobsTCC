@@ -45,3 +45,6 @@ Além disso, ambos usuários podem visualizar feeds de empresas, estudantes e va
 * CSS
 * Sass
 * Bootstrap
+
+
+# Feito com ❤️ com Java, JS e ReactJS
